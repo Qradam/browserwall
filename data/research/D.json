@@ -1,0 +1,146 @@
+{
+  "thorium": {
+    "scores": [3, 3, 3, 3, 4],
+    "confidence": "medium",
+    "changes": "no change. Thorium now ships about one milestone behind Chrome, not months behind, so it keeps privacy 3. The project is fragile, though: the lead maintainer is absent and all recent builds are collaborator 'beta' releases.",
+    "evidence": "Since roughly M150, collaborator gz83 has published every update because Alex313031 is unavailable. M156.0.8078.80 shipped on 9 Nov 2026, while Chrome stable reached 157 in early November, so Thorium roughly tracks Extended Stable. GitHub issues report an unsigned APT repo and CPU spikes on the 156 builds. Thorium now bundles uBlock Origin and keeps its Chrome-like feature set.",
+    "sources": [
+      "https://github.com/Alex313031/thorium/releases",
+      "https://github.com/gz83/thorium/releases",
+      "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+      "https://github.com/Alex313031/thorium/issues/1164"
+    ]
+  },
+  "supermium": {
+    "scores": [2, 2, 3, 4, 4],
+    "confidence": "medium",
+    "changes": "Privacy drops from 3 to 2 and experience from 3 to 2. The newest release is Chromium 150.0.7871.255 (R2.02, Oct 2026) while Chrome stable is 157, about 7 milestones and several months behind on security fixes. The 150 cycle also ran through a string of pre-releases that broke on Win7/XP (PDF, sandbox, Google sign-in, crashes). Lightness stays 4 only because of the old-hardware niche and tag constraints; the 'lightweight' claim is weak.",
+    "evidence": "Supermium went from 138 to 144 to 150 in big jumps, with long gaps between them and only patch-level updates in between. GitHub issues show repeated launch failures and crashes on Windows 7. Users value it as the only modern Chromium for XP/7, not for being secure or light. On XP the rebased chrome.dll noticeably raised memory use.",
+    "sources": [
+      "https://github.com/win32ss/supermium/releases",
+      "https://github.com/win32ss/supermium/issues/2015",
+      "https://github.com/win32ss/supermium/discussions/1754",
+      "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html"
+    ]
+  },
+  "chromium": {
+    "scores": [3, 3, 3, 3, 5],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Raw Chromium has no Google-branded extras and no ads, but it still has Google sign-in and Safe Browsing hooks. Snapshot builds on Windows and macOS do not auto-update, while distro and Flathub packages track stable closely (for example 156.0.8078.79 in late Oct 2026). Overall it is a neutral baseline.",
+    "sources": [
+      "https://github.com/flathub/org.chromium.Chromium/pulls",
+      "https://github.com/ungoogled-software/ungoogled-chromium/discussions/2740",
+      "https://github.com/chromium/chromium/blob/main/docs/security/faq.md"
+    ]
+  },
+  "ulaa": {
+    "scores": [3, 3, 3, 3, 2],
+    "confidence": "medium",
+    "changes": "no change. Ulaa has built-in ad and tracker blocking and Zoho is not ad-funded. Privacy stays at 3 rather than 4 because the browser is closed source, collects basic usage and device data by default, and gathers more if you sign in or enable stats.",
+    "evidence": "2026 reviews praise the five modes and built-in blocking but note its usual Chromium RAM use. Zoho's own terms admit default collection of basic usage data, which contradicts 'collects nothing' claims. It bundles a password manager, notes, screen capture, a dashboard, Zoho SSO and the Zia AI integration, which keeps minimalism low.",
+    "sources": [
+      "https://techyden.com/ulaa-browser-review/",
+      "https://download.cnet.com/ulaa-browser/3000-mac-ulaa-browser.html",
+      "https://www.thegeeksclub.com/platforms/ulaa/"
+    ]
+  },
+  "island": {
+    "scores": [2, 4, 2, 3, 2],
+    "confidence": "medium",
+    "changes": "Privacy drops from 3 to 2 and customisation from 3 to 2. Island is closed source and built for employer monitoring: activity logging, audit trails and screenshot or copy-paste controls send user activity to the organisation. Policies are set by admins and extension support is limited, so the user can change very little.",
+    "evidence": "Reviewers on Gartner and G2 say it feels just like Chrome and praise the fine-grained admin control and rich activity data. Complaints are about lag, slower tab switching and limited extensions. Island's own material frames the browser as a tool for auditing employee activity.",
+    "sources": [
+      "https://www.venn.com/learn/island-browser/island-browser-review/",
+      "https://www.island.io/resource/using-your-browser-as-an-auditing-support-tool",
+      "https://www.island.io/gartner-reviews"
+    ]
+  },
+  "wavebox": {
+    "scores": [3, 4, 3, 2, 1],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Wavebox is a paid, closed-source Chromium browser sold on Spaces and multi-account workspaces, with unified notifications and AI across the workspace. It has no native ad blocking (the vendor suggests an extension), and its own troubleshooting guide addresses performance problems. It fits heavy multi-app users rather than people who want a light or minimal browser.",
+    "sources": [
+      "https://hub.wavebox.io/is-wavebox-right-for-you-11-honest-answers-from-the-co-founder/",
+      "https://www.itechguides.com/products/wavebox/",
+      "https://blog.wavebox.io/performance-troubleshooting/"
+    ]
+  },
+  "min": {
+    "scores": [4, 3, 2, 3, 5],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Min is still maintained, with regular Electron/Chromium bumps (1.35.3 through 1.35.8 in 2026) and translation that runs locally. It is open source with built-in blocking and a deliberately sparse UI. As an Electron app its footprint is typical rather than light, and extension support is very limited.",
+    "sources": [
+      "https://github.com/minbrowser/min/releases",
+      "https://github.com/minbrowser/min"
+    ]
+  },
+  "vieb": {
+    "scores": [4, 2, 4, 3, 5],
+    "confidence": "medium",
+    "changes": "no change. The scores are now confirmed rather than guessed: 12.11.0 ships Electron 45 / Chromium 156.0.8078.75, close to upstream.",
+    "evidence": "Vieb is a single-developer project with steady releases. It is GPL, has built-in adblock lists and privacy overrides (it strips userAgentData and spoofs device enumeration), and has no telemetry. In 2025 it fixed a remote-code-execution bug by enabling contextIsolation. It is vim-only, Electron-based and has a niche user base, so experience stays low.",
+    "sources": [
+      "https://github.com/Jelmerro/Vieb/releases",
+      "https://github.com/Jelmerro/Vieb"
+    ]
+  },
+  "qutebrowser": {
+    "scores": [3, 2, 4, 4, 5],
+    "confidence": "medium",
+    "changes": "Privacy drops from 4 to 3 because of security-patch lag. Bug reports from Oct 2026 show QtWebEngine 6.11 with backported patches only up to Chromium 151.0.7922.71, while Chrome is at 157. qutebrowser also can't receive Chrome root-store updates, so it still trusted the compromised eMudhra intermediates.",
+    "evidence": "qutebrowser itself is open, has no telemetry and has a built-in adblocker. Its security, however, depends on Qt's slow WebEngine backports and distro patches, something the maintainer acknowledges. Users also report frequent Google captchas and video playback problems. Qt says WebEngine moves to its own faster release cadence from Qt 6.12, which could justify restoring the 4 later.",
+    "sources": [
+      "https://github.com/qutebrowser/qutebrowser/issues/9031",
+      "https://github.com/qutebrowser/qutebrowser/issues/9032",
+      "https://www.qt.io/blog/new-release-cadence-for-qt-webengine-and-qt-pdf",
+      "https://github.com/qutebrowser/qutebrowser/discussions/8721"
+    ]
+  },
+  "polypane": {
+    "scores": [3, 3, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Polypane is a paid indie developer browser that tracks Chromium closely (version 31 on Chromium 155, Sept 2026) and is regularly named the top responsive-dev browser. Its own docs admit it uses more resources than a normal browser, because each pane is a live Chromium instance and the load scales with pane count. It carries a lot of built-in audit and inspection panels.",
+    "sources": [
+      "https://polypane.app/docs/performance/",
+      "https://polypane.app/blog/polypane-31-canvas-layout-elements-panel-improvements-and-chromium-155/",
+      "https://devresourc.es/blog/best-browser-for-developers"
+    ]
+  },
+  "sizzy": {
+    "scores": [3, 3, 2, 2, 1],
+    "confidence": "medium",
+    "changes": "Minimalism drops from 2 to 1. Sizzy now bundles integrated terminals, a REST/GraphQL API client, a process runner and in-browser AI coding agents (Claude Code / Codex CLI) on top of the device previews. That is an AI-agent-plus-tools bundle, which matches the rubric's 1 anchor.",
+    "evidence": "Sizzy costs $15/month, $144/year or $499 lifetime, with no free plan. Coverage in 2026 positions it as a project workspace with isolated per-device sessions rather than a lean preview tool. Running one isolated session per device makes it heavy like Polypane.",
+    "sources": [
+      "https://sizzy.co/compare/polypane",
+      "https://sizzy.co/",
+      "https://checkops.com/tools/sizzy"
+    ]
+  },
+  "blisk": {
+    "scores": [2, 3, 3, 2, 2],
+    "confidence": "low",
+    "changes": "no change. Privacy stays 2 because Blisk is closed source and freemium: it needs an account or trial, uploads screenshots and recordings to its cloud, and locks devices, sync and DevTools after 30 minutes a day on the free plan.",
+    "evidence": "Blisk is still offered (site lists version 25.0.115.28), but there is little recent independent discussion. Older reviews praise the device panes and auto-refresh but criticise the daily time limit and say it is poor as a general browser. I couldn't verify which Chromium version Blisk is based on or how fast it ships upstream patches.",
+    "sources": [
+      "https://blisk.io/",
+      "https://processwire.com/talk/topic/22261-testing-blisk-browser-only-1-feature-interests-me-live-reloading/",
+      "https://www.geeksforgeeks.org/software-testing/cross-device-testing-of-web-applications-with-blisk/"
+    ]
+  },
+  "responsively-app": {
+    "scores": [3, 2, 2, 2, 3],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Responsively is free, open source and Electron-based, and is the usual recommendation for developers who can't pay for Polypane. The v2.0 beta (late 2026) rewrites the UI, adds Canvas mode, an MCP server for AI coding agents and Electron 44. Stable is still 1.18 and v2 is pre-release, so experience stays low. Like the other multi-pane tools, footprint grows with the number of device previews.",
+    "sources": [
+      "https://github.com/responsively-org/responsively-app-releases/releases",
+      "https://github.com/responsively-org/responsively-app/blob/main/README.md",
+      "https://devresourc.es/blog/best-browser-for-developers"
+    ]
+  }
+}

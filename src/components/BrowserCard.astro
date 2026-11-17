@@ -25,7 +25,7 @@ const visibleTags = b.tags.filter((t) => t !== "rip");
       {b.logo ? <img src={b.logo} alt="" width="40" height="40" loading="lazy" decoding="async" /> : <span class="mono">{initials}</span>}
     </div>
     <div class="title">
-      <h2>{b.name}</h2>
+      <h2><button type="button" class="open" data-open={b.id} aria-haspopup="dialog">{b.name}</button></h2>
       <p class="meta">
         <span title="Engine">{ENGINES[b.engine]}</span>
         {b.basedOn && b.basedOn.toLowerCase() !== ENGINES[b.engine].toLowerCase() && <span class="based" title="Based on"> · {b.basedOn}</span>}
@@ -56,6 +56,7 @@ const visibleTags = b.tags.filter((t) => t !== "rip");
       {b.reddit && <a href={b.reddit} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} on Reddit`} title={b.reddit.replace("https://www.reddit.com/", "")}><Icon name="RedditIcon" size={15} /></a>}
       {b.x && <a href={b.x} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} on X`} title={"@" + b.x.split("/").pop()}><Icon name="NewTwitterIcon" size={15} /></a>}
       {b.repo && <a href={b.repo} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} source code`}><Icon name="GithubIcon" size={15} /></a>}
+      <a href={`/browsers/${b.id}`} aria-label={`${b.name} profile and alternatives`} title="Full profile"><Icon name="InformationCircleIcon" size={15} /></a>
       {b.website && <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} website`}><Icon name="ArrowUpRight01Icon" size={15} /></a>}
     </span>
   </div>

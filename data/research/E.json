@@ -1,0 +1,196 @@
+{
+  "arc": {
+    "scores": [2, 4, 4, 2, 3],
+    "confidence": "high",
+    "changes": "no change. Discontinued status confirmed: new accounts closed and Arc stops working on Dec 22, 2026. It still gets Chromium security fixes until then. After that date it should be rescored like other dead browsers (privacy 1, experience 1).",
+    "evidence": "Reviewers still praise Arc's fluid UI and deep Spaces/Boosts customisation, but it has been in maintenance for over a year. The Browser Company cites the cost of keeping it secure as the reason for the sunset. Arc is often criticised for heavy RAM use (reports of 4-6 GB) and battery drain.",
+    "sources": [
+      "https://resources.arc.net/hc/en-us/articles/44412972248471-Arc-Sunset-Key-Dates-and-What-to-Expect",
+      "https://techcrunch.com/2026/10/22/arc-browser-sunsets-december-22-as-the-browser-company-doubles-down-on-dia/",
+      "https://www.kosmik.app/blog/arc-browser-alternatives",
+      "https://piunikaweb.com/2026/09/23/the-best-life-after-arc-browser-not-ready-replace-arc"
+    ]
+  },
+  "dia": {
+    "scores": [2, 4, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "customisation 2->3: Dia now has Arc-style Spaces, a vertical sidebar and a horizontal/vertical layout choice on top of Chrome extensions, which puts it roughly at Chrome's level.",
+    "evidence": "Reviewers call it stable and polished for casual users, but Arc fans say it lacks power features. Its privacy policy covers pages visited plus assistant prompts and responses, and some requests send page content to outside model providers. It also keeps a built-in browsing memory. Akamai published research on indirect prompt-injection risk in Dia.",
+    "sources": [
+      "https://www.itechguides.com/is-dia-browser-private-and-safe-to-use-data-collection-and-ai-features-explained-2026/",
+      "https://www.akamai.com/resources/white-paper/dia-browser-risks-and-vulnerabilities",
+      "https://piunikaweb.com/2026/07/30/dia-browser-spaces-early-bird-users/",
+      "https://efficient.app/apps/dia"
+    ]
+  },
+  "comet": {
+    "scores": [2, 4, 3, 2, 2],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Reviewers see it as a capable research browser best kept as a secondary browser for low-stakes tasks. Perplexity's CEO said browsing data would be used to build user profiles for personalised ads. Security researchers repeatedly broke Comet's agent: Brave found hidden-text and screenshot prompt injection, and LayerX's 'CometJacking' used a crafted URL to exfiltrate email and calendar data.",
+    "sources": [
+      "https://brave.com/blog/comet-prompt-injection/",
+      "https://thehackernews.com/2025/10/cometjacking-one-click-can-turn.html",
+      "https://malwarebytes.com/blog/news/2025/04/what-privacy-perplexity-wants-your-data-builds-browser-to-track-you-and-serve-ads?",
+      "https://www.itechguides.com/perplexity-comet-browser-review-2026-is-it-worth-trying/"
+    ]
+  },
+  "chatgpt-atlas": {
+    "scores": [1, 1, 2, 2, 2],
+    "confidence": "high",
+    "changes": "experience 4->1: discontinued status confirmed. OpenAI announced the deprecation on July 9, 2026, Atlas stopped working on Aug 9, 2026 and gets no updates. That matches the rubric's 'abandoned' anchor and Internet Explorer's experience score. Privacy stays 1 (abandoned, and it previously kept browser memories).",
+    "evidence": "It launched in Oct 2025 as a Mac-only Chromium browser with a ChatGPT sidebar, browser memories and an agent mode. Prompt-injection concerns appeared right after launch, and OpenAI itself said prompt injection is unlikely ever to be fully solved. LayerX's BioShocking technique successfully manipulated Atlas's agent mode. OpenAI moved the features into the ChatGPT desktop app.",
+    "sources": [
+      "https://help.openai.com/en/articles/20001371-chatgpt-atlas-retirement",
+      "https://www.ai-toolbox.co/chatgpt-management-and-productivity/chatgpt-atlas-browser-guide-2026",
+      "https://www.techtimes.com/articles/318528/20260616/ai-browser-comparison-2026-atlas-vs-comet-vs-dia-ranked-security-use-case.htm",
+      "https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/07/CSA_research_note_bioshocking_ai_browser_credential_leak_20260708-csa-styled.pdf"
+    ]
+  },
+  "browseros": {
+    "scores": [3, 3, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "lightness 3->2: it is a Chromium fork that also runs an agent server, in line with the other agent browsers. Privacy stays 3 because it is AGPL open source and supports local LLMs or bring-your-own-key, but agents still act inside logged-in sessions.",
+    "evidence": "XDA and HN commenters like it as an open, inspectable alternative to Comet and Dia that doesn't hand browsing to a vendor. The project now positions 'BrowserOS neo' as a second browser for AI agents (Claude Code, Codex, MCP) alongside Chrome, not a Chrome replacement.",
+    "sources": [
+      "https://github.com/browseros-ai/BrowserOS",
+      "https://news.ycombinator.com/item?id=46721474",
+      "https://www.xda-developers.com/this-free-open-source-browser-made-me-ditch-perplexity-comet-dia-opera-neon/"
+    ]
+  },
+  "fellou": {
+    "scores": [2, 3, 2, 2, 2],
+    "confidence": "medium",
+    "changes": "no change (the guess is now backed by evidence)",
+    "evidence": "Reviews call it promising but not reliable enough for hands-off automation, with credit-based pricing. Brave showed that just navigating Fellou to an attacker's page made its agent open Gmail and exfiltrate data. Fellou was also among the six agentic browsers broken by LayerX's BioShocking credential-leak technique, and an independent analysis found no SSL pinning.",
+    "sources": [
+      "https://simonwillison.net/2025/oct/21/unseeable-prompt-injections/",
+      "https://www.theregister.com/software/2025/10/28/ai-browsers-wide-open-to-attack-via-prompt-injection/327406",
+      "https://www.thetoolnerd.com/p/fellou-review-agentic-browser-thetoolnerd",
+      "https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/07/CSA_research_note_bioshocking_ai_browser_credential_leak_20260708-csa-styled.pdf"
+    ]
+  },
+  "aside": {
+    "scores": [2, 3, 3, 2, 2],
+    "confidence": "low",
+    "changes": "privacy 3->2: it turns browsing into persistent memory and runs an agent that can act autonomously on logged-in sites (its 'Ultrabrowse' mode runs until done), so the rubric's AI-memory rule applies. This is borderline 3 because the memory is local, editable markdown and models are bring-your-own. Lightness 3->2 and minimalism 3->2 because it is an AI-first Chromium agent browser.",
+    "evidence": "It launched in June 2026 from a three-person YC startup. Early reviews call it thoughtful and local-first but unproven and buggy, with no published pricing and self-reported benchmarks. Reddit compares it to Comet, and reviewers recommend against using it for tasks where the agent acts toward other people.",
+    "sources": [
+      "https://www.eesel.ai/blog/aside-ai-browser-review",
+      "https://agmazon.com/blog/articles/technology/202608/aside-ai-browser-guide-en.html",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  "sigmaos": {
+    "scores": [2, 2, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "experience 3->2: no release since Feb 2025, and users on AlternativeTo describe development as dead, with glitches such as text fields that won't take input. It is effectively abandoned rather than in maintenance. Privacy stays 2: it requires a login, and system WebKit still receives OS security patches.",
+    "evidence": "Users liked its design and workspaces, but AlternativeTo and directory sites warn it has had no updates since early 2025 and is not safe to rely on. A forced email login at first launch has long been a complaint.",
+    "sources": [
+      "https://alternativeto.net/software/sigmaos/about/",
+      "https://browsers.to/es/sigmaos",
+      "https://efficient.app/apps/sigmaos",
+      "https://sigmaos.com/"
+    ]
+  },
+  "norton-neo": {
+    "scores": [2, 3, 2, 2, 1],
+    "confidence": "medium",
+    "changes": "minimalism 2->1: it bundles a VPN, phishing and fake-shopping protection, ad blocking, a proactive AI assistant and Gmail/Calendar integration, which matches the rubric's bundled-extras anchor. Privacy stays 2: Gen Digital (Norton) also owns Avast/AVG, whose Jumpshot data-selling scandal is the reason Avast Secure Browser gets a 1, and Neo's telemetry is on by default with an opt-out.",
+    "evidence": "App-store reviewers are warm about the browser but cool on the AI. Review sites note on-device AI options and default local chat history, but it is closed source, comes from a security-suite vendor, and upsells its VPN.",
+    "sources": [
+      "https://neobrowser.ai/",
+      "https://laptops251.com/programs/norton-neo/",
+      "https://www.risingtrends.co/blog/norton-neo",
+      "https://www.alphr.com/norton-neo-review-is-the-first-ai-native-browser-worth-switching-to/"
+    ]
+  },
+  "ardia": {
+    "scores": [4, 3, 3, 3, 4],
+    "confidence": "medium",
+    "changes": "privacy 3->4: GPL-3.0, no account, full uBlock Origin built in, Google background pings compiled out, and sync is end-to-end via your own iCloud. Minimalism 3->4: no AI at all, by design.",
+    "evidence": "It is popular on X as a free Arc replacement on Chromium 157, with WebKit used for DRM sites. PiunikaWeb notes it lacks Boosts and a media pane, and warns that one-developer 'vibe-coded' Arc clones have uncertain long-term maintenance. It has been public only since Sept 2026 (v0.2.x).",
+    "sources": [
+      "https://toolfolio.com/articles/what-is-ardia-browser-free-open-source-arc-alternative-for-mac-how-to-import-arc-and-what-it-lacks",
+      "https://piunikaweb.com/2026/11/10/arc-shutting-down-best-alternatives-switch/",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  "crest": {
+    "scores": [4, 3, 4, 3, 3],
+    "confidence": "medium",
+    "changes": "privacy 3->4: MPL-2.0 open source, no AI assistant by default, built-in ad blocking, tracker-stripping link copy and per-Space profiles. Customisation 3->4: a hands-on reviewer said its customisation outdoes Arc (Crest Studio themes, rebindable shortcuts, per-Space extensions, sidebar side and tab size).",
+    "evidence": "A PiunikaWeb tester found it quick, snappy and the most complete Arc feel, including Little Arc-style Quick Windows, but missing Boosts and auto-organise. Its own site says it is early access with security not independently audited. It started in Aug 2026 and is mostly one developer's work.",
+    "sources": [
+      "https://crestbrowser.com/",
+      "https://piunikaweb.com/2026/09/23/the-best-life-after-arc-browser-not-ready-replace-arc",
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://github.com/pauljoda/Crest"
+    ]
+  },
+  "facet": {
+    "scores": [3, 3, 3, 4, 2],
+    "confidence": "low",
+    "changes": "lightness 3->4: it runs on system WebKit and claims Safari-level battery life, though this is unverified. Minimalism 3->2: agents in the sidebar, AI Peek summaries, voice commands, 'Ask all tabs', Gist and Recall are built in.",
+    "evidence": "There are few independent reviews. One Japanese blogger made it their preferred Arc replacement and noted that the AI can be switched off. It is closed source and free with a paid 'Founder' tier, needs no account, and says it only counts anonymous update checks. Privacy stays 3 because that claim can't be verified.",
+    "sources": [
+      "https://facet.surf/",
+      "https://note.com/yasashii_tech/n/n66884ce6a2aa"
+    ]
+  },
+  "phi": {
+    "scores": [2, 3, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "privacy 3->2: Phi markets a 'unified memory system' that remembers you and a proactive agent that acts unprompted. AI and sync need an account, and the default is Phi Cloud AI, although local models are possible. Lightness 3->2 and minimalism 3->2 because it is a Chromium browser built around a proactive agent.",
+    "evidence": "PiunikaWeb rated it the Arc alternative with the best long-term prospects: a funded team of about 20, a stable Chromium base and no lag, though it lacks Boosts and archives. OpenHunts caught its default cloud AI claiming to have done a CSS change it never made. Only the core is open source.",
+    "sources": [
+      "https://phibrowser.com/",
+      "https://piunikaweb.com/2026/11/10/arc-shutting-down-best-alternatives-switch/",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  "wren": {
+    "scores": [4, 3, 3, 3, 4],
+    "confidence": "low",
+    "changes": "privacy 3->4: it says it never sends what you browse and has uBlock Origin on by default, though it sends anonymous feature counts and crash reports unless you opt out. That is similar to Brave/Firefox, but the Wren Runtime library is closed source. Minimalism 3->4: no AI, with a focus on a small browser.",
+    "evidence": "It is the rewrite of the open-source Flow Browser (Electron) on a Rust main process with embedded Chromium, so all Chrome extensions now work. It is still a 0.8 beta and macOS-only, and there is almost no independent review coverage yet.",
+    "sources": [
+      "https://wrenbrowser.com/",
+      "https://github.com/MultiboxLabs/flow-browser",
+      "https://alternativeto.net/software/flow-browser/about/"
+    ]
+  },
+  "nook": {
+    "scores": [4, 3, 3, 3, 4],
+    "confidence": "low",
+    "changes": "privacy 3->4: GPL-3.0, built-in ad and tracker blocking, and AI limited to on-device models (Apple Foundation Models or Ollama) with zero telemetry claimed. Minimalism stays 4. Note the engine conflict: the GitHub repo is WebKit (WKWebView/WKWebExtension), while nookbrowser.app now describes a Chromium-based closed beta. Verify the engine field, and keep lightness at 3 until that is resolved.",
+    "evidence": "It is a community open-source Arc-style browser ('not owned by Atlassian') with Spaces, split view, Peek, a command palette and SponsorBlock-style site tweaks. Releases are frequent but it is a small project. Independent reviews are scarce, and the name collides with several unrelated 'Nook' apps.",
+    "sources": [
+      "https://github.com/nook-browser/Nook",
+      "https://nookbrowser.app/",
+      "https://github.com/nook-browser/Nook/releases"
+    ]
+  },
+  "yab": {
+    "scores": [3, 3, 4, 4, 2],
+    "confidence": "medium",
+    "changes": "customisation 3->4: OpenHunts found it the most complete Arc clone (26/26 features, including Boosts, Live Folders and Air Traffic Control) plus Chrome extensions. Lightness 3->4: it runs on system WebKit, and users report better battery life. Minimalism 3->2: the AI agent in tabs and the many built-ins make it maximalist.",
+    "evidence": "Arc refugees on X are very enthusiastic about its polish, though most of that praise is quoted on Yab's own site. Testers flag WebKit extension compatibility as the risk, and it is still version 0.39. It is closed source and uses your own Claude or ChatGPT plan, asking before sending or paying. Sync is end-to-end encrypted.",
+    "sources": [
+      "https://yetanotherbrowser.com/",
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://www.ithinkdiff.com/arc-browser-alternatives-before-december-22/"
+    ]
+  },
+  "orion": {
+    "scores": [4, 3, 3, 4, 4],
+    "confidence": "medium",
+    "changes": "experience 4->3: long-running user complaints about crashes and stability (an Orion feedback thread on bugs and stability, and a memory-issues megathread) and WebKit site breakage. Also, Kagi ended Orion for Linux and Windows (Linux beta stopped getting updates after Oct 2, 2026; Windows never shipped), so the 'linux' OS entry and description are out of date.",
+    "evidence": "Users praise its privacy, resource use and support for both Chrome and Firefox extensions, and it is funded by Kagi users rather than ads. Its own feedback forum shows recurring stability and memory regressions. Kagi now says it will focus on macOS and iOS stability.",
+    "sources": [
+      "https://blog.kagi.com/update-orion-linux-windows",
+      "https://orionfeedback.org/d/12247-bugs-and-stability",
+      "https://orionfeedback.org/d/13108-megathread-orion-memory-issues/84"
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+---
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import { byId } from "../../data/browsers";
+import { ALTERNATIVE_IDS, alternativesFor, YEAR, breadcrumbLd } from "../../lib/seo";
+
+const crumbs = [{ name: "Alternatives", href: "/alternatives" }];
+const list = ALTERNATIVE_IDS.map((id) => {
+  const b = byId.get(id)!;
+  return { b, top: alternativesFor(b, 3).map((a) => a.result.browser.name).join(", ") };
+});
+---
+<Base title={`Browser alternatives ${YEAR}: switch from Chrome, Edge, Safari, Arc and more – browserwall`} description="Alternatives to the most popular desktop browsers, ranked by what they do better and what they keep: Chrome, Edge, Safari, Firefox, Opera, Brave, Arc, ChatGPT Atlas and more." jsonLd={[breadcrumbLd(Astro.site, crumbs)]} dialog={false}>
+  <div class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Alternatives</p>
+    <h1>Browser alternatives</h1>
+    <p class="lede">Pick the browser you want to leave. Each page ranks replacements that keep what it does well and fix what it doesn't.</p>
+    <ul class="linkgrid">{list.map(({ b, top }) => <li><a href={`/alternatives/${b.id}`}>{b.logo && <img src={b.logo} alt="" width="24" height="24" loading="lazy" />}<span>{b.name} alternatives<small>{top}</small></span></a></li>)}</ul>
+    <QuizCta />
+  </div>
+</Base>

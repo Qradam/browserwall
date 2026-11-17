@@ -332,5 +332,30 @@
     "sources": [
       "https://www.avira.com/en/avira-secure-browser"
     ]
+  },
+  {
+    "id": "strawberry",
+    "name": "Strawberry",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Stockholm-made AI browser built around \"companions\": agents that work in your logged-in tabs, run on schedules and take meeting notes.",
+    "tags": [
+      "chrome-extensions",
+      "workspaces"
+    ],
+    "website": "https://strawberrybrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://strawberrybrowser.com/",
+      "https://windowsforum.com/news/strawberry-1-0-ai-browser-for-windows-agent-features-pricing-and-it-security-review.450031/",
+      "https://www.globaltechcouncil.org/ai/what-is-strawberry-browser-and-how-does-it-work/"
+    ]
   }
 ]

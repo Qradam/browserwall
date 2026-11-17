@@ -12,7 +12,6 @@
     "openSource": false,
     "description": "Privacy browser with a free unlimited no-logs VPN, ad blocking, video downloads and passcode-locked tabs.",
     "tags": [
-      "privacy",
       "vpn",
       "ad-blocking",
       "chrome-extensions"
@@ -59,7 +58,7 @@
     "scores": {
       "privacy": 2,
       "experience": 4,
-      "customisation": 3,
+      "customisation": 4,
       "lightness": 2,
       "minimalism": 3
     }
@@ -90,10 +89,10 @@
     ],
     "scores": {
       "privacy": 3,
-      "experience": 3,
+      "experience": 2,
       "customisation": 3,
       "lightness": 3,
-      "minimalism": 3,
+      "minimalism": 4,
       "lowConfidence": true
     }
   },
@@ -110,10 +109,10 @@
     "openSource": false,
     "description": "YC-backed AI-agent browser that sends messages, fills forms and runs scheduled routines on sites you're logged into.",
     "tags": [
-      "ai",
       "split-view",
       "vertical-tabs",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://aside.com",
     "repo": null,
@@ -123,11 +122,11 @@
       "https://openhunts.com/blog/arc-alternatives"
     ],
     "scores": {
-      "privacy": 3,
+      "privacy": 2,
       "experience": 3,
       "customisation": 3,
-      "lightness": 3,
-      "minimalism": 3,
+      "lightness": 2,
+      "minimalism": 2,
       "lowConfidence": true
     }
   },
@@ -146,7 +145,6 @@
     "tags": [
       "security-hardened",
       "ad-blocking",
-      "privacy",
       "vpn",
       "chrome-extensions"
     ],
@@ -158,7 +156,7 @@
     ],
     "scores": {
       "privacy": 1,
-      "experience": 2,
+      "experience": 3,
       "customisation": 2,
       "lightness": 2,
       "minimalism": 1
@@ -179,7 +177,6 @@
     "tags": [
       "security-hardened",
       "ad-blocking",
-      "privacy",
       "vpn",
       "chrome-extensions"
     ],
@@ -191,7 +188,7 @@
     ],
     "scores": {
       "privacy": 1,
-      "experience": 2,
+      "experience": 3,
       "customisation": 2,
       "lightness": 2,
       "minimalism": 1
@@ -212,7 +209,6 @@
     "tags": [
       "security-hardened",
       "ad-blocking",
-      "privacy",
       "chrome-extensions"
     ],
     "website": "https://www.avira.com/en/avira-secure-browser",
@@ -223,7 +219,7 @@
     ],
     "scores": {
       "privacy": 2,
-      "experience": 2,
+      "experience": 3,
       "customisation": 2,
       "lightness": 2,
       "minimalism": 1
@@ -282,7 +278,10 @@
       "ad-blocking",
       "crypto",
       "chrome-extensions",
-      "sync"
+      "sync",
+      "vertical-tabs",
+      "tor",
+      "ai"
     ],
     "website": "https://brave.com",
     "repo": "https://github.com/brave/brave-browser",
@@ -296,7 +295,7 @@
       "experience": 4,
       "customisation": 4,
       "lightness": 3,
-      "minimalism": 2
+      "minimalism": 1
     }
   },
   {
@@ -316,7 +315,10 @@
       "privacy",
       "ad-blocking",
       "experimental",
-      "chrome-extensions"
+      "chrome-extensions",
+      "vertical-tabs",
+      "tor",
+      "ai"
     ],
     "website": "https://brave.com/download-beta/",
     "repo": "https://github.com/brave/brave-browser",
@@ -330,7 +332,7 @@
       "experience": 4,
       "customisation": 4,
       "lightness": 3,
-      "minimalism": 2
+      "minimalism": 1
     }
   },
   {
@@ -350,7 +352,10 @@
       "privacy",
       "ad-blocking",
       "experimental",
-      "developer"
+      "developer",
+      "vertical-tabs",
+      "tor",
+      "ai"
     ],
     "website": "https://brave.com/download-nightly/",
     "repo": "https://github.com/brave/brave-browser",
@@ -364,7 +369,7 @@
       "experience": 4,
       "customisation": 4,
       "lightness": 3,
-      "minimalism": 2
+      "minimalism": 1
     }
   },
   {
@@ -384,7 +389,8 @@
       "privacy",
       "ad-blocking",
       "minimal",
-      "chrome-extensions"
+      "chrome-extensions",
+      "vertical-tabs"
     ],
     "website": "https://brave.com/origin/",
     "repo": "https://github.com/brave/brave-browser",
@@ -393,12 +399,11 @@
       "https://brave.com/origin/"
     ],
     "scores": {
-      "privacy": 4,
+      "privacy": 5,
       "experience": 4,
-      "customisation": 3,
-      "lightness": 4,
-      "minimalism": 4,
-      "lowConfidence": true
+      "customisation": 4,
+      "lightness": 3,
+      "minimalism": 5
     }
   },
   {
@@ -415,10 +420,10 @@
     "openSource": true,
     "description": "Open-source Chromium fork with built-in AI agents that run locally and keep data private.",
     "tags": [
-      "ai",
       "privacy",
       "chrome-extensions",
-      "experimental"
+      "experimental",
+      "ai"
     ],
     "website": "https://www.browseros.com",
     "repo": "https://github.com/browseros-ai/BrowserOS",
@@ -431,9 +436,8 @@
       "privacy": 3,
       "experience": 3,
       "customisation": 3,
-      "lightness": 3,
-      "minimalism": 2,
-      "lowConfidence": true
+      "lightness": 2,
+      "minimalism": 2
     }
   },
   {
@@ -451,8 +455,7 @@
     "description": "Modern text-based browser that renders pages through headless Firefox into the terminal, with graphics and video.",
     "tags": [
       "text-mode",
-      "keyboard-driven",
-      "lightweight"
+      "keyboard-driven"
     ],
     "website": "https://www.brow.sh/",
     "repo": "https://github.com/browsh-org/browsh",
@@ -480,10 +483,10 @@
     "openSource": false,
     "description": "OpenAI's Chromium-based AI browser for macOS. Launched Oct 2025, shut down Aug 9, 2026.",
     "tags": [
-      "ai",
       "chrome-extensions",
       "sync",
-      "rip"
+      "rip",
+      "ai"
     ],
     "website": "https://chatgpt.com/atlas",
     "repo": null,
@@ -493,10 +496,10 @@
     ],
     "scores": {
       "privacy": 1,
-      "experience": 4,
+      "experience": 1,
       "customisation": 2,
       "lightness": 2,
-      "minimalism": 3
+      "minimalism": 2
     }
   },
   {
@@ -514,7 +517,8 @@
     "tags": [
       "developer",
       "experimental",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://www.google.com/chrome/canary/",
     "repo": null,
@@ -524,10 +528,10 @@
     ],
     "scores": {
       "privacy": 2,
-      "experience": 5,
+      "experience": 4,
       "customisation": 3,
       "lightness": 2,
-      "minimalism": 3
+      "minimalism": 2
     }
   },
   {
@@ -576,9 +580,9 @@
     "openSource": false,
     "description": "Perplexity's AI browser with a built-in assistant that researches and acts across tabs.",
     "tags": [
-      "ai",
       "chrome-extensions",
-      "sync"
+      "sync",
+      "ai"
     ],
     "website": "https://www.perplexity.ai/comet",
     "repo": null,
@@ -621,8 +625,8 @@
     ],
     "scores": {
       "privacy": 3,
-      "experience": 3,
-      "customisation": 3,
+      "experience": 2,
+      "customisation": 4,
       "lightness": 3,
       "minimalism": 3,
       "lowConfidence": true
@@ -657,7 +661,7 @@
       "privacy": 4,
       "experience": 3,
       "customisation": 3,
-      "lightness": 4,
+      "lightness": 3,
       "minimalism": 4
     }
   },
@@ -674,7 +678,6 @@
     "description": "\"True AI-native browser\": a vision LLM reads the HTML and hallucinates what the page probably looks like. Every load is a surprise.",
     "tags": [
       "meme",
-      "ai",
       "experimental"
     ],
     "website": null,
@@ -684,11 +687,11 @@
       "https://github.com/scosman/cursed_browser"
     ],
     "scores": {
-      "privacy": 3,
+      "privacy": 2,
       "experience": 1,
       "customisation": 1,
-      "lightness": 3,
-      "minimalism": 1
+      "lightness": 4,
+      "minimalism": 3
     }
   },
   {
@@ -704,9 +707,9 @@
     "openSource": false,
     "description": "AI-first browser from The Browser Company (Atlassian) with a built-in chat assistant on every tab.",
     "tags": [
-      "ai",
       "chrome-extensions",
-      "sync"
+      "sync",
+      "ai"
     ],
     "website": "https://www.diabrowser.com",
     "repo": null,
@@ -717,9 +720,9 @@
     "scores": {
       "privacy": 2,
       "experience": 4,
-      "customisation": 2,
+      "customisation": 3,
       "lightness": 2,
-      "minimalism": 3
+      "minimalism": 2
     }
   },
   {
@@ -771,8 +774,7 @@
     "description": "Chromium browser from the tree-planting search engine Ecosia; searches and shopping help fund reforestation projects.",
     "tags": [
       "chrome-extensions",
-      "mainstream",
-      "minimal"
+      "mainstream"
     ],
     "website": "https://www.ecosia.org/browser",
     "repo": null,
@@ -784,9 +786,10 @@
     "scores": {
       "privacy": 3,
       "experience": 4,
-      "customisation": 2,
+      "customisation": 3,
       "lightness": 3,
-      "minimalism": 3
+      "minimalism": 3,
+      "lowConfidence": true
     }
   },
   {
@@ -800,7 +803,7 @@
       "macos",
       "windows"
     ],
-    "status": "maintenance",
+    "status": "active",
     "openSource": true,
     "description": "Feature-rich text-mode browser with tabs, colours and scripting; maintained as the rkd77 fork.",
     "tags": [
@@ -817,7 +820,7 @@
     "scores": {
       "privacy": 4,
       "experience": 1,
-      "customisation": 2,
+      "customisation": 3,
       "lightness": 5,
       "minimalism": 5
     }
@@ -835,7 +838,6 @@
     "openSource": false,
     "description": "Chromium browser that always runs in private mode, blocks trackers and fingerprinting, with a free built-in encrypted proxy (VPN).",
     "tags": [
-      "privacy",
       "ad-blocking",
       "vpn",
       "chrome-extensions"
@@ -870,8 +872,8 @@
       "workspaces",
       "split-view",
       "ad-blocking",
-      "ai",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://facet.surf",
     "repo": null,
@@ -884,8 +886,8 @@
       "privacy": 3,
       "experience": 3,
       "customisation": 3,
-      "lightness": 3,
-      "minimalism": 3,
+      "lightness": 4,
+      "minimalism": 2,
       "lowConfidence": true
     }
   },
@@ -916,7 +918,7 @@
       "https://apps.kde.org/falkon/"
     ],
     "scores": {
-      "privacy": 4,
+      "privacy": 3,
       "experience": 3,
       "customisation": 3,
       "lightness": 4,
@@ -936,9 +938,9 @@
     "openSource": false,
     "description": "Agentic AI browser that automates multi-step web workflows and research.",
     "tags": [
-      "ai",
       "chrome-extensions",
-      "workspaces"
+      "workspaces",
+      "ai"
     ],
     "website": "https://fellou.ai",
     "repo": null,
@@ -951,8 +953,7 @@
       "experience": 3,
       "customisation": 2,
       "lightness": 2,
-      "minimalism": 2,
-      "lowConfidence": true
+      "minimalism": 2
     }
   },
   {
@@ -969,7 +970,6 @@
     "tags": [
       "privacy",
       "customizable",
-      "performance",
       "de-googled"
     ],
     "website": "https://garudalinux.org/",
@@ -981,9 +981,9 @@
     "scores": {
       "privacy": 4,
       "experience": 3,
-      "customisation": 5,
+      "customisation": 4,
       "lightness": 3,
-      "minimalism": 3
+      "minimalism": 4
     }
   },
   {
@@ -1005,7 +1005,9 @@
       "firefox-addons",
       "privacy",
       "sync",
-      "developer"
+      "developer",
+      "vertical-tabs",
+      "ai"
     ],
     "website": "https://www.mozilla.org/firefox/",
     "repo": "https://github.com/mozilla-firefox/firefox",
@@ -1038,7 +1040,8 @@
     "tags": [
       "experimental",
       "firefox-addons",
-      "sync"
+      "sync",
+      "ai"
     ],
     "website": "https://www.mozilla.org/firefox/channel/desktop/",
     "repo": "https://github.com/mozilla-firefox/firefox",
@@ -1071,7 +1074,8 @@
     "tags": [
       "developer",
       "firefox-addons",
-      "experimental"
+      "experimental",
+      "ai"
     ],
     "website": "https://www.mozilla.org/firefox/developer/",
     "repo": "https://github.com/mozilla-firefox/firefox",
@@ -1106,7 +1110,8 @@
       "enterprise",
       "firefox-addons",
       "mainstream",
-      "security-hardened"
+      "security-hardened",
+      "ai"
     ],
     "website": "https://www.mozilla.org/firefox/enterprise/",
     "repo": "https://github.com/mozilla-firefox/firefox",
@@ -1139,7 +1144,8 @@
     "tags": [
       "experimental",
       "developer",
-      "firefox-addons"
+      "firefox-addons",
+      "ai"
     ],
     "website": "https://www.mozilla.org/firefox/channel/desktop/#nightly",
     "repo": "https://github.com/mozilla-firefox/firefox",
@@ -1219,9 +1225,8 @@
       "privacy": 4,
       "experience": 2,
       "customisation": 5,
-      "lightness": 4,
-      "minimalism": 4,
-      "lowConfidence": true
+      "lightness": 3,
+      "minimalism": 4
     }
   },
   {
@@ -1281,7 +1286,7 @@
       "https://www.itechguides.com/products/gnu-icecat/"
     ],
     "scores": {
-      "privacy": 5,
+      "privacy": 4,
       "experience": 2,
       "customisation": 3,
       "lightness": 3,
@@ -1305,7 +1310,7 @@
       "mainstream",
       "chrome-extensions",
       "sync",
-      "performance"
+      "ai"
     ],
     "website": "https://www.google.com/chrome/",
     "repo": null,
@@ -1318,7 +1323,7 @@
       "experience": 5,
       "customisation": 3,
       "lightness": 2,
-      "minimalism": 3
+      "minimalism": 2
     }
   },
   {
@@ -1350,10 +1355,9 @@
     "scores": {
       "privacy": 4,
       "experience": 3,
-      "customisation": 2,
-      "lightness": 4,
-      "minimalism": 5,
-      "lowConfidence": true
+      "customisation": 3,
+      "lightness": 3,
+      "minimalism": 5
     }
   },
   {
@@ -1402,7 +1406,8 @@
     "tags": [
       "enterprise",
       "security-hardened",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://www.island.io",
     "repo": null,
@@ -1411,12 +1416,11 @@
       "https://www.island.io"
     ],
     "scores": {
-      "privacy": 3,
+      "privacy": 2,
       "experience": 4,
-      "customisation": 3,
+      "customisation": 2,
       "lightness": 3,
-      "minimalism": 2,
-      "lowConfidence": true
+      "minimalism": 2
     }
   },
   {
@@ -1482,7 +1486,7 @@
     "scores": {
       "privacy": 5,
       "experience": 3,
-      "customisation": 4,
+      "customisation": 5,
       "lightness": 3,
       "minimalism": 4
     }
@@ -1539,8 +1543,8 @@
       "mainstream",
       "chrome-extensions",
       "vertical-tabs",
-      "ai",
-      "enterprise"
+      "enterprise",
+      "ai"
     ],
     "website": "https://www.microsoft.com/edge",
     "repo": null,
@@ -1568,12 +1572,11 @@
     ],
     "status": "active",
     "openSource": true,
-    "description": "Astian's lightweight privacy browser, rebuilt on Gecko from Floorp code, with ad blocking, workspaces and its own E2E-encrypted sync.",
+    "description": "Astian's Gecko browser rebuilt from Floorp code, with ad blocking, workspaces, its own sync, search and a bundled MidoriVPN.",
     "tags": [
-      "privacy",
       "ad-blocking",
       "workspaces",
-      "lightweight",
+      "vpn",
       "firefox-addons"
     ],
     "website": "https://astian.org/midori-browser/",
@@ -1585,12 +1588,11 @@
       "https://en.wikipedia.org/wiki/Midori_(web_browser)"
     ],
     "scores": {
-      "privacy": 4,
+      "privacy": 2,
       "experience": 3,
-      "customisation": 2,
-      "lightness": 4,
-      "minimalism": 4,
-      "lowConfidence": true
+      "customisation": 3,
+      "lightness": 3,
+      "minimalism": 2
     }
   },
   {
@@ -1608,7 +1610,6 @@
     "description": "Minimal Electron-based browser with fast search, built-in ad blocking and tasks.",
     "tags": [
       "minimal",
-      "lightweight",
       "ad-blocking",
       "privacy"
     ],
@@ -1653,7 +1654,7 @@
     ],
     "scores": {
       "privacy": 5,
-      "experience": 3,
+      "experience": 2,
       "customisation": 2,
       "lightness": 3,
       "minimalism": 5
@@ -1675,8 +1676,8 @@
     "tags": [
       "regional",
       "split-view",
-      "ai",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://whale.naver.com",
     "repo": null,
@@ -1686,7 +1687,7 @@
     ],
     "scores": {
       "privacy": 2,
-      "experience": 4,
+      "experience": 3,
       "customisation": 3,
       "lightness": 2,
       "minimalism": 2
@@ -1739,7 +1740,8 @@
     "tags": [
       "vertical-tabs",
       "workspaces",
-      "minimal"
+      "minimal",
+      "ai"
     ],
     "website": "https://nookbrowser.app",
     "repo": "https://github.com/nook-browser/Nook",
@@ -1753,7 +1755,7 @@
       "experience": 3,
       "customisation": 3,
       "lightness": 3,
-      "minimalism": 3,
+      "minimalism": 4,
       "lowConfidence": true
     }
   },
@@ -1770,9 +1772,9 @@
     "openSource": false,
     "description": "Free AI-native browser from Gen Digital (Norton) with built-in VPN, phishing protection and a proactive AI assistant.",
     "tags": [
-      "ai",
       "security-hardened",
-      "mainstream"
+      "mainstream",
+      "ai"
     ],
     "website": "https://neobrowser.ai",
     "repo": null,
@@ -1787,8 +1789,7 @@
       "experience": 3,
       "customisation": 2,
       "lightness": 2,
-      "minimalism": 2,
-      "lowConfidence": true
+      "minimalism": 1
     }
   },
   {
@@ -1806,7 +1807,6 @@
     "tags": [
       "security-hardened",
       "ad-blocking",
-      "privacy",
       "chrome-extensions"
     ],
     "website": "https://us.norton.com/products/norton-private-browser",
@@ -1819,9 +1819,8 @@
       "privacy": 2,
       "experience": 3,
       "customisation": 2,
-      "lightness": 3,
-      "minimalism": 2,
-      "lowConfidence": true
+      "lightness": 2,
+      "minimalism": 1
     }
   },
   {
@@ -1842,7 +1841,8 @@
       "vpn",
       "ad-blocking",
       "workspaces",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://www.opera.com",
     "repo": null,
@@ -1873,7 +1873,7 @@
     "tags": [
       "mainstream",
       "chrome-extensions",
-      "minimal"
+      "ai"
     ],
     "website": "https://www.opera.com/air",
     "repo": null,
@@ -1903,9 +1903,9 @@
     "description": "Gaming-oriented Opera edition with CPU/RAM/network limiters, Twitch integration and themed UI.",
     "tags": [
       "gaming",
-      "performance",
       "customizable",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://www.opera.com/gx",
     "repo": null,
@@ -1934,9 +1934,9 @@
     "openSource": false,
     "description": "Opera's agentic AI browser that can perform tasks on the web for the user.",
     "tags": [
-      "ai",
       "experimental",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://www.opera.com/neon",
     "repo": null,
@@ -1952,7 +1952,7 @@
       "experience": 3,
       "customisation": 2,
       "lightness": 2,
-      "minimalism": 2
+      "minimalism": 1
     }
   },
   {
@@ -1961,12 +1961,11 @@
     "engine": "webkit",
     "basedOn": "WebKit",
     "os": [
-      "macos",
-      "linux"
+      "macos"
     ],
     "status": "active",
     "openSource": false,
-    "description": "Kagi's privacy-focused WebKit browser for macOS that supports both Chrome and Firefox extensions; Linux version in beta.",
+    "description": "Kagi's privacy-focused WebKit browser for macOS that supports both Chrome and Firefox extensions. Kagi ended the Linux beta in October 2026.",
     "tags": [
       "privacy",
       "chrome-extensions",
@@ -1978,11 +1977,12 @@
     "logo": null,
     "sources": [
       "https://kagi.com/orion/",
-      "https://en.wikipedia.org/wiki/Orion_(web_browser)"
+      "https://en.wikipedia.org/wiki/Orion_(web_browser)",
+      "https://blog.kagi.com/update-orion-linux-windows"
     ],
     "scores": {
       "privacy": 4,
-      "experience": 4,
+      "experience": 3,
       "customisation": 3,
       "lightness": 4,
       "minimalism": 4
@@ -2034,11 +2034,11 @@
     "openSource": true,
     "description": "Native AppKit/SwiftUI Chromium browser with Arc-style Spaces and an optional AI agent that can run on local models.",
     "tags": [
-      "ai",
       "workspaces",
       "vertical-tabs",
       "split-view",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://phibrowser.com",
     "repo": "https://github.com/phibrowser/phibrowser-mac",
@@ -2048,12 +2048,11 @@
       "https://www.uneed.best/alternatives/arc-browser"
     ],
     "scores": {
-      "privacy": 3,
+      "privacy": 2,
       "experience": 3,
       "customisation": 3,
-      "lightness": 3,
-      "minimalism": 3,
-      "lowConfidence": true
+      "lightness": 2,
+      "minimalism": 2
     }
   },
   {
@@ -2080,12 +2079,11 @@
       "https://pissandshittium.org/"
     ],
     "scores": {
-      "privacy": 3,
-      "experience": 2,
+      "privacy": 1,
+      "experience": 1,
       "customisation": 2,
-      "lightness": 3,
-      "minimalism": 3,
-      "lowConfidence": true
+      "lightness": 2,
+      "minimalism": 3
     }
   },
   {
@@ -2148,7 +2146,7 @@
       "https://en.wikipedia.org/wiki/Qutebrowser"
     ],
     "scores": {
-      "privacy": 4,
+      "privacy": 3,
       "experience": 2,
       "customisation": 4,
       "lightness": 4,
@@ -2169,7 +2167,6 @@
     "description": "Current Firefox kept running on Windows 7 and 8, with performance patches and telemetry stripped out.",
     "tags": [
       "old-hardware",
-      "performance",
       "privacy",
       "firefox-addons"
     ],
@@ -2180,12 +2177,11 @@
       "https://github.com/Eclipse-Community/r3dfox"
     ],
     "scores": {
-      "privacy": 4,
+      "privacy": 3,
       "experience": 3,
-      "customisation": 3,
-      "lightness": 3,
-      "minimalism": 3,
-      "lowConfidence": true
+      "customisation": 4,
+      "lightness": 4,
+      "minimalism": 3
     }
   },
   {
@@ -2232,7 +2228,6 @@
     "description": "Apple's default browser for macOS, built on WebKit with tight system integration and strong power efficiency.",
     "tags": [
       "mainstream",
-      "performance",
       "sync",
       "privacy"
     ],
@@ -2246,7 +2241,7 @@
     "scores": {
       "privacy": 4,
       "experience": 4,
-      "customisation": 1,
+      "customisation": 3,
       "lightness": 4,
       "minimalism": 4
     }
@@ -2264,8 +2259,7 @@
     "description": "Apple's experimental Safari channel that previews upcoming WebKit and Safari features for developers.",
     "tags": [
       "developer",
-      "experimental",
-      "performance"
+      "experimental"
     ],
     "website": "https://developer.apple.com/safari/technology-preview/",
     "repo": null,
@@ -2276,7 +2270,7 @@
     "scores": {
       "privacy": 4,
       "experience": 4,
-      "customisation": 1,
+      "customisation": 3,
       "lightness": 4,
       "minimalism": 4
     }
@@ -2328,8 +2322,7 @@
     "tags": [
       "vertical-tabs",
       "workspaces",
-      "split-view",
-      "ai"
+      "split-view"
     ],
     "website": "https://www.sigmaos.com/",
     "repo": null,
@@ -2339,11 +2332,10 @@
     ],
     "scores": {
       "privacy": 2,
-      "experience": 3,
+      "experience": 2,
       "customisation": 3,
       "lightness": 2,
-      "minimalism": 2,
-      "lowConfidence": true
+      "minimalism": 2
     }
   },
   {
@@ -2376,7 +2368,42 @@
       "experience": 3,
       "customisation": 2,
       "lightness": 2,
-      "minimalism": 2
+      "minimalism": 1
+    }
+  },
+  {
+    "id": "strawberry",
+    "name": "Strawberry",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Stockholm-made AI browser built around \"companions\": agents that work in your logged-in tabs, run on schedules and take meeting notes.",
+    "tags": [
+      "chrome-extensions",
+      "workspaces",
+      "ai"
+    ],
+    "website": "https://strawberrybrowser.com",
+    "repo": null,
+    "logo": "https://strawberrybrowser.com/favicon.ico",
+    "sources": [
+      "https://strawberrybrowser.com/",
+      "https://windowsforum.com/news/strawberry-1-0-ai-browser-for-windows-agent-features-pricing-and-it-security-review.450031/",
+      "https://www.globaltechcouncil.org/ai/what-is-strawberry-browser-and-how-does-it-work/",
+      "https://docs.strawberrybrowser.com/introduction/what-is-strawberry",
+      "https://strawberrybrowser.com/best-ai-browser-for-windows"
+    ],
+    "scores": {
+      "privacy": 2,
+      "experience": 3,
+      "customisation": 3,
+      "lightness": 2,
+      "minimalism": 1
     }
   },
   {
@@ -2403,12 +2430,11 @@
       "https://github.com/win32ss/supermium"
     ],
     "scores": {
-      "privacy": 3,
-      "experience": 3,
+      "privacy": 2,
+      "experience": 2,
       "customisation": 3,
       "lightness": 4,
-      "minimalism": 4,
-      "lowConfidence": true
+      "minimalism": 4
     }
   },
   {
@@ -2425,9 +2451,7 @@
     "openSource": true,
     "description": "Performance-optimized Chromium fork with compiler optimizations, extra codecs and patches.",
     "tags": [
-      "performance",
-      "chrome-extensions",
-      "customizable"
+      "chrome-extensions"
     ],
     "website": "https://thorium.rocks",
     "repo": "https://github.com/Alex313031/thorium",
@@ -2439,7 +2463,7 @@
       "privacy": 3,
       "experience": 3,
       "customisation": 3,
-      "lightness": 4,
+      "lightness": 3,
       "minimalism": 4
     }
   },
@@ -2471,7 +2495,7 @@
     ],
     "scores": {
       "privacy": 5,
-      "experience": 3,
+      "experience": 2,
       "customisation": 2,
       "lightness": 3,
       "minimalism": 4
@@ -2573,8 +2597,7 @@
       "experience": 2,
       "customisation": 4,
       "lightness": 3,
-      "minimalism": 5,
-      "lowConfidence": true
+      "minimalism": 5
     }
   },
   {
@@ -2596,7 +2619,9 @@
       "workspaces",
       "split-view",
       "vpn",
-      "chrome-extensions"
+      "chrome-extensions",
+      "vertical-tabs",
+      "ad-blocking"
     ],
     "website": "https://vivaldi.com",
     "repo": null,
@@ -2628,8 +2653,7 @@
     "tags": [
       "privacy",
       "firefox-addons",
-      "customizable",
-      "performance"
+      "customizable"
     ],
     "website": "https://www.waterfox.net",
     "repo": "https://github.com/BrowserWorks/Waterfox",
@@ -2641,7 +2665,7 @@
     ],
     "scores": {
       "privacy": 4,
-      "experience": 3,
+      "experience": 4,
       "customisation": 5,
       "lightness": 3,
       "minimalism": 4
@@ -2664,7 +2688,8 @@
       "workspaces",
       "power-user",
       "chrome-extensions",
-      "enterprise"
+      "enterprise",
+      "ai"
     ],
     "website": "https://wavebox.io",
     "repo": "https://github.com/wavebox/waveboxapp",
@@ -2706,10 +2731,10 @@
     ],
     "scores": {
       "privacy": 3,
-      "experience": 3,
+      "experience": 2,
       "customisation": 3,
       "lightness": 3,
-      "minimalism": 3,
+      "minimalism": 4,
       "lowConfidence": true
     }
   },
@@ -2728,9 +2753,9 @@
     "description": "Russian Chromium browser by Yandex with Alice assistant, Protect security and translation.",
     "tags": [
       "regional",
-      "ai",
       "chrome-extensions",
-      "mainstream"
+      "mainstream",
+      "ai"
     ],
     "website": "https://browser.yandex.com",
     "repo": null,
@@ -2742,7 +2767,7 @@
       "privacy": 1,
       "experience": 4,
       "customisation": 3,
-      "lightness": 2,
+      "lightness": 3,
       "minimalism": 1
     }
   },
@@ -2761,8 +2786,8 @@
       "vertical-tabs",
       "workspaces",
       "split-view",
-      "ai",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ],
     "website": "https://yetanotherbrowser.com",
     "repo": null,
@@ -2774,10 +2799,9 @@
     "scores": {
       "privacy": 3,
       "experience": 3,
-      "customisation": 3,
-      "lightness": 3,
-      "minimalism": 3,
-      "lowConfidence": true
+      "customisation": 4,
+      "lightness": 4,
+      "minimalism": 2
     }
   },
   {
@@ -2814,7 +2838,7 @@
       "experience": 4,
       "customisation": 4,
       "lightness": 3,
-      "minimalism": 3
+      "minimalism": 4
     }
   }
 ]

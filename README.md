@@ -1,6 +1,6 @@
 # browserwall
 
-A curated wall of desktop web browsers (quiz coming next). Static Astro site, deployed on Cloudflare Pages.
+A curated wall of desktop web browsers, a tier maker and a short quiz. Static Astro site, deployed on Cloudflare Pages.
 
 ## Develop
 
@@ -22,6 +22,9 @@ data/raw/*.json  ──merge.mjs──▶  src/data/browsers.json  ──fetch-l
 - `node scripts/merge.mjs` – merge, dedupe, validate, apply overrides and curation. Dropped ids go to `data/dropped.txt`.
 - `node scripts/fetch-logos.mjs [id ...]` – download official logos (Wikipedia infobox → project/site icons → GitHub avatar → favicon).
 - `node scripts/check-repos.mjs` / `node scripts/stars.mjs` – last commit dates and star counts for GitHub repos.
+
+- `data/wall-order.json` – default wall order (rough usage, not quality). `data/notes.json` – factual notes shown in the details dialog.
+- Quiz questions, sliders, must-haves, dealbreakers and weighting live in `src/lib/quiz.ts`.
 
 To add a browser: add it to a `data/raw/*.json` file (schema in `data/SCHEMA.md`), add its id to `data/curation.json`, then run the merge and logo fetch.
 

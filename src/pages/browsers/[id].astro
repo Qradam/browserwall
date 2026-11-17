@@ -1,0 +1,130 @@
+---
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import ScoreBars from "../../components/ScoreBars.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import { browsers, byId, TAGS, ENGINES, FAMILIES, type Browser } from "../../data/browsers";
+import { YEAR, UPDATED, ALTERNATIVE_IDS, alternativesFor, breadcrumbLd, faqLd, softwareLd, osNames, isQuizEligible } from "../../lib/seo";
+
+export function getStaticPaths() {
+  return browsers.map((b) => ({ params: { id: b.id }, props: { b } }));
+}
+const { b } = Astro.props as { b: Browser };
+const parent = b.channelOf ? byId.get(b.channelOf) : null;
+const alts = alternativesFor(b, 6);
+const hasAltPage = ALTERNATIVE_IDS.includes(b.id);
+const statusText = { active: "actively developed", maintenance: "in maintenance mode (slow updates)", discontinued: "discontinued" }[b.status];
+const engine = ENGINES[b.engine];
+const os = osNames(b);
+const scoreLine = `privacy ${b.scores.privacy}/5, out-of-box experience ${b.scores.experience}/5, customisation ${b.scores.customisation}/5, lightness ${b.scores.lightness}/5 and minimalism ${b.scores.minimalism}/5`;
+const AI_LEVEL = { 1: "basic AI (chat or summaries)", 2: "an integrated AI assistant", 3: "an AI agent that can browse for you" } as const;
+
+const title = `${b.name} review ${YEAR}: privacy, features and alternatives – browserwall`;
+const description = `${b.description} Scores: privacy ${b.scores.privacy}/5, experience ${b.scores.experience}/5, customisation ${b.scores.customisation}/5. See alternatives or take the 2-minute browser quiz.`.slice(0, 300);
+
+const faq = [
+  { q: `Is ${b.name} a good browser?`, a: `${b.name} is a ${engine}-based browser for ${os.join(", ")}, ${statusText}. In our editorial scores it gets ${scoreLine}.${b.scoreWhy ? " " + b.scoreWhy : ""}` },
+  { q: `Is ${b.name} private?`, a: `${b.name} scores ${b.scores.privacy}/5 for privacy. We judge privacy on the business model and default settings, not on marketing: 5 means strong anti-tracking with no telemetry and no data-driven business model, 2 means an owner that makes money from data.` },
+  ...(b.ai ? [{ q: `Does ${b.name} have AI?`, a: `Yes: ${b.name} has ${AI_LEVEL[b.ai.level]} (${b.ai.models}). It ${b.ai.canDisable === "fully" ? "can be fully switched off" : b.ai.canDisable === "partly" ? "can only partly be switched off" : "can't be switched off"}. ${b.ai.note}` }] : []),
+  ...(alts.length ? [{ q: `What are the best alternatives to ${b.name}?`, a: `Based on what ${b.name} is good at, the closest alternatives are ${alts.slice(0, 3).map((a) => a.result.browser.name).join(", ")}.` }] : []),
+];
+const crumbs = [{ name: "Browsers", href: "/wall" }, { name: b.name, href: `/browsers/${b.id}` }];
+const jsonLd = [softwareLd(Astro.site, b), breadcrumbLd(Astro.site, crumbs), faqLd(faq)];
+---
+<Base title={title} description={description} jsonLd={jsonLd} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <header class="bp-head">
+      <div class="bp-logo">{b.logo ? <img src={b.logo} alt={`${b.name} logo`} width="72" height="72" /> : <span class="mono">{b.name.slice(0, 2).toUpperCase()}</span>}</div>
+      <div>
+        <p class="kicker">Browser profile</p>
+        <h1>{b.name}</h1>
+        <p class="lede">{b.description}</p>
+      </div>
+    </header>
+    <p class="updated">Updated {UPDATED} · {engine}{b.basedOn ? ` · based on ${b.basedOn}` : ""} · {FAMILIES[b.family].label} family</p>
+
+    {b.status !== "active" && <p class="bp-warn"><Icon name="Alert02Icon" size={15} />{b.name} is {statusText}.{b.status === "discontinued" && " It no longer receives security updates – consider an alternative below."}</p>}
+    {b.note && <p class="bp-warn"><Icon name="Alert02Icon" size={15} />{b.note}</p>}
+
+    <div class="bp-grid">
+      <section aria-labelledby="scores">
+        <h2 id="scores">Scores</h2>
+        <ScoreBars b={b} />
+        {b.scores.lowConfidence && <p class="bp-small">These scores are a rough estimate – little independent information exists yet.</p>}
+        {b.scoreWhy && <p class="prose bp-why"><b>Why these scores:</b> {b.scoreWhy}</p>}
+        {b.scoreSources.length > 0 && <p class="bp-small">Sources: {b.scoreSources.map((u, i) => <>{i > 0 && " · "}<a href={u} rel="nofollow noopener" target="_blank">{new URL(u).hostname.replace(/^www\./, "")}</a></>)}</p>}
+      </section>
+      <section aria-labelledby="facts">
+        <h2 id="facts">Facts</h2>
+        <dl class="bp-facts">
+          <div><dt>Runs on</dt><dd>{os.join(", ")}</dd></div>
+          <div><dt>Engine</dt><dd>{engine}{b.basedOn && ` (${b.basedOn})`}</dd></div>
+          <div><dt>Status</dt><dd>{statusText}</dd></div>
+          <div><dt>Price</dt><dd>{b.price ? b.price.note : "Free"}</dd></div>
+          <div><dt>Source code</dt><dd>{b.openSource ? "Open source" : "Closed source"}</dd></div>
+          {b.stars != null && <div><dt>GitHub stars</dt><dd>{b.stars.toLocaleString("en-US")}</dd></div>}
+          {b.lastCommit && <div><dt>Last commit</dt><dd>{b.lastCommit}</dd></div>}
+          {parent && <div><dt>Channel of</dt><dd><a href={`/browsers/${parent.id}`}>{parent.name}</a></dd></div>}
+          <div><dt>Extensions</dt><dd>{[b.tags.includes("chrome-extensions") && "Chrome Web Store", b.tags.includes("firefox-addons") && "Firefox add-ons"].filter(Boolean).join(", ") || "Limited or none"}</dd></div>
+        </dl>
+        <ul class="pills" aria-label="Features">{b.tags.filter((t) => t !== "rip").map((t) => <li>{TAGS[t]?.label ?? t}</li>)}</ul>
+        <p class="bp-links">
+          {b.website && <a href={b.website} rel="noopener" target="_blank"><Icon name="ArrowUpRight01Icon" size={14} />Official website</a>}
+          {b.repo && <a href={b.repo} rel="noopener" target="_blank"><Icon name="GithubIcon" size={14} />Source code</a>}
+        </p>
+      </section>
+    </div>
+
+    {b.ai && (
+      <section aria-labelledby="ai">
+        <h2 id="ai">Built-in AI</h2>
+        <p class="prose">{b.name} has {AI_LEVEL[b.ai.level]}. Models: {b.ai.models}. AI quality in reviews: {b.ai.quality ?? "?"}/5.{b.ai.agent && b.ai.agentPaid && " The agent needs a paid plan."} It {b.ai.canDisable === "fully" ? "can be fully switched off" : b.ai.canDisable === "partly" ? "can only partly be switched off" : "can't be switched off"}{b.ai.local && ", and a local model option exists"}.</p>
+        <p class="prose">{b.ai.note}</p>
+      </section>
+    )}
+
+    <QuizCta title={`Is ${b.name} right for you?`} text={`The quiz weighs ${b.name} against ${browsers.length - 1} other browsers using your OS, extensions, priorities and must-haves.`} />
+
+    {alts.length > 0 && (
+      <section aria-labelledby="alts">
+        <h2 id="alts">Alternatives to {b.name}</h2>
+        <ul class="linkgrid">
+          {alts.map(({ result: { browser: a }, better }) => (
+            <li><a href={`/browsers/${a.id}`}>{a.logo && <img src={a.logo} alt="" width="24" height="24" loading="lazy" />}<span>{a.name}<small>{better[0] ?? a.description.slice(0, 60) + "…"}</small></span></a></li>
+          ))}
+        </ul>
+        {hasAltPage && <p class="prose"><a href={`/alternatives/${b.id}`}>See all {b.name} alternatives, with what each one does better →</a></p>}
+      </section>
+    )}
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+    {!isQuizEligible(b) && <p class="bp-small">Note: {b.name} isn't suggested by the quiz (discontinued, a pre-release channel, developer-only, experimental, legacy-OS or a meme).</p>}
+  </article>
+</Base>
+
+<style>
+  .bp-head { display: flex; gap: 18px; align-items: center; }
+  .bp-logo { flex: none; }
+  .bp-logo img, .bp-logo .mono { width: 72px; height: 72px; object-fit: contain; filter: drop-shadow(0 0 1px rgb(255 255 255 / .45)); }
+  .bp-warn { display: flex; gap: 8px; align-items: flex-start; padding: 10px 12px; border-radius: 9px; background: rgb(251 191 36 / .08); border: 1px solid rgb(251 191 36 / .25); font-size: 13.5px; margin: 0 0 10px; }
+  .bp-warn :global(svg) { color: var(--warn); flex: none; margin-top: 3px; }
+  .bp-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; }
+  .bp-why { font-size: 13.5px; margin-top: 14px; }
+  .bp-why b { color: var(--text); }
+  .bp-small { font-size: 12px; color: var(--faint); }
+  .bp-small a { color: var(--muted); }
+  .bp-facts { margin: 0 0 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+  .bp-facts dt { font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: .05em; }
+  .bp-facts dd { margin: 0; font-size: 13.5px; }
+  .bp-facts a { color: var(--accent); }
+  .bp-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .bp-links a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 11px; border-radius: 8px; background: var(--bg-3); border: 1px solid var(--line); text-decoration: none; font-size: 13px; }
+  .bp-links a:hover { border-color: var(--line-2); }
+  @media (max-width: 760px) { .bp-grid { grid-template-columns: 1fr; gap: 0; } .bp-head { align-items: flex-start; } .bp-logo img, .bp-logo .mono { width: 52px; height: 52px; } }
+</style>

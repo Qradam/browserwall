@@ -1,0 +1,25 @@
+---
+// Numbered list of browsers with logo, summary, scores and optional extra lines. Links to each browser page.
+import ScoreBars from "./ScoreBars.astro";
+import type { Browser } from "../data/browsers";
+export interface Item { b: Browser; lines?: { label: string; text: string; tone?: "good" | "warn" }[]; badges?: string[] }
+interface Props { items: Item[]; start?: number }
+const { items, start = 1 } = Astro.props;
+const initials = (n: string) => n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+const OS = { windows: "Windows", macos: "macOS", linux: "Linux", bsd: "BSD", other: "Other" } as const;
+---
+<ol class="ranked" start={start}>
+  {items.map(({ b, lines = [], badges = [] }, i) => (
+    <li>
+      <span class="rk" aria-hidden="true">{start + i}</span>
+      <div class="rk-logo" aria-hidden="true">{b.logo ? <img src={b.logo} alt="" width="48" height="48" loading="lazy" decoding="async" /> : <span class="mono">{initials(b.name)}</span>}</div>
+      <div class="rk-body">
+        <h3><a href={`/browsers/${b.id}`}>{b.name}</a></h3>
+        <p class="rk-meta">{b.basedOn ?? b.engine} · {b.os.map((o) => OS[o]).join(", ")} · {b.openSource ? "open source" : "closed source"}{badges.map((x) => <span class="rk-badge">{x}</span>)}</p>
+        <p class="rk-desc">{b.description}</p>
+        {lines.map((l) => <p class:list={["rk-line", l.tone]}><b>{l.label}</b> {l.text}</p>)}
+      </div>
+      <div class="rk-scores"><ScoreBars b={b} compact /></div>
+    </li>
+  ))}
+</ol>

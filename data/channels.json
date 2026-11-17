@@ -1,0 +1,6 @@
+{
+  "_note": "Pre-release / alternate channels -> main browser id. Channels inherit the parent's AI data and are hidden from the quiz.",
+  "brave-beta": "brave", "brave-nightly": "brave", "chrome-canary": "google-chrome", "firefox-beta": "firefox",
+  "firefox-developer-edition": "firefox", "firefox-nightly": "firefox", "firefox-esr": "firefox",
+  "safari-technology-preview": "safari"
+}

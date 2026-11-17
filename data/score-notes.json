@@ -1,0 +1,690 @@
+{
+  "_note": "Why each browser has its scores: summary of online opinion and evidence (Nov 2026), from data/research/*.json.",
+  "aloha-browser": {
+    "why": "It is mobile-first and closed-source, sells itself on a free 'no-logs' VPN with a Premium upsell, and bundles downloads, a media player and file vault. Reviewers say it is a browser feature first and not a complete privacy tool. That fits the free-VPN-upsell anchor of 2 and a cluttered minimalism score.",
+    "sources": [
+      "https://thehightechsociety.com/aloha-vpn-review/",
+      "https://rottenwifi.com/aloha-browser-review-what-its-vpn-private-tabs-and-downloads-actually-offer/",
+      "https://techyorker.com/products/aloha-browser/"
+    ]
+  },
+  "arc": {
+    "why": "Reviewers still praise Arc's fluid UI and deep Spaces/Boosts customisation, but it has been in maintenance for over a year. The Browser Company cites the cost of keeping it secure as the reason for the sunset. Arc is often criticised for heavy RAM use (reports of 4-6 GB) and battery drain.",
+    "sources": [
+      "https://resources.arc.net/hc/en-us/articles/44412972248471-Arc-Sunset-Key-Dates-and-What-to-Expect",
+      "https://techcrunch.com/2026/10/22/arc-browser-sunsets-december-22-as-the-browser-company-doubles-down-on-dia/",
+      "https://www.kosmik.app/blog/arc-browser-alternatives",
+      "https://piunikaweb.com/2026/09/23/the-best-life-after-arc-browser-not-ready-replace-arc"
+    ]
+  },
+  "ardia": {
+    "why": "It is popular on X as a free Arc replacement on Chromium 157, with WebKit used for DRM sites. PiunikaWeb notes it lacks Boosts and a media pane, and warns that one-developer 'vibe-coded' Arc clones have uncertain long-term maintenance. It has been public only since Sept 2026 (v0.2.x). Experience is capped at 2/5 while it's early access: very new, pre-1.0, mostly one or two developers and a fast-moving release stream with many open issues.",
+    "sources": [
+      "https://toolfolio.com/articles/what-is-ardia-browser-free-open-source-arc-alternative-for-mac-how-to-import-arc-and-what-it-lacks",
+      "https://piunikaweb.com/2026/11/10/arc-shutting-down-best-alternatives-switch/",
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://github.com/ardia-browser/ardia"
+    ]
+  },
+  "aside": {
+    "why": "It launched in June 2026 from a three-person YC startup. Early reviews call it thoughtful and local-first but unproven and buggy, with no published pricing and self-reported benchmarks. Reddit compares it to Comet, and reviewers recommend against using it for tasks where the agent acts toward other people.",
+    "sources": [
+      "https://www.eesel.ai/blog/aside-ai-browser-review",
+      "https://agmazon.com/blog/articles/technology/202608/aside-ai-browser-guide-en.html",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  "avast-secure-browser": {
+    "why": "In 2024 the FTC finalised an order banning Avast from selling browsing data and fining it $16.5M over Jumpshot, and refunds went out in 2025-2026. Wladimir Palant's 2024 audit found 11 preinstalled extensions (Coupons, Video Downloader, VPN, AI Chat, Side Panel, messaging that Avast servers can drive), a Bing default and ads on the new tab, and he advised running it only in a VM. Avast's own forums are full of 'installed without permission' and 'changed my default browser' threads.",
+    "sources": [
+      "https://search.ftc.gov/news-events/news/press-releases/2024/06/ftc-finalizes-order-avast-banning-it-selling-or-licensing-web-browsing-data-advertising-requiring-it",
+      "https://palant.info/2024/07/15/how-insecure-is-avast-secure-browser/",
+      "https://community.avast.com/t/avast-secure-browser-keeps-changing-default-browser-settings-without-permission/773887",
+      "https://search.ftc.gov/enforcement/refunds/avast-settlement"
+    ]
+  },
+  "avg-secure-browser": {
+    "why": "Palant notes that the Avast browser is pushed under AVG, Avira, Norton and CCleaner names with only branding and the extension mix differing. MalwareTips users describe AVG and Avast as identical under the hood. AVG's own Jumpshot settlement FAQ confirms that AVG users are eligible for compensation.",
+    "sources": [
+      "https://palant.info/2024/07/15/how-insecure-is-avast-secure-browser/",
+      "https://support.avg.com/SupportArticleView?l=en&supportType=home&urlName=avg-jumpshot-settlement-faqs-uk",
+      "https://malwaretips.com/threads/here-is-what-ai-has-to-say-about-avast-norton-avg-and-avira-or-what-mwt-calls-norvast.141867/latest"
+    ]
+  },
+  "avira-secure-browser": {
+    "why": "2026 reviews rate it as a middling Chrome alternative (iTechGuides 7.1/10). They praise Privacy Guard and Extension Guard, and note it has no VPN and is desktop-only. Security researchers treat it as a rebrand of Avast Secure Browser with the same preinstalled-extension design.",
+    "sources": [
+      "https://www.itechguides.com/products/avira-secure-browser/",
+      "https://support.avira.com/hc/en-us/articles/13707860217233-Avira-Secure-Browser-FAQs",
+      "https://palant.info/2024/07/15/how-insecure-is-avast-secure-browser/"
+    ]
+  },
+  "blisk": {
+    "why": "Blisk is still offered (site lists version 25.0.115.28), but there is little recent independent discussion. Older reviews praise the device panes and auto-refresh but criticise the daily time limit and say it is poor as a general browser. I couldn't verify which Chromium version Blisk is based on or how fast it ships upstream patches.",
+    "sources": [
+      "https://blisk.io/",
+      "https://processwire.com/talk/topic/22261-testing-blisk-browser-only-1-feature-interests-me-live-reloading/",
+      "https://www.geeksforgeeks.org/software-testing/cross-device-testing-of-web-applications-with-blisk/"
+    ]
+  },
+  "brave": {
+    "why": "Reviewers and Reddit consistently praise Shields and fingerprint randomisation but complain about crypto/AI/VPN clutter; Brave's own community forum has threads asking to drop the crypto/AI extras. 2026 RAM tests put Brave at or slightly under Chrome, i.e. typical footprint.",
+    "sources": [
+      "https://privacytests.org/",
+      "https://www.xda-developers.com/brave-browser-installs-vpn-windows/",
+      "https://brave.com/blog/referral-codes-in-suggested-sites/",
+      "https://community.brave.com/t/please-ditch-crypto-adware-crap/600951"
+    ]
+  },
+  "brave-beta": {
+    "why": "Same codebase and feature set as stable Brave, shipped earlier; Leo's new E2EE features landed in Release, Beta and Nightly together.",
+    "sources": [
+      "https://brave.com/blog/browser-ai-e2ee/"
+    ]
+  },
+  "brave-nightly": {
+    "why": "Nightly gets Brave features first (e.g. email aliases), so it carries all of Brave's extras plus untested ones.",
+    "sources": [
+      "https://www.privacyguides.org/news/2026/06/07/brave-launches-paid-minimalist-brave-origin-browser/"
+    ]
+  },
+  "brave-origin": {
+    "why": "Launched June 2026 as a $59.99 one-time (10 devices) stripped build; PrivacyGuides and PCMag cover it as Brave minus its revenue features. Opinion is split on paying more for less (PCMag sceptical, MakeUseOf positive), but nobody disputes that it is Brave's cleanest build.",
+    "sources": [
+      "https://www.privacyguides.org/news/2026/06/07/brave-launches-paid-minimalist-brave-origin-browser/",
+      "https://blog.brave.com/blog/brave-origin/",
+      "https://au.pcmag.com/browsers/118623/braves-60-origin-browser-charges-more-for-less-im-not-buying",
+      "https://www.techtimes.com/articles/317922/20260606/brave-origin-browser-launches-60-compile-out-build-removes-leo-tor-wallet.htm"
+    ]
+  },
+  "browseros": {
+    "why": "XDA and HN commenters like it as an open, inspectable alternative to Comet and Dia that doesn't hand browsing to a vendor. The project now positions 'BrowserOS neo' as a second browser for AI agents (Claude Code, Codex, MCP) alongside Chrome, not a Chrome replacement.",
+    "sources": [
+      "https://github.com/browseros-ai/BrowserOS",
+      "https://news.ycombinator.com/item?id=46721474",
+      "https://www.xda-developers.com/this-free-open-source-browser-made-me-ditch-perplexity-comet-dia-opera-neon/"
+    ]
+  },
+  "browsh": {
+    "why": "Its last release was v1.8.3 in January 2024. Development is slow, with 227 open issues (several from 2025-2026, including a report that a release had missing files), but the repo still gets occasional pushes. It drives the user's own up-to-date headless Firefox, so patching and privacy follow Firefox, but you pay full Firefox RAM plus the Go front-end. Reviewers see it as a clever niche tool rather than a daily driver.",
+    "sources": [
+      "https://github.com/browsh-org/browsh/issues",
+      "https://github.com/browsh-org/browsh",
+      "https://www.linuxfordevices.com/tutorials/linux/top-text-based-web-browsers"
+    ]
+  },
+  "chatgpt-atlas": {
+    "why": "It launched in Oct 2025 as a Mac-only Chromium browser with a ChatGPT sidebar, browser memories and an agent mode. Prompt-injection concerns appeared right after launch, and OpenAI itself said prompt injection is unlikely ever to be fully solved. LayerX's BioShocking technique successfully manipulated Atlas's agent mode. OpenAI moved the features into the ChatGPT desktop app.",
+    "sources": [
+      "https://help.openai.com/en/articles/20001371-chatgpt-atlas-retirement",
+      "https://www.ai-toolbox.co/chatgpt-management-and-productivity/chatgpt-atlas-browser-guide-2026",
+      "https://www.techtimes.com/articles/318528/20260616/ai-browser-comparison-2026-atlas-vs-comet-vs-dia-ranked-security-use-case.htm",
+      "https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/07/CSA_research_note_bioshocking_ai_browser_credential_leak_20260708-csa-styled.pdf"
+    ]
+  },
+  "chrome-canary": {
+    "why": "Canary tops Speedometer charts but is an untested daily build by design; it receives the same Gemini integrations first. Suggested scores.json form: {\"like\": \"google-chrome\", \"adjust\": [0,-1,0,0,0]}.",
+    "sources": [
+      "https://browserating.com/",
+      "https://blog.google/products-and-platforms/products/chrome/gemini-3-auto-browse"
+    ]
+  },
+  "chromium": {
+    "why": "Raw Chromium has no Google-branded extras and no ads, but it still has Google sign-in and Safe Browsing hooks. Snapshot builds on Windows and macOS do not auto-update, while distro and Flathub packages track stable closely (for example 156.0.8078.79 in late Oct 2026). Overall it is a neutral baseline.",
+    "sources": [
+      "https://github.com/flathub/org.chromium.Chromium/pulls",
+      "https://github.com/ungoogled-software/ungoogled-chromium/discussions/2740",
+      "https://github.com/chromium/chromium/blob/main/docs/security/faq.md"
+    ]
+  },
+  "comet": {
+    "why": "Reviewers see it as a capable research browser best kept as a secondary browser for low-stakes tasks. Perplexity's CEO said browsing data would be used to build user profiles for personalised ads. Security researchers repeatedly broke Comet's agent: Brave found hidden-text and screenshot prompt injection, and LayerX's 'CometJacking' used a crafted URL to exfiltrate email and calendar data.",
+    "sources": [
+      "https://brave.com/blog/comet-prompt-injection/",
+      "https://thehackernews.com/2025/10/cometjacking-one-click-can-turn.html",
+      "https://malwarebytes.com/blog/news/2025/04/what-privacy-perplexity-wants-your-data-builds-browser-to-track-you-and-serve-ads?",
+      "https://www.itechguides.com/perplexity-comet-browser-review-2026-is-it-worth-trying/"
+    ]
+  },
+  "crest": {
+    "why": "A PiunikaWeb tester found it quick, snappy and the most complete Arc feel, including Little Arc-style Quick Windows, but missing Boosts and auto-organise. Its own site says it is early access with security not independently audited. It started in Aug 2026 and is mostly one developer's work. Experience is capped at 2/5 while it's early access: very new, pre-1.0, mostly one or two developers and a fast-moving release stream with many open issues.",
+    "sources": [
+      "https://crestbrowser.com/",
+      "https://piunikaweb.com/2026/09/23/the-best-life-after-arc-browser-not-ready-replace-arc",
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://github.com/pauljoda/Crest"
+    ]
+  },
+  "cromite": {
+    "why": "A one-maintainer Bromite successor with built-in ad blocking and partial fingerprinting mitigations (which the maintainer says are not comprehensive). Desktop builds exist for Windows/Linux only, and users report rough releases (e.g. regressions in the 153 release).",
+    "sources": [
+      "https://github.com/uazo/cromite",
+      "https://github.com/uazo/cromite/issues/3064",
+      "https://www.thegeeksclub.com/platforms/cromite/"
+    ]
+  },
+  "cursed-browser": {
+    "why": "This is an open-source gag project (around 280 stars) whose own spec calls it a joke. It has a single window, no tabs, back/forward buttons that do nothing, and needs an OpenAI API key that you re-enter on every launch. Each page is 'rendered' by an image model hallucinating the layout, so it's unusable for real browsing. Minimalism stays 3 because the 'ai' tag caps it.",
+    "sources": [
+      "https://github.com/scosman/cursed_browser",
+      "https://github.com/scosman/cursed_browser/blob/main/specs/projects/cursed_browser/functional_spec.md"
+    ]
+  },
+  "dia": {
+    "why": "Reviewers call it stable and polished for casual users, but Arc fans say it lacks power features. Its privacy policy covers pages visited plus assistant prompts and responses, and some requests send page content to outside model providers. It also keeps a built-in browsing memory. Akamai published research on indirect prompt-injection risk in Dia.",
+    "sources": [
+      "https://www.itechguides.com/is-dia-browser-private-and-safe-to-use-data-collection-and-ai-features-explained-2026/",
+      "https://www.akamai.com/resources/white-paper/dia-browser-risks-and-vulnerabilities",
+      "https://piunikaweb.com/2026/07/30/dia-browser-spaces-early-bird-users/",
+      "https://efficient.app/apps/dia"
+    ]
+  },
+  "duckduckgo": {
+    "why": "Second-best mainstream result on privacytests (71 passes) though only 11/24 on fingerprinting; reviews praise easy defaults but note there are no third-party extensions. Duck.ai chat and a VPN subscription upsell are now integrated, though Duck.ai can be turned off; that is borderline for minimalism 4 (see calibration note).",
+    "sources": [
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
+      "https://cross-browser.org/reviews/duckduckgo-complete-review-2024/",
+      "https://duckduckgo.com/app"
+    ]
+  },
+  "ecosia-browser": {
+    "why": "Coverage describes a modest feature set (Ecosia search, a privacy/cookie panel, energy saver) plus a new Linux build in Sep 2026; revenue comes from Microsoft-served search ads, so privacy stays neutral at 3. Ecosia's AI features are on the search engine, which has an AI-free toggle since July 2026, not bundled browser sidebars.",
+    "sources": [
+      "https://eluxemagazine.com/living/tech/browser-alternatives-to-chrome/",
+      "https://felloai.com/ecosia-ai/",
+      "https://alternativeto.net/software/ecosia-browser/about/"
+    ]
+  },
+  "elinks": {
+    "why": "The rkd77 fork ships regular releases with libcss, experimental JS (mozjs/quickjs-ng), sixel/kitty images, gemini and SVG. Comparisons describe it as the most feature-rich and scriptable text browser, but still text-mode with spotty modern-site support.",
+    "sources": [
+      "https://github.com/rkd77/elinks/releases",
+      "https://github.com/rkd77/elinks/blob/master/README.md",
+      "https://www.baeldung.com/linux/text-mode-web-browsers"
+    ]
+  },
+  "epic-privacy-browser": {
+    "why": "Its privacy defaults are strong on paper, but it is closed-source from a small company and its 'VPN' is a free built-in proxy. Recent coverage is mostly SEO content, and audit-style writeups say its claims can't be verified without source. That matches the 2 anchor for a free-VPN product.",
+    "sources": [
+      "https://www.cloudspress.com/what-is-the-epic-browser-and-what-makes-it-different/",
+      "https://laptopjudge.com/epic-privacy-browser/"
+    ]
+  },
+  "epiphany": {
+    "why": "GNOME Web is actively maintained (50.x in 2026) and stays deliberately opinionated: built-in ad and tracker blocking, no WebExtension ecosystem worth the name, and a clean GNOME UI. Compatibility depends on the WebKitGTK version your distro ships, and some video and web-app sites misbehave.",
+    "sources": [
+      "https://www.cloudspress.com/is-gnome-web-epiphany-good-to-use-in-2026/",
+      "https://wiki.gnome.org/Apps/Web/Docs/FrequentlyAskedQuestions",
+      "https://github.com/GNOME/epiphany/blob/master/README.md"
+    ]
+  },
+  "facet": {
+    "why": "There are few independent reviews. One Japanese blogger made it their preferred Arc replacement and noted that the AI can be switched off. It is closed source and free with a paid 'Founder' tier, needs no account, and says it only counts anonymous update checks. Privacy stays 3 because that claim can't be verified.",
+    "sources": [
+      "https://facet.surf/",
+      "https://note.com/yasashii_tech/n/n66884ce6a2aa"
+    ]
+  },
+  "falkon": {
+    "why": "Users describe Falkon as simple, de-Googled-Chromium-like and fine for most sites. 2026 KDE forum threads report freezes, zombie renderer processes and breakage on heavy modern sites, and one review notes the simple UI doesn't guarantee low RAM. Lightness stays 4 because those reports are anecdotal.",
+    "sources": [
+      "https://www.osnews.com/story/141265/the-state-of-falkon-kdes-browser-is-much-better-than-you-know/",
+      "https://discuss.kde.org/t/falkon-browser-wide-scale-site-breakages-and-severe-performance-lag-on-linux-mint-xfce/49088",
+      "https://www.itechguides.com/6-lesser-known-browsers-free-lightweight-and-low-maintenance/",
+      "https://news.ycombinator.com/item?id=43297590"
+    ]
+  },
+  "fellou": {
+    "why": "Reviews call it promising but not reliable enough for hands-off automation, with credit-based pricing. Brave showed that just navigating Fellou to an attacker's page made its agent open Gmail and exfiltrate data. Fellou was also among the six agentic browsers broken by LayerX's BioShocking credential-leak technique, and an independent analysis found no SSL pinning.",
+    "sources": [
+      "https://simonwillison.net/2025/oct/21/unseeable-prompt-injections/",
+      "https://www.theregister.com/software/2025/10/28/ai-browsers-wide-open-to-attack-via-prompt-injection/327406",
+      "https://www.thetoolnerd.com/p/fellou-review-agentic-browser-thetoolnerd",
+      "https://labs.cloudsecurityalliance.org/wp-content/uploads/2026/07/CSA_research_note_bioshocking_ai_browser_credential_leak_20260708-csa-styled.pdf"
+    ]
+  },
+  "firedragon": {
+    "why": "Reviewers call v13 a solid Firefox/LibreWolf-style browser, but It's FOSS reported rough edges: it ignored dark mode on websites and showed an unhideable title bar on GNOME. Sync is on by default and goes through a Garuda-run server.",
+    "sources": [
+      "https://itsfoss.com/news/firedragon-v13-release/",
+      "https://linuxiac.com/firedragon-v13-released-as-a-complete-rewrite-of-garuda-linux-browser/",
+      "https://flathub.org/kab/apps/org.garudalinux.firedragon"
+    ]
+  },
+  "firefox": {
+    "why": "Firefox 148 shipped an 'AI kill switch' after backlash to the new CEO's AI-first messaging; independent network tests found telemetry and ads/sponsored content remain on by default even with AI blocked, which keeps privacy at 4 rather than higher. privacytests: 62 passes overall and 14/24 fingerprinting, best of the mainstream non-forks; RAM slightly below Chromium browsers.",
+    "sources": [
+      "https://www.linux-magazine.com/Issues/2026/309/Firefox-AI-Kill-Switch",
+      "https://web.archive.org/web/20260911175848/https:/marius.blog/firefox-155-ai-kill-switch-retest/",
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "firefox-beta": {
+    "why": "Generally seen as daily-drivable; no evidence for diverging from stable.",
+    "sources": [
+      "https://www.linux-magazine.com/Issues/2026/309/Firefox-AI-Kill-Switch"
+    ]
+  },
+  "firefox-developer-edition": {
+    "why": "Based on Beta with dev tooling enabled; no evidence for diverging from stable.",
+    "sources": [
+      "https://www.linux-magazine.com/Issues/2026/309/Firefox-AI-Kill-Switch"
+    ]
+  },
+  "firefox-esr": {
+    "why": "ESR 140 continues to get regular security point releases through 2026 and is the base privacy-minded users harden (e.g. Betterfox guides). It lags on newer AI features, but not enough to argue a minimalism bump.",
+    "sources": [
+      "https://www.firefox.com/en-US/firefox/140.17.0/releasenotes/",
+      "https://malwaretips.com/blogs/firefox-esr-140-14/"
+    ]
+  },
+  "firefox-nightly": {
+    "why": "Nightly runs with expanded telemetry and unfinished features; privacytests tracks it separately as an alpha channel. Existing -1 privacy/-1 experience adjustment remains appropriate.",
+    "sources": [
+      "https://privacytests.org/nightly-private"
+    ]
+  },
+  "floorp": {
+    "why": "Floorp follows the Firefox rapid-release cycle closely (v12.21.x on Firefox 159/160, same-week security fixes) and is still widely called the most customisable Firefox fork. It keeps adding built-ins (workspaces with sync, notes, tab stacks, web apps, sidebars, command palette). Occasional memory-growth and freeze regressions get fixed quickly.",
+    "sources": [
+      "https://blog.floorp.app/",
+      "https://blog.rottenwifi.com/best-firefox-based-browsers-for-a-customizable-interface/",
+      "https://www.cloudspress.com/floorp-browser-review-what-japans-firefox-fork-offers-and-where-it-falls-short/"
+    ]
+  },
+  "glide-browser": {
+    "why": "HN and blog coverage praise its TypeScript config, modal Vim keymaps and hint API as deeper than anything an extension can do, and note that tracking Firefox upstream keeps security fixes flowing. The developer admits motions and docs are incomplete.",
+    "sources": [
+      "https://glide-browser.app/",
+      "https://news.ycombinator.com/item?id=45430294",
+      "https://korben.info/en/glide-hackable-firefox-fork-vim.html"
+    ]
+  },
+  "gnu-icecat": {
+    "why": "Still tracks Firefox ESR and is patched in distros such as Fedora, but GNU ships source only. LibreJS blocks a lot of the modern web, so it remains a niche free-software-purist choice.",
+    "sources": [
+      "https://directory.fsf.org/wiki/Gnuzilla",
+      "https://linuxsecurity.com/advisories/fedora/fedora-45-icecat-2026-040732b5dc",
+      "https://en.wikipedia.org/wiki/GNU_IceCat"
+    ]
+  },
+  "google-chrome": {
+    "why": "Google's own announcements describe Gemini as a built-in browsing assistant across macOS/Windows; privacytests.org default-settings runs keep Chrome near the bottom (under 31 passes; fails 21+ of 24 fingerprinting checks). RAM tests put it among the heavier Chromium builds (~1.5 GB for 4 tabs on Notebookcheck).",
+    "sources": [
+      "https://blog.google/products-and-platforms/products/chrome/gemini-3-auto-browse",
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "helium": {
+    "why": "Helium is a GPL-3.0 browser built on ungoogled-chromium by imput (the two-person team behind cobalt). As of Nov 2026 it is still in beta (0.21.x, Chromium 157), ships its own uBlock Origin build, and has no sync, password manager or Widevine. It was widely praised in 2025-26 (Techlore, It's FOSS) as 'Brave without the baggage'.",
+    "sources": [
+      "https://privacygear.nl/reviews/helium-browser-review/",
+      "https://techlore.tech/helium-browser-review-a-truly-minimal-privacy-focused-chromium-browser/",
+      "https://itsfoss.com/helium-browser/"
+    ]
+  },
+  "internet-explorer": {
+    "why": "IE11 support ended in June 2022 and the desktop app was permanently disabled via an Edge update in February 2023. Microsoft says it gets no security updates, and only Edge's IE mode survives. Under the rubric, an abandoned, unpatched browser gets privacy 1 and experience 1.",
+    "sources": [
+      "https://techcommunity.microsoft.com/blog/windows-itpro-blog/internet-explorer-11-desktop-app-retirement-faq/2366549",
+      "https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+    ]
+  },
+  "island": {
+    "why": "Reviewers on Gartner and G2 say it feels just like Chrome and praise the fine-grained admin control and rich activity data. Complaints are about lag, slower tab switching and limited extensions. Island's own material frames the browser as a tool for auditing employee activity.",
+    "sources": [
+      "https://www.venn.com/learn/island-browser/island-browser-review/",
+      "https://www.island.io/resource/using-your-browser-as-an-auditing-support-tool",
+      "https://www.island.io/gartner-reviews"
+    ]
+  },
+  "ladybird": {
+    "why": "In November 2026 Ladybird is still pre-alpha and you have to build it from source; the alpha is promised for later this year. Monthly updates add basics like private windows, profiles, session restore and auto-updating filter lists. A Trail of Bits audit found full exploit chains that are being fixed. The nonprofit, no-monetisation model justifies privacy 4.",
+    "sources": [
+      "https://ladybird.org/",
+      "https://piunikaweb.com/2026/10/06/ladybird-browser-alpha-update/",
+      "https://piunikaweb.com/2026/08/06/ladybird-private-browsing-profiles/"
+    ]
+  },
+  "librewolf": {
+    "why": "Widely cited as the practical no-telemetry Firefox daily driver with uBlock Origin built in. The usual caveats are occasional site breakage from resistFingerprinting and strict cookie clearing, and on some platforms no built-in auto-update.",
+    "sources": [
+      "https://factually.co/product-reviews/electronics-tech/librewolf-vs-brave-which-is-better-for-privacy-2026-f9cff8",
+      "https://factually.co/fact-checks/electronics-tech/librewolf-browser-overview-d8763c",
+      "https://privacytests.org/"
+    ]
+  },
+  "lynx": {
+    "why": "It is still actively maintained by Thomas Dickey: 2.9.3 shipped in May 2026 and 2.9.4 is in development. Users praise its speed, its tiny footprint and that it runs no JS, so it has little tracking or fingerprinting surface. It has no JS, images or tabs, so most modern sites break, which keeps experience at 1. It isn't 5 on privacy because it has no deliberate anti-fingerprinting and its UA is distinctive.",
+    "sources": [
+      "https://lynx.invisible-island.net/release/",
+      "https://www.baeldung.com/linux/text-mode-web-browsers",
+      "https://cssence.com/2026/text-based-web-browsers/"
+    ]
+  },
+  "microsoft-edge": {
+    "why": "Microsoft retired the separate Copilot Mode in May 2026 and folded its AI browsing features into standard Edge, which commentators read as making AI harder to avoid; Edge remains near the bottom on privacytests fingerprinting. RAM in line with Chrome.",
+    "sources": [
+      "https://windowsforum.com/threads/edge-retires-copilot-mode-ai-browsing-moves-into-default-experience.418244/",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "midori": {
+    "why": "The privacy community regards modern Midori as a rebranded Floorp/Firefox fork from a company with low transparency, not as a continuation of the original lightweight WebKitGTK Midori. It does work as a normal Gecko browser with a built-in ad blocker and no telemetry claimed.",
+    "sources": [
+      "https://discuss.privacyguides.net/t/midori-browser-gecko-browser-for-desktop-android/15027",
+      "https://astian.org/midori-browser/features/",
+      "https://github.com/void-linux/void-packages/issues/48065"
+    ]
+  },
+  "min": {
+    "why": "Min is still maintained, with regular Electron/Chromium bumps (1.35.3 through 1.35.8 in 2026) and translation that runs locally. It is open source with built-in blocking and a deliberately sparse UI. As an Electron app its footprint is typical rather than light, and extension support is very limited.",
+    "sources": [
+      "https://github.com/minbrowser/min/releases",
+      "https://github.com/minbrowser/min"
+    ]
+  },
+  "mullvad-browser": {
+    "why": "Built with the Tor Project as Tor Browser without the Tor network: top-tier anti-fingerprinting and no telemetry. The trade-off is daily-driver comfort: it always runs in private mode, so history, cookies and logins are wiped every time you close it, letterboxing and fingerprint resistance trigger more CAPTCHAs and break some sites, and there's no sync – hence experience 2/5.",
+    "sources": [
+      "https://mullvad.net/en/browser/hard-facts",
+      "https://github.com/mullvad/mullvad-browser/issues/164",
+      "https://sumguy.com/browser-hardening-2026/"
+    ]
+  },
+  "naver-whale": {
+    "why": "Whale has added an AI Chat sidebar (Oct 2026), which keeps minimalism at 2. It had the lowest RAM in Notebookcheck's single test (~1.18 GB), but users still complain it is sluggish, so lightness stays 2 (low confidence on that axis).",
+    "sources": [
+      "https://www.mt.co.kr/en/tech/2026/10/18/2026101514373023800",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html",
+      "https://www.thegeeksclub.com/platforms/naver-whale/"
+    ]
+  },
+  "netscape-navigator": {
+    "why": "AOL stopped development in December 2007 and security updates ended on 1 March 2008, so it has been unpatched for 18 years and can't handle modern TLS or JS. Minimalism 1 reflects the historic Communicator/9.x bundling of mail, news and other extras.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Netscape_Navigator",
+      "https://en.wikipedia.org/wiki/Netscape_Navigator_9"
+    ]
+  },
+  "nook": {
+    "why": "It is a community open-source Arc-style browser ('not owned by Atlassian') with Spaces, split view, Peek, a command palette and SponsorBlock-style site tweaks. Releases are frequent but it is a small project. Independent reviews are scarce, and the name collides with several unrelated 'Nook' apps.",
+    "sources": [
+      "https://github.com/nook-browser/Nook",
+      "https://nookbrowser.app/",
+      "https://github.com/nook-browser/Nook/releases"
+    ]
+  },
+  "norton-neo": {
+    "why": "App-store reviewers are warm about the browser but cool on the AI. Review sites note on-device AI options and default local chat history, but it is closed source, comes from a security-suite vendor, and upsells its VPN.",
+    "sources": [
+      "https://neobrowser.ai/",
+      "https://laptops251.com/programs/norton-neo/",
+      "https://www.risingtrends.co/blog/norton-neo",
+      "https://www.alphr.com/norton-neo-review-is-the-first-ai-native-browser-worth-switching-to/"
+    ]
+  },
+  "norton-private-browser": {
+    "why": "Norton's own blog describes the 'seven upgrades' release, which brought built-in AV, an AI chat side panel and productivity modules. 2026 reviews say Privacy Guard ad and tracker blocking is solid but sync is limited. Palant lists Norton among the brands that ship the Avast Secure Browser codebase.",
+    "sources": [
+      "https://us.norton.com/blog/privacy-tips/seven-upgrades-to-norton-private-browser",
+      "https://www.itechguides.com/products/norton-private-browser/",
+      "https://palant.info/2024/07/15/how-insecure-is-avast-secure-browser/"
+    ]
+  },
+  "opera": {
+    "why": "Opera came dead last in privacytests' 2026 default-settings run and fails most fingerprinting checks; it continues to bundle VPN, Aria AI, messengers and sidebars. RAM ~1.5 GB for 4 tabs, typical-to-heavy for Chromium.",
+    "sources": [
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "opera-air": {
+    "why": "Reviewers (MakeUseOf, XDA, Tom's Guide) like its calm, rounded UI and find the wellbeing tools useful, though it keeps Opera's extras. It was the heaviest Opera variant in Notebookcheck's RAM test (~1.7 GB for 4 tabs), which supports lightness 2.",
+    "sources": [
+      "https://www.makeuseof.com/best-new-browser-2025-opera-air/",
+      "https://www.xda-developers.com/replaced-chrome-firefox-brave-with-minimalist-browser-opera-air/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "opera-gx": {
+    "why": "Measured idle RAM is close to regular Opera, but forum reports describe the RAM limiter not holding, memory growth on YouTube, and the hard limit being disabled below 4 GB, so its reputation as heavy stands. Still the most themeable Opera.",
+    "sources": [
+      "https://forums.opera.com/topic/88398/why-has-the-hard-ram-limiter-been-removed-for-the-lower-ranges",
+      "https://forums.opera.com/topic/61497/opera-gx-consumes-all-system-ram-on-youtube-gx-control-gives-negative-numbers",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "opera-neon": {
+    "why": "Neon went into paid early access in Dec 2025 at $19.90/month; reviewers (PCMag, Thurrott) say it mostly works but question paying for it, and agent reliability is still described as unproven. Page content goes to cloud LLMs, so the subscription does not lift privacy.",
+    "sources": [
+      "https://au.pcmag.com/ai/113921/operas-neon-ai-web-browser-mostly-works-fine-but-i-still-wouldnt-pay-for-it",
+      "https://www.thurrott.com/a-i/328065/opera-neon-first-impressions",
+      "https://rottenwifi.com/opera-neon-costs-19-90-a-month-but-its-selling-an-ai-workspace-not-just-a-browser/"
+    ]
+  },
+  "orion": {
+    "why": "Users praise its privacy, resource use and support for both Chrome and Firefox extensions, and it is funded by Kagi users rather than ads. Its own feedback forum shows recurring stability and memory regressions. Kagi now says it will focus on macOS and iOS stability.",
+    "sources": [
+      "https://blog.kagi.com/update-orion-linux-windows",
+      "https://orionfeedback.org/d/12247-bugs-and-stability",
+      "https://orionfeedback.org/d/13108-megathread-orion-memory-issues/84"
+    ]
+  },
+  "pale-moon": {
+    "why": "Pale Moon still ships regular security releases (34.x, then 35.0 in Sept 2026) and keeps adding compatibility shims for modern sites. Its forum still has a steady stream of site breakages, and mainstream add-ons like uBlock Origin and Privacy Badger don't work, so it stays at neutral privacy and low experience.",
+    "sources": [
+      "https://alternativeto.net/news/2026/9/pale-moon-35-targets-modern-site-compatibility-with-shims/",
+      "https://forum.palemoon.org/viewtopic.php?t=31417",
+      "https://forum.palemoon.org/viewtopic.php?t=30684"
+    ]
+  },
+  "phi": {
+    "why": "PiunikaWeb rated it the Arc alternative with the best long-term prospects: a funded team of about 20, a stable Chromium base and no lag, though it lacks Boosts and archives. OpenHunts caught its default cloud AI claiming to have done a CSS change it never made. Only the core is open source.",
+    "sources": [
+      "https://phibrowser.com/",
+      "https://piunikaweb.com/2026/11/10/arc-shutting-down-best-alternatives-switch/",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  "pissandshittium": {
+    "why": "It's a joke Chromium fork that started after a Discord hot take. It changes UI strings, adds colours like 'Literal Shit' and has easter eggs, and its Windows builds embed the author's Google API keys. The repo has around 300 stars, and its own FAQ, along with Reddit and Brodie Robertson coverage, treat it purely as a meme and say not to daily-drive it.",
+    "sources": [
+      "https://pissandshittium.org/",
+      "https://github.com/Pissandshittium/pissandshittium"
+    ]
+  },
+  "polypane": {
+    "why": "Polypane is a paid indie developer browser that tracks Chromium closely (version 31 on Chromium 155, Sept 2026) and is regularly named the top responsive-dev browser. Its own docs admit it uses more resources than a normal browser, because each pane is a live Chromium instance and the load scales with pane count. It carries a lot of built-in audit and inspection panels.",
+    "sources": [
+      "https://polypane.app/docs/performance/",
+      "https://polypane.app/blog/polypane-31-canvas-layout-elements-panel-improvements-and-chromium-155/",
+      "https://devresourc.es/blog/best-browser-for-developers"
+    ]
+  },
+  "qutebrowser": {
+    "why": "qutebrowser itself is open, has no telemetry and has a built-in adblocker. Its security, however, depends on Qt's slow WebEngine backports and distro patches, something the maintainer acknowledges. Users also report frequent Google captchas and video playback problems. Qt says WebEngine moves to its own faster release cadence from Qt 6.12, which could justify restoring the 4 later.",
+    "sources": [
+      "https://github.com/qutebrowser/qutebrowser/issues/9031",
+      "https://github.com/qutebrowser/qutebrowser/issues/9032",
+      "https://www.qt.io/blog/new-release-cadence-for-qt-webengine-and-qt-pdf",
+      "https://github.com/qutebrowser/qutebrowser/discussions/8721"
+    ]
+  },
+  "r3dfox": {
+    "why": "Retro-computing users value r3dfox as the way to run modern Firefox (ESR 153 era) on Vista, 7 and XP, with LibreWolf tweaks and telemetry removed. Release notes are candid that the XP builds are experimental and that some features (native controls, accessibility, GDI) were dropped.",
+    "sources": [
+      "https://github.com/Eclipse-Community/r3dfox/releases",
+      "https://sourceforge.net/projects/r3dfox/",
+      "https://www.neoteo.com/fr/eclipse-r3dfox-un-fork-de-firefox-moderne-pour-windows-7-et-8x"
+    ]
+  },
+  "responsively-app": {
+    "why": "Responsively is free, open source and Electron-based, and is the usual recommendation for developers who can't pay for Polypane. The v2.0 beta (late 2026) rewrites the UI, adds Canvas mode, an MCP server for AI coding agents and Electron 44. Stable is still 1.18 and v2 is pre-release, so experience stays low. Like the other multi-pane tools, footprint grows with the number of device previews.",
+    "sources": [
+      "https://github.com/responsively-org/responsively-app-releases/releases",
+      "https://github.com/responsively-org/responsively-app/blob/main/README.md",
+      "https://devresourc.es/blog/best-browser-for-developers"
+    ]
+  },
+  "safari": {
+    "why": "Reviews of Safari 27 are positive about the AI extension builder and Notify Me; privacytests shows Safari passing 11/24 fingerprinting checks, mid-pack behind Firefox. Still regarded as the most power-efficient option on Mac.",
+    "sources": [
+      "https://9to5mac.com/2026/06/09/heres-everything-new-coming-to-safari-on-macos-27-golden-gate/",
+      "https://au.pcmag.com/ai/118852/apples-new-describe-an-extension-feature-helped-me-fix-some-of-safaris-biggest-annoyances",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/"
+    ]
+  },
+  "safari-technology-preview": {
+    "why": "No independent opinion found beyond it previewing the same WebKit/Safari 27 features; keep copying Safari.",
+    "sources": [
+      "https://www.idownloadblog.com/2026/10/05/new-safari-features-ios-macos-27/"
+    ]
+  },
+  "servo": {
+    "why": "Servo ships monthly 0.x releases (0.4 in 2026) with better layout on real sites. Phoronix still says servoshell is a demo browser not fit for daily use, and it can't finish benchmarks like Speedometer 3.",
+    "sources": [
+      "https://www.phoronix.com/news/Servo-0.3-Released",
+      "https://github.com/servo/servo/issues/46070",
+      "https://book.servo.org/"
+    ]
+  },
+  "sigmaos": {
+    "why": "Users liked its design and workspaces, but AlternativeTo and directory sites warn it has had no updates since early 2025 and is not safe to rely on. A forced email login at first launch has long been a complaint.",
+    "sources": [
+      "https://alternativeto.net/software/sigmaos/about/",
+      "https://browsers.to/es/sigmaos",
+      "https://efficient.app/apps/sigmaos",
+      "https://sigmaos.com/"
+    ]
+  },
+  "sizzy": {
+    "why": "Sizzy costs $15/month, $144/year or $499 lifetime, with no free plan. Coverage in 2026 positions it as a project workspace with isolated per-device sessions rather than a lean preview tool. Running one isolated session per device makes it heavy like Polypane.",
+    "sources": [
+      "https://sizzy.co/compare/polypane",
+      "https://sizzy.co/",
+      "https://checkops.com/tools/sizzy"
+    ]
+  },
+  "supermium": {
+    "why": "Supermium went from 138 to 144 to 150 in big jumps, with long gaps between them and only patch-level updates in between. GitHub issues show repeated launch failures and crashes on Windows 7. Users value it as the only modern Chromium for XP/7, not for being secure or light. On XP the rebased chrome.dll noticeably raised memory use.",
+    "sources": [
+      "https://github.com/win32ss/supermium/releases",
+      "https://github.com/win32ss/supermium/issues/2015",
+      "https://github.com/win32ss/supermium/discussions/1754",
+      "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop_01744469280.html"
+    ]
+  },
+  "thorium": {
+    "why": "Since roughly M150, collaborator gz83 has published every update because Alex313031 is unavailable. M156.0.8078.80 shipped on 9 Nov 2026, while Chrome stable reached 157 in early November, so Thorium roughly tracks Extended Stable. GitHub issues report an unsigned APT repo and CPU spikes on the 156 builds. Thorium now bundles uBlock Origin and keeps its Chrome-like feature set.",
+    "sources": [
+      "https://github.com/Alex313031/thorium/releases",
+      "https://github.com/gz83/thorium/releases",
+      "https://chromereleases.googleblog.com/2026/11/stable-channel-update-for-desktop.html",
+      "https://github.com/Alex313031/thorium/issues/1164"
+    ]
+  },
+  "tor-browser": {
+    "why": "Still treated everywhere as the gold standard for anonymity but impractical as a daily driver (slow, captchas, blocked sites). The 15.x series is patched often (15.0.26 by late 2026) and gained Firefox's vertical tabs; changing settings or add-ons is discouraged for fingerprint uniformity.",
+    "sources": [
+      "https://blog.torproject.org/new-release-tor-browser-150",
+      "https://forum.torproject.org/t/new-release-tor-browser-15-0-26/22294",
+      "https://halocard.co/blog/tor-browser-review"
+    ]
+  },
+  "ulaa": {
+    "why": "2026 reviews praise the five modes and built-in blocking but note its usual Chromium RAM use. Zoho's own terms admit default collection of basic usage data, which contradicts 'collects nothing' claims. It bundles a password manager, notes, screen capture, a dashboard, Zoho SSO and the Zia AI integration, which keeps minimalism low.",
+    "sources": [
+      "https://techyden.com/ulaa-browser-review/",
+      "https://download.cnet.com/ulaa-browser/3000-mac-ulaa-browser.html",
+      "https://www.thegeeksclub.com/platforms/ulaa/"
+    ]
+  },
+  "ungoogled-chromium": {
+    "why": "Respected for stripping out Google services, but it has no auto-update, extensions need workarounds (chromium-web-store), and it has little anti-fingerprinting beyond Chromium's. The project keeps MV2 alive with source patches after Google's 2026 removal.",
+    "sources": [
+      "https://github.com/ungoogled-software/ungoogled-chromium/issues/3812",
+      "https://github.com/NeverDecaf/chromium-web-store",
+      "https://privacytests.org/"
+    ]
+  },
+  "vieb": {
+    "why": "Vieb is a single-developer project with steady releases. It is GPL, has built-in adblock lists and privacy overrides (it strips userAgentData and spoofs device enumeration), and has no telemetry. In 2025 it fixed a remote-code-execution bug by enabling contextIsolation. It is vim-only, Electron-based and has a niche user base, so experience stays low.",
+    "sources": [
+      "https://github.com/Jelmerro/Vieb/releases",
+      "https://github.com/Jelmerro/Vieb"
+    ]
+  },
+  "vivaldi": {
+    "why": "Vivaldi's business model (search deals, no profiling) is clean, but privacytests puts its defaults near the bottom alongside Chrome/Opera, so 3 is a fair middle. It now has a built-in Proton VPN in addition to mail/feeds/calendar, which keeps minimalism at 1; RAM ~1.5 GB for 4 tabs.",
+    "sources": [
+      "https://vivaldi.com/blog/privacy-without-compromise-proton-vpn-is-now-built-into-vivaldi/",
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "waterfox": {
+    "why": "Waterfox has no telemetry, made Qwant its default search engine through a partnership, and got press for publicly refusing to build LLM features. Some people still distrust it because of the System1 ownership period, but nobody has documented current data abuse.",
+    "sources": [
+      "https://www.waterfox.com/docs/policies/privacy/",
+      "https://www.waterfox.com/releases/6.6.16/",
+      "https://www.theregister.com/software/2025/12/18/waterfox-browser-goes-ai-free-targets-the-firefox-faithful/1943869",
+      "https://en.wikipedia.org/wiki/System1"
+    ]
+  },
+  "wavebox": {
+    "why": "Wavebox is a paid, closed-source Chromium browser sold on Spaces and multi-account workspaces, with unified notifications and AI across the workspace. It has no native ad blocking (the vendor suggests an extension), and its own troubleshooting guide addresses performance problems. It fits heavy multi-app users rather than people who want a light or minimal browser.",
+    "sources": [
+      "https://hub.wavebox.io/is-wavebox-right-for-you-11-honest-answers-from-the-co-founder/",
+      "https://www.itechguides.com/products/wavebox/",
+      "https://blog.wavebox.io/performance-troubleshooting/"
+    ]
+  },
+  "wren": {
+    "why": "It is the rewrite of the open-source Flow Browser (Electron) on a Rust main process with embedded Chromium, so all Chrome extensions now work. It is still a 0.8 beta and macOS-only, and there is almost no independent review coverage yet. Experience is capped at 2/5 while it's early access: very new, pre-1.0, mostly one or two developers and a fast-moving release stream with many open issues.",
+    "sources": [
+      "https://wrenbrowser.com/",
+      "https://github.com/MultiboxLabs/flow-browser",
+      "https://alternativeto.net/software/flow-browser/about/",
+      "https://github.com/MultiboxLabs/wren-browser"
+    ]
+  },
+  "yab": {
+    "why": "Arc refugees on X are very enthusiastic about its polish, though most of that praise is quoted on Yab's own site. Testers flag WebKit extension compatibility as the risk, and it is still version 0.39. It is closed source and uses your own Claude or ChatGPT plan, asking before sending or paying. Sync is end-to-end encrypted.",
+    "sources": [
+      "https://yetanotherbrowser.com/",
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://www.ithinkdiff.com/arc-browser-alternatives-before-december-22/"
+    ]
+  },
+  "yandex-browser": {
+    "why": "Privacy remains 1: Yandex's own documentation says a unique ID, location and device specs are sent with no opt-out, and Yandex reportedly complied with a record ~93k Russian law-enforcement data requests. Still bundles Alice AI and Yandex services.",
+    "sources": [
+      "https://browser.yandex.com/help/en/personal-data-protection/data-collection",
+      "https://united24media.com/world/russian-tech-giant-yandex-handed-over-user-data-in-85-percent-of-government-requests-19871",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "zen-browser": {
+    "why": "Reviewers like Zen as the most polished Arc-style Firefox fork and it rebases on new Firefox releases within about 72 hours. Recurring GitHub complaints about memory growth and UI lag, plus a 2026 advisory that its updater ships without MAR signature verification, stop experience and privacy going higher.",
+    "sources": [
+      "https://efficient.app/apps/zen",
+      "https://docs.zen-browser.app/security",
+      "https://github.com/zen-browser/desktop/security/advisories/GHSA-qpj9-m8jc-mw6q",
+      "https://github.com/zen-browser/desktop/issues/14393"
+    ]
+  },
+  "strawberry": {
+    "why": "Out of beta since Oct 2026; coverage praises the agent \"companions\" but flags unclear data paths for each AI action, browsing memory, and credit-based pricing. Built around agents, meeting capture and a companion new-tab page, so minimalism is low. Vendor-run benchmarks only.",
+    "sources": [
+      "https://strawberrybrowser.com/",
+      "https://windowsforum.com/news/strawberry-1-0-ai-browser-for-windows-agent-features-pricing-and-it-security-review.450031/"
+    ]
+  }
+}

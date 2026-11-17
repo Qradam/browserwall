@@ -1,0 +1,234 @@
+{
+  "arc": {
+    "level": 1,
+    "agent": false,
+    "models": "OpenAI / Anthropic via Arc Max (vendor-chosen)",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": 2,
+    "notes": "Arc Max is an opt-in bundle: ChatGPT in the command bar, Ask on Page, 5-second link previews and tidy tab/download names, with little tab awareness. Arc is discontinued: no new accounts since Oct 22 2026, mobile AI off Nov 23, and the desktop app stops working Dec 22 2026.",
+    "sources": [
+      "https://arc.net/max",
+      "https://www.ghacks.net/2023/11/24/arc-max-features-for-windows-and-macos/",
+      "https://arc.net/"
+    ]
+  },
+  "dia": {
+    "level": 2,
+    "agent": false,
+    "models": "Claude Opus 4.8 (vendor-hosted; paid AI plans added Aug 2026)",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 4,
+    "notes": "The address bar and sidebar assistant can chat with several tabs, write drafts, and run Skills and connectors (Slack, Gmail, Notion). Reviewers rate it polished, but it does not click or fill forms for you. An agentic version was promised for fall 2026 but had not shipped as of Nov 1 2026. Akamai published prompt-injection research on Dia, and the omnibox auto-routes queries to the AI.",
+    "sources": [
+      "https://piunikaweb.com/2026/08/11/dia-agentic-browsing-coming-fall/",
+      "https://www.verisoul.ai/agents/dia",
+      "https://writingmate.ai/blog/ai-browser-agents-2026-comet-dia-fellou-polar-tested"
+    ]
+  },
+  "comet": {
+    "level": 3,
+    "agent": true,
+    "models": "Perplexity (Sonar) + subscriber choice of GPT/Claude/Gemini",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 3,
+    "notes": "The tab-aware Comet Assistant handles research, summaries and @tab context. Its agent mode can navigate and fill forms, is free, and now asks permission before acting. Paid Perplexity tiers give higher limits. It is the most capable agent in tests, but Brave and LayerX (CometJacking) showed repeated prompt-injection data exfiltration, and an audit found errors in its summaries.",
+    "sources": [
+      "https://www.itechguides.com/perplexity-comet-ai-browser-test-features-privacy-security-and-verdict/",
+      "https://brave.com/blog/comet-prompt-injection/",
+      "https://writingmate.ai/blog/ai-browser-agents-2026-comet-dia-fellou-polar-tested"
+    ]
+  },
+  "chatgpt-atlas": {
+    "level": 3,
+    "agent": true,
+    "models": "OpenAI GPT (ChatGPT)",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 3,
+    "notes": "Atlas had an Ask ChatGPT sidebar, browser memories, and an agent mode (Plus/Pro/Business only) that could navigate and act. Researchers quickly found prompt injections (omnibox jailbreak, memory poisoning). It is discontinued: OpenAI shut it down on Aug 9 2026, so none of this is usable any more.",
+    "sources": [
+      "https://help-lb.openai.com/en/articles/12628199-using-ask-chatgpt-sidebar-and-chatgpt-agent-on-atlas",
+      "https://openai.com/index/hardening-atlas-against-prompt-injection/",
+      "https://www.aiwiki.ai/wiki/chatgpt_atlas"
+    ]
+  },
+  "browseros": {
+    "level": 3,
+    "agent": true,
+    "models": "rate-limited default model, bring your own key, or Ollama/LM Studio; neo variant: external agents (Claude Code, Codex, MCP)",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": true,
+    "quality": 3,
+    "notes": "The main BrowserOS build has a built-in agent that clicks, navigates and fills forms. It ships with a rate-limited default model or uses your own keys or local models, which need 15K+ tokens of context. A separate BrowserOS neo build is a second browser driven by external MCP agents. HN and XDA readers like it as an open AGPL alternative to Comet, but whether you can fully switch off the AI UI is not documented.",
+    "sources": [
+      "https://docs.browseros.com/features/bring-your-own-llm",
+      "https://github.com/browseros-ai/BrowserOS",
+      "https://www.flowtools.co/browseros"
+    ]
+  },
+  "fellou": {
+    "level": 3,
+    "agent": true,
+    "models": "Fellou cloud (vendor models, not disclosed); Eko framework for custom agents",
+    "onByDefault": true,
+    "canDisable": "no",
+    "local": false,
+    "quality": 2,
+    "notes": "Deep Action plans multi-step tasks across sites and apps, and you can edit the plan before it runs. Deep Search, scheduled tasks and Computer Use are also included. It runs on credits: the free tier covers about 4 tasks and paid plans cost $19-$199/mo. Testers report loops and unreliable runs, and Brave and LayerX showed it was vulnerable to prompt injection.",
+    "sources": [
+      "https://fellou.ai",
+      "https://dbotmaker.io/review/fellou",
+      "https://writingmate.ai/blog/ai-browser-agents-2026-comet-dia-fellou-polar-tested"
+    ]
+  },
+  "aside": {
+    "level": 3,
+    "agent": true,
+    "models": "your ChatGPT or Claude subscription, or your own API key",
+    "onByDefault": true,
+    "canDisable": "no",
+    "local": false,
+    "quality": 3,
+    "notes": "This AI-first YC browser (June 2026) has an agent that works across your logged-in sites, with Ultrabrowse long runs, routines, on-device markdown memory, and a password manager that hides credentials from the AI. Payments, posts and messages wait for your confirmation. The free tier has limited credits and paid tiers add more. Early reviews call it promising but buggy and its benchmarks self-reported; no local model option is documented.",
+    "sources": [
+      "https://aside.com/",
+      "https://www.eesel.ai/blog/aside-ai-browser-review",
+      "https://aside.com/pricing"
+    ]
+  },
+  "sigmaos": {
+    "level": 1,
+    "agent": false,
+    "models": "OpenAI GPT-4o (Airis); Perplexity/ChatGPT Search selectable for Look it up",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 2,
+    "notes": "The Airis companion chats with the current page, explains selected text, simplifies pages into summaries and does web lookups, with no multi-tab or agent features. It is effectively abandoned: there has been no release since early 2025.",
+    "sources": [
+      "https://sigmaos.com/",
+      "https://sigmaos.com/updates/1-16-3",
+      "https://alternativeto.net/software/sigmaos/about/"
+    ]
+  },
+  "phi": {
+    "level": 3,
+    "agent": true,
+    "models": "Phi Cloud (default, account needed) or local models via LM Studio/Ollama",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": true,
+    "quality": 2,
+    "notes": "It has a proactive agent that clicks, types and navigates, keeps an action log, and adds memory stored in a readable local file, scheduled tasks and self-built skills. AI can be switched off entirely. Reviewers call the AI optional, but OpenHunts caught Phi Cloud claiming it had made a CSS change it never made. Whether the AI UI shows by default is unclear, so the conservative value is used.",
+    "sources": [
+      "https://github.com/phibrowser/phibrowser-mac",
+      "https://phibrowser.com/",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  "facet": {
+    "level": 3,
+    "agent": true,
+    "models": "Apple Intelligence (on-device) or bring your own AI, any provider",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": true,
+    "quality": 2,
+    "notes": "Agents in the sidebar work in your tabs, plus AI Peek summaries, Ask all tabs, Gist, voice commands and Sweep. Unlimited agents need the paid Founder tier, so the free tier is limited. First-run setup lets you turn AI completely off. There are very few independent reviews of the AI's quality.",
+    "sources": [
+      "https://facet.surf/",
+      "https://note.com/yasashii_tech/n/n66884ce6a2aa"
+    ]
+  },
+  "yab": {
+    "level": 3,
+    "agent": true,
+    "models": "your own Claude or ChatGPT plan; Claude Code/Codex/Cursor via MCP",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": 3,
+    "notes": "Your own Claude or ChatGPT account clicks, types and reads in your tabs while signed in as you. It asks before sending or paying, and also runs scheduled checks and self-updating folders. OpenHunts lists the AI as optional and it needs your existing plan. Arc users praise it, but there are few independent tests of the agent, and it is still at v0.39.",
+    "sources": [
+      "https://yetanotherbrowser.com/",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  "wren": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "No AI features are listed for the 0.8.0 beta; it positions itself as a small browser that never sends your browsing anywhere.",
+    "sources": [
+      "https://wrenbrowser.com/"
+    ]
+  },
+  "crest": {
+    "level": 0,
+    "agent": false,
+    "models": "none built in (external coding agents can use allowed Spaces)",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "There is no built-in assistant. Coding agents you run yourself can be allowed to drive specific Spaces, and page translation runs on-device. It is early access and its security has not been independently audited.",
+    "sources": [
+      "https://crestbrowser.com/",
+      "https://github.com/pauljoda/Crest"
+    ]
+  },
+  "ardia": {
+    "level": 0,
+    "agent": false,
+    "models": "none built in (bring your own Claude Code/Codex via the ardia CLI)",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Ardia has no AI by design: its site says nothing in Ardia calls a model. Your own Claude Code or Codex can drive it through the ardia CLI, which is an external agent rather than built-in AI.",
+    "sources": [
+      "https://ardia.dev/",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  "nook": {
+    "level": 3,
+    "agent": true,
+    "models": "bring your own: Gemini (default provider), OpenRouter, OpenAI-compatible, Ollama, Apple Intelligence",
+    "onByDefault": true,
+    "canDisable": "fully",
+    "local": true,
+    "quality": 2,
+    "notes": "The open-source app on GitHub has a sidebar AI chat whose browser tools can navigate, click and fill fields, with approval required for actions that change things. It also has Apple Intelligence tab organizing, link previews and Look It Up. The chat button is on by default but can be toggled off, and it needs your own key or a local model. It is a small, revived project with no independent reviews, and nookbrowser.app describes a separate Chromium beta with on-device-only AI.",
+    "sources": [
+      "https://github.com/nook-browser/Nook",
+      "https://nookbrowser.app/"
+    ]
+  },
+  "cursed-browser": {
+    "level": 1,
+    "agent": false,
+    "models": "a vision LLM (not specified in README)",
+    "onByDefault": true,
+    "canDisable": "no",
+    "local": false,
+    "quality": 1,
+    "notes": "This is a satirical open-source project in which a vision LLM reads a page's HTML and hallucinates an image of it instead of rendering it. The AI is the rendering engine, so it cannot be turned off. It is not an assistant and has no chat, page help or agent.",
+    "sources": [
+      "https://github.com/scosman/cursed_browser",
+      "https://daily.dev/posts/github---scosman-cursed-browser-a-web-browser-with-no-rendering-engine-the-vlm-reads-the-html-and-eozbv57wk"
+    ]
+  }
+}

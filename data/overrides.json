@@ -1,7 +1,7 @@
 {
   "_note": "Manual corrections applied after merging raw files. Verified 2026-11-17 via GitHub commit feeds (scripts/check-repos.mjs) and web search.",
   "elinks": {
-    "status": "maintenance",
+    "status": "active",
     "repo": "https://github.com/rkd77/elinks",
     "tags": [
       "text-mode",
@@ -21,7 +21,11 @@
     "status": "active"
   },
   "browsh": {
-    "status": "active"
+    "status": "active",
+    "tags": [
+      "text-mode",
+      "keyboard-driven"
+    ]
   },
   "luakit": {
     "status": "active"
@@ -179,7 +183,6 @@
     "tags": [
       "security-hardened",
       "ad-blocking",
-      "privacy",
       "vpn",
       "chrome-extensions"
     ]
@@ -190,7 +193,6 @@
     "tags": [
       "security-hardened",
       "ad-blocking",
-      "privacy",
       "vpn",
       "chrome-extensions"
     ]
@@ -200,7 +202,6 @@
     "tags": [
       "security-hardened",
       "ad-blocking",
-      "privacy",
       "chrome-extensions"
     ],
     "description": "Norton's free Chromium browser that blocks phishing, malicious downloads and ad trackers; pairs with Norton's security suite.",
@@ -213,7 +214,6 @@
     "status": "active",
     "description": "Chromium browser that always runs in private mode, blocks trackers and fingerprinting, with a free built-in encrypted proxy (VPN).",
     "tags": [
-      "privacy",
       "ad-blocking",
       "vpn",
       "chrome-extensions"
@@ -226,7 +226,6 @@
       "https://alohabrowser.com/pc/"
     ],
     "tags": [
-      "privacy",
       "vpn",
       "ad-blocking",
       "chrome-extensions"
@@ -238,7 +237,8 @@
       "vpn",
       "ad-blocking",
       "workspaces",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ai"
     ]
   },
   "vivaldi": {
@@ -248,7 +248,112 @@
       "workspaces",
       "split-view",
       "vpn",
+      "chrome-extensions",
+      "vertical-tabs",
+      "ad-blocking"
+    ]
+  },
+  "avira-secure-browser": {
+    "tags": [
+      "security-hardened",
+      "ad-blocking",
       "chrome-extensions"
+    ]
+  },
+  "opera-air": {
+    "tags": [
+      "mainstream",
+      "chrome-extensions"
+    ]
+  },
+  "ecosia-browser": {
+    "tags": [
+      "chrome-extensions",
+      "mainstream"
+    ]
+  },
+  "min": {
+    "tags": [
+      "minimal",
+      "ad-blocking",
+      "privacy"
+    ]
+  },
+  "thorium": {
+    "tags": [
+      "performance",
+      "chrome-extensions"
+    ]
+  },
+  "firefox": {
+    "tags": [
+      "mainstream",
+      "firefox-addons",
+      "privacy",
+      "sync",
+      "developer",
+      "vertical-tabs"
+    ]
+  },
+  "brave": {
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "crypto",
+      "chrome-extensions",
+      "sync",
+      "vertical-tabs",
+      "ai",
+      "tor"
+    ]
+  },
+  "midori": {
+    "tags": [
+      "ad-blocking",
+      "workspaces",
+      "vpn",
+      "firefox-addons"
+    ],
+    "description": "Astian's Gecko browser rebuilt from Floorp code, with ad blocking, workspaces, its own sync, search and a bundled MidoriVPN."
+  },
+  "orion": {
+    "os": [
+      "macos"
+    ],
+    "description": "Kagi's privacy-focused WebKit browser for macOS that supports both Chrome and Firefox extensions. Kagi ended the Linux beta in October 2026.",
+    "sources": [
+      "https://kagi.com/orion/",
+      "https://en.wikipedia.org/wiki/Orion_(web_browser)",
+      "https://blog.kagi.com/update-orion-linux-windows"
+    ]
+  },
+  "brave-origin": {
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "minimal",
+      "chrome-extensions",
+      "vertical-tabs"
+    ]
+  },
+  "brave-beta": {
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "experimental",
+      "chrome-extensions",
+      "vertical-tabs",
+      "tor"
+    ]
+  },
+  "brave-nightly": {
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "experimental",
+      "developer",
+      "vertical-tabs",
+      "tor"
     ]
   }
 }

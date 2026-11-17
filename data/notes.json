@@ -1,0 +1,11 @@
+{
+  "_note": "Short factual 'good to know' notes shown in the browser details dialog. Facts only, no recommendations.",
+  "avast-secure-browser": "Avast sold users' browsing data through its Jumpshot subsidiary until 2020 (FTC settlement in 2024).",
+  "avg-secure-browser": "Same Gen Digital codebase and company as Avast Secure Browser.",
+  "avira-secure-browser": "Owned by Gen Digital, the company behind Avast, AVG and Norton. Bundled with Avira's antivirus products.",
+  "norton-private-browser": "Gen Digital also ships Norton Neo, a separate AI-focused browser.",
+  "yandex-browser": "Data goes to a company under Russian jurisdiction and its data-access laws.",
+  "crest": "Early access: started in August 2026 and still pre-1.0 (0.10 nightlies), with most commits from one developer working with AI coding agents. Its site says security hasn't been independently audited.",
+  "ardia": "Early access: started in June 2026, ships 0.2 nightly builds and has around 800 open issues. Developed largely with AI coding agents.",
+  "wren": "A rewrite of Flow Browser: the current project started in October 2026 (v0.8) and is built by one developer."
+}

@@ -5,10 +5,12 @@ const ENGINES = new Set(["blink", "gecko", "webkit", "goanna", "servo", "ladybir
 const OSES = new Set(["windows", "macos", "linux", "bsd", "other"]);
 const STATUSES = new Set(["active", "maintenance", "discontinued"]);
 const TAGS = new Set(("privacy de-googled ad-blocking security-hardened tor vertical-tabs workspaces split-view " +
-  "keyboard-driven power-user customizable minimal lightweight old-hardware performance gaming ai crypto " +
+  "keyboard-driven power-user customizable minimal lightweight old-hardware gaming ai crypto " +
   "developer sync mainstream chrome-extensions firefox-addons independent-engine text-mode retro portable " +
   "regional enterprise experimental meme rip vpn").split(" "));
 
+// Retired tags, dropped silently from raw data: "performance" was a vague speed claim, and we deliberately don't score speed.
+const RETIRED_TAGS = new Set(["performance"]);
 // Same browser under different ids across files -> canonical id.
 const ALIASES = {
   "webpositive": "haiku-webpositive", "mypal-68": "mypal68", "flow": "flow-browser",
@@ -49,14 +51,22 @@ const dropped = [...byId.keys()].filter((id) => !include.has(id));
 for (const id of dropped) byId.delete(id);
 writeFileSync("data/dropped.txt", dropped.sort().join("\n") + "\n");
 
+// Built-in AI (data/ai.json) drives the "ai" tag; channels inherit from their parent (data/channels.json).
+const AI = JSON.parse(readFileSync("data/ai.json", "utf8"));
+const CHANNELS = JSON.parse(readFileSync("data/channels.json", "utf8"));
+for (const id of Object.keys(AI)) if (!id.startsWith("_") && !byId.has(id)) problems.push(`ai.json: unknown id ${id}`);
+const aiOf = (id) => AI[id] ?? AI[CHANNELS[id]] ?? null;
+
 const out = [];
 for (const e of byId.values()) {
   if (!ENGINES.has(e.engine)) problems.push(`${e.id}: bad engine ${e.engine}`), (e.engine = "other");
   e.os = (e.os ?? []).filter((o) => OSES.has(o) || !problems.push(`${e.id}: bad os ${o}`));
   if (!STATUSES.has(e.status)) problems.push(`${e.id}: bad status ${e.status}`), (e.status = "active");
-  e.tags = [...new Set((e.tags ?? []).filter((t) => TAGS.has(t) || !problems.push(`${e.id}: bad tag ${t}`)))];
+  e.tags = [...new Set((e.tags ?? []).filter((t) => !RETIRED_TAGS.has(t)).filter((t) => TAGS.has(t) || !problems.push(`${e.id}: bad tag ${t}`)))];
   if (e.status === "discontinued" && !e.tags.includes("rip")) e.tags.push("rip");
   if (e.status !== "discontinued") e.tags = e.tags.filter((t) => t !== "rip");
+  e.tags = e.tags.filter((t) => t !== "ai");
+  if ((aiOf(e.id)?.level ?? 0) >= 2) e.tags.push("ai"); // basic summaries/chat (level 1) don't earn the badge
   out.push({
     id: e.id, name: e.name, engine: e.engine, basedOn: e.basedOn ?? null, os: e.os, status: e.status,
     openSource: !!e.openSource, description: e.description ?? "", tags: e.tags,
@@ -88,6 +98,17 @@ for (const e of out) {
   e.scores = { privacy, experience, customisation, lightness, minimalism, ...(s.low ? { lowConfidence: true } : {}) };
 }
 for (const id of Object.keys(rawScores)) if (!id.startsWith("_") && !byId.has(id)) problems.push(`scores: unknown id ${id}`);
+// Tags that claim a quality must agree with the matching score, otherwise filters and scores contradict each other.
+const TAG_FLOORS = { privacy: "privacy", minimal: "minimalism", lightweight: "lightness", "old-hardware": "lightness", customizable: "customisation" };
+for (const e of out) {
+  if (!e.scores) continue;
+  for (const [tag, key] of Object.entries(TAG_FLOORS))
+    if (e.tags.includes(tag) && e.scores[key] < (tag === "privacy" ? 3 : 4)) problems.push(`consistency: ${e.id} tagged ${tag} but ${key}=${e.scores[key]}`);
+  // AI only counts as clutter when it's on by default and can't be fully switched off.
+  const ai = aiOf(e.id), aiClutter = ai && ai.level > 0 && ai.onByDefault && ai.canDisable !== "fully";
+  if (e.scores.minimalism >= 4 && (aiClutter || e.tags.some((t) => ["vpn", "crypto"].includes(t))) && !e.tags.includes("meme"))
+    problems.push(`consistency: ${e.id} has built-in extras but minimalism=${e.scores.minimalism}`);
+}
 out.sort((a, b) => a.name.localeCompare(b.name));
 mkdirSync("src/data", { recursive: true });
 writeFileSync("src/data/browsers.json", JSON.stringify(out, null, 2) + "\n");

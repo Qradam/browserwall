@@ -1,0 +1,120 @@
+{
+  "avast-secure-browser": {
+    "scores": [1, 3, 2, 2, 1],
+    "confidence": "medium",
+    "changes": "experience 2 -> 3: it is a current, stable Chromium build with full site compatibility; its intrusive onboarding nags, ad tiles and default-browser hijacking complaints pull it below Edge/Yandex (4) but don't make it rough or alpha-grade. Privacy stays 1 because of the FTC Jumpshot case and the 2024 order.",
+    "evidence": "In 2024 the FTC finalised an order banning Avast from selling browsing data and fining it $16.5M over Jumpshot, and refunds went out in 2025-2026. Wladimir Palant's 2024 audit found 11 preinstalled extensions (Coupons, Video Downloader, VPN, AI Chat, Side Panel, messaging that Avast servers can drive), a Bing default and ads on the new tab, and he advised running it only in a VM. Avast's own forums are full of 'installed without permission' and 'changed my default browser' threads.",
+    "sources": [
+      "https://search.ftc.gov/news-events/news/press-releases/2024/06/ftc-finalizes-order-avast-banning-it-selling-or-licensing-web-browsing-data-advertising-requiring-it",
+      "https://palant.info/2024/07/15/how-insecure-is-avast-secure-browser/",
+      "https://community.avast.com/t/avast-secure-browser-keeps-changing-default-browser-settings-without-permission/773887",
+      "https://search.ftc.gov/enforcement/refunds/avast-settlement"
+    ]
+  },
+  "avg-secure-browser": {
+    "scores": [1, 3, 2, 2, 1],
+    "confidence": "medium",
+    "changes": "experience 2 -> 3, the same reasoning as avast-secure-browser, because it is the same rebranded codebase. Privacy stays 1: the FTC complaint covers AVG-branded product data sent to Jumpshot.",
+    "evidence": "Palant notes that the Avast browser is pushed under AVG, Avira, Norton and CCleaner names with only branding and the extension mix differing. MalwareTips users describe AVG and Avast as identical under the hood. AVG's own Jumpshot settlement FAQ confirms that AVG users are eligible for compensation.",
+    "sources": [
+      "https://palant.info/2024/07/15/how-insecure-is-avast-secure-browser/",
+      "https://support.avg.com/SupportArticleView?l=en&supportType=home&urlName=avg-jumpshot-settlement-faqs-uk",
+      "https://malwaretips.com/threads/here-is-what-ai-has-to-say-about-avast-norton-avg-and-avira-or-what-mwt-calls-norvast.141867/latest"
+    ]
+  },
+  "avira-secure-browser": {
+    "scores": [2, 3, 2, 2, 1],
+    "confidence": "medium",
+    "changes": "experience 2 -> 3, for consistency with the rest of the Gen Chromium family (stable, current Chromium, works everywhere, but has nags and upsells). Privacy stays 2 rather than 1: it shares Gen's codebase and Bing-default model, but the Avira brand wasn't part of the Jumpshot data sales.",
+    "evidence": "2026 reviews rate it as a middling Chrome alternative (iTechGuides 7.1/10). They praise Privacy Guard and Extension Guard, and note it has no VPN and is desktop-only. Security researchers treat it as a rebrand of Avast Secure Browser with the same preinstalled-extension design.",
+    "sources": [
+      "https://www.itechguides.com/products/avira-secure-browser/",
+      "https://support.avira.com/hc/en-us/articles/13707860217233-Avira-Secure-Browser-FAQs",
+      "https://palant.info/2024/07/15/how-insecure-is-avast-secure-browser/"
+    ]
+  },
+  "norton-private-browser": {
+    "scores": [2, 3, 2, 2, 1],
+    "confidence": "medium",
+    "changes": "minimalism 2 -> 1: the late-2025 update added a side panel with a 'Smart Chat' AI assistant, Secure Notes and other modules, plus in-browser antivirus scanning. lightness 3 -> 2: it's the same Gen codebase as Avast with its stack of internal extensions, so it's aligned with Avast/AVG. This replaces the low-confidence guess; privacy 2 and experience 3 stay.",
+    "evidence": "Norton's own blog describes the 'seven upgrades' release, which brought built-in AV, an AI chat side panel and productivity modules. 2026 reviews say Privacy Guard ad and tracker blocking is solid but sync is limited. Palant lists Norton among the brands that ship the Avast Secure Browser codebase.",
+    "sources": [
+      "https://us.norton.com/blog/privacy-tips/seven-upgrades-to-norton-private-browser",
+      "https://www.itechguides.com/products/norton-private-browser/",
+      "https://palant.info/2024/07/15/how-insecure-is-avast-secure-browser/"
+    ]
+  },
+  "internet-explorer": {
+    "scores": [1, 1, 1, 3, 2],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "IE11 support ended in June 2022 and the desktop app was permanently disabled via an Edge update in February 2023. Microsoft says it gets no security updates, and only Edge's IE mode survives. Under the rubric, an abandoned, unpatched browser gets privacy 1 and experience 1.",
+    "sources": [
+      "https://techcommunity.microsoft.com/blog/windows-itpro-blog/internet-explorer-11-desktop-app-retirement-faq/2366549",
+      "https://learn.microsoft.com/en-us/lifecycle/faq/internet-explorer-microsoft-edge"
+    ]
+  },
+  "netscape-navigator": {
+    "scores": [1, 1, 1, 4, 1],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "AOL stopped development in December 2007 and security updates ended on 1 March 2008, so it has been unpatched for 18 years and can't handle modern TLS or JS. Minimalism 1 reflects the historic Communicator/9.x bundling of mail, news and other extras.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Netscape_Navigator",
+      "https://en.wikipedia.org/wiki/Netscape_Navigator_9"
+    ]
+  },
+  "lynx": {
+    "scores": [4, 1, 2, 5, 5],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "It is still actively maintained by Thomas Dickey: 2.9.3 shipped in May 2026 and 2.9.4 is in development. Users praise its speed, its tiny footprint and that it runs no JS, so it has little tracking or fingerprinting surface. It has no JS, images or tabs, so most modern sites break, which keeps experience at 1. It isn't 5 on privacy because it has no deliberate anti-fingerprinting and its UA is distinctive.",
+    "sources": [
+      "https://lynx.invisible-island.net/release/",
+      "https://www.baeldung.com/linux/text-mode-web-browsers",
+      "https://cssence.com/2026/text-based-web-browsers/"
+    ]
+  },
+  "elinks": {
+    "scores": [4, 1, 3, 5, 5],
+    "confidence": "medium",
+    "changes": "customisation 2 -> 3: ELinks has extensive options, keybindings, colour schemes and Lua/Guile/Python/Ruby scripting hooks, which is notably deeper than Lynx. Also note that it is actively developed (rkd77 fork v0.20.0, July 2026), so the 'maintenance' status in browsers.json looks stale.",
+    "evidence": "The rkd77 fork ships regular releases with libcss, experimental JS (mozjs/quickjs-ng), sixel/kitty images, gemini and SVG. Comparisons describe it as the most feature-rich and scriptable text browser, but still text-mode with spotty modern-site support.",
+    "sources": [
+      "https://github.com/rkd77/elinks/releases",
+      "https://github.com/rkd77/elinks/blob/master/README.md",
+      "https://www.baeldung.com/linux/text-mode-web-browsers"
+    ]
+  },
+  "browsh": {
+    "scores": [4, 1, 2, 2, 4],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Its last release was v1.8.3 in January 2024. Development is slow, with 227 open issues (several from 2025-2026, including a report that a release had missing files), but the repo still gets occasional pushes. It drives the user's own up-to-date headless Firefox, so patching and privacy follow Firefox, but you pay full Firefox RAM plus the Go front-end. Reviewers see it as a clever niche tool rather than a daily driver.",
+    "sources": [
+      "https://github.com/browsh-org/browsh/issues",
+      "https://github.com/browsh-org/browsh",
+      "https://www.linuxfordevices.com/tutorials/linux/top-text-based-web-browsers"
+    ]
+  },
+  "cursed-browser": {
+    "scores": [2, 1, 1, 4, 3],
+    "confidence": "medium",
+    "changes": "privacy 3 -> 2: every page's raw HTML is sent to OpenAI (GPT text model, then gpt-image-2), so a data/AI company sees your entire browsing. lightness 3 -> 4: it's a tiny native SwiftUI macOS app that only displays a PNG, with no local JS or layout engine, because the heavy work happens remotely.",
+    "evidence": "This is an open-source gag project (around 280 stars) whose own spec calls it a joke. It has a single window, no tabs, back/forward buttons that do nothing, and needs an OpenAI API key that you re-enter on every launch. Each page is 'rendered' by an image model hallucinating the layout, so it's unusable for real browsing. Minimalism stays 3 because the 'ai' tag caps it.",
+    "sources": [
+      "https://github.com/scosman/cursed_browser",
+      "https://github.com/scosman/cursed_browser/blob/main/specs/projects/cursed_browser/functional_spec.md"
+    ]
+  },
+  "pissandshittium": {
+    "scores": [1, 1, 2, 2, 3],
+    "confidence": "medium",
+    "changes": "privacy 3 -> 1: its own FAQ says it has had no zero-day patches since 2023, and the latest release is still Chromium 121, so under the rubric it counts as unpatched. experience 2 -> 1: the site warns that the latest build is somewhat broken and the author admits he can't fix the bugs. lightness 3 -> 2: it has a stock Chromium footprint, like Chrome. This replaces the low-confidence guess.",
+    "evidence": "It's a joke Chromium fork that started after a Discord hot take. It changes UI strings, adds colours like 'Literal Shit' and has easter eggs, and its Windows builds embed the author's Google API keys. The repo has around 300 stars, and its own FAQ, along with Reddit and Brodie Robertson coverage, treat it purely as a meme and say not to daily-drive it.",
+    "sources": [
+      "https://pissandshittium.org/",
+      "https://github.com/Pissandshittium/pissandshittium"
+    ]
+  }
+}

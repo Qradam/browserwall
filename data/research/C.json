@@ -1,0 +1,137 @@
+{
+  "zen-browser": {
+    "scores": [4, 4, 4, 3, 4],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Reviewers like Zen as the most polished Arc-style Firefox fork and it rebases on new Firefox releases within about 72 hours. Recurring GitHub complaints about memory growth and UI lag, plus a 2026 advisory that its updater ships without MAR signature verification, stop experience and privacy going higher.",
+    "sources": [
+      "https://efficient.app/apps/zen",
+      "https://docs.zen-browser.app/security",
+      "https://github.com/zen-browser/desktop/security/advisories/GHSA-qpj9-m8jc-mw6q",
+      "https://github.com/zen-browser/desktop/issues/14393"
+    ]
+  },
+  "floorp": {
+    "scores": [4, 4, 5, 3, 2],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Floorp follows the Firefox rapid-release cycle closely (v12.21.x on Firefox 159/160, same-week security fixes) and is still widely called the most customisable Firefox fork. It keeps adding built-ins (workspaces with sync, notes, tab stacks, web apps, sidebars, command palette). Occasional memory-growth and freeze regressions get fixed quickly.",
+    "sources": [
+      "https://blog.floorp.app/",
+      "https://blog.rottenwifi.com/best-firefox-based-browsers-for-a-customizable-interface/",
+      "https://www.cloudspress.com/floorp-browser-review-what-japans-firefox-fork-offers-and-where-it-falls-short/"
+    ]
+  },
+  "waterfox": {
+    "scores": [4, 4, 5, 3, 4],
+    "confidence": "medium",
+    "changes": "experience 3->4: Waterfox ships a close-to-stock, unhardened Firefox experience with regular releases, so it has no reason to score below Firefox-like forks with similar polish. Privacy stays 4: BrowserWorks is independent again after the 2020-2023 System1 period, and it now earns money through a Qwant search deal rather than ads or telemetry.",
+    "evidence": "Waterfox has no telemetry, made Qwant its default search engine through a partnership, and got press for publicly refusing to build LLM features. Some people still distrust it because of the System1 ownership period, but nobody has documented current data abuse.",
+    "sources": [
+      "https://www.waterfox.com/docs/policies/privacy/",
+      "https://www.waterfox.com/releases/6.6.16/",
+      "https://www.theregister.com/software/2025/12/18/waterfox-browser-goes-ai-free-targets-the-firefox-faithful/1943869",
+      "https://en.wikipedia.org/wiki/System1"
+    ]
+  },
+  "firedragon": {
+    "scores": [4, 3, 4, 3, 4],
+    "confidence": "medium",
+    "changes": "customisation 5->4 and minimalism 3->4: v13 (July 2026) dropped the Floorp base and was rewritten on Firefox with LibreWolf patches. That removes Floorp's extra UI features, leaving a Lepton skin and its own settings page, and the only bundled add-ons are now uBlock Origin and Flagfox (Dark Reader was removed).",
+    "evidence": "Reviewers call v13 a solid Firefox/LibreWolf-style browser, but It's FOSS reported rough edges: it ignored dark mode on websites and showed an unhideable title bar on GNOME. Sync is on by default and goes through a Garuda-run server.",
+    "sources": [
+      "https://itsfoss.com/news/firedragon-v13-release/",
+      "https://linuxiac.com/firedragon-v13-released-as-a-complete-rewrite-of-garuda-linux-browser/",
+      "https://flathub.org/kab/apps/org.garudalinux.firedragon"
+    ]
+  },
+  "pale-moon": {
+    "scores": [3, 2, 4, 4, 4],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Pale Moon still ships regular security releases (34.x, then 35.0 in Sept 2026) and keeps adding compatibility shims for modern sites. Its forum still has a steady stream of site breakages, and mainstream add-ons like uBlock Origin and Privacy Badger don't work, so it stays at neutral privacy and low experience.",
+    "sources": [
+      "https://alternativeto.net/news/2026/9/pale-moon-35-targets-modern-site-compatibility-with-shims/",
+      "https://forum.palemoon.org/viewtopic.php?t=31417",
+      "https://forum.palemoon.org/viewtopic.php?t=30684"
+    ]
+  },
+  "r3dfox": {
+    "scores": [3, 3, 4, 4, 3],
+    "confidence": "medium",
+    "changes": "privacy 4->3: it is a single-maintainer build aimed at Windows 7/8/XP, which no longer get OS patches, and the maintainer says builds are not extensively stability-tested and some still lag upstream. customisation 3->4: it keeps Firefox's extension and CSS depth and adds its own theme toggles.",
+    "evidence": "Retro-computing users value r3dfox as the way to run modern Firefox (ESR 153 era) on Vista, 7 and XP, with LibreWolf tweaks and telemetry removed. Release notes are candid that the XP builds are experimental and that some features (native controls, accessibility, GDI) were dropped.",
+    "sources": [
+      "https://github.com/Eclipse-Community/r3dfox/releases",
+      "https://sourceforge.net/projects/r3dfox/",
+      "https://www.neoteo.com/fr/eclipse-r3dfox-un-fork-de-firefox-moderne-pour-windows-7-et-8x"
+    ]
+  },
+  "glide-browser": {
+    "scores": [4, 2, 5, 3, 4],
+    "confidence": "medium",
+    "changes": "lightness 4->3: Glide is a patch set on current Firefox, so its footprint should match Firefox and nobody claims it is lighter. The other scores are confirmed: the site says it is alpha, and the Windows builds are experimental and unsigned.",
+    "evidence": "HN and blog coverage praise its TypeScript config, modal Vim keymaps and hint API as deeper than anything an extension can do, and note that tracking Firefox upstream keeps security fixes flowing. The developer admits motions and docs are incomplete.",
+    "sources": [
+      "https://glide-browser.app/",
+      "https://news.ycombinator.com/item?id=45430294",
+      "https://korben.info/en/glide-hackable-firefox-fork-vim.html"
+    ]
+  },
+  "ladybird": {
+    "scores": [4, 1, 1, 4, 5],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "In November 2026 Ladybird is still pre-alpha and you have to build it from source; the alpha is promised for later this year. Monthly updates add basics like private windows, profiles, session restore and auto-updating filter lists. A Trail of Bits audit found full exploit chains that are being fixed. The nonprofit, no-monetisation model justifies privacy 4.",
+    "sources": [
+      "https://ladybird.org/",
+      "https://piunikaweb.com/2026/10/06/ladybird-browser-alpha-update/",
+      "https://piunikaweb.com/2026/08/06/ladybird-private-browsing-profiles/"
+    ]
+  },
+  "servo": {
+    "scores": [4, 1, 1, 4, 5],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Servo ships monthly 0.x releases (0.4 in 2026) with better layout on real sites. Phoronix still says servoshell is a demo browser not fit for daily use, and it can't finish benchmarks like Speedometer 3.",
+    "sources": [
+      "https://www.phoronix.com/news/Servo-0.3-Released",
+      "https://github.com/servo/servo/issues/46070",
+      "https://book.servo.org/"
+    ]
+  },
+  "midori": {
+    "scores": [2, 3, 3, 3, 2],
+    "confidence": "medium",
+    "changes": "privacy 4->2: Astian pushes its own MidoriVPN from the side panel and its own AstianGO search. PrivacyGuides flagged the takeover as suspicious, noting a crypto token, stripped commit histories and a search engine that leaks queries to third parties. minimalism 4->2 for the bundled VPN, search and ecosystem panels. lightness 4->3 because it is a Gecko/Floorp build with a normal Firefox footprint, and customisation 2->3 for its Floorp-derived workspaces and the Midori Center settings panel.",
+    "evidence": "The privacy community regards modern Midori as a rebranded Floorp/Firefox fork from a company with low transparency, not as a continuation of the original lightweight WebKitGTK Midori. It does work as a normal Gecko browser with a built-in ad blocker and no telemetry claimed.",
+    "sources": [
+      "https://discuss.privacyguides.net/t/midori-browser-gecko-browser-for-desktop-android/15027",
+      "https://astian.org/midori-browser/features/",
+      "https://github.com/void-linux/void-packages/issues/48065"
+    ]
+  },
+  "falkon": {
+    "scores": [3, 3, 3, 4, 4],
+    "confidence": "medium",
+    "changes": "privacy 4->3: QtWebEngine runs several Chromium major versions behind (e.g. Chromium 122 vs 133 at Qt 6.8), and security backports depend on Qt and distro packaging. This is the same lag penalty applied to lagging Firefox forks.",
+    "evidence": "Users describe Falkon as simple, de-Googled-Chromium-like and fine for most sites. 2026 KDE forum threads report freezes, zombie renderer processes and breakage on heavy modern sites, and one review notes the simple UI doesn't guarantee low RAM. Lightness stays 4 because those reports are anecdotal.",
+    "sources": [
+      "https://www.osnews.com/story/141265/the-state-of-falkon-kdes-browser-is-much-better-than-you-know/",
+      "https://discuss.kde.org/t/falkon-browser-wide-scale-site-breakages-and-severe-performance-lag-on-linux-mint-xfce/49088",
+      "https://www.itechguides.com/6-lesser-known-browsers-free-lightweight-and-low-maintenance/",
+      "https://news.ycombinator.com/item?id=43297590"
+    ]
+  },
+  "epiphany": {
+    "scores": [4, 3, 2, 4, 5],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "GNOME Web is actively maintained (50.x in 2026) and stays deliberately opinionated: built-in ad and tracker blocking, no WebExtension ecosystem worth the name, and a clean GNOME UI. Compatibility depends on the WebKitGTK version your distro ships, and some video and web-app sites misbehave.",
+    "sources": [
+      "https://www.cloudspress.com/is-gnome-web-epiphany-good-to-use-in-2026/",
+      "https://wiki.gnome.org/Apps/Web/Docs/FrequentlyAskedQuestions",
+      "https://github.com/GNOME/epiphany/blob/master/README.md"
+    ]
+  }
+}

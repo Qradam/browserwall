@@ -1,0 +1,22 @@
+---
+// browserwall mark: a raised tile holding a wall of browser "bricks", with the one you found lit up.
+// "small" has bigger, brighter bricks so it still reads at 16-28px (header, favicon).
+interface Props { size?: number; variant?: "small" | "large"; class?: string }
+const { size = 24, variant = size <= 32 ? "small" : "large", class: cls } = Astro.props;
+const id = `bw${variant[0]}`;
+const s = variant === "small"
+  ? { dim: 0.34, bricks: [[9, 11, 22, 12], [33, 11, 22, 12], [9, 26, 8, 12], [47, 26, 8, 12], [9, 41, 22, 12], [33, 41, 22, 12]], lit: [20, 26, 24, 12], r: 3.5, top: "#303033" }
+  : { dim: 0.16, bricks: [[12, 15, 19, 10], [33, 15, 19, 10], [12, 27, 8, 10], [44, 27, 8, 10], [12, 39, 19, 10], [33, 39, 19, 10]], lit: [22, 27, 20, 10], r: 3, top: "#2c2c2e" };
+---
+<svg class:list={["logo-mark", cls]} width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id={`${id}-fill`} x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color={s.top} /><stop offset="1" stop-color="#141415" /></linearGradient>
+    <linearGradient id={`${id}-sheen`} x1="0" y1="0" x2="0" y2="34" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity=".10" /><stop offset="1" stop-color="#fff" stop-opacity="0" /></linearGradient>
+    <linearGradient id={`${id}-lit`} x1="0" y1={s.lit[1]} x2="0" y2={s.lit[1] + s.lit[3]} gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffffff" /><stop offset="1" stop-color="#d4d4d8" /></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill={`url(#${id}-fill)`} />
+  <rect width="64" height="64" rx="15" fill={`url(#${id}-sheen)`} />
+  <rect x=".75" y=".75" width="62.5" height="62.5" rx="14.25" stroke="#fff" stroke-opacity=".09" stroke-width="1.5" />
+  <g fill="#fff" fill-opacity={s.dim}>{s.bricks.map(([x, y, w, h]) => <rect x={x} y={y} width={w} height={h} rx={s.r} />)}</g>
+  <rect class="lit" x={s.lit[0]} y={s.lit[1]} width={s.lit[2]} height={s.lit[3]} rx={s.r} fill={`url(#${id}-lit)`} />
+</svg>

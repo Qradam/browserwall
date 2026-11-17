@@ -1,0 +1,64 @@
+---
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import RankedList, { type Item } from "../../components/RankedList.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import { CATEGORIES, categoryResults, fillYear, quizLink, UPDATED, breadcrumbLd, faqLd, itemListLd, type Category } from "../../lib/seo";
+
+export function getStaticPaths() {
+  return CATEGORIES.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props as { c: Category };
+const results = categoryResults(c).slice(0, 10);
+const h1 = fillYear(c.title);
+const items: Item[] = results.map((r) => ({
+  b: r.browser,
+  badges: r.browser.scores.lowConfidence ? ["estimate"] : [],
+  lines: [
+    ...(r.reasons.length ? [{ label: "Strengths:", text: r.reasons.join(" · "), tone: "good" as const }] : []),
+    ...(r.browser.ai && r.wanted.some((w) => w.label.startsWith("AI")) ? [{ label: "AI:", text: `${r.browser.ai.models} – quality ${r.browser.ai.quality ?? "?"}/5${r.browser.ai.agentPaid ? ", agent needs a paid plan" : ""}` }] : []),
+    ...(r.browser.scores.privacy <= 2 ? [{ label: "Watch out:", text: `privacy ${r.browser.scores.privacy}/5`, tone: "warn" as const }] : []),
+    ...(r.browser.price ? [{ label: "Price:", text: r.browser.price.note, tone: "warn" as const }] : []),
+  ],
+}));
+const faq = [
+  ...(c.faq ?? []).map((f) => ({ q: fillYear(f.q), a: f.a(results) })),
+  { q: "How is this list ranked?", a: `With the same engine as the browserwall quiz: ${c.how} Scores are editorial 1–5 ratings for privacy, out-of-box experience, customisation, lightness and minimalism, checked against reviews, community opinion and tests. Discontinued, beta, developer-only and experimental browsers are left out.` },
+];
+const crumbs = [{ name: "Guides", href: "/best" }, { name: h1, href: `/best/${c.slug}` }];
+const title = `${h1} (ranked, updated ${UPDATED}) – browserwall`;
+const description = `${c.intro} Top picks: ${results.slice(0, 3).map((r) => r.browser.name).join(", ")}. Personalise the list with the 2-minute browser quiz.`.slice(0, 300);
+const jsonLd = [itemListLd(Astro.site, h1, results.map((r) => r.browser)), breadcrumbLd(Astro.site, crumbs), faqLd(faq)];
+const related = CATEGORIES.filter((x) => x.slug !== c.slug);
+---
+<Base title={title} description={description} jsonLd={jsonLd} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Guide</p>
+    <h1>{h1}</h1>
+    <p class="lede">{c.intro}</p>
+    <p class="updated">Updated {UPDATED} · {results.length} picks · ranked by the quiz engine</p>
+
+    <QuizCta href={quizLink(c.state)} title="Make this list yours" text="This ranking uses fixed answers. Open it in the quiz to set your own OS, extensions, priorities and must-haves." label="Personalise in the quiz" />
+
+    <RankedList items={items} />
+
+    <section aria-labelledby="how">
+      <h2 id="how">How we ranked</h2>
+      <p class="prose">{c.how} Each browser has editorial 1–5 scores for privacy, out-of-box experience, customisation, lightness and minimalism, re-checked against reviews, community opinion and tests in November 2026. Discontinued, beta/nightly, developer-only, experimental and meme browsers are left out, as are browsers with a history of selling user data. Click any browser for its full profile and sources.</p>
+    </section>
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f) => <details open={faq.indexOf(f) === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+
+    <QuizCta />
+
+    <section aria-labelledby="more">
+      <h2 id="more">More guides</h2>
+      <ul class="linkgrid">{related.map((x) => <li><a href={`/best/${x.slug}`}>{x.short}</a></li>)}</ul>
+    </section>
+  </article>
+</Base>

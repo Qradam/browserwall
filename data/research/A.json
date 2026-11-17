@@ -1,0 +1,204 @@
+{
+  "google-chrome": {
+    "scores": [2, 5, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "minimalism 3->2: since Jan 2026 Gemini in Chrome ships as a persistent side panel and toolbar entry with Connected Apps, Nano Banana image editing and (for paid tiers) agentic auto browse, so AI is now a default part of the UI rather than an optional extra.",
+    "evidence": "Google's own announcements describe Gemini as a built-in browsing assistant across macOS/Windows; privacytests.org default-settings runs keep Chrome near the bottom (under 31 passes; fails 21+ of 24 fingerprinting checks). RAM tests put it among the heavier Chromium builds (~1.5 GB for 4 tabs on Notebookcheck).",
+    "sources": [
+      "https://blog.google/products-and-platforms/products/chrome/gemini-3-auto-browse",
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "chrome-canary": {
+    "scores": [2, 4, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "experience 5->4 (nightly channel, consistent with the -1 already applied to firefox-nightly); minimalism 3->2 follows Chrome stable.",
+    "evidence": "Canary tops Speedometer charts but is an untested daily build by design; it receives the same Gemini integrations first. Suggested scores.json form: {\"like\": \"google-chrome\", \"adjust\": [0,-1,0,0,0]}.",
+    "sources": [
+      "https://browserating.com/",
+      "https://blog.google/products-and-platforms/products/chrome/gemini-3-auto-browse"
+    ]
+  },
+  "microsoft-edge": {
+    "scores": [2, 4, 3, 2, 1],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Microsoft retired the separate Copilot Mode in May 2026 and folded its AI browsing features into standard Edge, which commentators read as making AI harder to avoid; Edge remains near the bottom on privacytests fingerprinting. RAM in line with Chrome.",
+    "sources": [
+      "https://windowsforum.com/threads/edge-retires-copilot-mode-ai-browsing-moves-into-default-experience.418244/",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "safari": {
+    "scores": [4, 4, 3, 4, 4],
+    "confidence": "medium",
+    "changes": "customisation 2->3: Safari 27 (macOS 27) adds 'Describe an Extension', letting Apple Intelligence generate custom site extensions from a prompt, plus AI tab organisation; reviewers say it closes much of the extension gap, though UI control is still limited.",
+    "evidence": "Reviews of Safari 27 are positive about the AI extension builder and Notify Me; privacytests shows Safari passing 11/24 fingerprinting checks, mid-pack behind Firefox. Still regarded as the most power-efficient option on Mac.",
+    "sources": [
+      "https://9to5mac.com/2026/06/09/heres-everything-new-coming-to-safari-on-macos-27-golden-gate/",
+      "https://au.pcmag.com/ai/118852/apples-new-describe-an-extension-feature-helped-me-fix-some-of-safaris-biggest-annoyances",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/"
+    ]
+  },
+  "safari-technology-preview": {
+    "scores": [4, 4, 3, 4, 4],
+    "confidence": "low",
+    "changes": "customisation 2->3, inherited from Safari.",
+    "evidence": "No independent opinion found beyond it previewing the same WebKit/Safari 27 features; keep copying Safari.",
+    "sources": [
+      "https://www.idownloadblog.com/2026/10/05/new-safari-features-ios-macos-27/"
+    ]
+  },
+  "firefox": {
+    "scores": [4, 4, 5, 3, 3],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Firefox 148 shipped an 'AI kill switch' after backlash to the new CEO's AI-first messaging; independent network tests found telemetry and ads/sponsored content remain on by default even with AI blocked, which keeps privacy at 4 rather than higher. privacytests: 62 passes overall and 14/24 fingerprinting, best of the mainstream non-forks; RAM slightly below Chromium browsers.",
+    "sources": [
+      "https://www.linux-magazine.com/Issues/2026/309/Firefox-AI-Kill-Switch",
+      "https://web.archive.org/web/20260911175848/https:/marius.blog/firefox-155-ai-kill-switch-retest/",
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "firefox-beta": {
+    "scores": [4, 4, 5, 3, 3],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Generally seen as daily-drivable; no evidence for diverging from stable.",
+    "sources": [
+      "https://www.linux-magazine.com/Issues/2026/309/Firefox-AI-Kill-Switch"
+    ]
+  },
+  "firefox-developer-edition": {
+    "scores": [4, 4, 5, 3, 3],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Based on Beta with dev tooling enabled; no evidence for diverging from stable.",
+    "sources": [
+      "https://www.linux-magazine.com/Issues/2026/309/Firefox-AI-Kill-Switch"
+    ]
+  },
+  "firefox-esr": {
+    "scores": [4, 4, 5, 3, 3],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "ESR 140 continues to get regular security point releases through 2026 and is the base privacy-minded users harden (e.g. Betterfox guides). It lags on newer AI features, but not enough to argue a minimalism bump.",
+    "sources": [
+      "https://www.firefox.com/en-US/firefox/140.17.0/releasenotes/",
+      "https://malwaretips.com/blogs/firefox-esr-140-14/"
+    ]
+  },
+  "firefox-nightly": {
+    "scores": [3, 3, 5, 3, 3],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Nightly runs with expanded telemetry and unfinished features; privacytests tracks it separately as an alpha channel. Existing -1 privacy/-1 experience adjustment remains appropriate.",
+    "sources": [
+      "https://privacytests.org/nightly-private"
+    ]
+  },
+  "opera": {
+    "scores": [2, 4, 4, 2, 1],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Opera came dead last in privacytests' 2026 default-settings run and fails most fingerprinting checks; it continues to bundle VPN, Aria AI, messengers and sidebars. RAM ~1.5 GB for 4 tabs, typical-to-heavy for Chromium.",
+    "sources": [
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "opera-gx": {
+    "scores": [2, 4, 4, 1, 1],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Measured idle RAM is close to regular Opera, but forum reports describe the RAM limiter not holding, memory growth on YouTube, and the hard limit being disabled below 4 GB, so its reputation as heavy stands. Still the most themeable Opera.",
+    "sources": [
+      "https://forums.opera.com/topic/88398/why-has-the-hard-ram-limiter-been-removed-for-the-lower-ranges",
+      "https://forums.opera.com/topic/61497/opera-gx-consumes-all-system-ram-on-youtube-gx-control-gives-negative-numbers",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "opera-air": {
+    "scores": [2, 4, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Reviewers (MakeUseOf, XDA, Tom's Guide) like its calm, rounded UI and find the wellbeing tools useful, though it keeps Opera's extras. It was the heaviest Opera variant in Notebookcheck's RAM test (~1.7 GB for 4 tabs), which supports lightness 2.",
+    "sources": [
+      "https://www.makeuseof.com/best-new-browser-2025-opera-air/",
+      "https://www.xda-developers.com/replaced-chrome-firefox-brave-with-minimalist-browser-opera-air/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "opera-neon": {
+    "scores": [2, 3, 2, 2, 1],
+    "confidence": "medium",
+    "changes": "minimalism 2->1: Neon is built around AI agents, deep research, image/video generation and 'cards', plus a VPN, so by the rubric's AI-sidebar anchor it is maximally bundled.",
+    "evidence": "Neon went into paid early access in Dec 2025 at $19.90/month; reviewers (PCMag, Thurrott) say it mostly works but question paying for it, and agent reliability is still described as unproven. Page content goes to cloud LLMs, so the subscription does not lift privacy.",
+    "sources": [
+      "https://au.pcmag.com/ai/113921/operas-neon-ai-web-browser-mostly-works-fine-but-i-still-wouldnt-pay-for-it",
+      "https://www.thurrott.com/a-i/328065/opera-neon-first-impressions",
+      "https://rottenwifi.com/opera-neon-costs-19-90-a-month-but-its-selling-an-ai-workspace-not-just-a-browser/"
+    ]
+  },
+  "vivaldi": {
+    "scores": [3, 4, 5, 2, 1],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Vivaldi's business model (search deals, no profiling) is clean, but privacytests puts its defaults near the bottom alongside Chrome/Opera, so 3 is a fair middle. It now has a built-in Proton VPN in addition to mail/feeds/calendar, which keeps minimalism at 1; RAM ~1.5 GB for 4 tabs.",
+    "sources": [
+      "https://vivaldi.com/blog/privacy-without-compromise-proton-vpn-is-now-built-into-vivaldi/",
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "yandex-browser": {
+    "scores": [1, 4, 3, 3, 1],
+    "confidence": "medium",
+    "changes": "lightness 2->3: in Notebookcheck's test it used less RAM than Chrome, Edge, Opera and even Firefox (~1.19 GB for 4 tabs), and it is one of the only major browsers still updated for Windows 7/8.1.",
+    "evidence": "Privacy remains 1: Yandex's own documentation says a unique ID, location and device specs are sent with no opt-out, and Yandex reportedly complied with a record ~93k Russian law-enforcement data requests. Still bundles Alice AI and Yandex services.",
+    "sources": [
+      "https://browser.yandex.com/help/en/personal-data-protection/data-collection",
+      "https://united24media.com/world/russian-tech-giant-yandex-handed-over-user-data-in-85-percent-of-government-requests-19871",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html"
+    ]
+  },
+  "naver-whale": {
+    "scores": [2, 3, 3, 2, 2],
+    "confidence": "medium",
+    "changes": "experience 4->3: Korean press (Oct 2026) reports recurring update-related instability, unresolved sluggishness, and compatibility complaints on sites like Instagram and Netflix.",
+    "evidence": "Whale has added an AI Chat sidebar (Oct 2026), which keeps minimalism at 2. It had the lowest RAM in Notebookcheck's single test (~1.18 GB), but users still complain it is sluggish, so lightness stays 2 (low confidence on that axis).",
+    "sources": [
+      "https://www.mt.co.kr/en/tech/2026/10/18/2026101514373023800",
+      "https://www.notebookcheck.net/Checking-how-much-RAM-popular-Web-browsers-use.975889.0.html",
+      "https://www.thegeeksclub.com/platforms/naver-whale/"
+    ]
+  },
+  "duckduckgo": {
+    "scores": [4, 4, 1, 4, 4],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Second-best mainstream result on privacytests (71 passes) though only 11/24 on fingerprinting; reviews praise easy defaults but note there are no third-party extensions. Duck.ai chat and a VPN subscription upsell are now integrated, though Duck.ai can be turned off; that is borderline for minimalism 4 (see calibration note).",
+    "sources": [
+      "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
+      "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
+      "https://cross-browser.org/reviews/duckduckgo-complete-review-2024/",
+      "https://duckduckgo.com/app"
+    ]
+  },
+  "ecosia-browser": {
+    "scores": [3, 4, 3, 3, 3],
+    "confidence": "low",
+    "changes": "customisation 2->3: it is a Chromium build with Chrome Web Store support and the same settings surface as Chrome, so it should match Chrome's 3; no evidence of a reduced UI.",
+    "evidence": "Coverage describes a modest feature set (Ecosia search, a privacy/cookie panel, energy saver) plus a new Linux build in Sep 2026; revenue comes from Microsoft-served search ads, so privacy stays neutral at 3. Ecosia's AI features are on the search engine, which has an AI-free toggle since July 2026, not bundled browser sidebars.",
+    "sources": [
+      "https://eluxemagazine.com/living/tech/browser-alternatives-to-chrome/",
+      "https://felloai.com/ecosia-ai/",
+      "https://alternativeto.net/software/ecosia-browser/about/"
+    ]
+  }
+}

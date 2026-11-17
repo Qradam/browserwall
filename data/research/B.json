@@ -1,0 +1,137 @@
+{
+  "brave": {
+    "scores": [4, 4, 4, 3, 1],
+    "confidence": "medium",
+    "changes": "minimalism 2 -> 1: out of the box Brave ships a crypto wallet, Rewards/BAT ads, a paid VPN upsell, Leo AI sidebar, News, Talk and Tor windows, i.e. every bloat item the rubric lists for 1 (more than the Vivaldi anchor). Privacy stays 4: strongest Chromium defaults and top privacytests.org results, but opt-out P3A telemetry/usage ping, an ad-funded model and the 2020 affiliate-link and 2023 silent VPN-service incidents keep it below 5.",
+    "evidence": "Reviewers and Reddit consistently praise Shields and fingerprint randomisation but complain about crypto/AI/VPN clutter; Brave's own community forum has threads asking to drop the crypto/AI extras. 2026 RAM tests put Brave at or slightly under Chrome, i.e. typical footprint.",
+    "sources": [
+      "https://privacytests.org/",
+      "https://www.xda-developers.com/brave-browser-installs-vpn-windows/",
+      "https://brave.com/blog/referral-codes-in-suggested-sites/",
+      "https://community.brave.com/t/please-ditch-crypto-adware-crap/600951"
+    ]
+  },
+  "brave-beta": {
+    "scores": [4, 4, 4, 3, 1],
+    "confidence": "medium",
+    "changes": "minimalism 2 -> 1, inherited from brave (keep as {\"like\": \"brave\"}). No evidence for other differences.",
+    "evidence": "Same codebase and feature set as stable Brave, shipped earlier; Leo's new E2EE features landed in Release, Beta and Nightly together.",
+    "sources": ["https://brave.com/blog/browser-ai-e2ee/"]
+  },
+  "brave-nightly": {
+    "scores": [4, 4, 4, 3, 1],
+    "confidence": "medium",
+    "changes": "minimalism 2 -> 1, inherited from brave (keep as {\"like\": \"brave\"}). Arguably experience could be one lower for a nightly channel, but no specific stability evidence found.",
+    "evidence": "Nightly gets Brave features first (e.g. email aliases), so it carries all of Brave's extras plus untested ones.",
+    "sources": ["https://www.privacyguides.org/news/2026/06/07/brave-launches-paid-minimalist-brave-origin-browser/"]
+  },
+  "brave-origin": {
+    "scores": [5, 4, 4, 3, 5],
+    "confidence": "medium",
+    "changes": "privacy 4 -> 5: Origin compiles out the usage ping, crash logs, P3A analytics, Rewards/Brave Ads and Web Discovery, and is paid (free on Linux) while keeping Shields' fingerprint randomisation, so it meets the 5 anchor. customisation 3 -> 4 (same extension/UI depth as Brave plus per-feature toggles), lightness 4 -> 3 (removal saves disk space, no evidence of lower RAM than Brave), minimalism 4 -> 5 (Leo, Wallet, VPN, News, Talk, Tor, Speedreader, Wayback etc. all removed). Low flag can be dropped: it launched 4 June 2026.",
+    "evidence": "Launched June 2026 as a $59.99 one-time (10 devices) stripped build; PrivacyGuides and PCMag cover it as Brave minus its revenue features. Opinion is split on paying more for less (PCMag sceptical, MakeUseOf positive), but nobody disputes that it is Brave's cleanest build.",
+    "sources": [
+      "https://www.privacyguides.org/news/2026/06/07/brave-launches-paid-minimalist-brave-origin-browser/",
+      "https://blog.brave.com/blog/brave-origin/",
+      "https://au.pcmag.com/browsers/118623/braves-60-origin-browser-charges-more-for-less-im-not-buying",
+      "https://www.techtimes.com/articles/317922/20260606/brave-origin-browser-launches-60-compile-out-build-removes-leo-tor-wallet.htm"
+    ]
+  },
+  "tor-browser": {
+    "scores": [5, 2, 2, 3, 4],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Still treated everywhere as the gold standard for anonymity but impractical as a daily driver (slow, captchas, blocked sites). The 15.x series is patched often (15.0.26 by late 2026) and gained Firefox's vertical tabs; changing settings or add-ons is discouraged for fingerprint uniformity.",
+    "sources": [
+      "https://blog.torproject.org/new-release-tor-browser-150",
+      "https://forum.torproject.org/t/new-release-tor-browser-15-0-26/22294",
+      "https://halocard.co/blog/tor-browser-review"
+    ]
+  },
+  "mullvad-browser": {
+    "scores": [5, 3, 2, 3, 5],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Recommended as Tor-grade anti-fingerprinting without the Tor network; the community treats it as a specialist or secondary browser because it doesn't persist data and breaks some convenience. 16.0 (ESR 153) redesigned settings and added Linux ARM.",
+    "sources": [
+      "https://mullvad.net/en/blog/mullvad-browser-160",
+      "https://factually.co/product-reviews/electronics-tech/best-private-desktop-browsers-2026-mullvad-vs-librewolf-vs-brave-87c3ac"
+    ]
+  },
+  "librewolf": {
+    "scores": [5, 3, 5, 3, 4],
+    "confidence": "medium",
+    "changes": "customisation 4 -> 5: it has the same deep UI and add-on control as the Firefox anchor (userChrome, about:config, a full AMO catalogue) plus its own overrides file, so it scores the same as Firefox. Other axes unchanged; experience stays 3 because strict defaults break some sites and need tweaking.",
+    "evidence": "Widely cited as the practical no-telemetry Firefox daily driver with uBlock Origin built in. The usual caveats are occasional site breakage from resistFingerprinting and strict cookie clearing, and on some platforms no built-in auto-update.",
+    "sources": [
+      "https://factually.co/product-reviews/electronics-tech/librewolf-vs-brave-which-is-better-for-privacy-2026-f9cff8",
+      "https://factually.co/fact-checks/electronics-tech/librewolf-browser-overview-d8763c",
+      "https://privacytests.org/"
+    ]
+  },
+  "gnu-icecat": {
+    "scores": [4, 2, 3, 3, 4],
+    "confidence": "medium",
+    "changes": "privacy 5 -> 4: no telemetry and fully free, but its anti-fingerprinting is lighter than Tor/Mullvad/LibreWolf, there are no official upstream binaries (only Guix, Parabola, Fedora etc.), and security patch timing depends on distro packagers. No privacy guide recommends it, so it fits the 4 anchor better than the 5 one.",
+    "evidence": "Still tracks Firefox ESR and is patched in distros such as Fedora, but GNU ships source only. LibreJS blocks a lot of the modern web, so it remains a niche free-software-purist choice.",
+    "sources": [
+      "https://directory.fsf.org/wiki/Gnuzilla",
+      "https://linuxsecurity.com/advisories/fedora/fedora-45-icecat-2026-040732b5dc",
+      "https://en.wikipedia.org/wiki/GNU_IceCat"
+    ]
+  },
+  "ungoogled-chromium": {
+    "scores": [4, 3, 3, 3, 4],
+    "confidence": "high",
+    "changes": "no change",
+    "evidence": "Respected for stripping out Google services, but it has no auto-update, extensions need workarounds (chromium-web-store), and it has little anti-fingerprinting beyond Chromium's. The project keeps MV2 alive with source patches after Google's 2026 removal.",
+    "sources": [
+      "https://github.com/ungoogled-software/ungoogled-chromium/issues/3812",
+      "https://github.com/NeverDecaf/chromium-web-store",
+      "https://privacytests.org/"
+    ]
+  },
+  "cromite": {
+    "scores": [4, 3, 3, 3, 4],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "A one-maintainer Bromite successor with built-in ad blocking and partial fingerprinting mitigations (which the maintainer says are not comprehensive). Desktop builds exist for Windows/Linux only, and users report rough releases (e.g. regressions in the 153 release).",
+    "sources": [
+      "https://github.com/uazo/cromite",
+      "https://github.com/uazo/cromite/issues/3064",
+      "https://www.thegeeksclub.com/platforms/cromite/"
+    ]
+  },
+  "helium": {
+    "scores": [4, 3, 3, 3, 5],
+    "confidence": "medium",
+    "changes": "customisation 2 -> 3 (full Chrome-extension support, with Web Store traffic proxied anonymously, plus chrome://flags, equal to the ungoogled-chromium base it builds on). Other axes are confirmed, so the low flag can be dropped. Privacy stays 4: no telemetry, no first-run requests and user-funded, but fingerprinting protection is weaker than Brave/Mullvad.",
+    "evidence": "Helium is a GPL-3.0 browser built on ungoogled-chromium by imput (the two-person team behind cobalt). As of Nov 2026 it is still in beta (0.21.x, Chromium 157), ships its own uBlock Origin build, and has no sync, password manager or Widevine. It was widely praised in 2025-26 (Techlore, It's FOSS) as 'Brave without the baggage'.",
+    "sources": [
+      "https://privacygear.nl/reviews/helium-browser-review/",
+      "https://techlore.tech/helium-browser-review-a-truly-minimal-privacy-focused-chromium-browser/",
+      "https://itsfoss.com/helium-browser/"
+    ]
+  },
+  "epic-privacy-browser": {
+    "scores": [2, 3, 2, 3, 2],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "Its privacy defaults are strong on paper, but it is closed-source from a small company and its 'VPN' is a free built-in proxy. Recent coverage is mostly SEO content, and audit-style writeups say its claims can't be verified without source. That matches the 2 anchor for a free-VPN product.",
+    "sources": [
+      "https://www.cloudspress.com/what-is-the-epic-browser-and-what-makes-it-different/",
+      "https://laptopjudge.com/epic-privacy-browser/"
+    ]
+  },
+  "aloha-browser": {
+    "scores": [2, 3, 2, 3, 2],
+    "confidence": "medium",
+    "changes": "no change",
+    "evidence": "It is mobile-first and closed-source, sells itself on a free 'no-logs' VPN with a Premium upsell, and bundles downloads, a media player and file vault. Reviewers say it is a browser feature first and not a complete privacy tool. That fits the free-VPN-upsell anchor of 2 and a cluttered minimalism score.",
+    "sources": [
+      "https://thehightechsociety.com/aloha-vpn-review/",
+      "https://rottenwifi.com/aloha-browser-review-what-its-vpn-private-tabs-and-downloads-actually-offer/",
+      "https://techyorker.com/products/aloha-browser/"
+    ]
+  }
+}

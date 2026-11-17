@@ -1,0 +1,18 @@
+---
+// Static (server-rendered) version of the five score bars, for crawlable pages.
+import { AXES, type Browser } from "../data/browsers";
+interface Props { b: Browser; compact?: boolean }
+const { b, compact = false } = Astro.props;
+---
+<ul class:list={["scorebars", { compact }]} aria-label={`${b.name} scores`}>
+  {AXES.map((a) => {
+    const v = b.scores[a.key] as number;
+    return (
+      <li>
+        <span class="ax">{a.label}</span>
+        <span class="bar" role="img" aria-label={`${v} out of 5`}>{[1, 2, 3, 4, 5].map((i) => <i class={i <= v ? "on" : undefined} />)}</span>
+        <b>{v}/5</b>
+      </li>
+    );
+  })}
+</ul>

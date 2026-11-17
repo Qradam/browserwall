@@ -1,0 +1,430 @@
+{
+  "google-chrome": {
+    "level": 3,
+    "agent": true,
+    "models": "Gemini 3 (cloud) + on-device Gemini Nano",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": true,
+    "quality": 5,
+    "notes": "Gemini in Chrome has a persistent side panel that sees pages and tabs, plus address-bar AI Mode and writing help. Auto browse, which clicks, types and fills forms for you, is limited to paid Google AI Pro/Ultra subscribers in the US on English desktop Chrome.",
+    "sources": [
+      "https://blog.google/products-and-platforms/products/chrome/gemini-3-auto-browse",
+      "https://9to5google.com/2026/01/28/chrome-gemini-auto-browse/",
+      "https://www.cloudspress.com/how-to-use-gemini-auto-browse-in-chrome-setup-tasks-and-limits-2026/"
+    ]
+  },
+  "microsoft-edge": {
+    "level": 3,
+    "agent": true,
+    "models": "GPT-5 family via Microsoft Copilot",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 4,
+    "notes": "In May 2026 Microsoft retired Copilot Mode and moved its features (reasoning across tabs, Journeys, voice/vision, writing help) into standard Edge. The agent, Browse with Copilot (formerly Copilot Actions), is only for US Microsoft 365 Premium subscribers, plus a business preview limited to admin-allowed sites.",
+    "sources": [
+      "https://www.verisoul.ai/agents/copilot-edge",
+      "https://windowsforum.com/news/edge-retires-copilot-mode-ai-features-move-into-the-browser-desktop-mobile.418131/",
+      "https://learn.microsoft.com/en-us/answers/questions/6062894/free-edge-copilot-gone"
+    ]
+  },
+  "safari": {
+    "level": 1,
+    "agent": false,
+    "models": "on-device Apple Intelligence (+ Private Cloud Compute)",
+    "onByDefault": true,
+    "canDisable": "fully",
+    "local": true,
+    "quality": 3,
+    "notes": "Apple Intelligence adds page summaries, optional automatic tab grouping by topic, Notify Me page-change alerts and extensions built from a description in macOS 27. Safari has no chat assistant or web agent; turning off Apple Intelligence removes all of it. onByDefault assumes Apple Intelligence is left on at setup.",
+    "sources": [
+      "https://9to5mac.com/2026/06/09/heres-everything-new-coming-to-safari-on-macos-27-golden-gate/",
+      "https://support.apple.com/en-vn/guide/mac-help/mchl62d5873e/mac",
+      "https://www.apple.com/ie/newsroom/2026/09/next-generation-of-apple-intelligence-available-today/"
+    ]
+  },
+  "firefox": {
+    "level": 2,
+    "agent": false,
+    "models": "user's choice: sidebar chatbots (Claude, ChatGPT, Copilot, Gemini, Le Chat); Smart Window models incl. Mistral, or bring your own (local OK)",
+    "onByDefault": true,
+    "canDisable": "fully",
+    "local": true,
+    "quality": 3,
+    "notes": "Smart Window is an opt-in beta (US/Canada/France, Mozilla account needed) whose assistant works with tabs and history, suggests form fills from chosen tabs and watches pages. It never submits forms itself. The 'Block AI enhancements' switch in AI Controls (Firefox 148+) turns off all current and future AI features. Translations and some features run on-device.",
+    "sources": [
+      "https://support.mozilla.org/en-US/kb/smart-window",
+      "https://blog.mozilla.org/en/firefox/skip-the-busywork-with-smart-window/",
+      "https://techspot.com/news/111453-firefox-148-rolls-out-promised-ai-kill-switch.html"
+    ]
+  },
+  "opera": {
+    "level": 2,
+    "agent": false,
+    "models": "Opera AI (OpenAI + Google Gemini models); ChatGPT and Gemini in sidebar; local Gemma via Web AI preview",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": true,
+    "quality": 3,
+    "notes": "Opera AI is free with no account, replaced Aria, and understands the current tab or tab group. Browser Connector (MCP) lets outside AI such as ChatGPT or Claude work with live tabs, but agentic browsing as Opera's own feature now lives in Neon. Local Web AI models are an opt-in early preview (Oct 2026).",
+    "sources": [
+      "https://www.opera.com/features/browser-ai",
+      "https://blogs.opera.com/news/2025/12/opera-ai-comes-to-opera-one-opera-gx-opera-air/",
+      "https://press.opera.com/2026/10/27/opera-doubles-down-on-local-ai-shipping-models-directly-in-its-browsers/"
+    ]
+  },
+  "opera-gx": {
+    "level": 2,
+    "agent": false,
+    "models": "Opera AI (OpenAI + Google Gemini models)",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 3,
+    "notes": "GX has the same free, no-account Opera AI as Opera One, and Browser Connector (MCP) for outside AI clients. Local Web AI models are announced for GX but follow Opera One, so they aren't counted yet.",
+    "sources": [
+      "https://blogs.opera.com/news/2025/12/opera-ai-comes-to-opera-one-opera-gx-opera-air/",
+      "https://press.opera.com/2026/04/16/opera-announces-browser-connector/",
+      "https://blog.rottenwifi.com/operas-gemini-rollout-whats-available-in-opera-one-gx-air-and-neon/"
+    ]
+  },
+  "opera-air": {
+    "level": 2,
+    "agent": false,
+    "models": "Opera AI (OpenAI + Google Gemini models)",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 3,
+    "notes": "Air ships the same free, context-aware Opera AI as Opera One. Whether Air has the same Gemini sidebar entry and local AI controls isn't confirmed.",
+    "sources": [
+      "https://blogs.opera.com/news/2025/12/opera-ai-comes-to-opera-one-opera-gx-opera-air/",
+      "https://blog.rottenwifi.com/operas-gemini-rollout-whats-available-in-opera-one-gx-air-and-neon/"
+    ]
+  },
+  "opera-neon": {
+    "level": 3,
+    "agent": true,
+    "models": "user's choice: OpenAI, Anthropic, Google (Gemini 3 Pro)",
+    "onByDefault": true,
+    "canDisable": "no",
+    "local": false,
+    "quality": 4,
+    "notes": "Opera's AI-native browser with Chat, Do (an agent that browses and fills forms), Make, deep research, scheduled Tasks and an MCP Connector. Downloading is free, but the agents need the $19.90/month Standard plan.",
+    "sources": [
+      "https://dbotmaker.io/review/opera-neon",
+      "https://press.opera.com/2026/03/31/opera-neon-adds-mcp-connector/",
+      "https://blogs.opera.com/news/2026/02/opera-neon-ai-browser-intelligent-mode"
+    ]
+  },
+  "vivaldi": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Vivaldi publicly refuses to build LLM features such as chat, summaries or agents into the browser, and restated that stance with 7.8 in 2026.",
+    "sources": [
+      "https://www.pcmag.com/news/vivaldis-leader-has-a-bold-pledge-no-ai-in-your-web-browser",
+      "https://linuxiac.com/vivaldi-pushes-back-against-ai-browsing-trend/"
+    ]
+  },
+  "brave": {
+    "level": 2,
+    "agent": false,
+    "models": "user's choice: Brave-hosted Qwen, Llama, Claude Haiku/Sonnet/Opus (Premium), or bring your own incl. local Ollama",
+    "onByDefault": true,
+    "canDisable": "fully",
+    "local": true,
+    "quality": 4,
+    "notes": "Leo is a private, page-aware assistant in the sidebar and address bar, with Skills and bring-your-own-model support. Leo AI browsing (an agent in an isolated profile) is only an opt-in early test behind a feature flag in all channels, so it isn't counted as a shipped agent. Leo can be turned off in settings or by policy.",
+    "sources": [
+      "https://brave.com/blog/ai-browsing/",
+      "https://brave.com/leo",
+      "https://en.wikipedia.org/wiki/Brave_Leo"
+    ]
+  },
+  "brave-origin": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Origin is the stripped edition of Brave ($59.99 once, free on Linux) that removes extras like Leo AI by default. If you use it as an upgrade to regular Brave, you can switch features back on individually.",
+    "sources": [
+      "https://brave.com/origin/"
+    ]
+  },
+  "duckduckgo": {
+    "level": 1,
+    "agent": false,
+    "models": "user's choice: Claude Haiku 5.5, GPT-5.4 mini, Mistral Small 4, gpt-oss, Gemma; subscribers get Claude Sonnet/Opus 5.5, GPT-5.6",
+    "onByDefault": true,
+    "canDisable": "fully",
+    "local": false,
+    "quality": 3,
+    "notes": "Duck.ai is a private, anonymized chat with a search/AI toggle and a button that summarizes or answers questions about the current page. It doesn't work across tabs or act for you. One toggle in Settings > AI Features turns Duck.ai off completely.",
+    "sources": [
+      "https://duckduckgo.com/duckduckgo-help-pages/ai-features/opting-out-of-ai",
+      "https://duckduckgo.com/duckduckgo-help-pages/duckai/chat-models",
+      "https://piunikaweb.com/2026/07/03/duckduckgo-browser-ai-toggle-redesign/"
+    ]
+  },
+  "naver-whale": {
+    "level": 2,
+    "agent": false,
+    "models": "own HyperCLOVA X (Naver AI); ChatGPT/Claude address-bar shortcuts",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 3,
+    "notes": "Whale 5 (Oct 2026) officially added AI Chat in the sidebar. It summarizes, translates and answers questions about the current page or chosen tabs, organizes tabs and manages Naver Calendar events after asking for confirmation. Naver AI Briefing is in Quick Search. It doesn't drive arbitrary websites.",
+    "sources": [
+      "https://www.digitaltoday.co.kr/jp/view/109585/naver-whale-launches-ai-chat-in-browser-summarising-translation-and-schedule-management",
+      "https://forum.whale.naver.com/announcement/137-desktop-v53941257-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/"
+    ]
+  },
+  "yandex-browser": {
+    "level": 2,
+    "agent": false,
+    "models": "own Alice AI LLM (YandexGPT family)",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 3,
+    "notes": "Alice AI is in the smart bar and a SplitView chat that understands the open page, PDF or video. Yandex has promised Alice AI agents that fill forms and book things, but I couldn't confirm a shipped web agent in the desktop browser, so agent is set to false.",
+    "sources": [
+      "https://yandex.com/company/news/2025-10-28-01",
+      "https://www1.ru/es/news/2026/03/11/internet-bolse-ne-budet-preznim-iandeks-brauzer-integriroval-ii-cat-v-kazduiu-stranicu.html"
+    ]
+  },
+  "ecosia-browser": {
+    "level": 1,
+    "agent": false,
+    "models": "small open Mistral models hosted in Europe",
+    "onByDefault": true,
+    "canDisable": "fully",
+    "local": false,
+    "quality": 2,
+    "notes": "The AI comes from Ecosia Search (AI Overviews and AI Chat), not from a browser assistant that's aware of your pages or tabs. Since July 2026 a single 'AI-free search' setting turns it all off.",
+    "sources": [
+      "https://blog.ecosia.org/ai-free-search/",
+      "https://support.ecosia.org/article/1006-ai-search",
+      "https://browsers.to/it/ecosia-browser"
+    ]
+  },
+  "orion": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Kagi deliberately ships no built-in AI in Orion and cites security research on agent risks. Kagi Assistant is a separate web product.",
+    "sources": [
+      "https://piunikaweb.com/2026/07/02/orion-browser-warns-about-ai-browser-security-risks/",
+      "https://browser.kagi.com/"
+    ]
+  },
+  "zen-browser": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Zen hides Firefox's AI chatbot sidebar by default, and tech press lists it as a Firefox alternative without AI. The inherited Firefox code can still be switched on through about:config.",
+    "sources": [
+      "https://github.com/zen-browser/desktop/issues/6398",
+      "https://pureinfotech.com/firefox-alternatives-without-ai-windows-11/"
+    ]
+  },
+  "floorp": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Floorp has no assistant of its own. It offers an MCP server so outside AI tools can control it, and may inherit Firefox's optional AI plumbing (I didn't confirm what it exposes), but no AI UI is advertised.",
+    "sources": [
+      "https://blog.floorp.app/en/release/12.8.0/",
+      "https://blog.floorp.app/en/release/12.21.2/"
+    ]
+  },
+  "wavebox": {
+    "level": 2,
+    "agent": false,
+    "models": "GPT-5 mini included (Pro); OpenAI/Anthropic via own key; local Ollama or Brainbox Local AI",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": true,
+    "quality": 3,
+    "notes": "Brainbox is a built-in side panel that chats with any tab, including tabs in other Spaces you @-mention. It has writing Skills (reply, rewrite, tone, grammar) and a settings chat that can change Wavebox itself. Pro includes 1M OpenAI tokens a month. It doesn't act on websites.",
+    "sources": [
+      "https://hub.wavebox.io/brainbox/",
+      "https://blog.wavebox.io/brainbox-openai-key/",
+      "https://wavebox.io/changelog/stable/2/"
+    ]
+  },
+  "ulaa": {
+    "level": 0,
+    "agent": false,
+    "models": "none confirmed (Zoho Zia mentioned for signed-in users)",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "I found no official Zoho source for a generative AI assistant in Ulaa. One third-party review mentions optional Zia features for tab organization and phishing detection when signed in, but it's unverified, so I picked the conservative value.",
+    "sources": [
+      "https://dtptips.com/ulaa-browser-review-the-secret-indian-browser-that-could-be-a-chrome-killer/",
+      "https://www.zoho.com/news/zoho-deepens-ai-powered-capabilities-in-cx-platform-launches-ulaa-enterprise.html"
+    ]
+  },
+  "island": {
+    "level": 3,
+    "agent": true,
+    "models": "organization's choice: ChatGPT, Copilot, Gemini, Claude, Grok or own model",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": 3,
+    "notes": "Island's Enterprise AI Browser puts the admin's chosen AI in the sidebar with page and company context, and can run governed agent actions in the browser or through Island-hosted MCP. It's enterprise-only: admins enable and restrict everything (paid licenses), and there's no consumer tier.",
+    "sources": [
+      "https://support.island.io/ai/ai-browser",
+      "https://www.globenewswire.com/news-release/2026/10/29/3391421/0/en/island-brings-the-enterprise-browser-to-ai-agents.html"
+    ]
+  },
+  "avast-secure-browser": {
+    "level": 1,
+    "agent": false,
+    "models": "undisclosed third-party providers via Avast privacy proxy",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 2,
+    "notes": "The side panel (shown by default) includes Smart Chat, an AI chatbot that answers questions, polishes text and summarizes the current page. Requests go through a proxy that hides your IP. Avast doesn't name the model provider.",
+    "sources": [
+      "https://www.avast.com/c-six-upgrades-to-avast-secure-browser",
+      "https://support.avast.com/en-id/article/4910/"
+    ]
+  },
+  "avg-secure-browser": {
+    "level": 1,
+    "agent": false,
+    "models": "undisclosed third-party providers (same Smart Chat as Avast)",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 2,
+    "notes": "AVG's side panel, open on the right by default, has the same Smart Chat as Avast: an AI chatbot for questions, page summaries and image generation.",
+    "sources": [
+      "https://support.avg.com/SupportArticleView?l=en&supportType=home&urlName=avg-use-secure-browser-side-panel"
+    ]
+  },
+  "avira-secure-browser": {
+    "level": 0,
+    "agent": false,
+    "models": "none confirmed",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Unlike its Avast, AVG and Norton siblings, I found no Avira documentation of a Smart Chat side panel or any other AI assistant. Avira may share the Gen Digital codebase, so this is a conservative value.",
+    "sources": [
+      "https://www.avira.com/en/avira-secure-browser",
+      "https://support.avira.com/hc/en-us/articles/13707860217233-Avira-Secure-Browser-FAQs"
+    ]
+  },
+  "norton-private-browser": {
+    "level": 1,
+    "agent": false,
+    "models": "undisclosed (Gen Digital Smart Chat)",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 2,
+    "notes": "The side panel, shown by default, includes Gen Digital's Smart Chat for questions and current-page summaries. That's basic chat with no awareness of other tabs.",
+    "sources": [
+      "https://support.norton.com/sp/en/sg/norton-utilities/current/solutions/v20260106120606298"
+    ]
+  },
+  "norton-neo": {
+    "level": 2,
+    "agent": false,
+    "models": "undisclosed",
+    "onByDefault": true,
+    "canDisable": "partly",
+    "local": false,
+    "quality": 2,
+    "notes": "An AI-native browser with an always-present sidebar assistant, AI search and answers on the new-tab Workspace, writing help in text boxes, link-preview summaries and automatic tab grouping. Reviews say it doesn't click through sites for you, and user reviews are lukewarm about the AI and its unnamed model.",
+    "sources": [
+      "https://www.alphr.com/norton-neo-review-is-the-first-ai-native-browser-worth-switching-to/",
+      "https://codeforgeek.com/best-ai-browsers/",
+      "https://www.risingtrends.co/blog/norton-neo"
+    ]
+  },
+  "epic-privacy-browser": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Epic's official feature pages list tracker/ad blocking and an encrypted proxy, with no built-in AI assistant.",
+    "sources": [
+      "https://epicbrowser.com/key-features"
+    ]
+  },
+  "aloha-browser": {
+    "level": 1,
+    "agent": false,
+    "models": "user-selectable models (unnamed), anonymized via Aloha's Private AI",
+    "onByDefault": true,
+    "canDisable": "fully",
+    "local": false,
+    "quality": 2,
+    "notes": "Private AI is a chat assistant with mixed, anonymized requests, a model picker and optional web search. It can't see your browsing, so it isn't tab-aware. Free use is limited to a few requests a day (Premium is unlimited), and all AI can be turned off. Desktop parity with mobile wasn't fully verified. AlohaJet, a separate agent-driven browser, isn't counted.",
+    "sources": [
+      "https://alohabrowser.com/private-ai.html",
+      "https://alohabrowser.com/posts-aloha-android-ad-free-links-custom-tabs/",
+      "https://alohabrowser.com/llms.txt"
+    ]
+  },
+  "midori": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Midori's feature list has ad/tracker blocking, an 'IA Shield' protection layer, AstianGO search and MidoriVPN, but no AI assistant.",
+    "sources": [
+      "https://astian.org/midori-browser/features/"
+    ]
+  },
+  "helium": {
+    "level": 0,
+    "agent": false,
+    "models": "none",
+    "onByDefault": false,
+    "canDisable": "fully",
+    "local": false,
+    "quality": null,
+    "notes": "Helium is built on ungoogled-chromium and explicitly ships with no AI, no account and no telemetry.",
+    "sources": [
+      "https://techlore.tech/helium-browser-review-a-truly-minimal-privacy-focused-chromium-browser/",
+      "https://github.com/imputnet/helium"
+    ]
+  }
+}

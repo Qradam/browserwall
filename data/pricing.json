@@ -1,0 +1,40 @@
+{
+  "_note": "Browsers that cost money. paid = OSes where you have to pay to use it; note is shown to users. Free browsers with optional paid tiers are not listed.",
+  "brave-origin": {
+    "paid": [
+      "windows",
+      "macos"
+    ],
+    "note": "$59.99 one-time on Windows and macOS, free on Linux"
+  },
+  "opera-neon": {
+    "paid": [
+      "windows",
+      "macos"
+    ],
+    "note": "$19.90/month subscription"
+  },
+  "island": {
+    "paid": [
+      "windows",
+      "macos"
+    ],
+    "note": "Enterprise licence through your employer"
+  },
+  "polypane": {
+    "paid": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "note": "Subscription, with a free trial"
+  },
+  "sizzy": {
+    "paid": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "note": "Subscription, with a free trial"
+  }
+}

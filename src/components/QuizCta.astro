@@ -1,0 +1,17 @@
+---
+import Icon from "./Icon.astro";
+interface Props { href?: string; title?: string; text?: string; label?: string }
+const {
+  href = "/quiz",
+  title = "Not sure which one fits you?",
+  text = "Answer five quick questions – OS, extensions, what matters to you, must-haves and dealbreakers – and get a ranked shortlist in about two minutes.",
+  label = "Take the browser quiz",
+} = Astro.props;
+---
+<aside class="cta">
+  <div>
+    <p class="cta-t">{title}</p>
+    <p class="cta-p">{text}</p>
+  </div>
+  <a class="cta-b" href={href}>{label}<Icon name="ArrowRight01Icon" size={15} /></a>
+</aside>

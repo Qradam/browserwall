@@ -19,6 +19,21 @@
     "source": "https://aside.com/icon.png?icon.0lfc1q-r_ms2e.png",
     "kind": "website"
   },
+  "avast-secure-browser": {
+    "file": "/logos/avast-secure-browser.png",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/13/60/37/1360375b-2941-92ae-d36b-1c9cc87dab80/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.png",
+    "kind": "manual"
+  },
+  "avg-secure-browser": {
+    "file": "/logos/avg-secure-browser.png",
+    "source": "https://play-lh.googleusercontent.com/PmsCj0csVnvUZtbK2dqPKxobtcYHxgFPAKsL13tezVwtYOydI4QeRC-2w9XpT5BDOq8VuhdtGiJKLiQ71jZ7yg=s512",
+    "kind": "manual"
+  },
+  "avira-secure-browser": {
+    "file": "/logos/avira-secure-browser.png",
+    "source": "https://github.com/avira.png?size=256",
+    "kind": "manual"
+  },
   "blisk": {
     "file": "/logos/blisk.png",
     "source": "https://blisk.io/img/favicons/android-icon-192x192.png",
@@ -40,8 +55,8 @@
     "kind": "manual"
   },
   "brave-origin": {
-    "file": "/logos/brave-origin.png",
-    "source": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave/product_logo_128.png",
+    "file": "/logos/brave-origin.svg",
+    "source": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave_origin/product_logo.svg",
     "kind": "manual"
   },
   "browseros": {
@@ -78,6 +93,11 @@
     "file": "/logos/crest.svg",
     "source": "https://crestbrowser.com/assets/crest-logo.svg",
     "kind": "website"
+  },
+  "cromite": {
+    "file": "/logos/cromite.png",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/3/33/Cromite_Logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "kind": "manual"
   },
   "dia": {
     "file": "/logos/dia.svg",
@@ -221,8 +241,8 @@
   },
   "naver-whale": {
     "file": "/logos/naver-whale.png",
-    "source": "https://upload.wikimedia.org/wikipedia/en/9/91/Naver_Whale_logo.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",
-    "kind": "wikipedia"
+    "source": "https://shared-whale.pstatic.net/favicon/icon512.png",
+    "kind": "manual"
   },
   "netscape-navigator": {
     "file": "/logos/netscape-navigator.svg",
@@ -239,6 +259,11 @@
     "source": "https://neobrowser.ai/app-icon-512.png",
     "kind": "website"
   },
+  "norton-private-browser": {
+    "file": "/logos/norton-private-browser.png",
+    "source": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2b/82/46/2b824656-a80e-ca9c-7474-e19c6864ba53/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.png",
+    "kind": "manual"
+  },
   "opera": {
     "file": "/logos/opera.png",
     "source": "https://cdn-production-opera-website.operacdn.com/staticfiles/assets/images/favicon/opera/android-chrome-256x256.0b7ebdef4384.png",
@@ -246,8 +271,8 @@
   },
   "opera-air": {
     "file": "/logos/opera-air.png",
-    "source": "https://cdn-production-opera-website.operacdn.com/staticfiles/assets/images/favicon/opera/android-chrome-256x256.0b7ebdef4384.png",
-    "kind": "website"
+    "source": "https://cdn-production-opera-website.operacdn.com/staticfiles/assets/images/favicon/air/apple-touch-icon-180x180.67850021d286.png",
+    "kind": "manual"
   },
   "opera-gx": {
     "file": "/logos/opera-gx.png",
@@ -301,13 +326,13 @@
   },
   "safari": {
     "file": "/logos/safari.png",
-    "source": "https://upload.wikimedia.org/wikipedia/commons/d/df/Web_Safari_Icon.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-    "kind": "commons"
+    "source": "https://upload.wikimedia.org/wikipedia/en/7/71/Safari_Liquid_Glass_icon.png",
+    "kind": "manual"
   },
   "safari-technology-preview": {
-    "file": "/logos/safari-technology-preview.ico",
-    "source": "https://developer.apple.com/favicon.ico",
-    "kind": "favicon"
+    "file": "/logos/safari-technology-preview.png",
+    "source": "https://developer.apple.com/assets/elements/icons/safari-technology-preview/safari-technology-preview-128x128_2x.png",
+    "kind": "manual"
   },
   "servo": {
     "file": "/logos/servo.png",
@@ -324,10 +349,15 @@
     "source": "https://sizzy.co/favicon-512.png",
     "kind": "website"
   },
+  "strawberry": {
+    "file": "/logos/strawberry.svg",
+    "source": "https://strawberrybrowser.com/favicon.svg",
+    "kind": "manual"
+  },
   "supermium": {
-    "file": "/logos/supermium.svg",
-    "source": "https://github.githubassets.com/favicons/favicon.svg",
-    "kind": "website"
+    "file": "/logos/supermium.ico",
+    "source": "https://www.supermium.net/favicon.ico",
+    "kind": "manual"
   },
   "thorium": {
     "file": "/logos/thorium.png",
@@ -346,8 +376,8 @@
   },
   "ungoogled-chromium": {
     "file": "/logos/ungoogled-chromium.svg",
-    "source": "https://github.githubassets.com/favicons/favicon.svg",
-    "kind": "website"
+    "source": "https://raw.githubusercontent.com/flathub/io.github.ungoogled_software.ungoogled_chromium/master/branding/logo.svg",
+    "kind": "manual"
   },
   "vieb": {
     "file": "/logos/vieb.png",

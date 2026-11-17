@@ -1,0 +1,76 @@
+---
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import RankedList, { type Item } from "../../components/RankedList.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import ScoreBars from "../../components/ScoreBars.astro";
+import { byId, type Browser } from "../../data/browsers";
+import { ALTERNATIVE_IDS, alternativesFor, painPoints, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd } from "../../lib/seo";
+
+export function getStaticPaths() {
+  return ALTERNATIVE_IDS.map((id) => ({ params: { id }, props: { b: byId.get(id)! } }));
+}
+const { b } = Astro.props as { b: Browser };
+const alts = alternativesFor(b, 9);
+const pains = painPoints(b);
+const h1 = `The best ${b.name} alternatives in ${YEAR}`;
+const items: Item[] = alts.map(({ result, better, keeps, caveats }) => ({
+  b: result.browser,
+  badges: result.browser.scores.lowConfidence ? ["estimate"] : [],
+  lines: [
+    ...(better.length ? [{ label: "Better than " + b.name + ":", text: better.join(" · "), tone: "good" as const }] : []),
+    ...(keeps.length ? [{ label: "Keeps:", text: [...new Set(keeps)].join(" · ") }] : []),
+    ...(caveats.length ? [{ label: "Trade-off:", text: caveats.join(", "), tone: "warn" as const }] : []),
+    ...(result.browser.price ? [{ label: "Price:", text: result.browser.price.note, tone: "warn" as const }] : []),
+  ],
+}));
+const top3 = alts.slice(0, 3).map((a) => a.result.browser.name);
+const faq = [
+  { q: `What is the best alternative to ${b.name}?`, a: `Based on what ${b.name} does well, the closest alternatives are ${top3.join(", ")}. ${alts[0] ? `${alts[0].result.browser.name} ${alts[0].better.length ? "is " + alts[0].better.map((x) => x.split(" (")[0].toLowerCase()).join(", ") : "matches it closely"}.` : ""}` },
+  { q: `Why switch from ${b.name}?`, a: pains.length ? pains.join(" ") : `${b.name} is a solid browser – people usually switch for a specific feature, platform or privacy preference.` },
+  { q: `How do I move from ${b.name} to another browser?`, a: "Most browsers import bookmarks, passwords and history on first launch. Chromium-based browsers also install the same Chrome Web Store extensions; Firefox-based ones use Firefox add-ons." },
+];
+const crumbs = [{ name: "Alternatives", href: "/alternatives" }, { name: `${b.name} alternatives`, href: `/alternatives/${b.id}` }];
+const title = `Best ${b.name} alternatives (${YEAR}): ${top3.slice(0, 2).join(", ")} and more`;
+const description = `Looking to switch from ${b.name}? The best alternatives are ${top3.join(", ")} – ranked by what they do better, what they keep and the trade-offs. Updated ${UPDATED}.`;
+const jsonLd = [itemListLd(Astro.site, h1, alts.map((a) => a.result.browser)), breadcrumbLd(Astro.site, crumbs), faqLd(faq)];
+const others = ALTERNATIVE_IDS.filter((id) => id !== b.id).map((id) => byId.get(id)!);
+---
+<Base title={title} description={description} jsonLd={jsonLd} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Alternatives</p>
+    <h1>{h1}</h1>
+    <p class="lede">The browsers that keep what <a href={`/browsers/${b.id}`}>{b.name}</a> does well and fix what it doesn't. Ranked by the quiz engine from our scores. Updated {UPDATED}.</p>
+
+    <div class="alt-src">
+      <div>
+        <h2>Why people leave {b.name}</h2>
+        {pains.length ? <ul class="pain">{pains.map((p) => <li>{p}</li>)}</ul> : <p class="prose">{b.name} scores well across the board; people usually switch for a specific feature, platform or privacy preference.</p>}
+      </div>
+      <div><h2>{b.name} today</h2><ScoreBars b={b} /></div>
+    </div>
+
+    <h2>Top {alts.length} alternatives</h2>
+    <RankedList items={items} />
+
+    <QuizCta title={`Find your own ${b.name} replacement`} text="The quiz ranks every browser against your OS, extensions, priorities, must-haves and dealbreakers." />
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+
+    <section aria-labelledby="more">
+      <h2 id="more">More alternatives</h2>
+      <ul class="linkgrid">{others.map((o) => <li><a href={`/alternatives/${o.id}`}>{o.logo && <img src={o.logo} alt="" width="24" height="24" loading="lazy" />}<span>{o.name} alternatives</span></a></li>)}</ul>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .alt-src { display: grid; grid-template-columns: 1.3fr 1fr; gap: 28px; }
+  .alt-src h2 { margin-top: 20px; }
+  @media (max-width: 760px) { .alt-src { grid-template-columns: 1fr; gap: 0; } }
+</style>

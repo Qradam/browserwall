@@ -1,0 +1,68 @@
+---
+// Shared details dialog. Use openBrowser(id) from src/scripts/dialog.ts to open it.
+import { browsers, TAGS, ENGINES, OSES, FAMILIES, AXES } from "../data/browsers";
+
+const payload = JSON.stringify({ browsers, tags: TAGS, engines: ENGINES, oses: OSES, families: FAMILIES, axes: AXES }).replace(/</g, "\\u003c");
+---
+<script id="browser-data" type="application/json" set:html={payload} />
+<dialog id="bd" class="bd" aria-labelledby="bd-title">
+  <div class="bd-body"></div>
+</dialog>
+
+<script>
+  import { initDialog } from "../scripts/dialog";
+  initDialog();
+</script>
+
+<style is:global>
+  .bd { width: min(560px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid var(--line-2); border-radius: 12px; background: var(--bg-2); color: var(--text); box-shadow: 0 24px 64px rgb(0 0 0 / .5); }
+  .bd::backdrop { background: rgb(0 0 0 / .6); backdrop-filter: blur(2px); }
+  .bd[open] { animation: bd-in .14s ease-out; }
+  @keyframes bd-in { from { opacity: 0; transform: translateY(6px) scale(.99); } }
+  .bd-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px; }
+  .bd-head { display: flex; align-items: center; gap: 14px; }
+  .bd-logo { flex: none; width: 56px; height: 56px; display: grid; place-items: center; }
+  .bd-logo img { width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 0 1px rgb(255 255 255 / .45)); }
+  .bd[data-status="discontinued"] .bd-logo img { filter: grayscale(1); }
+  .bd-logo .mono { width: 56px; height: 56px; border-radius: 12px; display: grid; place-items: center; background: var(--bg-3); border: 1px solid var(--line-2); font: 600 16px var(--mono); color: var(--muted); }
+  .bd-title { flex: 1; min-width: 0; }
+  .bd-title h2 { margin: 0; font-size: 20px; font-weight: 660; letter-spacing: -0.02em; }
+  .bd-title p { margin: 2px 0 0; color: var(--faint); font-size: 12.5px; }
+  .bd-close { align-self: flex-start; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; border: 0; background: none; color: var(--muted); cursor: pointer; }
+  .bd-close:hover { background: var(--bg-3); color: var(--text); }
+  .bd-desc { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .bd-note { margin: 0; display: flex; gap: 8px; padding: 9px 11px; border-radius: 8px; background: rgb(251 191 36 / .08); border: 1px solid rgb(251 191 36 / .25); color: var(--text); font-size: 13px; }
+  .bd-note svg { color: var(--warn); flex: none; margin-top: 2px; }
+  .bd h3 { margin: 0 0 8px; font-size: 13px; font-weight: 620; }
+  .bd .dim { color: var(--faint); font-weight: 400; }
+  .bd-low { display: flex; align-items: center; gap: 6px; margin: 0 0 8px; font-size: 12px; color: var(--warn); }
+  .bd-scorelist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .bd-scorelist li { display: grid; grid-template-columns: 150px 1fr 18px; align-items: center; gap: 2px 10px; }
+  .bd-scorelist .ax { font-size: 13px; color: var(--muted); }
+  .bd-scorelist b { font: 600 12.5px var(--mono); text-align: right; }
+  .bar { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; }
+  .bar i { height: 8px; border-radius: 2px; background: var(--bg-3); }
+  .bar i.on { background: var(--accent); }
+  .scale { grid-column: 2 / 3; display: flex; justify-content: space-between; font-size: 10.5px; color: var(--faint); }
+  .bd-why { margin: 12px 0 0; font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+  .bd-why b { color: var(--text); font-weight: 600; }
+  .bd-src { margin: 6px 0 0; font-size: 11.5px; color: var(--faint); }
+  .bd-src a { color: var(--muted); }
+  .bd-src a:hover { color: var(--accent); }
+  .bd-foot { margin: 10px 0 0; font-size: 11.5px; color: var(--faint); }
+  .bd-ai { padding: 10px 12px; border-radius: 8px; background: var(--bg-3); border: 1px solid var(--line); }
+  .bd-ai h3 { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; }
+  .bd-ai h3 svg { color: var(--accent); }
+  .bd-ai-meta { margin: 0; font-size: 12px; color: var(--text); }
+  .bd-ai-note { margin: 4px 0 0; font-size: 12px; color: var(--muted); line-height: 1.45; }
+  .bd-facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px 16px; padding: 12px 0; border-block: 1px solid var(--line); }
+  .bd-facts dt { font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: .05em; }
+  .bd-facts dd { margin: 0; font-size: 13px; }
+  .linkish { background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; text-decoration: underline; }
+  .bd-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+  .bd-tags li { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--muted); background: var(--bg-3); border-radius: 5px; padding: 2px 8px; }
+  .bd-links { display: flex; flex-wrap: wrap; gap: 6px; }
+  .bd-links a { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 7px; background: var(--bg-3); border: 1px solid var(--line); text-decoration: none; font-size: 13px; }
+  .bd-links a:hover { border-color: var(--line-2); }
+  @media (max-width: 480px) { .bd-scorelist li { grid-template-columns: 1fr 18px; } .bd-scorelist .bar, .scale { grid-column: 1 / 2; } .bd-scorelist .ax { grid-column: 1 / 3; } }
+</style>

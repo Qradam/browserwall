@@ -1,0 +1,9 @@
+{
+  "_note": "Default wall order: roughly how widely used / recognised a browser is on desktop (StatCounter-style share first, then community size). This is NOT a quality ranking. Unlisted browsers follow A-Z, then beta/nightly channels, then discontinued ones.",
+  "order": [
+    "google-chrome", "microsoft-edge", "safari", "firefox", "opera", "brave", "opera-gx", "vivaldi",
+    "yandex-browser", "duckduckgo", "tor-browser", "chromium", "zen-browser", "librewolf", "naver-whale",
+    "waterfox", "ecosia-browser", "mullvad-browser", "dia", "comet", "orion", "floorp", "ungoogled-chromium",
+    "avast-secure-browser", "helium", "qutebrowser", "pale-moon", "ladybird", "thorium", "cromite"
+  ]
+}

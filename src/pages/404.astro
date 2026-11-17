@@ -1,0 +1,13 @@
+---
+import "../styles/content.css";
+import Base from "../layouts/Base.astro";
+import QuizCta from "../components/QuizCta.astro";
+---
+<Base title="Page not found – browserwall" description="This page doesn't exist." noindex dialog={false}>
+  <div class="doc" style="text-align:center;padding-top:80px">
+    <p class="kicker">404</p>
+    <h1>This page took a wrong turn</h1>
+    <p class="lede" style="margin:0 auto">Try the <a href="/wall">browser wall</a>, the <a href="/best">guides</a> or the quiz.</p>
+    <QuizCta />
+  </div>
+</Base>
