@@ -1,0 +1,223 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import BrowserCard from "../components/BrowserCard.astro";
+import { browsers, TAGS, ENGINES, OSES, type Engine } from "../data/browsers";
+
+// Only show filter chips that actually match something, most-used first.
+const tagCounts = new Map<string, number>();
+for (const b of browsers) for (const t of b.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+const tagChips = Object.keys(TAGS).filter((t) => tagCounts.has(t) && t !== "rip").sort((a, b) => tagCounts.get(b)! - tagCounts.get(a)!);
+
+const engineCounts = new Map<Engine, number>();
+for (const b of browsers) engineCounts.set(b.engine, (engineCounts.get(b.engine) ?? 0) + 1);
+const engineChips = [...engineCounts.entries()].sort((a, b) => b[1] - a[1]).map(([e]) => e);
+const osChips = (["windows", "macos", "linux", "bsd"] as const);
+
+const alive = browsers.filter((b) => b.status !== "discontinued").length;
+---
+<Base>
+  <section class="hero">
+    <h1>Every browser worth knowing.</h1>
+    <p>{browsers.length} desktop browsers – the giants, the forks, the terminal dwellers, the dead and one very rude meme. {alive} still alive.</p>
+  </section>
+
+  <section class="controls" aria-label="Filter browsers">
+    <label class="search">
+      <Icon name="Search01Icon" size={16} />
+      <input id="q" type="search" placeholder="Search name, engine, feature…" autocomplete="off" spellcheck="false" aria-label="Search browsers" />
+      <kbd>/</kbd>
+    </label>
+
+    <div class="row">
+      <div class="seg" role="group" aria-label="Operating system">
+        {osChips.map((o) => <button type="button" class="chip" data-filter="os" data-value={o} aria-pressed="false">{OSES[o]}</button>)}
+      </div>
+      <div class="seg" role="group" aria-label="Engine">
+        {engineChips.map((e) => <button type="button" class="chip" data-filter="engine" data-value={e} aria-pressed="false">{ENGINES[e]}</button>)}
+      </div>
+      <div class="seg" role="group" aria-label="Status">
+        <button type="button" class="chip" data-toggle="alive" aria-pressed="false"><Icon name="Tick02Icon" size={13} />Alive only</button>
+        <button type="button" class="chip" data-toggle="oss" aria-pressed="false">Open source</button>
+        <button type="button" class="chip" data-toggle="rip" aria-pressed="false"><Icon name="SkullIcon" size={13} />RIP</button>
+      </div>
+    </div>
+
+    <div class="row tags-row" role="group" aria-label="Features">
+      {tagChips.map((t) => (
+        <button type="button" class="chip" data-filter="tag" data-value={t} aria-pressed="false">
+          <Icon name={TAGS[t].icon} size={13} />{TAGS[t].label}<span class="n">{tagCounts.get(t)}</span>
+        </button>
+      ))}
+    </div>
+
+    <div class="summary">
+      <span id="count" aria-live="polite">{browsers.length} browsers</span>
+      <button type="button" id="reset" class="reset" hidden><Icon name="Cancel01Icon" size={13} />Clear filters</button>
+    </div>
+  </section>
+
+  <ul id="grid" class="grid">
+    {browsers.map((b) => <BrowserCard b={b} />)}
+  </ul>
+  <p id="empty" class="empty" hidden>No browser matches that. Maybe build one?</p>
+</Base>
+
+<script>
+  // Filters: OS/engine are OR within the group; feature tags are AND (each tag narrows results).
+  const q = document.querySelector<HTMLInputElement>("#q")!;
+  const cards = [...document.querySelectorAll<HTMLElement>("#grid > .card")];
+  const count = document.querySelector("#count")!;
+  const empty = document.querySelector<HTMLElement>("#empty")!;
+  const reset = document.querySelector<HTMLButtonElement>("#reset")!;
+  const sets = { os: new Set<string>(), engine: new Set<string>(), tag: new Set<string>() };
+  const toggles = { alive: false, oss: false, rip: false };
+
+  function apply() {
+    const terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    for (const c of cards) {
+      const d = c.dataset;
+      const os = d.os!.split(" "), tags = d.tags!.split(" ");
+      const ok =
+        terms.every((t) => d.search!.includes(t)) &&
+        (!sets.os.size || os.some((o) => sets.os.has(o))) &&
+        (!sets.engine.size || sets.engine.has(d.engine!)) &&
+        [...sets.tag].every((t) => tags.includes(t)) &&
+        (!toggles.alive || d.status !== "discontinued") &&
+        (!toggles.rip || d.status === "discontinued") &&
+        (!toggles.oss || d.oss === "1");
+      c.hidden = !ok;
+      if (ok) shown++;
+    }
+    count.textContent = `${shown} browser${shown === 1 ? "" : "s"}`;
+    empty.hidden = shown > 0;
+    const active = terms.length || sets.os.size || sets.engine.size || sets.tag.size || Object.values(toggles).some(Boolean);
+    reset.hidden = !active;
+    syncUrl();
+  }
+
+  function syncUrl() {
+    const p = new URLSearchParams();
+    if (q.value.trim()) p.set("q", q.value.trim());
+    for (const [k, s] of Object.entries(sets)) if (s.size) p.set(k, [...s].join(","));
+    for (const [k, v] of Object.entries(toggles)) if (v) p.set(k, "1");
+    const s = p.toString();
+    history.replaceState(null, "", s ? `?${s}` : location.pathname);
+  }
+
+  function setPressed(btn: HTMLElement, on: boolean) { btn.setAttribute("aria-pressed", String(on)); }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-filter]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const set = sets[btn.dataset.filter as keyof typeof sets];
+      const v = btn.dataset.value!;
+      set.has(v) ? set.delete(v) : set.add(v);
+      setPressed(btn, set.has(v));
+      apply();
+    });
+  });
+  document.querySelectorAll<HTMLButtonElement>("[data-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const k = btn.dataset.toggle as keyof typeof toggles;
+      toggles[k] = !toggles[k];
+      // "Alive only" and "RIP" are mutually exclusive.
+      const other = k === "alive" ? "rip" : k === "rip" ? "alive" : null;
+      if (other && toggles[k]) {
+        toggles[other] = false;
+        setPressed(document.querySelector(`[data-toggle="${other}"]`)!, false);
+      }
+      setPressed(btn, toggles[k]);
+      apply();
+    });
+  });
+  reset.addEventListener("click", () => {
+    q.value = "";
+    Object.values(sets).forEach((s) => s.clear());
+    (Object.keys(toggles) as (keyof typeof toggles)[]).forEach((k) => (toggles[k] = false));
+    document.querySelectorAll("[aria-pressed]").forEach((b) => b.setAttribute("aria-pressed", "false"));
+    apply();
+  });
+  q.addEventListener("input", apply);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+    if (e.key === "Escape" && document.activeElement === q) { q.value = ""; apply(); }
+  });
+
+  // Restore state from URL (shareable filtered views).
+  const p = new URLSearchParams(location.search);
+  q.value = p.get("q") ?? "";
+  for (const k of Object.keys(sets) as (keyof typeof sets)[])
+    for (const v of (p.get(k) ?? "").split(",").filter(Boolean)) {
+      const btn = document.querySelector<HTMLElement>(`[data-filter="${k}"][data-value="${CSS.escape(v)}"]`);
+      if (btn) { sets[k].add(v); setPressed(btn, true); }
+    }
+  for (const k of Object.keys(toggles) as (keyof typeof toggles)[])
+    if (p.get(k) === "1") { toggles[k] = true; setPressed(document.querySelector(`[data-toggle="${k}"]`)!, true); }
+  apply();
+</script>
+
+<style>
+  .hero { padding: 48px 0 24px; max-width: 720px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 10px; font-weight: 680; }
+  .hero p { color: var(--muted); margin: 0; font-size: 15px; }
+
+  .controls { display: flex; flex-direction: column; gap: 10px; padding: 8px 0 20px; }
+  .search { display: flex; align-items: center; gap: 10px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 12px; height: 42px; color: var(--muted); transition: border-color .15s; }
+  .search:focus-within { border-color: var(--accent); }
+  .search input { flex: 1; background: none; border: 0; outline: 0; height: 100%; color: var(--text); font-size: 14px; }
+  .search input::-webkit-search-cancel-button { display: none; }
+  kbd { font: 11px var(--mono); color: var(--faint); border: 1px solid var(--line-2); border-radius: 4px; padding: 1px 6px; }
+
+  .row { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .seg { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tags-row { gap: 4px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px; height: 28px; padding: 0 10px; border-radius: 6px;
+    background: var(--bg-2); border: 1px solid var(--line); color: var(--muted); font-size: 12.5px; cursor: pointer;
+    transition: background .12s, color .12s, border-color .12s;
+  }
+  .chip:hover { color: var(--text); border-color: var(--line-2); }
+  .chip[aria-pressed="true"] { background: var(--accent-bg); border-color: var(--accent); color: var(--text); }
+  .chip[aria-pressed="true"] :global(svg) { color: var(--accent); }
+  .chip .n { font-size: 11px; color: var(--faint); font-variant-numeric: tabular-nums; }
+
+  .summary { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 12.5px; min-height: 24px; }
+  .reset { display: inline-flex; align-items: center; gap: 4px; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 2px 4px; font-size: 12.5px; }
+  .reset[hidden] { display: none; }
+
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+  .empty { color: var(--muted); text-align: center; padding: 48px 0; }
+
+  /* Card (styles live here so the grid owns layout) */
+  .grid :global(.card) {
+    display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 10px;
+    background: var(--bg-2); border: 1px solid var(--line); transition: border-color .15s, transform .15s, background .15s;
+  }
+  .grid :global(.card[hidden]) { display: none; }
+  .grid :global(.card:hover) { border-color: var(--line-2); background: #202020; }
+  .grid :global(.card[data-status="discontinued"]) { opacity: .72; }
+  .grid :global(.card[data-status="discontinued"] .logo img) { filter: grayscale(1); }
+  .grid :global(.card-head) { display: flex; align-items: center; gap: 12px; }
+  .grid :global(.logo) { flex: none; width: 40px; height: 40px; display: grid; place-items: center; }
+  .grid :global(.logo img) { width: 40px; height: 40px; object-fit: contain; }
+  .grid :global(.mono) { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: var(--bg-3); border: 1px solid var(--line-2); font: 600 13px var(--mono); color: var(--muted); }
+  .grid :global(.title) { min-width: 0; flex: 1; }
+  .grid :global(h2) { margin: 0; font-size: 15px; font-weight: 620; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .grid :global(.meta) { margin: 0; font-size: 12px; color: var(--faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .grid :global(.status) { flex: none; display: inline-flex; align-items: center; gap: 3px; font-size: 11px; padding: 2px 6px; border-radius: 5px; }
+  .grid :global(.status.discontinued) { color: var(--dead); background: rgb(248 113 113 / .1); }
+  .grid :global(.status.maintenance) { color: var(--warn); background: rgb(251 191 36 / .1); }
+  .grid :global(.desc) { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; flex: 1; }
+  .grid :global(.tags) { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+  .grid :global(.tag) { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; color: var(--muted); background: var(--bg-3); border-radius: 5px; padding: 2px 7px; }
+  .grid :global(.tag svg) { color: var(--faint); }
+  .grid :global(.tag-meme) { color: var(--warn); }
+  .grid :global(.tag-meme svg) { color: var(--warn); }
+  .grid :global(.card-foot) { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid var(--line); }
+  .grid :global(.os) { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11.5px; color: var(--faint); }
+  .grid :global(.links) { display: flex; align-items: center; gap: 2px; }
+  .grid :global(.links a) { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 6px; color: var(--muted); }
+  .grid :global(.links a:hover) { background: var(--bg-3); color: var(--text); }
+  .grid :global(.oss) { font: 600 10px var(--mono); color: var(--ok); border: 1px solid rgb(74 222 128 / .3); border-radius: 4px; padding: 1px 4px; margin-right: 4px; }
+</style>

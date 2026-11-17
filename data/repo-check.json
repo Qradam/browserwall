@@ -1,0 +1,500 @@
+{
+  "amaya": {
+    "repo": "https://github.com/w3c/Amaya",
+    "error": 404
+  },
+  "arora": {
+    "repo": "https://github.com/Arora/arora",
+    "archived": false,
+    "lastCommit": "2017-07-31",
+    "status": "discontinued"
+  },
+  "beaker-browser": {
+    "repo": "https://github.com/beakerbrowser/beaker",
+    "archived": false,
+    "lastCommit": "2022-12-27",
+    "status": "discontinued"
+  },
+  "agregore": {
+    "repo": "https://github.com/AgregoreWeb/agregore-browser",
+    "archived": false,
+    "lastCommit": "2026-07-13",
+    "status": "active"
+  },
+  "arctic-fox": {
+    "repo": "https://github.com/rmottola/Arctic-Fox",
+    "archived": false,
+    "lastCommit": "2026-11-05",
+    "status": "active"
+  },
+  "brave": {
+    "repo": "https://github.com/brave/brave-browser",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "aquafox": {
+    "repo": "https://github.com/BlackBirdLC/Aquafox",
+    "archived": false,
+    "lastCommit": "2026-11-01",
+    "status": "active"
+  },
+  "catsxp": {
+    "repo": "https://github.com/catsxp/catsxp",
+    "error": 404
+  },
+  "browseros": {
+    "repo": "https://github.com/browseros-ai/BrowserOS",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "browsh": {
+    "repo": "https://github.com/browsh-org/browsh",
+    "archived": false,
+    "lastCommit": "2026-11-02",
+    "status": "maintenance"
+  },
+  "cachy-browser": {
+    "repo": "https://github.com/CachyOS/cachyos-browser-settings",
+    "archived": false,
+    "lastCommit": "2025-03-05",
+    "status": "active"
+  },
+  "carbonyl": {
+    "repo": "https://github.com/fathyb/carbonyl",
+    "archived": false,
+    "lastCommit": "2023-02-26",
+    "status": "maintenance"
+  },
+  "classilla": {
+    "repo": "https://github.com/classilla/classilla",
+    "archived": false,
+    "lastCommit": "2021-03-29",
+    "status": "discontinued"
+  },
+  "cromite": {
+    "repo": "https://github.com/uazo/cromite",
+    "archived": false,
+    "lastCommit": "2026-09-19",
+    "status": "active"
+  },
+  "dooble": {
+    "repo": "https://github.com/textbrowser/dooble",
+    "archived": false,
+    "lastCommit": "2026-10-24",
+    "status": "active"
+  },
+  "cursemium": {
+    "repo": "https://github.com/FrankEnderman/cursemium",
+    "archived": false,
+    "lastCommit": "2023-02-26",
+    "status": "discontinued"
+  },
+  "dillo": {
+    "repo": "https://github.com/dillo-browser/dillo",
+    "archived": false,
+    "lastCommit": "2026-04-19",
+    "status": "maintenance"
+  },
+  "centaury": {
+    "repo": "https://github.com/roytam1/UXP",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "maintenance"
+  },
+  "dot-browser": {
+    "repo": "https://github.com/dothq/browser-desktop",
+    "archived": false,
+    "lastCommit": "2024-04-19",
+    "status": "discontinued"
+  },
+  "elinks": {
+    "repo": "https://github.com/rkd77/elinks",
+    "archived": false,
+    "lastCommit": "2026-11-15",
+    "status": "discontinued"
+  },
+  "firefox-developer-edition": {
+    "repo": "https://github.com/mozilla-firefox/firefox",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "firefox": {
+    "repo": "https://github.com/mozilla-firefox/firefox",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "firefox-beta": {
+    "repo": "https://github.com/mozilla-firefox/firefox",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "firefox-esr": {
+    "repo": "https://github.com/mozilla-firefox/firefox",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "firefox-nightly": {
+    "repo": "https://github.com/mozilla-firefox/firefox",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "edbrowse": {
+    "repo": "https://github.com/edbrowse/edbrowse",
+    "archived": false,
+    "lastCommit": "2026-11-07",
+    "status": "active"
+  },
+  "firefox-os2": {
+    "repo": "https://github.com/bitwiseworks/mozilla-os2",
+    "archived": false,
+    "lastCommit": "2017-10-18",
+    "status": "maintenance"
+  },
+  "flow-browser": {
+    "repo": "https://github.com/MultiboxLabs/flow-browser",
+    "archived": false,
+    "lastCommit": "2026-11-14",
+    "status": "active"
+  },
+  "floorp": {
+    "repo": "https://github.com/Floorp-Projects/Floorp",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "glide-browser": {
+    "repo": "https://github.com/glide-browser/glide",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "active"
+  },
+  "ghostery-dawn": {
+    "repo": "https://github.com/ghostery/user-agent-desktop",
+    "archived": false,
+    "lastCommit": "2025-02-17",
+    "status": "discontinued"
+  },
+  "gosub": {
+    "repo": "https://github.com/gosub-io/gosub-engine",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "k-meleon": {
+    "repo": "https://github.com/kmeleonbrowser/K-Meleon",
+    "error": 404
+  },
+  "helium": {
+    "repo": "https://github.com/imputnet/helium",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "active"
+  },
+  "interwebppc": {
+    "repo": "https://github.com/wicknix/InterWebPPC",
+    "archived": false,
+    "lastCommit": "2023-04-30",
+    "status": "maintenance"
+  },
+  "kosmonaut": {
+    "repo": "https://github.com/twilco/kosmonaut",
+    "archived": false,
+    "lastCommit": "2025-11-24",
+    "status": "discontinued"
+  },
+  "ibrows": {
+    "repo": "https://github.com/JoshTheDerf/iBrows",
+    "archived": false,
+    "lastCommit": "2015-09-02",
+    "status": "discontinued"
+  },
+  "ladybird": {
+    "repo": "https://github.com/LadybirdBrowser/ladybird",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "iridium": {
+    "repo": "https://github.com/iridium-browser/iridium-browser",
+    "archived": false,
+    "lastCommit": "2024-01-25",
+    "status": "discontinued"
+  },
+  "luakit": {
+    "repo": "https://github.com/luakit/luakit",
+    "archived": false,
+    "lastCommit": "2026-05-28",
+    "status": "maintenance"
+  },
+  "mercury": {
+    "repo": "https://github.com/Alex313031/Mercury",
+    "archived": false,
+    "lastCommit": "2024-12-03",
+    "status": "active"
+  },
+  "macsurf": {
+    "repo": "https://github.com/ptrickyy/macsurf",
+    "archived": false,
+    "lastCommit": "2026-10-22",
+    "status": "active"
+  },
+  "min": {
+    "repo": "https://github.com/minbrowser/min",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "active"
+  },
+  "midori": {
+    "repo": "https://github.com/goastian/midori-desktop",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "active"
+  },
+  "new-moon": {
+    "repo": "https://github.com/roytam1/UXP",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "maintenance"
+  },
+  "midori-legacy": {
+    "repo": "https://github.com/midori-browser/core",
+    "archived": false,
+    "lastCommit": "2019-10-12",
+    "status": "discontinued"
+  },
+  "mist": {
+    "repo": "https://github.com/ethereum/mist",
+    "archived": false,
+    "lastCommit": "2019-03-27",
+    "status": "discontinued"
+  },
+  "mypal": {
+    "repo": "https://github.com/Feodor2/Mypal",
+    "archived": false,
+    "lastCommit": "2022-04-07",
+    "status": "discontinued"
+  },
+  "mullvad-browser": {
+    "repo": "https://github.com/mullvad/mullvad-browser",
+    "archived": false,
+    "lastCommit": "2026-10-13",
+    "status": "active"
+  },
+  "mypal68": {
+    "repo": "https://github.com/Feodor2/Mypal68",
+    "archived": false,
+    "lastCommit": "2026-11-14",
+    "status": "active"
+  },
+  "peersky": {
+    "repo": "https://github.com/p2plabs/peersky-browser",
+    "error": 404
+  },
+  "nyxt": {
+    "repo": "https://github.com/atlas-engineer/nyxt",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "active"
+  },
+  "nook": {
+    "repo": "https://github.com/nook-browser/Nook",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "otter-browser": {
+    "repo": "https://github.com/OtterBrowser/otter-browser",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "maintenance"
+  },
+  "odyssey-web-browser": {
+    "repo": "https://github.com/deadwood2/OdysseyWebBrowser",
+    "archived": false,
+    "lastCommit": "2025-04-07",
+    "status": "active"
+  },
+  "qutebrowser": {
+    "repo": "https://github.com/qutebrowser/qutebrowser",
+    "archived": false,
+    "lastCommit": "2026-11-02",
+    "status": "active"
+  },
+  "powerfox-classic": {
+    "repo": "https://github.com/Jazzzny/powerfox-classic",
+    "archived": false,
+    "lastCommit": "2026-09-01",
+    "status": "active"
+  },
+  "pulse-browser": {
+    "repo": "https://github.com/pulse-browser/browser",
+    "archived": false,
+    "lastCommit": "2024-01-10",
+    "status": "discontinued"
+  },
+  "responsively-app": {
+    "repo": "https://github.com/responsively-org/responsively-app",
+    "archived": false,
+    "lastCommit": "2026-10-03",
+    "status": "active"
+  },
+  "serpent": {
+    "repo": "https://github.com/roytam1/UXP",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "maintenance"
+  },
+  "r3dfox": {
+    "repo": "https://github.com/Eclipse-Community/r3dfox",
+    "archived": false,
+    "lastCommit": "2026-11-14",
+    "status": "active"
+  },
+  "retrozilla": {
+    "repo": "https://github.com/rn10950/RetroZilla",
+    "archived": false,
+    "lastCommit": "2025-06-11",
+    "status": "maintenance"
+  },
+  "robinson": {
+    "repo": "https://github.com/mbrubeck/robinson",
+    "archived": false,
+    "lastCommit": "2024-07-16",
+    "status": "discontinued"
+  },
+  "sealion": {
+    "repo": "https://github.com/wicknix/SeaLion",
+    "archived": false,
+    "lastCommit": "2026-06-14",
+    "status": "active"
+  },
+  "sushi-browser": {
+    "repo": "https://github.com/sushib/sushi-browser",
+    "error": 404
+  },
+  "servo": {
+    "repo": "https://github.com/servo/servo",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "shuttle": {
+    "repo": "https://github.com/shuttle-browser/shuttle",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "pissandshittium": {
+    "repo": "https://github.com/Pissandshittium/pissandshittium",
+    "archived": false,
+    "lastCommit": "2023-12-18",
+    "status": "active"
+  },
+  "supermium": {
+    "repo": "https://github.com/win32ss/supermium",
+    "archived": false,
+    "lastCommit": "2026-10-21",
+    "status": "active"
+  },
+  "thorium": {
+    "repo": "https://github.com/Alex313031/thorium",
+    "archived": false,
+    "lastCommit": "2026-11-14",
+    "status": "active"
+  },
+  "tenfourfox": {
+    "repo": "https://github.com/classilla/tenfourfox",
+    "archived": false,
+    "lastCommit": "2025-02-15",
+    "status": "discontinued"
+  },
+  "trivalent": {
+    "repo": "https://github.com/secureblue/Trivalent",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "active"
+  },
+  "ungoogled-chromium": {
+    "repo": "https://github.com/ungoogled-software/ungoogled-chromium",
+    "archived": false,
+    "lastCommit": "2026-11-11",
+    "status": "active"
+  },
+  "uzbl": {
+    "repo": "https://github.com/uzbl/uzbl",
+    "archived": false,
+    "lastCommit": "2018-01-05",
+    "status": "discontinued"
+  },
+  "verso": {
+    "repo": "https://github.com/versotile-org/verso",
+    "archived": false,
+    "lastCommit": "2025-10-08",
+    "status": "discontinued"
+  },
+  "waterfox-classic": {
+    "repo": "https://github.com/MrAlex94/Waterfox",
+    "error": 404
+  },
+  "vieb": {
+    "repo": "https://github.com/Jelmerro/Vieb",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "maintenance"
+  },
+  "w3m": {
+    "repo": "https://github.com/tats/w3m",
+    "archived": false,
+    "lastCommit": "2023-07-18",
+    "status": "maintenance"
+  },
+  "vimb": {
+    "repo": "https://github.com/fanglingsu/vimb",
+    "archived": false,
+    "lastCommit": "2026-09-04",
+    "status": "maintenance"
+  },
+  "waterfox": {
+    "repo": "https://github.com/BrowserWorks/Waterfox",
+    "archived": false,
+    "lastCommit": "2026-11-06",
+    "status": "active"
+  },
+  "haiku-webpositive": {
+    "repo": "https://github.com/haiku/haiku",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "active"
+  },
+  "wavebox": {
+    "repo": "https://github.com/wavebox/waveboxapp",
+    "archived": false,
+    "lastCommit": "2026-11-17",
+    "status": "active"
+  },
+  "xombrero": {
+    "repo": "https://github.com/conformal/xombrero",
+    "archived": false,
+    "lastCommit": "2016-05-06",
+    "status": "discontinued"
+  },
+  "zen-browser": {
+    "repo": "https://github.com/zen-browser/desktop",
+    "archived": false,
+    "lastCommit": "2026-11-16",
+    "status": "active"
+  },
+  "wexond": {
+    "repo": "https://github.com/wexond/browser-base",
+    "archived": false,
+    "lastCommit": "2023-06-04",
+    "status": "discontinued"
+  }
+}

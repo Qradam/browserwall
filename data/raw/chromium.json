@@ -1,0 +1,1747 @@
+[
+  {
+    "id": "google-chrome",
+    "name": "Google Chrome",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "The most widely used web browser, built by Google on Chromium with Google sync and services.",
+    "tags": [
+      "mainstream",
+      "chrome-extensions",
+      "sync",
+      "performance"
+    ],
+    "website": "https://www.google.com/chrome/",
+    "repo": null,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Google_Chrome"
+    ]
+  },
+  {
+    "id": "chromium",
+    "name": "Chromium",
+    "engine": "blink",
+    "basedOn": "Google open-source project",
+    "os": [
+      "windows",
+      "macos",
+      "linux",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Open-source project from Google that provides the code base for Chrome and most Blink-based browsers.",
+    "tags": [
+      "developer",
+      "chrome-extensions",
+      "experimental"
+    ],
+    "website": "https://www.chromium.org/",
+    "repo": "https://chromium.googlesource.com/chromium/src",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/2/28/Chromium_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Chromium_(web_browser)"
+    ]
+  },
+  {
+    "id": "microsoft-edge",
+    "name": "Microsoft Edge",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Microsoft's Chromium-based default Windows browser with vertical tabs, Copilot and enterprise features.",
+    "tags": [
+      "mainstream",
+      "chrome-extensions",
+      "vertical-tabs",
+      "ai",
+      "enterprise"
+    ],
+    "website": "https://www.microsoft.com/edge",
+    "repo": null,
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Microsoft_Edge"
+    ]
+  },
+  {
+    "id": "brave",
+    "name": "Brave",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Privacy-focused Chromium browser with built-in ad blocking, Shields and optional BAT crypto rewards.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "crypto",
+      "chrome-extensions",
+      "sync"
+    ],
+    "website": "https://brave.com",
+    "repo": "https://github.com/brave/brave-browser",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Brave_lion_icon.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "sources": [
+      "https://github.com/brave/brave-browser",
+      "https://en.wikipedia.org/wiki/Brave_(web_browser)"
+    ]
+  },
+  {
+    "id": "vivaldi",
+    "name": "Vivaldi",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Highly customizable Chromium browser with tab stacks, tiling, built-in mail, notes and a power-user UI.",
+    "tags": [
+      "customizable",
+      "power-user",
+      "workspaces",
+      "split-view",
+      "chrome-extensions"
+    ],
+    "website": "https://vivaldi.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vivaldi_(web_browser)"
+    ]
+  },
+  {
+    "id": "opera",
+    "name": "Opera",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Norwegian Chromium browser with built-in free VPN, ad blocker, sidebar messengers and Workspaces.",
+    "tags": [
+      "mainstream",
+      "workspaces",
+      "ad-blocking",
+      "chrome-extensions",
+      "sync"
+    ],
+    "website": "https://www.opera.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Opera_(web_browser)"
+    ]
+  },
+  {
+    "id": "opera-gx",
+    "name": "Opera GX",
+    "engine": "blink",
+    "basedOn": "Opera (Chromium)",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Gaming-oriented Opera edition with CPU/RAM/network limiters, Twitch integration and themed UI.",
+    "tags": [
+      "gaming",
+      "performance",
+      "customizable",
+      "chrome-extensions"
+    ],
+    "website": "https://www.opera.com/gx",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Opera_GX"
+    ]
+  },
+  {
+    "id": "opera-air",
+    "name": "Opera Air",
+    "engine": "blink",
+    "basedOn": "Opera (Chromium)",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Opera edition focused on mindfulness, with breathing exercises, guided meditations and focus music.",
+    "tags": [
+      "mainstream",
+      "chrome-extensions",
+      "minimal"
+    ],
+    "website": "https://www.opera.com/air",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.opera.com/air"
+    ]
+  },
+  {
+    "id": "opera-neon",
+    "name": "Opera Neon",
+    "engine": "blink",
+    "basedOn": "Opera (Chromium)",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Opera's agentic AI browser that can perform tasks on the web for the user.",
+    "tags": [
+      "ai",
+      "experimental",
+      "chrome-extensions"
+    ],
+    "website": "https://www.opera.com/neon",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.opera.com/neon"
+    ]
+  },
+  {
+    "id": "arc",
+    "name": "Arc",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "The Browser Company's sidebar-driven browser with spaces; in maintenance since the company moved to Dia.",
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "customizable",
+      "chrome-extensions"
+    ],
+    "website": "https://arc.net",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arc_(web_browser)"
+    ]
+  },
+  {
+    "id": "dia",
+    "name": "Dia",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "AI-first browser from The Browser Company (Atlassian) with a built-in chat assistant on every tab.",
+    "tags": [
+      "ai",
+      "chrome-extensions",
+      "sync"
+    ],
+    "website": "https://www.diabrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.diabrowser.com"
+    ]
+  },
+  {
+    "id": "chatgpt-atlas",
+    "name": "ChatGPT Atlas",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "OpenAI's Chromium-based browser with ChatGPT sidebar and agent mode.",
+    "tags": [
+      "ai",
+      "chrome-extensions",
+      "sync"
+    ],
+    "website": "https://chatgpt.com/atlas",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://chatgpt.com/atlas"
+    ]
+  },
+  {
+    "id": "comet",
+    "name": "Comet",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Perplexity's AI browser with a built-in assistant that researches and acts across tabs.",
+    "tags": [
+      "ai",
+      "chrome-extensions",
+      "sync"
+    ],
+    "website": "https://www.perplexity.ai/comet",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.perplexity.ai/comet"
+    ]
+  },
+  {
+    "id": "genspark-browser",
+    "name": "Genspark Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "AI browser from Genspark with an in-browser agent and built-in AI chat.",
+    "tags": [
+      "ai",
+      "chrome-extensions"
+    ],
+    "website": "https://www.genspark.ai/browser",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.genspark.ai"
+    ]
+  },
+  {
+    "id": "fellou",
+    "name": "Fellou",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Agentic AI browser that automates multi-step web workflows and research.",
+    "tags": [
+      "ai",
+      "chrome-extensions",
+      "workspaces"
+    ],
+    "website": "https://fellou.ai",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://fellou.ai"
+    ]
+  },
+  {
+    "id": "browseros",
+    "name": "BrowserOS",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Open-source Chromium fork with built-in AI agents that run locally and keep data private.",
+    "tags": [
+      "ai",
+      "privacy",
+      "chrome-extensions",
+      "experimental"
+    ],
+    "website": "https://www.browseros.com",
+    "repo": "https://github.com/browseros-ai/BrowserOS",
+    "logo": null,
+    "sources": [
+      "https://github.com/browseros-ai/BrowserOS"
+    ]
+  },
+  {
+    "id": "helium",
+    "name": "Helium",
+    "engine": "blink",
+    "basedOn": "ungoogled-chromium",
+    "os": [
+      "macos",
+      "linux",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Minimal privacy-first browser based on ungoogled-chromium with uBlock Origin built in.",
+    "tags": [
+      "privacy",
+      "de-googled",
+      "ad-blocking",
+      "minimal",
+      "chrome-extensions"
+    ],
+    "website": "https://helium.computer",
+    "repo": "https://github.com/imputnet/helium",
+    "logo": null,
+    "sources": [
+      "https://github.com/imputnet/helium"
+    ]
+  },
+  {
+    "id": "thorium",
+    "name": "Thorium",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Performance-optimized Chromium fork with compiler optimizations, extra codecs and patches.",
+    "tags": [
+      "performance",
+      "chrome-extensions",
+      "customizable"
+    ],
+    "website": "https://thorium.rocks",
+    "repo": "https://github.com/Alex313031/thorium",
+    "logo": null,
+    "sources": [
+      "https://github.com/Alex313031/thorium"
+    ]
+  },
+  {
+    "id": "ungoogled-chromium",
+    "name": "Ungoogled Chromium",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Chromium with Google integration and web services removed or disabled for privacy.",
+    "tags": [
+      "privacy",
+      "de-googled",
+      "chrome-extensions"
+    ],
+    "website": "https://github.com/ungoogled-software/ungoogled-chromium",
+    "repo": "https://github.com/ungoogled-software/ungoogled-chromium",
+    "logo": null,
+    "sources": [
+      "https://github.com/ungoogled-software/ungoogled-chromium"
+    ]
+  },
+  {
+    "id": "supermium",
+    "name": "Supermium",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Chromium fork keeping modern Chrome features running on Windows 7/8/Vista and XP.",
+    "tags": [
+      "old-hardware",
+      "retro",
+      "chrome-extensions",
+      "lightweight"
+    ],
+    "website": "https://github.com/win32ss/supermium",
+    "repo": "https://github.com/win32ss/supermium",
+    "logo": null,
+    "sources": [
+      "https://github.com/win32ss/supermium"
+    ]
+  },
+  {
+    "id": "cromite",
+    "name": "Cromite",
+    "engine": "blink",
+    "basedOn": "Chromium (Bromite successor)",
+    "os": [
+      "windows",
+      "linux",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Privacy-and-ad-blocking Chromium fork continuing Bromite; desktop builds available for Windows.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "de-googled",
+      "chrome-extensions"
+    ],
+    "website": "https://www.cromite.org",
+    "repo": "https://github.com/uazo/cromite",
+    "logo": null,
+    "sources": [
+      "https://github.com/uazo/cromite"
+    ]
+  },
+  {
+    "id": "iridium",
+    "name": "Iridium Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Privacy-enhanced Chromium fork from Germany; the repo has had no updates since early 2024.",
+    "tags": [
+      "privacy",
+      "security-hardened",
+      "rip"
+    ],
+    "website": "https://iridiumbrowser.de",
+    "repo": "https://github.com/iridium-browser/iridium-browser",
+    "logo": null,
+    "sources": [
+      "https://github.com/iridium-browser/iridium-browser"
+    ]
+  },
+  {
+    "id": "srware-iron",
+    "name": "SRWare Iron",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "linux",
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "German Chromium build with Google tracking removed (user-ID, RLZ, URL tracker).",
+    "tags": [
+      "privacy",
+      "de-googled",
+      "chrome-extensions"
+    ],
+    "website": "https://www.srware.net/iron",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/SRWare_Iron"
+    ]
+  },
+  {
+    "id": "yandex-browser",
+    "name": "Yandex Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Russian Chromium browser by Yandex with Alice assistant, Protect security and translation.",
+    "tags": [
+      "regional",
+      "ai",
+      "chrome-extensions",
+      "mainstream"
+    ],
+    "website": "https://browser.yandex.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Yandex_Browser"
+    ]
+  },
+  {
+    "id": "naver-whale",
+    "name": "Naver Whale",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "South Korean Chromium browser by Naver with sidebar, split view and Naver AI.",
+    "tags": [
+      "regional",
+      "split-view",
+      "ai",
+      "chrome-extensions"
+    ],
+    "website": "https://whale.naver.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Naver_Whale"
+    ]
+  },
+  {
+    "id": "comodo-dragon",
+    "name": "Comodo Dragon",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Chromium-based browser by Comodo with privacy and safe-browsing features.",
+    "tags": [
+      "privacy",
+      "security-hardened",
+      "chrome-extensions"
+    ],
+    "website": "https://www.comodo.com/home/browsers-toolbars/browser.php",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Comodo_Dragon"
+    ]
+  },
+  {
+    "id": "epic-privacy-browser",
+    "name": "Epic Privacy Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Privacy browser by Hidden Reflex with built-in proxy, ad blocking and no tracking.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "chrome-extensions"
+    ],
+    "website": "https://www.epicbrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Epic_(web_browser)"
+    ]
+  },
+  {
+    "id": "slimjet",
+    "name": "Slimjet",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Fast Chromium browser with built-in ad blocker, video downloader and many extra features.",
+    "tags": [
+      "performance",
+      "ad-blocking",
+      "chrome-extensions",
+      "customizable"
+    ],
+    "website": "https://www.slimjetbrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Slimjet"
+    ]
+  },
+  {
+    "id": "cent-browser",
+    "name": "Cent Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Chromium browser by Cent with mouse gestures, tab features and a built-in ad blocker.",
+    "tags": [
+      "customizable",
+      "power-user",
+      "chrome-extensions"
+    ],
+    "website": "https://www.centbrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cent_Browser"
+    ]
+  },
+  {
+    "id": "maxthon",
+    "name": "Maxthon",
+    "engine": "blink",
+    "basedOn": "Chromium (formerly Trident/WebKit)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Veteran Chinese browser now on Chromium, with built-in cloud notes, ad blocker and sync.",
+    "tags": [
+      "sync",
+      "ad-blocking",
+      "chrome-extensions",
+      "regional"
+    ],
+    "website": "https://www.maxthon.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Maxthon"
+    ]
+  },
+  {
+    "id": "360-secure-browser",
+    "name": "360 Secure Browser",
+    "engine": "blink",
+    "basedOn": "Chromium (dual engine with Trident)",
+    "os": [
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Qihoo 360's Chinese browser, with dual engine mode and built-in security features.",
+    "tags": [
+      "regional",
+      "mainstream",
+      "chrome-extensions"
+    ],
+    "website": "https://browser.360.cn",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/360_Secure_Browser"
+    ]
+  },
+  {
+    "id": "avast-secure-browser",
+    "name": "Avast Secure Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Chromium browser by Avast with built-in VPN, ad blocker and anti-tracking features.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "chrome-extensions"
+    ],
+    "website": "https://www.avast.com/secure-browser",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Avast_Secure_Browser"
+    ]
+  },
+  {
+    "id": "avg-secure-browser",
+    "name": "AVG Secure Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Chromium browser by AVG with VPN, ad blocking and anti-fingerprinting protection.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "chrome-extensions"
+    ],
+    "website": "https://www.avg.com/secure-browser",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/AVG_Secure_Browser"
+    ]
+  },
+  {
+    "id": "ccleaner-browser",
+    "name": "CCleaner Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Chromium browser by Avast/CCleaner with privacy cleaning, ad blocking and anti-fingerprinting.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "chrome-extensions"
+    ],
+    "website": "https://www.ccleaner.com/ccleaner-browser",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/CCleaner_Browser"
+    ]
+  },
+  {
+    "id": "sidekick",
+    "name": "Sidekick",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Work-focused browser with a sidebar of apps, workspaces and memory-saving tab management.",
+    "tags": [
+      "workspaces",
+      "vertical-tabs",
+      "performance",
+      "chrome-extensions"
+    ],
+    "website": "https://www.meetsidekick.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.meetsidekick.com"
+    ]
+  },
+  {
+    "id": "shift",
+    "name": "Shift",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Desktop app and browser that unifies multiple email and Google accounts in one place.",
+    "tags": [
+      "workspaces",
+      "chrome-extensions",
+      "power-user"
+    ],
+    "website": "https://shift.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://shift.com"
+    ]
+  },
+  {
+    "id": "wavebox",
+    "name": "Wavebox",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Productivity browser that groups web apps and accounts into workspaces.",
+    "tags": [
+      "workspaces",
+      "power-user",
+      "chrome-extensions",
+      "enterprise"
+    ],
+    "website": "https://wavebox.io",
+    "repo": "https://github.com/wavebox/waveboxapp",
+    "logo": null,
+    "sources": [
+      "https://wavebox.io"
+    ]
+  },
+  {
+    "id": "min",
+    "name": "Min",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Minimal Electron-based browser with fast search, built-in ad blocking and tasks.",
+    "tags": [
+      "minimal",
+      "lightweight",
+      "ad-blocking",
+      "privacy"
+    ],
+    "website": "https://minbrowser.org",
+    "repo": "https://github.com/minbrowser/min",
+    "logo": null,
+    "sources": [
+      "https://github.com/minbrowser/min"
+    ]
+  },
+  {
+    "id": "beaker-browser",
+    "name": "Beaker Browser",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Experimental peer-to-peer browser with the Hypercore/Dat protocol; development ended in 2022.",
+    "tags": [
+      "experimental",
+      "developer",
+      "rip"
+    ],
+    "website": "https://beakerbrowser.com",
+    "repo": "https://github.com/beakerbrowser/beaker",
+    "logo": null,
+    "sources": [
+      "https://github.com/beakerbrowser/beaker"
+    ]
+  },
+  {
+    "id": "colibri",
+    "name": "Colibri",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Lightweight Chromium-based browser focused on small footprint and speed.",
+    "tags": [
+      "lightweight",
+      "minimal",
+      "rip"
+    ],
+    "website": "https://colibri.io",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/List_of_web_browsers"
+    ]
+  },
+  {
+    "id": "torch",
+    "name": "Torch Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Chromium browser with a built-in media downloader and torrent client; no longer maintained.",
+    "tags": [
+      "rip",
+      "chrome-extensions"
+    ],
+    "website": "https://torchbrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Torch_(web_browser)"
+    ]
+  },
+  {
+    "id": "coc-coc",
+    "name": "Cốc Cốc",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Vietnamese Chromium browser with Vietnamese-optimized search and media downloading.",
+    "tags": [
+      "regional",
+      "chrome-extensions",
+      "mainstream"
+    ],
+    "website": "https://coccoc.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/C%E1%BB%91c_C%E1%BB%91c"
+    ]
+  },
+  {
+    "id": "uc-browser-desktop",
+    "name": "UC Browser Desktop",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Windows version of Alibaba's UC Browser, built on Chromium.",
+    "tags": [
+      "regional",
+      "mainstream"
+    ],
+    "website": "https://www.ucweb.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/UC_Browser"
+    ]
+  },
+  {
+    "id": "qq-browser",
+    "name": "QQ Browser",
+    "engine": "blink",
+    "basedOn": "Chromium (dual engine with Trident)",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Tencent's Chinese browser with dual engine mode and built-in QQ integration.",
+    "tags": [
+      "regional",
+      "mainstream",
+      "chrome-extensions"
+    ],
+    "website": "https://browser.qq.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/QQ_Browser"
+    ]
+  },
+  {
+    "id": "sogou-explorer",
+    "name": "Sogou Explorer",
+    "engine": "blink",
+    "basedOn": "Chromium (dual engine with Trident)",
+    "os": [
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Chinese browser by Sogou with dual engine, search integration and accelerated downloads.",
+    "tags": [
+      "regional",
+      "mainstream"
+    ],
+    "website": "https://ie.sogou.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sogou_Explorer"
+    ]
+  },
+  {
+    "id": "ghost-browser",
+    "name": "Ghost Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Multi-session browser for managing multiple identities simultaneously, aimed at professionals.",
+    "tags": [
+      "workspaces",
+      "power-user",
+      "developer",
+      "chrome-extensions"
+    ],
+    "website": "https://ghostbrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://ghostbrowser.com"
+    ]
+  },
+  {
+    "id": "polypane",
+    "name": "Polypane",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Browser for web developers that shows many synced viewports side by side.",
+    "tags": [
+      "developer",
+      "power-user",
+      "split-view"
+    ],
+    "website": "https://polypane.app",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://polypane.app"
+    ]
+  },
+  {
+    "id": "responsively-app",
+    "name": "Responsively App",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Open-source developer browser with multi-device previews that mirror interactions.",
+    "tags": [
+      "developer",
+      "split-view"
+    ],
+    "website": "https://responsively.app",
+    "repo": "https://github.com/responsively-org/responsively-app",
+    "logo": null,
+    "sources": [
+      "https://github.com/responsively-org/responsively-app"
+    ]
+  },
+  {
+    "id": "blisk",
+    "name": "Blisk",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Developer browser with built-in mobile device emulation and performance tools.",
+    "tags": [
+      "developer",
+      "chrome-extensions"
+    ],
+    "website": "https://blisk.io",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://blisk.io"
+    ]
+  },
+  {
+    "id": "island",
+    "name": "Island Enterprise Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Enterprise-focused Chromium browser with built-in policy controls and data protections.",
+    "tags": [
+      "enterprise",
+      "security-hardened",
+      "chrome-extensions"
+    ],
+    "website": "https://www.island.io",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.island.io"
+    ]
+  },
+  {
+    "id": "prisma-access-browser",
+    "name": "Prisma Access Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Palo Alto Networks' secure enterprise Chromium browser for zero-trust access.",
+    "tags": [
+      "enterprise",
+      "security-hardened"
+    ],
+    "website": "https://www.paloaltonetworks.com/sase/prisma-browser",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.paloaltonetworks.com"
+    ]
+  },
+  {
+    "id": "ulaa",
+    "name": "Ulaa",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Privacy-focused Chromium browser by Zoho with ad blocking and work/personal modes.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "chrome-extensions",
+      "workspaces"
+    ],
+    "website": "https://www.zoho.com/ulaa",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.zoho.com/ulaa"
+    ]
+  },
+  {
+    "id": "aloha-browser",
+    "name": "Aloha Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Privacy browser with built-in free VPN and ad blocking; desktop version of the mobile browser.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "chrome-extensions"
+    ],
+    "website": "https://alohabrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://alohabrowser.com"
+    ]
+  },
+  {
+    "id": "catsxp",
+    "name": "Catsxp",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Chromium fork with built-in ad blocking, mouse gestures and tab tweaks.",
+    "tags": [
+      "ad-blocking",
+      "customizable",
+      "chrome-extensions"
+    ],
+    "website": "https://www.catsxp.com",
+    "repo": "https://github.com/catsxp/catsxp",
+    "logo": null,
+    "sources": [
+      "https://www.catsxp.com"
+    ]
+  },
+  {
+    "id": "trivalent",
+    "name": "Trivalent",
+    "engine": "blink",
+    "basedOn": "Chromium (Fedora)",
+    "os": [
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Hardened Chromium build for Fedora and secureblue with security patches.",
+    "tags": [
+      "security-hardened",
+      "privacy",
+      "chrome-extensions"
+    ],
+    "website": "https://github.com/secureblue/Trivalent",
+    "repo": "https://github.com/secureblue/Trivalent",
+    "logo": null,
+    "sources": [
+      "https://github.com/secureblue/Trivalent"
+    ]
+  },
+  {
+    "id": "flow-browser",
+    "name": "Flow Browser",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Open-source Electron browser with spaces, sidebar and a modern UI.",
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "customizable",
+      "chrome-extensions"
+    ],
+    "website": "https://github.com/MultiboxLabs/flow-browser",
+    "repo": "https://github.com/MultiboxLabs/flow-browser",
+    "logo": null,
+    "sources": [
+      "https://github.com/MultiboxLabs/flow-browser"
+    ]
+  },
+  {
+    "id": "qutebrowser",
+    "name": "qutebrowser",
+    "engine": "blink",
+    "basedOn": "QtWebEngine (Chromium)",
+    "os": [
+      "linux",
+      "macos",
+      "windows",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Keyboard-driven, vim-like browser built with Python and Qt WebEngine.",
+    "tags": [
+      "keyboard-driven",
+      "power-user",
+      "minimal",
+      "customizable"
+    ],
+    "website": "https://qutebrowser.org",
+    "repo": "https://github.com/qutebrowser/qutebrowser",
+    "logo": null,
+    "sources": [
+      "https://github.com/qutebrowser/qutebrowser"
+    ]
+  },
+  {
+    "id": "falkon",
+    "name": "Falkon",
+    "engine": "blink",
+    "basedOn": "QtWebEngine (Chromium)",
+    "os": [
+      "linux",
+      "windows",
+      "macos",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Lightweight KDE Qt browser using QtWebEngine.",
+    "tags": [
+      "lightweight",
+      "ad-blocking",
+      "minimal"
+    ],
+    "website": "https://www.falkon.org",
+    "repo": "https://invent.kde.org/network/falkon",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Falkon"
+    ]
+  },
+  {
+    "id": "otter-browser",
+    "name": "Otter Browser",
+    "engine": "blink",
+    "basedOn": "QtWebEngine (Chromium) / QtWebKit",
+    "os": [
+      "windows",
+      "macos",
+      "linux",
+      "bsd"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Qt browser aiming to recreate the classic Opera 12 UI.",
+    "tags": [
+      "customizable",
+      "power-user",
+      "retro"
+    ],
+    "website": "https://otter-browser.org",
+    "repo": "https://github.com/OtterBrowser/otter-browser",
+    "logo": null,
+    "sources": [
+      "https://github.com/OtterBrowser/otter-browser"
+    ]
+  },
+  {
+    "id": "dooble",
+    "name": "Dooble",
+    "engine": "blink",
+    "basedOn": "QtWebEngine (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Privacy-focused open-source browser built on Qt WebEngine.",
+    "tags": [
+      "privacy",
+      "minimal"
+    ],
+    "website": "https://textbrowser.github.io/dooble",
+    "repo": "https://github.com/textbrowser/dooble",
+    "logo": null,
+    "sources": [
+      "https://github.com/textbrowser/dooble"
+    ]
+  },
+  {
+    "id": "vieb",
+    "name": "Vieb",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Vim-inspired Electron browser for keyboard-only navigation.",
+    "tags": [
+      "keyboard-driven",
+      "power-user",
+      "privacy"
+    ],
+    "website": "https://vieb.dev",
+    "repo": "https://github.com/Jelmerro/Vieb",
+    "logo": null,
+    "sources": [
+      "https://github.com/Jelmerro/Vieb"
+    ]
+  },
+  {
+    "id": "sushi-browser",
+    "name": "Sushi Browser",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "linux",
+      "macos"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Electron-based browser with split panes, tab trees and a built-in downloader.",
+    "tags": [
+      "split-view",
+      "power-user",
+      "rip"
+    ],
+    "website": null,
+    "repo": "https://github.com/sushib/sushi-browser",
+    "logo": null,
+    "sources": [
+      "https://github.com/sushib/sushi-browser"
+    ]
+  },
+  {
+    "id": "agregore",
+    "name": "Agregore",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Minimal decentralized-web browser supporting IPFS, Hypercore and BitTorrent.",
+    "tags": [
+      "experimental",
+      "minimal",
+      "developer"
+    ],
+    "website": "https://agregore.mauve.moe",
+    "repo": "https://github.com/AgregoreWeb/agregore-browser",
+    "logo": null,
+    "sources": [
+      "https://github.com/AgregoreWeb/agregore-browser"
+    ]
+  },
+  {
+    "id": "peersky",
+    "name": "Peersky",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Experimental peer-to-peer browser supporting IPFS and Hyper protocols.",
+    "tags": [
+      "experimental",
+      "minimal"
+    ],
+    "website": "https://peersky.p2plabs.xyz",
+    "repo": "https://github.com/p2plabs/peersky-browser",
+    "logo": null,
+    "sources": [
+      "https://github.com/p2plabs/peersky-browser"
+    ]
+  },
+  {
+    "id": "wexond",
+    "name": "Wexond",
+    "engine": "blink",
+    "basedOn": "Electron (Chromium)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Extensible Electron browser with a modern UI; later renamed Banta and archived.",
+    "tags": [
+      "customizable",
+      "rip"
+    ],
+    "website": null,
+    "repo": "https://github.com/wexond/wexond",
+    "logo": null,
+    "sources": [
+      "https://github.com/wexond/wexond"
+    ]
+  },
+  {
+    "id": "kinza",
+    "name": "Kinza",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Japanese Chromium browser with vertical-edge tabs and Japanese-localized features.",
+    "tags": [
+      "regional",
+      "chrome-extensions"
+    ],
+    "website": "https://www.kinza.jp",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.kinza.jp"
+    ]
+  },
+  {
+    "id": "sleipnir",
+    "name": "Sleipnir",
+    "engine": "blink",
+    "basedOn": "Chromium (Fenrir)",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Japanese browser by Fenrir with tab management and a Chromium engine.",
+    "tags": [
+      "regional",
+      "customizable"
+    ],
+    "website": "https://www.fenrir-inc.com/jp/sleipnir",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sleipnir_(web_browser)"
+    ]
+  },
+  {
+    "id": "atom-mail-ru",
+    "name": "Atom",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Russian Chromium browser from VK (Mail.ru) with integrated VK services.",
+    "tags": [
+      "regional",
+      "chrome-extensions"
+    ],
+    "website": "https://browser.ru",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Atom_(web_browser)"
+    ]
+  },
+  {
+    "id": "norton-private-browser",
+    "name": "Norton Private Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Chromium browser by Norton with built-in ad blocking, privacy protection and a VPN.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "chrome-extensions"
+    ],
+    "website": "https://us.norton.com/products/norton-private-browser",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://us.norton.com"
+    ]
+  },
+  {
+    "id": "2345-browser",
+    "name": "2345 Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Chinese browser from 2345.com with dual-core mode and bundled web navigation.",
+    "tags": [
+      "regional"
+    ],
+    "website": "https://browser.2345.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/2345_Browser"
+    ]
+  },
+  {
+    "id": "liebao",
+    "name": "Liebao (Cheetah) Browser",
+    "engine": "blink",
+    "basedOn": "Chromium (dual engine with Trident)",
+    "os": [
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Chinese browser by Cheetah Mobile with dual core and a built-in ad blocker.",
+    "tags": [
+      "regional",
+      "ad-blocking"
+    ],
+    "website": "https://www.liebao.cn",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Liebao_Browser"
+    ]
+  }
+]

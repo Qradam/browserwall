@@ -1,0 +1,1606 @@
+[
+  {
+    "id": "safari",
+    "name": "Safari",
+    "engine": "webkit",
+    "basedOn": null,
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Apple's default browser for macOS, built on WebKit with tight system integration and strong power efficiency.",
+    "tags": [
+      "mainstream",
+      "performance",
+      "sync",
+      "privacy"
+    ],
+    "website": "https://www.apple.com/safari/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Safari_(web_browser)",
+      "https://www.apple.com/safari/"
+    ]
+  },
+  {
+    "id": "safari-technology-preview",
+    "name": "Safari Technology Preview",
+    "engine": "webkit",
+    "basedOn": "Safari",
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Apple's experimental Safari channel that previews upcoming WebKit and Safari features for developers.",
+    "tags": [
+      "developer",
+      "experimental",
+      "performance"
+    ],
+    "website": "https://developer.apple.com/safari/technology-preview/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://developer.apple.com/safari/technology-preview/"
+    ]
+  },
+  {
+    "id": "orion",
+    "name": "Orion",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Kagi's privacy-focused WebKit browser for macOS that supports both Chrome and Firefox extensions; Linux version in beta.",
+    "tags": [
+      "privacy",
+      "chrome-extensions",
+      "firefox-addons",
+      "ad-blocking"
+    ],
+    "website": "https://kagi.com/orion/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://kagi.com/orion/",
+      "https://en.wikipedia.org/wiki/Orion_(web_browser)"
+    ]
+  },
+  {
+    "id": "epiphany",
+    "name": "GNOME Web (Epiphany)",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "The GNOME desktop's default browser, using WebKitGTK with a minimal interface and built-in tracker blocking.",
+    "tags": [
+      "minimal",
+      "lightweight",
+      "privacy"
+    ],
+    "website": "https://apps.gnome.org/Epiphany/",
+    "repo": "https://gitlab.gnome.org/GNOME/epiphany",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/GNOME_Web",
+      "https://gitlab.gnome.org/GNOME/epiphany"
+    ]
+  },
+  {
+    "id": "konqueror",
+    "name": "Konqueror",
+    "engine": "webkit",
+    "basedOn": "KHTML / QtWebEngine",
+    "os": [
+      "linux",
+      "bsd",
+      "windows"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "KDE's long-running file manager and web browser, supporting KHTML and optionally QtWebEngine.",
+    "tags": [
+      "customizable",
+      "power-user",
+      "independent-engine"
+    ],
+    "website": "https://apps.kde.org/konqueror/",
+    "repo": "https://invent.kde.org/network/konqueror",
+    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Breezeicons-apps-48-konqueror.svg/60px-Breezeicons-apps-48-konqueror.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Konqueror",
+      "https://apps.kde.org/konqueror/"
+    ]
+  },
+  {
+    "id": "falkon",
+    "name": "Falkon",
+    "engine": "blink",
+    "basedOn": "QtWebEngine",
+    "os": [
+      "windows",
+      "linux",
+      "bsd",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Lightweight Qt browser from KDE (formerly QupZilla) using QtWebEngine with built-in ad blocker.",
+    "tags": [
+      "lightweight",
+      "ad-blocking",
+      "customizable"
+    ],
+    "website": "https://apps.kde.org/falkon/",
+    "repo": "https://invent.kde.org/network/falkon",
+    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Breezeicons-apps-48-falkon.svg/960px-Breezeicons-apps-48-falkon.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Falkon",
+      "https://apps.kde.org/falkon/"
+    ]
+  },
+  {
+    "id": "otter-browser",
+    "name": "Otter Browser",
+    "engine": "blink",
+    "basedOn": "QtWebEngine",
+    "os": [
+      "windows",
+      "linux",
+      "macos",
+      "bsd"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Qt-based project recreating the classic Opera 12 UI with extensive customization, now on QtWebEngine.",
+    "tags": [
+      "customizable",
+      "power-user",
+      "retro"
+    ],
+    "website": "https://otter-browser.org/",
+    "repo": "https://github.com/OtterBrowser/otter-browser",
+    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Otter_Browser_Logo.svg/960px-Otter_Browser_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Otter_Browser",
+      "https://github.com/OtterBrowser/otter-browser"
+    ]
+  },
+  {
+    "id": "midori-legacy",
+    "name": "Midori (legacy WebKitGTK)",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Original lightweight GTK browser from Xfce ecosystem; the WebKitGTK version ended in 2019 when Midori joined Astian.",
+    "tags": [
+      "lightweight",
+      "minimal",
+      "rip"
+    ],
+    "website": "https://astian.org/midori-browser/",
+    "repo": "https://github.com/midori-browser/core",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Midori_(web_browser)"
+    ]
+  },
+  {
+    "id": "sigmaos",
+    "name": "SigmaOS",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "WebKit-based macOS browser with vertical tabs and workspaces aimed at productivity; development has slowed.",
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "ai"
+    ],
+    "website": "https://www.sigmaos.com/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.sigmaos.com/"
+    ]
+  },
+  {
+    "id": "ladybird",
+    "name": "Ladybird",
+    "engine": "ladybird",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "macos",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Truly independent browser with its own LibWeb engine, from the SerenityOS community; pre-alpha with release targeted for 2026.",
+    "tags": [
+      "independent-engine",
+      "experimental",
+      "privacy"
+    ],
+    "website": "https://ladybird.org/",
+    "repo": "https://github.com/LadybirdBrowser/ladybird",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Ladybird_(web_browser)",
+      "https://ladybird.org/"
+    ]
+  },
+  {
+    "id": "servo",
+    "name": "Servo",
+    "engine": "servo",
+    "basedOn": null,
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Parallel browser engine written in Rust, now hosted by Linux Foundation Europe, with a servoshell demo browser.",
+    "tags": [
+      "independent-engine",
+      "experimental",
+      "developer"
+    ],
+    "website": "https://servo.org/",
+    "repo": "https://github.com/servo/servo",
+    "logo": "https://raw.githubusercontent.com/servo/servo/main/resources/servo_64.png",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Servo_(software)",
+      "https://github.com/servo/servo"
+    ]
+  },
+  {
+    "id": "verso",
+    "name": "Verso",
+    "engine": "servo",
+    "basedOn": "Servo",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Experimental Servo-based web browser by Versotile; development stalled after early 2025.",
+    "tags": [
+      "independent-engine",
+      "experimental",
+      "rip"
+    ],
+    "website": null,
+    "repo": "https://github.com/versotile-org/verso",
+    "logo": null,
+    "sources": [
+      "https://github.com/versotile-org/verso"
+    ]
+  },
+  {
+    "id": "ekioh-flow",
+    "name": "Flow (Ekioh)",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "windows",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Browser built on Ekioh's proprietary, multithreaded Flow engine, written from scratch in C++ and used in set-top boxes.",
+    "tags": [
+      "independent-engine",
+      "performance",
+      "lightweight"
+    ],
+    "website": "https://www.ekioh.com/flow-browser/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.ekioh.com/flow-browser/",
+      "https://en.wikipedia.org/wiki/Ekioh"
+    ]
+  },
+  {
+    "id": "flow-browser",
+    "name": "Flow Browser",
+    "engine": "blink",
+    "basedOn": "Chromium (Electron)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Open-source Electron/Chromium browser with spaces and a sidebar UI, built as an Arc-style alternative.",
+    "tags": [
+      "workspaces",
+      "vertical-tabs",
+      "chrome-extensions",
+      "experimental"
+    ],
+    "website": "https://flow-browser.com/",
+    "repo": "https://github.com/MultiboxLabs/flow-browser",
+    "logo": null,
+    "sources": [
+      "https://github.com/MultiboxLabs/flow-browser"
+    ]
+  },
+  {
+    "id": "netsurf",
+    "name": "NetSurf",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "bsd",
+      "other",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Small, fast, lightweight browser with its own engine (Hubbub, LibCSS, Duktape) running on many platforms including RISC OS.",
+    "tags": [
+      "independent-engine",
+      "lightweight",
+      "old-hardware",
+      "minimal"
+    ],
+    "website": "https://www.netsurf-browser.org/",
+    "repo": "https://git.netsurf-browser.org/netsurf.git",
+    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/NetSurf-logo.svg/960px-NetSurf-logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "sources": [
+      "https://en.wikipedia.org/wiki/NetSurf",
+      "https://www.netsurf-browser.org/"
+    ]
+  },
+  {
+    "id": "dillo",
+    "name": "Dillo",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "bsd",
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Extremely lightweight graphical browser in FLTK with no JavaScript, focused on speed and tiny footprint.",
+    "tags": [
+      "lightweight",
+      "old-hardware",
+      "minimal",
+      "independent-engine"
+    ],
+    "website": "https://dillo-browser.github.io/",
+    "repo": "https://github.com/dillo-browser/dillo",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Dillo-icon.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Dillo",
+      "https://github.com/dillo-browser/dillo"
+    ]
+  },
+  {
+    "id": "links",
+    "name": "Links",
+    "engine": "text",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "bsd",
+      "windows",
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Text and graphics-mode browser (Links2) with tables, frames and menu-driven interface.",
+    "tags": [
+      "text-mode",
+      "lightweight",
+      "old-hardware"
+    ],
+    "website": "http://links.twibright.com/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Links_(web_browser)"
+    ]
+  },
+  {
+    "id": "elinks",
+    "name": "ELinks",
+    "engine": "text",
+    "basedOn": "Links",
+    "os": [
+      "linux",
+      "bsd",
+      "macos",
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Feature-rich text-mode browser forked from Links, with tabs, scripting and mouse support; development has largely stopped.",
+    "tags": [
+      "text-mode",
+      "power-user",
+      "rip"
+    ],
+    "website": "http://elinks.or.cz/",
+    "repo": "https://github.com/rkd77/elinks",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/ELinks"
+    ]
+  },
+  {
+    "id": "lynx",
+    "name": "Lynx",
+    "engine": "text",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "bsd",
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "One of the oldest web browsers still maintained (1992), a fully text-based browser for terminals.",
+    "tags": [
+      "text-mode",
+      "lightweight",
+      "keyboard-driven",
+      "retro"
+    ],
+    "website": "https://lynx.invisible-island.net/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lynx_(web_browser)",
+      "https://lynx.invisible-island.net/"
+    ]
+  },
+  {
+    "id": "w3m",
+    "name": "w3m",
+    "engine": "text",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "bsd",
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Text-based terminal browser and pager with table and frame rendering and inline image display support.",
+    "tags": [
+      "text-mode",
+      "lightweight",
+      "keyboard-driven"
+    ],
+    "website": "https://w3m.sourceforge.net/",
+    "repo": "https://github.com/tats/w3m",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/W3m",
+      "https://github.com/tats/w3m"
+    ]
+  },
+  {
+    "id": "browsh",
+    "name": "Browsh",
+    "engine": "text",
+    "basedOn": "Firefox (headless)",
+    "os": [
+      "linux",
+      "macos",
+      "bsd"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Modern text-based browser that renders pages through headless Firefox into the terminal, with graphics and video.",
+    "tags": [
+      "text-mode",
+      "keyboard-driven",
+      "lightweight"
+    ],
+    "website": "https://www.brow.sh/",
+    "repo": "https://github.com/browsh-org/browsh",
+    "logo": null,
+    "sources": [
+      "https://github.com/browsh-org/browsh"
+    ]
+  },
+  {
+    "id": "carbonyl",
+    "name": "Carbonyl",
+    "engine": "text",
+    "basedOn": "Chromium",
+    "os": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Chromium-based terminal browser that renders pages as text and block graphics; supports JavaScript and video.",
+    "tags": [
+      "text-mode",
+      "keyboard-driven",
+      "experimental"
+    ],
+    "website": null,
+    "repo": "https://github.com/fathyb/carbonyl",
+    "logo": null,
+    "sources": [
+      "https://github.com/fathyb/carbonyl"
+    ]
+  },
+  {
+    "id": "edbrowse",
+    "name": "Edbrowse",
+    "engine": "text",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "bsd",
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Line-oriented text browser/editor/mail client based on ed, designed for blind users and scripting.",
+    "tags": [
+      "text-mode",
+      "keyboard-driven",
+      "lightweight"
+    ],
+    "website": "https://edbrowse.org/",
+    "repo": "https://github.com/CMB/edbrowse",
+    "logo": null,
+    "sources": [
+      "https://github.com/CMB/edbrowse"
+    ]
+  },
+  {
+    "id": "qutebrowser",
+    "name": "qutebrowser",
+    "engine": "blink",
+    "basedOn": "QtWebEngine",
+    "os": [
+      "linux",
+      "macos",
+      "windows",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Keyboard-focused browser with minimal GUI, vim-style bindings and Python configuration, built on QtWebEngine.",
+    "tags": [
+      "keyboard-driven",
+      "power-user",
+      "minimal",
+      "customizable"
+    ],
+    "website": "https://qutebrowser.org/",
+    "repo": "https://github.com/qutebrowser/qutebrowser",
+    "logo": "https://raw.githubusercontent.com/qutebrowser/qutebrowser/main/qutebrowser/icons/qutebrowser.svg",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Qutebrowser",
+      "https://github.com/qutebrowser/qutebrowser"
+    ]
+  },
+  {
+    "id": "nyxt",
+    "name": "Nyxt",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Keyboard-driven, programmable 'hacker's browser' written in Common Lisp using WebKitGTK; Emacs-like extensibility.",
+    "tags": [
+      "keyboard-driven",
+      "power-user",
+      "customizable",
+      "developer"
+    ],
+    "website": "https://nyxt.atlas.engineer/",
+    "repo": "https://github.com/atlas-engineer/nyxt",
+    "logo": null,
+    "sources": [
+      "https://github.com/atlas-engineer/nyxt"
+    ]
+  },
+  {
+    "id": "vieb",
+    "name": "Vieb",
+    "engine": "blink",
+    "basedOn": "Electron",
+    "os": [
+      "linux",
+      "windows",
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Vim-inspired keyboard-driven browser built on Electron with modal control and privacy-focused defaults.",
+    "tags": [
+      "keyboard-driven",
+      "privacy",
+      "minimal",
+      "customizable"
+    ],
+    "website": "https://vieb.dev/",
+    "repo": "https://github.com/Jelmerro/Vieb",
+    "logo": "https://raw.githubusercontent.com/Jelmerro/Vieb/master/app/img/icons/512x512.png",
+    "sources": [
+      "https://github.com/Jelmerro/Vieb"
+    ]
+  },
+  {
+    "id": "luakit",
+    "name": "Luakit",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Fast, extensible, micro-framework browser using WebKit2GTK and configurable with Lua.",
+    "tags": [
+      "keyboard-driven",
+      "customizable",
+      "power-user",
+      "lightweight"
+    ],
+    "website": "https://luakit.github.io/",
+    "repo": "https://github.com/luakit/luakit",
+    "logo": "https://raw.githubusercontent.com/luakit/luakit/develop/extras/luakit.svg",
+    "sources": [
+      "https://github.com/luakit/luakit"
+    ]
+  },
+  {
+    "id": "surf",
+    "name": "surf",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Simple suckless WebKit2GTK browser with no UI chrome, controlled by keybindings and configured at compile time.",
+    "tags": [
+      "minimal",
+      "keyboard-driven",
+      "lightweight",
+      "customizable"
+    ],
+    "website": "https://surf.suckless.org/",
+    "repo": "https://git.suckless.org/surf",
+    "logo": null,
+    "sources": [
+      "https://surf.suckless.org/"
+    ]
+  },
+  {
+    "id": "vimb",
+    "name": "Vimb",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Vim-like WebKit2GTK browser with modal interface that stays out of the way.",
+    "tags": [
+      "keyboard-driven",
+      "minimal",
+      "lightweight"
+    ],
+    "website": "https://fanglingsu.github.io/vimb/",
+    "repo": "https://github.com/fanglingsu/vimb",
+    "logo": null,
+    "sources": [
+      "https://github.com/fanglingsu/vimb"
+    ]
+  },
+  {
+    "id": "uzbl",
+    "name": "uzbl",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Minimalist Unix-philosophy browser components around WebKit, controlled via FIFOs and scripts; dormant for years.",
+    "tags": [
+      "keyboard-driven",
+      "minimal",
+      "power-user",
+      "rip"
+    ],
+    "website": "https://www.uzbl.org/",
+    "repo": "https://github.com/uzbl/uzbl",
+    "logo": null,
+    "sources": [
+      "https://github.com/uzbl/uzbl"
+    ]
+  },
+  {
+    "id": "badwolf",
+    "name": "Badwolf",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Minimalist, privacy-oriented WebKitGTK browser with no persistent state or telemetry.",
+    "tags": [
+      "minimal",
+      "privacy",
+      "lightweight",
+      "security-hardened"
+    ],
+    "website": "https://hacdias.com/badwolf/",
+    "repo": "https://hacktivis.me/git/badwolf",
+    "logo": null,
+    "sources": [
+      "https://hacktivis.me/git/badwolf"
+    ]
+  },
+  {
+    "id": "arachne",
+    "name": "Arachne",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Graphical browser for DOS from the late 1990s (Arachne Labs), later GPL-licensed, also bundled with a dialer and mail.",
+    "tags": [
+      "retro",
+      "old-hardware",
+      "independent-engine",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arachne_(web_browser)"
+    ]
+  },
+  {
+    "id": "opera-presto",
+    "name": "Opera 12 (Presto)",
+    "engine": "presto",
+    "basedOn": "Presto",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Last Presto-engine release of Opera (2012), known for speed, mouse gestures and built-in tools.",
+    "tags": [
+      "retro",
+      "rip",
+      "customizable",
+      "power-user"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Presto_(browser_engine)",
+      "https://en.wikipedia.org/wiki/Opera_(web_browser)"
+    ]
+  },
+  {
+    "id": "internet-explorer",
+    "name": "Internet Explorer",
+    "engine": "trident",
+    "basedOn": "Mosaic",
+    "os": [
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Microsoft's Trident-based browser bundled with Windows from 1995; support ended June 2022.",
+    "tags": [
+      "retro",
+      "rip",
+      "mainstream",
+      "meme"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Internet_Explorer"
+    ]
+  },
+  {
+    "id": "edge-legacy",
+    "name": "Microsoft Edge Legacy",
+    "engine": "other",
+    "basedOn": "EdgeHTML",
+    "os": [
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Original EdgeHTML-based Edge shipped with Windows 10 (2015–2021), replaced by Chromium Edge.",
+    "tags": [
+      "rip",
+      "retro"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/960px-Microsoft_Edge_logo_%282019%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Microsoft_Edge"
+    ]
+  },
+  {
+    "id": "netscape-navigator",
+    "name": "Netscape Navigator",
+    "engine": "other",
+    "basedOn": "Mosaic",
+    "os": [
+      "windows",
+      "macos",
+      "linux",
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Dominant 1990s browser by Netscape that introduced JavaScript and SSL; classic versions ended in 2008.",
+    "tags": [
+      "retro",
+      "rip",
+      "mainstream"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Netscape_Navigator"
+    ]
+  },
+  {
+    "id": "ncsa-mosaic",
+    "name": "NCSA Mosaic",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "windows",
+      "macos",
+      "linux",
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "1993 browser from NCSA that popularized the web with inline images; last release 1997.",
+    "tags": [
+      "retro",
+      "rip",
+      "old-hardware"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Mosaic_(web_browser)"
+    ]
+  },
+  {
+    "id": "amaya",
+    "name": "Amaya",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "W3C's testbed browser and editor combining WYSIWYG authoring with browsing; ended in 2013.",
+    "tags": [
+      "retro",
+      "rip",
+      "developer"
+    ],
+    "website": "https://www.w3.org/Amaya/",
+    "repo": "https://github.com/w3c/Amaya",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Amaya_(web_browser)"
+    ]
+  },
+  {
+    "id": "lunascape",
+    "name": "Lunascape",
+    "engine": "trident",
+    "basedOn": "Trident / Gecko / WebKit",
+    "os": [
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Japanese browser that offered three switchable engines (Trident, Gecko, WebKit); end of service in 2020s.",
+    "tags": [
+      "retro",
+      "rip",
+      "customizable",
+      "regional"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lunascape"
+    ]
+  },
+  {
+    "id": "icab",
+    "name": "iCab",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "macos"
+    ],
+    "status": "maintenance",
+    "openSource": false,
+    "description": "Long-lived Mac browser by Alexander Clauss, originally with its own engine and now WebKit-based.",
+    "tags": [
+      "retro",
+      "customizable",
+      "independent-engine"
+    ],
+    "website": "https://www.icab.de/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/ICab"
+    ]
+  },
+  {
+    "id": "omniweb",
+    "name": "OmniWeb",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "macos"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Omni Group's Mac browser from NeXT days, WebKit-based in later versions; discontinued in 2015.",
+    "tags": [
+      "retro",
+      "rip",
+      "customizable"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/OmniWeb"
+    ]
+  },
+  {
+    "id": "shiira",
+    "name": "Shiira",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "macos"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Japanese open-source WebKit browser for Mac OS X with tab and Exposé-like page views.",
+    "tags": [
+      "retro",
+      "rip",
+      "regional"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Shiira"
+    ]
+  },
+  {
+    "id": "stainless",
+    "name": "Stainless",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "macos"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Mac browser with multi-process architecture, an early WebKit design released in 2009.",
+    "tags": [
+      "retro",
+      "rip",
+      "performance"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Stainless_(web_browser)"
+    ]
+  },
+  {
+    "id": "webpositive",
+    "name": "WebPositive",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "other"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Default Haiku OS web browser using WebKit.",
+    "tags": [
+      "lightweight",
+      "independent-engine",
+      "minimal"
+    ],
+    "website": "https://www.haiku-os.org/",
+    "repo": "https://github.com/haiku/haiku",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/WebPositive"
+    ]
+  },
+  {
+    "id": "arora",
+    "name": "Arora",
+    "engine": "webkit",
+    "basedOn": "QtWebKit",
+    "os": [
+      "linux",
+      "windows",
+      "macos"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Lightweight cross-platform QtWebKit browser that preceded QupZilla; abandoned around 2011.",
+    "tags": [
+      "lightweight",
+      "rip",
+      "minimal"
+    ],
+    "website": null,
+    "repo": "https://github.com/Arora/arora",
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arora_(web_browser)"
+    ]
+  },
+  {
+    "id": "rekonq",
+    "name": "rekonq",
+    "engine": "webkit",
+    "basedOn": "QtWebKit",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "KDE WebKit-based browser which replaced Konqueror's default for a time; discontinued.",
+    "tags": [
+      "lightweight",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rekonq"
+    ]
+  },
+  {
+    "id": "dooble",
+    "name": "Dooble",
+    "engine": "blink",
+    "basedOn": "QtWebEngine",
+    "os": [
+      "windows",
+      "linux",
+      "macos",
+      "bsd"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Free open-source Qt browser emphasizing privacy and security with built-in encrypted bookmarks.",
+    "tags": [
+      "privacy",
+      "security-hardened",
+      "lightweight"
+    ],
+    "website": "https://textbrowser.github.io/dooble/",
+    "repo": "https://github.com/textbrowser/dooble",
+    "logo": null,
+    "sources": [
+      "https://github.com/textbrowser/dooble"
+    ]
+  },
+  {
+    "id": "xombrero",
+    "name": "xombrero",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Minimalist security-oriented WebKitGTK browser inspired by vimprobable and uzbl; abandoned.",
+    "tags": [
+      "keyboard-driven",
+      "minimal",
+      "rip"
+    ],
+    "website": null,
+    "repo": "https://github.com/conformal/xombrero",
+    "logo": null,
+    "sources": [
+      "https://github.com/conformal/xombrero"
+    ]
+  },
+  {
+    "id": "kazehakase",
+    "name": "Kazehakase",
+    "engine": "gecko",
+    "basedOn": "Gecko / WebKit",
+    "os": [
+      "linux",
+      "bsd",
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Japanese GTK browser that could use Gecko or WebKit engines; development ended around 2011.",
+    "tags": [
+      "rip",
+      "lightweight",
+      "regional"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Kazehakase"
+    ]
+  },
+  {
+    "id": "safari-windows",
+    "name": "Safari for Windows",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Windows port of Safari, offered 2007–2012 and last updated at version 5.1.7.",
+    "tags": [
+      "retro",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": "https://upload.wikimedia.org/wikipedia/en/7/71/Safari_Liquid_Glass_icon.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Safari_(web_browser)"
+    ]
+  },
+  {
+    "id": "worldwideweb",
+    "name": "WorldWideWeb (Nexus)",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "First web browser and editor created by Tim Berners-Lee in 1990 on NeXTSTEP.",
+    "tags": [
+      "retro",
+      "rip"
+    ],
+    "website": "https://worldwideweb.cern.ch/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/WorldWideWeb"
+    ]
+  },
+  {
+    "id": "line-mode-browser",
+    "name": "Line Mode Browser",
+    "engine": "text",
+    "basedOn": null,
+    "os": [
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "CERN's 1991 portable text-only browser, the first for non-NeXT systems.",
+    "tags": [
+      "retro",
+      "text-mode",
+      "rip"
+    ],
+    "website": "https://www.w3.org/LineMode/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Line_Mode_Browser"
+    ]
+  },
+  {
+    "id": "hotjava",
+    "name": "HotJava",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "windows",
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Sun Microsystems' browser written in Java, first to support Java applets (1995–2004).",
+    "tags": [
+      "retro",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/HotJava"
+    ]
+  },
+  {
+    "id": "gosub",
+    "name": "Gosub",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Experimental browser engine written in Rust by the Gosub project, with a GTK/Vello demo browser.",
+    "tags": [
+      "independent-engine",
+      "experimental",
+      "developer"
+    ],
+    "website": "https://gosub.io/",
+    "repo": "https://github.com/gosub-io/gosub-engine",
+    "logo": null,
+    "sources": [
+      "https://github.com/gosub-io/gosub-engine"
+    ]
+  },
+  {
+    "id": "kosmonaut",
+    "name": "Kosmonaut",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Experimental Rust browser engine using Servo components and a WebRender-based shell; inactive since 2020.",
+    "tags": [
+      "independent-engine",
+      "experimental",
+      "rip"
+    ],
+    "website": null,
+    "repo": "https://github.com/twilco/kosmonaut",
+    "logo": null,
+    "sources": [
+      "https://github.com/twilco/kosmonaut"
+    ]
+  },
+  {
+    "id": "hv3",
+    "name": "Hv3",
+    "engine": "other",
+    "basedOn": "Tkhtml",
+    "os": [
+      "linux",
+      "windows",
+      "macos"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Tcl/Tk-based browser built to showcase the Tkhtml3 HTML engine; development stopped around 2009.",
+    "tags": [
+      "independent-engine",
+      "experimental",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://tkhtml.tcl-lang.org/"
+    ]
+  },
+  {
+    "id": "robinson",
+    "name": "Robinson",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Toy browser engine in Rust by Matt Brubeck, written as a tutorial and not a full-featured browser.",
+    "tags": [
+      "independent-engine",
+      "experimental",
+      "developer",
+      "rip"
+    ],
+    "website": "https://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html",
+    "repo": "https://github.com/mbrubeck/robinson",
+    "logo": null,
+    "sources": [
+      "https://github.com/mbrubeck/robinson"
+    ]
+  },
+  {
+    "id": "ie-mac",
+    "name": "Internet Explorer for Mac",
+    "engine": "other",
+    "basedOn": "Tasman",
+    "os": [
+      "macos"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Microsoft's Mac browser with the Tasman engine, notable for standards support; ended in 2003-2005.",
+    "tags": [
+      "retro",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Internet_Explorer_for_Mac"
+    ]
+  },
+  {
+    "id": "violawww",
+    "name": "ViolaWWW",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Early graphical web browser for Unix/X11 (1991-92), first with applets and stylesheets.",
+    "tags": [
+      "retro",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/ViolaWWW"
+    ]
+  },
+  {
+    "id": "erwise",
+    "name": "Erwise",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "Finnish early graphical Unix web browser from Helsinki University of Technology (1992).",
+    "tags": [
+      "retro",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Erwise"
+    ]
+  },
+  {
+    "id": "cello",
+    "name": "Cello",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "windows"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Early Windows web browser by Thomas Bruce at Cornell Law (1993).",
+    "tags": [
+      "retro",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cello_(web_browser)"
+    ]
+  },
+  {
+    "id": "arena-browser",
+    "name": "Arena",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "linux",
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": true,
+    "description": "W3C's testbed browser for HTML 3 and CSS (1993-1998), predecessor of Amaya.",
+    "tags": [
+      "retro",
+      "rip",
+      "developer"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Arena_(web_browser)"
+    ]
+  },
+  {
+    "id": "ibrowse",
+    "name": "IBrowse",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "other"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Commercial web browser for AmigaOS and its successors.",
+    "tags": [
+      "retro",
+      "old-hardware"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/IBrowse"
+    ]
+  },
+  {
+    "id": "aweb",
+    "name": "AWeb",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "other"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Open-source web browser for AmigaOS.",
+    "tags": [
+      "retro",
+      "old-hardware",
+      "lightweight"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/AWeb"
+    ]
+  },
+  {
+    "id": "cyberdog",
+    "name": "Cyberdog",
+    "engine": "other",
+    "basedOn": null,
+    "os": [
+      "macos"
+    ],
+    "status": "discontinued",
+    "openSource": false,
+    "description": "Apple's OpenDoc-based internet suite for classic Mac OS (1996-1997).",
+    "tags": [
+      "retro",
+      "rip"
+    ],
+    "website": null,
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://en.wikipedia.org/wiki/Cyberdog"
+    ]
+  }
+]

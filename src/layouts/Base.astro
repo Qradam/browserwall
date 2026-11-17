@@ -1,0 +1,36 @@
+---
+import "@fontsource-variable/inter";
+import "../styles/global.css";
+import Icon from "../components/Icon.astro";
+import IconSprite from "../components/IconSprite.astro";
+
+interface Props { title?: string; description?: string }
+const { title = "Browser Wall", description = "A curated wall of desktop web browsers – from Chrome to Pissandshittium – and a quiz to find yours." } = Astro.props;
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <IconSprite />
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a href="/" class="brand"><Icon name="Globe02Icon" size={20} /> <span>browser<b>wall</b></span></a>
+      <nav aria-label="Main">
+        <a href="/" aria-current={path === "/" ? "page" : undefined}>Wall</a>
+        <a href="/quiz" aria-current={path.startsWith("/quiz") ? "page" : undefined}>Quiz <span class="soon">soon</span></a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="foot">
+      Logos are trademarks of their respective owners. Data curated by hand – spotted a mistake? Open an issue.
+    </footer>
+  </body>
+</html>

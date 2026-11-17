@@ -1,0 +1,60 @@
+---
+import Icon from "./Icon.astro";
+import { TAGS, ENGINES, OSES, type Browser } from "../data/browsers";
+
+interface Props { b: Browser }
+const { b } = Astro.props;
+const initials = b.name.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+const statusLabel = { active: "Active", maintenance: "Maintenance", discontinued: "Discontinued" }[b.status];
+const search = [b.name, b.basedOn, b.description, ENGINES[b.engine], ...b.tags.map((t) => TAGS[t]?.label)].join(" ").toLowerCase();
+const visibleTags = b.tags.filter((t) => t !== "rip");
+---
+<li
+  class="card"
+  data-id={b.id}
+  data-name={b.name.toLowerCase()}
+  data-search={search}
+  data-engine={b.engine}
+  data-os={b.os.join(" ")}
+  data-status={b.status}
+  data-tags={b.tags.join(" ")}
+  data-oss={b.openSource ? "1" : "0"}
+>
+  <div class="card-head">
+    <div class="logo" aria-hidden="true">
+      {b.logo ? <img src={b.logo} alt="" width="40" height="40" loading="lazy" decoding="async" /> : <span class="mono">{initials}</span>}
+    </div>
+    <div class="title">
+      <h2>{b.name}</h2>
+      <p class="meta">
+        <span title="Engine">{ENGINES[b.engine]}</span>
+        {b.basedOn && b.basedOn.toLowerCase() !== ENGINES[b.engine].toLowerCase() && <span class="based" title="Based on"> · {b.basedOn}</span>}
+      </p>
+    </div>
+    {b.status !== "active" && (
+      <span class={`status ${b.status}`} title={statusLabel}>
+        {b.status === "discontinued" ? <Icon name="SkullIcon" size={13} /> : <Icon name="Clock01Icon" size={13} />}
+        {b.status === "discontinued" ? "RIP" : "Slow"}
+      </span>
+    )}
+  </div>
+
+  <p class="desc">{b.description}</p>
+
+  <ul class="tags" aria-label="Tags">
+    {visibleTags.map((t) => (
+      <li class={`tag${t === "meme" ? " tag-meme" : ""}`}><Icon name={TAGS[t].icon} size={12} />{TAGS[t].label}</li>
+    ))}
+  </ul>
+
+  <div class="card-foot">
+    <span class="os" aria-label={`Runs on ${b.os.map((o) => OSES[o]).join(", ")}`}>
+      {b.os.map((o) => <span>{OSES[o]}</span>)}
+    </span>
+    <span class="links">
+      {b.openSource && <span class="oss" title="Open source">OSS</span>}
+      {b.repo && <a href={b.repo} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} source code`}><Icon name="GithubIcon" size={15} /></a>}
+      {b.website && <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} website`}><Icon name="ArrowUpRight01Icon" size={15} /></a>}
+    </span>
+  </div>
+</li>

@@ -1,0 +1,26 @@
+{
+  "_standard": [
+    "ACTIVE: a usable desktop browser you can download today, with a release in roughly the last 18 months, AND people actually use or discuss it today: major vendor, or 1k+ GitHub stars, or a regular in browser communities. A Wikipedia article alone is NOT enough.",
+    "DEAD: only household names or recent high-profile shutdowns (rip tag).",
+    "OUT: Chinese browsers; OS-specific ports (Haiku/Amiga/OS2/PowerPC); engine experiments without a usable browser; antivirus/vendor rebrands of Chromium; tiny forks of forks; legacy browsers nobody uses anymore.",
+    "EXCEPTION: meme browsers the community actually knows (Pissandshittium)."
+  ],
+  "include": [
+    "google-chrome", "chromium", "microsoft-edge", "brave", "vivaldi", "opera", "opera-gx", "opera-air", "opera-neon",
+    "dia", "comet", "helium", "thorium", "ungoogled-chromium", "supermium", "cromite", "yandex-browser", "naver-whale",
+    "coc-coc", "norton-neo", "ulaa", "wavebox", "min", "polypane", "responsively-app", "island", "browseros", "fellou",
+    "flow-browser", "google-disco",
+
+    "firefox", "firefox-esr", "firefox-developer-edition", "firefox-nightly", "librewolf", "floorp", "zen-browser",
+    "waterfox", "mercury", "pale-moon", "tor-browser", "mullvad-browser", "firedragon", "glide-browser",
+
+    "safari", "safari-technology-preview", "orion", "epiphany", "konqueror", "falkon", "otter-browser", "sigmaos", "nook",
+    "ladybird", "servo", "netsurf", "dillo",
+    "qutebrowser", "nyxt", "vieb", "luakit", "vimb", "surf",
+    "lynx", "links", "elinks", "w3m", "browsh", "carbonyl",
+
+    "internet-explorer", "edge-legacy", "netscape-navigator", "opera-presto", "arc", "chatgpt-atlas",
+
+    "pissandshittium"
+  ]
+}

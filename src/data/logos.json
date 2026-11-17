@@ -1,0 +1,357 @@
+{
+  "arc": {
+    "file": "/logos/arc.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/3/37/Arc_%28browser%29_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "kind": "manual"
+  },
+  "brave": {
+    "file": "/logos/brave.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Brave_lion_icon.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "kind": "dataset"
+  },
+  "browseros": {
+    "file": "/logos/browseros.png",
+    "source": "https://github.com/browseros-ai.png?size=256",
+    "kind": "github-avatar"
+  },
+  "browsh": {
+    "file": "/logos/browsh.png",
+    "source": "https://www.brow.sh/assets/apple-touch-icon.png",
+    "kind": "website"
+  },
+  "chatgpt-atlas": {
+    "file": "/logos/chatgpt-atlas.svg",
+    "source": "https://chatgpt.com/cdn/assets/favicon.6a33781f61.svg",
+    "kind": "website"
+  },
+  "chromium": {
+    "file": "/logos/chromium.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/2/28/Chromium_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "kind": "dataset"
+  },
+  "coc-coc": {
+    "file": "/logos/coc-coc.ico",
+    "source": "https://coccoc.com/favicon.ico",
+    "kind": "favicon"
+  },
+  "comet": {
+    "file": "/logos/comet.png",
+    "source": "https://framerusercontent.com/images/bnQ1gGSCHS8T2mb5FVI2rQnx5YI.png",
+    "kind": "favicon"
+  },
+  "dia": {
+    "file": "/logos/dia.svg",
+    "source": "https://www.diabrowser.com/favicon.svg",
+    "kind": "website"
+  },
+  "dillo": {
+    "file": "/logos/dillo.png",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Dillo-icon.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",
+    "kind": "wikipedia"
+  },
+  "edge-legacy": {
+    "file": "/logos/edge-legacy.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Microsoft_Edge_logo_%282015%E2%80%932019%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "kind": "manual"
+  },
+  "epiphany": {
+    "file": "/logos/epiphany.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/f/fd/GNOME_Web_logo_%282021-03%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "kind": "manual"
+  },
+  "falkon": {
+    "file": "/logos/falkon.png",
+    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Breezeicons-apps-48-falkon.svg/960px-Breezeicons-apps-48-falkon.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "kind": "dataset"
+  },
+  "fellou": {
+    "file": "/logos/fellou.ico",
+    "source": "https://fellou.ai/favicon.ico",
+    "kind": "website"
+  },
+  "firedragon": {
+    "file": "/logos/firedragon.png",
+    "source": "https://garudalinux.org/android-chrome-512x512.png",
+    "kind": "website"
+  },
+  "firefox": {
+    "file": "/logos/firefox.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
+    "kind": "dataset"
+  },
+  "firefox-developer-edition": {
+    "file": "/logos/firefox-developer-edition.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/3/30/Firefox_Developer_Edition_logo%2C_2019.svg",
+    "kind": "dataset"
+  },
+  "firefox-esr": {
+    "file": "/logos/firefox-esr.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
+    "kind": "dataset"
+  },
+  "firefox-nightly": {
+    "file": "/logos/firefox-nightly.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Firefox_Nightly_logo%2C_2019.svg",
+    "kind": "dataset"
+  },
+  "floorp": {
+    "file": "/logos/floorp.png",
+    "source": "https://github.com/Floorp-Projects.png?size=256",
+    "kind": "manual"
+  },
+  "flow-browser": {
+    "file": "/logos/flow-browser.png",
+    "source": "https://raw.githubusercontent.com/MultiboxLabs/flow-browser/main/build/icon.png",
+    "kind": "dataset"
+  },
+  "glide-browser": {
+    "file": "/logos/glide-browser.png",
+    "source": "https://github.com/glide-browser.png?size=256",
+    "kind": "github-avatar"
+  },
+  "google-chrome": {
+    "file": "/logos/google-chrome.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "kind": "dataset"
+  },
+  "google-disco": {
+    "file": "/logos/google-disco.png",
+    "source": "https://labs.google/assets/icons/apple-touch-icon.png",
+    "kind": "website"
+  },
+  "helium": {
+    "file": "/logos/helium.png",
+    "source": "https://helium.computer/favicon.png",
+    "kind": "favicon"
+  },
+  "internet-explorer": {
+    "file": "/logos/internet-explorer.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/1/18/Internet_Explorer_10%2B11_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "kind": "manual"
+  },
+  "island": {
+    "file": "/logos/island.png",
+    "source": "https://cdn.prod.website-files.com/61a5e47b1afd0c116d16aa40/6a68fde8c2412f426d6c6e02_favicon-96x96.png",
+    "kind": "website"
+  },
+  "konqueror": {
+    "file": "/logos/konqueror.png",
+    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Breezeicons-apps-48-konqueror.svg/60px-Breezeicons-apps-48-konqueror.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "kind": "dataset"
+  },
+  "ladybird": {
+    "file": "/logos/ladybird.png",
+    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Ladybird-purple-on-black_logo.png/330px-Ladybird-purple-on-black_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "kind": "commons"
+  },
+  "librewolf": {
+    "file": "/logos/librewolf.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/d/d0/LibreWolf_icon.svg",
+    "kind": "dataset"
+  },
+  "links": {
+    "file": "/logos/links.png",
+    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Links_web_browser_logo.png/330px-Links_web_browser_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "kind": "commons"
+  },
+  "luakit": {
+    "file": "/logos/luakit.svg",
+    "source": "https://raw.githubusercontent.com/luakit/luakit/develop/extras/luakit.svg",
+    "kind": "dataset"
+  },
+  "lynx": {
+    "file": "/logos/lynx.ico",
+    "source": "https://lynx.invisible-island.net/img/icons/lynx.ico",
+    "kind": "favicon"
+  },
+  "mercury": {
+    "file": "/logos/mercury.png",
+    "source": "https://thorium.rocks/imgs/apple-touch-icon.png",
+    "kind": "website"
+  },
+  "microsoft-edge": {
+    "file": "/logos/microsoft-edge.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "kind": "dataset"
+  },
+  "min": {
+    "file": "/logos/min.png",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Logo_of_Min_browser.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "kind": "commons"
+  },
+  "mullvad-browser": {
+    "file": "/logos/mullvad-browser.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/7/70/Mullvad_Browser_logo.svg",
+    "kind": "dataset"
+  },
+  "naver-whale": {
+    "file": "/logos/naver-whale.png",
+    "source": "https://upload.wikimedia.org/wikipedia/en/9/91/Naver_Whale_logo.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",
+    "kind": "wikipedia"
+  },
+  "netscape-navigator": {
+    "file": "/logos/netscape-navigator.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/4/47/Netscape_Navigator_Icon.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "kind": "commons"
+  },
+  "netsurf": {
+    "file": "/logos/netsurf.png",
+    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/NetSurf-logo.svg/960px-NetSurf-logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "kind": "dataset"
+  },
+  "nook": {
+    "file": "/logos/nook.png",
+    "source": "https://raw.githubusercontent.com/nook-browser/Nook/main/assets/icon.png",
+    "kind": "dataset"
+  },
+  "norton-neo": {
+    "file": "/logos/norton-neo.png",
+    "source": "https://neobrowser.ai/app-icon-512.png",
+    "kind": "website"
+  },
+  "nyxt": {
+    "file": "/logos/nyxt.ico",
+    "source": "https://nyxt.atlas.engineer/favicon.ico",
+    "kind": "favicon"
+  },
+  "opera": {
+    "file": "/logos/opera.png",
+    "source": "https://cdn-production-opera-website.operacdn.com/staticfiles/assets/images/favicon/opera/android-chrome-256x256.0b7ebdef4384.png",
+    "kind": "website"
+  },
+  "opera-air": {
+    "file": "/logos/opera-air.png",
+    "source": "https://cdn-production-opera-website.operacdn.com/staticfiles/assets/images/favicon/opera/android-chrome-256x256.0b7ebdef4384.png",
+    "kind": "website"
+  },
+  "opera-gx": {
+    "file": "/logos/opera-gx.png",
+    "source": "https://cdn-production-opera-website.operacdn.com/staticfiles/assets/gx/images/welcomeGx/favicon/android-chrome-512x512.e90fbd91ab18.png",
+    "kind": "website"
+  },
+  "opera-neon": {
+    "file": "/logos/opera-neon.png",
+    "source": "https://cdn-production-opera-website.operacdn.com/staticfiles/assets/neon/images/favicon/apple-touch-icon.e7d9308383ca.png",
+    "kind": "website"
+  },
+  "opera-presto": {
+    "file": "/logos/opera-presto.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Opera_O.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "kind": "manual"
+  },
+  "orion": {
+    "file": "/logos/orion.png",
+    "source": "https://orionbrowser.com/android-chrome-512x512.png",
+    "kind": "website"
+  },
+  "otter-browser": {
+    "file": "/logos/otter-browser.png",
+    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Otter_Browser_Logo.svg/960px-Otter_Browser_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "kind": "dataset"
+  },
+  "pale-moon": {
+    "file": "/logos/pale-moon.ico",
+    "source": "https://www.palemoon.org/favicon.ico",
+    "kind": "favicon"
+  },
+  "pissandshittium": {
+    "file": "/logos/pissandshittium.ico",
+    "source": "https://pissandshittium.org/favicon.ico",
+    "kind": "dataset"
+  },
+  "polypane": {
+    "file": "/logos/polypane.png",
+    "source": "https://polypane.app/icons/icon-512x512.png?v=5df5528946772487a6ab462ff2125f26",
+    "kind": "website"
+  },
+  "qutebrowser": {
+    "file": "/logos/qutebrowser.svg",
+    "source": "https://raw.githubusercontent.com/qutebrowser/qutebrowser/main/qutebrowser/icons/qutebrowser.svg",
+    "kind": "dataset"
+  },
+  "responsively-app": {
+    "file": "/logos/responsively-app.png",
+    "source": "https://responsively.app/android-chrome-512x512.png",
+    "kind": "website"
+  },
+  "safari": {
+    "file": "/logos/safari.png",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/d/df/Web_Safari_Icon.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "kind": "commons"
+  },
+  "safari-technology-preview": {
+    "file": "/logos/safari-technology-preview.ico",
+    "source": "https://developer.apple.com/favicon.ico",
+    "kind": "favicon"
+  },
+  "servo": {
+    "file": "/logos/servo.png",
+    "source": "https://raw.githubusercontent.com/servo/servo/main/resources/servo_64.png",
+    "kind": "dataset"
+  },
+  "sigmaos": {
+    "file": "/logos/sigmaos.png",
+    "source": "https://framerusercontent.com/images/almQbXgcRPeHszIPCrTPJ07yKM.png",
+    "kind": "favicon"
+  },
+  "supermium": {
+    "file": "/logos/supermium.svg",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "kind": "website"
+  },
+  "surf": {
+    "file": "/logos/surf.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Suckless_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "kind": "manual"
+  },
+  "thorium": {
+    "file": "/logos/thorium.png",
+    "source": "https://thorium.rocks/android-chrome-512x512.png",
+    "kind": "website"
+  },
+  "tor-browser": {
+    "file": "/logos/tor-browser.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Tor_Browser_icon.svg",
+    "kind": "dataset"
+  },
+  "ulaa": {
+    "file": "/logos/ulaa.ico",
+    "source": "https://www.ulaa.com/favicon.ico",
+    "kind": "favicon"
+  },
+  "ungoogled-chromium": {
+    "file": "/logos/ungoogled-chromium.svg",
+    "source": "https://github.githubassets.com/favicons/favicon.svg",
+    "kind": "website"
+  },
+  "vieb": {
+    "file": "/logos/vieb.png",
+    "source": "https://raw.githubusercontent.com/Jelmerro/Vieb/master/app/img/icons/512x512.png",
+    "kind": "dataset"
+  },
+  "vivaldi": {
+    "file": "/logos/vivaldi.png",
+    "source": "https://vivaldi.com/wp-content/uploads/cropped-favicon-192x192.png",
+    "kind": "website"
+  },
+  "waterfox": {
+    "file": "/logos/waterfox.svg",
+    "source": "https://www.waterfox.com/favicons/favicon.svg",
+    "kind": "website"
+  },
+  "wavebox": {
+    "file": "/logos/wavebox.png",
+    "source": "https://wavebox.io/website/images/favicon/android-chrome-512x512.png",
+    "kind": "website"
+  },
+  "yandex-browser": {
+    "file": "/logos/yandex-browser.svg",
+    "source": "https://browser.yandex.com/icon.svg",
+    "kind": "website"
+  },
+  "zen-browser": {
+    "file": "/logos/zen-browser.png",
+    "source": "https://raw.githubusercontent.com/zen-browser/desktop/dev/configs/branding/release/logo.png",
+    "kind": "dataset"
+  }
+}
