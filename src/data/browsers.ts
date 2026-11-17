@@ -12,6 +12,7 @@ export interface Scores {
   experience: number; // 1-5
   customisation: number; // 1-5
   lightness: number; // 1-5, RAM/footprint, not a benchmark
+  minimalism: number; // 1-5, 5 = minimal/clean, 1 = bloated with built-in extras
   lowConfidence?: boolean;
 }
 

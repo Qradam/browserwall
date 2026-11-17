@@ -63,7 +63,7 @@ for (const e of byId.values()) {
     website: e.website ?? null, repo: e.repo ?? null, logo: e.logo ?? null, sources: e.sources ?? [],
   });
 }
-// Scores: [privacy, experience, customisation, lightness], 1-5. See data/SCHEMA.md.
+// Scores: [privacy, experience, customisation, lightness, minimalism], 1-5. See data/SCHEMA.md.
 const rawScores = JSON.parse(readFileSync("data/scores.json", "utf8"));
 const resolveScore = (id, seen = new Set()) => {
   const v = rawScores[id];
@@ -80,12 +80,12 @@ const resolveScore = (id, seen = new Set()) => {
 };
 for (const e of out) {
   const s = resolveScore(e.id);
-  if (!s || s.arr.length !== 4 || !s.arr.every((n) => Number.isInteger(n) && n >= 1 && n <= 5)) {
+  if (!s || s.arr.length !== 5 || !s.arr.every((n) => Number.isInteger(n) && n >= 1 && n <= 5)) {
     problems.push(`${e.id}: missing or invalid scores`);
     continue;
   }
-  const [privacy, experience, customisation, lightness] = s.arr;
-  e.scores = { privacy, experience, customisation, lightness, ...(s.low ? { lowConfidence: true } : {}) };
+  const [privacy, experience, customisation, lightness, minimalism] = s.arr;
+  e.scores = { privacy, experience, customisation, lightness, minimalism, ...(s.low ? { lowConfidence: true } : {}) };
 }
 for (const id of Object.keys(rawScores)) if (!id.startsWith("_") && !byId.has(id)) problems.push(`scores: unknown id ${id}`);
 out.sort((a, b) => a.name.localeCompare(b.name));

@@ -35,7 +35,7 @@ portable, regional, enterprise, experimental, meme, rip, vpn
 
 ## Scores (`data/scores.json`)
 
-Each browser gets four 1-5 integers `[privacy, experience, customisation, lightness]`. Scores are editorial and
+Each browser gets five 1-5 integers `[privacy, experience, customisation, lightness, minimalism]`. Scores are editorial and
 live outside the raw files; `merge.mjs` validates them and adds `scores` to `browsers.json`.
 `{"like": "brave", "adjust": [0,0,0,-1]}` copies another entry; `{"s": [...], "low": true}` flags a guess.
 
@@ -48,3 +48,4 @@ live outside the raw files; `merge.mjs` validates them and adds `scores` to `bro
 - **customisation** – UI/extension depth. 5 = deep UI and extension control (Firefox, Vivaldi, Floorp). 1 = almost nothing to change.
 - **lightness** – RAM/CPU footprint and fit for old hardware. Not a speed ranking: mainstream browsers are within noise of each
   other in benchmarks, so only footprint differences are scored. 5 = text-mode/tiny. 3 = typical. 1 = known heavy.
+- **minimalism** - how clean vs bloated the browser is out of the box. 5 = few built-ins, quiet UI (Min, Mullvad, qutebrowser). 3 = typical, some extras (Chrome, Firefox). 1 = bundled extras such as wallet, VPN, mail, shopping, news or AI sidebars (Opera, Edge, Vivaldi, Avast). Independent of lightness: a browser can be light on RAM yet cluttered, or heavy yet minimal.
