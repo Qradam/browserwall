@@ -1,0 +1,187 @@
+{
+  "microsoft-edge": {
+    "reddit": "https://www.reddit.com/r/MicrosoftEdge",
+    "x": "https://x.com/MicrosoftEdge",
+    "notes": "From memory; Reddit API blocked, not live-verified; well-known main community and official account"
+  },
+  "midori": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official sub/X found"
+  },
+  "min": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official sub/X found"
+  },
+  "mullvad-browser": {
+    "reddit": null,
+    "x": null,
+    "notes": "Only Mullvad VPN community/company account exist; not browser-specific"
+  },
+  "naver-whale": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "netscape-navigator": {
+    "reddit": null,
+    "x": null,
+    "notes": "Discontinued; no verified channels"
+  },
+  "nook": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "norton-neo": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "opera": {
+    "reddit": "https://www.reddit.com/r/Opera",
+    "x": "https://x.com/opera",
+    "notes": "From memory; Reddit API blocked, not live-verified"
+  },
+  "opera-air": {
+    "reddit": "https://www.reddit.com/r/Opera",
+    "x": "https://x.com/opera",
+    "notes": "From memory; Reddit API blocked, not live-verified; reuses parent Opera channels"
+  },
+  "opera-gx": {
+    "reddit": "https://www.reddit.com/r/OperaGX",
+    "x": "https://x.com/operagx",
+    "notes": "From memory; Reddit API blocked, not live-verified"
+  },
+  "opera-neon": {
+    "reddit": "https://www.reddit.com/r/Opera",
+    "x": "https://x.com/opera",
+    "notes": "From memory; Reddit API blocked, not live-verified; reuses parent Opera channels"
+  },
+  "orion": {
+    "reddit": null,
+    "x": "https://x.com/KagiHQ",
+    "notes": "Developer Kagi account used; no confirmed subreddit"
+  },
+  "pale-moon": {
+    "reddit": "https://www.reddit.com/r/PaleMoon",
+    "x": null,
+    "notes": "From memory; Reddit API blocked, not live-verified; no official X account known"
+  },
+  "phi": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "pissandshittium": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "polypane": {
+    "reddit": null,
+    "x": "https://x.com/polypane",
+    "notes": "From memory; Reddit API blocked, not live-verified; official X; no subreddit"
+  },
+  "qutebrowser": {
+    "reddit": "https://www.reddit.com/r/qutebrowser",
+    "x": null,
+    "notes": "From memory; Reddit API blocked, not live-verified; no official X"
+  },
+  "r3dfox": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "responsively-app": {
+    "reddit": null,
+    "x": "https://x.com/responsivelyapp",
+    "notes": "From memory; Reddit API blocked, not live-verified; no subreddit"
+  },
+  "safari": {
+    "reddit": "https://www.reddit.com/r/Safari",
+    "x": null,
+    "notes": "From memory; Reddit API blocked, not live-verified; no dedicated Safari X account"
+  },
+  "safari-technology-preview": {
+    "reddit": "https://www.reddit.com/r/Safari",
+    "x": null,
+    "notes": "Reuses Safari subreddit"
+  },
+  "servo": {
+    "reddit": "https://www.reddit.com/r/servo",
+    "x": "https://x.com/servo",
+    "notes": "From memory; Reddit API blocked, not live-verified"
+  },
+  "sizzy": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "supermium": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "thorium": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "tor-browser": {
+    "reddit": "https://www.reddit.com/r/TorBrowser",
+    "x": "https://x.com/torproject",
+    "notes": "From memory; Reddit API blocked, not live-verified; X is Tor Project"
+  },
+  "ulaa": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "ungoogled-chromium": {
+    "reddit": "https://www.reddit.com/r/ungoogled_chromium",
+    "x": null,
+    "notes": "From memory; Reddit API blocked, not live-verified"
+  },
+  "vieb": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "vivaldi": {
+    "reddit": "https://www.reddit.com/r/vivaldibrowser",
+    "x": "https://x.com/vivaldibrowser",
+    "notes": "From memory; Reddit API blocked, not live-verified"
+  },
+  "waterfox": {
+    "reddit": "https://www.reddit.com/r/waterfox",
+    "x": null,
+    "notes": "From memory; Reddit API blocked, not live-verified; X handle not confirmed"
+  },
+  "wavebox": {
+    "reddit": "https://www.reddit.com/r/Wavebox",
+    "x": "https://x.com/wavebox",
+    "notes": "From memory; Reddit API blocked, not live-verified"
+  },
+  "wren": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "yandex-browser": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "yab": {
+    "reddit": null,
+    "x": null,
+    "notes": "No confident official channels found"
+  },
+  "zen-browser": {
+    "reddit": "https://www.reddit.com/r/zen_browser",
+    "x": "https://x.com/zen_browser",
+    "notes": "From memory; Reddit API blocked, not live-verified"
+  }
+}

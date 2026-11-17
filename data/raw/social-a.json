@@ -1,0 +1,192 @@
+{
+  "arc": {
+    "reddit": "https://www.reddit.com/r/ArcBrowser",
+    "x": "https://x.com/arcinternet",
+    "notes": "Subreddit confirmed via search (unofficial, main community); @arcinternet cited in news coverage of Arc shutdown."
+  },
+  "ardia": {
+    "reddit": null,
+    "x": null,
+    "notes": "No official links found on site/README; not invented."
+  },
+  "aside": {
+    "reddit": null,
+    "x": "https://x.com/AsideAI",
+    "notes": "X link from aside.com site; no subreddit found."
+  },
+  "blisk": {
+    "reddit": null,
+    "x": "https://x.com/BliskBrowser",
+    "notes": "X link from blisk.io site; no subreddit found."
+  },
+  "brave": {
+    "reddit": "https://www.reddit.com/r/brave_browser",
+    "x": "https://x.com/brave",
+    "notes": "Links from brave.com footer."
+  },
+  "brave-beta": {
+    "reddit": "https://www.reddit.com/r/brave_browser",
+    "x": "https://x.com/brave",
+    "notes": "Channel build; reuses Brave subreddit and X account."
+  },
+  "brave-nightly": {
+    "reddit": "https://www.reddit.com/r/brave_browser",
+    "x": "https://x.com/brave",
+    "notes": "Channel build; reuses Brave subreddit and X account."
+  },
+  "brave-origin": {
+    "reddit": "https://www.reddit.com/r/brave_browser",
+    "x": "https://x.com/brave",
+    "notes": "Channel build; reuses Brave subreddit and X account."
+  },
+  "browseros": {
+    "reddit": null,
+    "x": "https://x.com/browserOS_ai",
+    "notes": "X link from browseros.com; no subreddit verified."
+  },
+  "browsh": {
+    "reddit": null,
+    "x": null,
+    "notes": "No official Reddit or X found."
+  },
+  "chatgpt-atlas": {
+    "reddit": "https://www.reddit.com/r/ChatGPTAtlas",
+    "x": "https://x.com/OpenAI",
+    "notes": "r/ChatGPTAtlas referenced in news (OpenAI engineer posted there); no dedicated X account so OpenAI company account used. Discontinued."
+  },
+  "chrome-canary": {
+    "reddit": "https://www.reddit.com/r/chrome",
+    "x": "https://x.com/googlechrome",
+    "notes": "Channel build; reuses Google Chrome subreddit/X."
+  },
+  "chromium": {
+    "reddit": "https://www.reddit.com/r/chromium",
+    "x": "https://x.com/ChromiumDev",
+    "notes": "Subreddit and @ChromiumDev from general knowledge; not verified (Reddit blocked curl)."
+  },
+  "comet": {
+    "reddit": "https://www.reddit.com/r/PerplexityComet",
+    "x": "https://x.com/comet",
+    "notes": "X link @comet from perplexity.ai/comet; r/PerplexityComet seen in subreddit stats (~12k members)."
+  },
+  "crest": {
+    "reddit": "https://www.reddit.com/r/CrestBrowser",
+    "x": null,
+    "notes": "Subreddit linked on crestbrowser.com and GitHub README; no X found."
+  },
+  "cromite": {
+    "reddit": null,
+    "x": null,
+    "notes": "No official Reddit or X found."
+  },
+  "dia": {
+    "reddit": "https://www.reddit.com/r/diabrowser",
+    "x": "https://x.com/diabrowser",
+    "notes": "X link from diabrowser.com; r/diabrowser active per subreddit stats."
+  },
+  "duckduckgo": {
+    "reddit": "https://www.reddit.com/r/duckduckgo",
+    "x": "https://x.com/DuckDuckGo",
+    "notes": "r/duckduckgo linked from duckduckgo.com; X is company account."
+  },
+  "ecosia-browser": {
+    "reddit": "https://www.reddit.com/r/ecosia",
+    "x": "https://x.com/ecosia",
+    "notes": "Company account/subreddit from general knowledge; not verified (Reddit blocked curl)."
+  },
+  "elinks": {
+    "reddit": null,
+    "x": null,
+    "notes": "No official Reddit or X found."
+  },
+  "falkon": {
+    "reddit": null,
+    "x": null,
+    "notes": "falkon.org links only r/kde (not browser-dedicated); no X verified."
+  },
+  "fellou": {
+    "reddit": null,
+    "x": null,
+    "notes": "Could not verify official accounts."
+  },
+  "firedragon": {
+    "reddit": null,
+    "x": null,
+    "notes": "No official Reddit or X found."
+  },
+  "firefox": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox",
+    "notes": "Main Firefox subreddit and @firefox."
+  },
+  "firefox-beta": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox",
+    "notes": "Channel build; reuses Firefox subreddit/X."
+  },
+  "firefox-developer-edition": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox",
+    "notes": "Channel build; reuses Firefox subreddit/X."
+  },
+  "firefox-esr": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox",
+    "notes": "Channel build; reuses Firefox subreddit/X."
+  },
+  "firefox-nightly": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox",
+    "notes": "Channel build; reuses Firefox subreddit/X."
+  },
+  "floorp": {
+    "reddit": "https://www.reddit.com/r/Floorp",
+    "x": "https://x.com/Floorp_Browser",
+    "notes": "r/Floorp listed in Floorp docs; @Floorp_Browser linked from Floorp GitHub README."
+  },
+  "glide-browser": {
+    "reddit": null,
+    "x": null,
+    "notes": "No official Reddit or X found."
+  },
+  "epiphany": {
+    "reddit": null,
+    "x": null,
+    "notes": "GNOME Web has no dedicated accounts found."
+  },
+  "google-chrome": {
+    "reddit": "https://www.reddit.com/r/chrome",
+    "x": "https://x.com/googlechrome",
+    "notes": "r/chrome main community; @googlechrome official (general knowledge)."
+  },
+  "helium": {
+    "reddit": null,
+    "x": "https://x.com/heliumbrowser",
+    "notes": "X link from helium.computer; no subreddit verified."
+  },
+  "internet-explorer": {
+    "reddit": null,
+    "x": null,
+    "notes": "No verified historical account."
+  },
+  "island": {
+    "reddit": null,
+    "x": null,
+    "notes": "Could not verify official accounts."
+  },
+  "ladybird": {
+    "reddit": null,
+    "x": "https://x.com/ladybirdbrowser",
+    "notes": "X link from ladybird.org; no subreddit verified."
+  },
+  "librewolf": {
+    "reddit": "https://www.reddit.com/r/LibreWolf",
+    "x": null,
+    "notes": "r/LibreWolf linked from librewolf.net; no X found."
+  },
+  "lynx": {
+    "reddit": null,
+    "x": null,
+    "notes": "No official Reddit or X found."
+  }
+}

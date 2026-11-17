@@ -1,4 +1,9 @@
 {
+  "aloha-browser": {
+    "file": "/logos/aloha-browser.png",
+    "source": "https://alohabrowser.com/images/favicons/android-icon-512.png",
+    "kind": "website"
+  },
   "arc": {
     "file": "/logos/arc.svg",
     "source": "https://upload.wikimedia.org/wikipedia/commons/3/37/Arc_%28browser%29_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
@@ -14,10 +19,30 @@
     "source": "https://aside.com/icon.png?icon.0lfc1q-r_ms2e.png",
     "kind": "website"
   },
+  "blisk": {
+    "file": "/logos/blisk.png",
+    "source": "https://blisk.io/img/favicons/android-icon-192x192.png",
+    "kind": "website"
+  },
   "brave": {
     "file": "/logos/brave.svg",
     "source": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Brave_lion_icon.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "kind": "dataset"
+  },
+  "brave-beta": {
+    "file": "/logos/brave-beta.png",
+    "source": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave/product_logo_128_beta.png",
+    "kind": "manual"
+  },
+  "brave-nightly": {
+    "file": "/logos/brave-nightly.png",
+    "source": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave/product_logo_128_nightly.png",
+    "kind": "manual"
+  },
+  "brave-origin": {
+    "file": "/logos/brave-origin.png",
+    "source": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave/product_logo_128.png",
+    "kind": "manual"
   },
   "browseros": {
     "file": "/logos/browseros.png",
@@ -34,15 +59,15 @@
     "source": "https://chatgpt.com/cdn/assets/favicon.6a33781f61.svg",
     "kind": "website"
   },
+  "chrome-canary": {
+    "file": "/logos/chrome-canary.png",
+    "source": "https://www.gstatic.com/images/branding/product/2x/chrome_canary_96dp.png",
+    "kind": "manual"
+  },
   "chromium": {
     "file": "/logos/chromium.svg",
     "source": "https://upload.wikimedia.org/wikipedia/commons/2/28/Chromium_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "kind": "dataset"
-  },
-  "coc-coc": {
-    "file": "/logos/coc-coc.ico",
-    "source": "https://coccoc.com/favicon.ico",
-    "kind": "favicon"
   },
   "comet": {
     "file": "/logos/comet.png",
@@ -69,10 +94,20 @@
     "source": "https://www.ecosia.org/apple-touch-icon.png",
     "kind": "manual"
   },
+  "epic-privacy-browser": {
+    "file": "/logos/epic-privacy-browser.png",
+    "source": "https://upload.wikimedia.org/wikipedia/en/9/90/Epic_icon.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",
+    "kind": "wikipedia"
+  },
   "epiphany": {
     "file": "/logos/epiphany.svg",
     "source": "https://upload.wikimedia.org/wikipedia/commons/f/fd/GNOME_Web_logo_%282021-03%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "kind": "manual"
+  },
+  "facet": {
+    "file": "/logos/facet.png",
+    "source": "https://facet.surf/apple-touch-icon.png",
+    "kind": "website"
   },
   "falkon": {
     "file": "/logos/falkon.png",
@@ -94,6 +129,11 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
     "kind": "dataset"
   },
+  "firefox-beta": {
+    "file": "/logos/firefox-beta.png",
+    "source": "https://raw.githubusercontent.com/mozilla-firefox/firefox/main/browser/branding/official/default128.png",
+    "kind": "manual"
+  },
   "firefox-developer-edition": {
     "file": "/logos/firefox-developer-edition.svg",
     "source": "https://upload.wikimedia.org/wikipedia/commons/3/30/Firefox_Developer_Edition_logo%2C_2019.svg",
@@ -114,15 +154,15 @@
     "source": "https://github.com/Floorp-Projects.png?size=256",
     "kind": "manual"
   },
-  "flow-browser": {
-    "file": "/logos/flow-browser.png",
-    "source": "https://raw.githubusercontent.com/MultiboxLabs/flow-browser/main/build/icon.png",
-    "kind": "dataset"
-  },
   "glide-browser": {
     "file": "/logos/glide-browser.png",
     "source": "https://github.com/glide-browser.png?size=256",
     "kind": "github-avatar"
+  },
+  "gnu-icecat": {
+    "file": "/logos/gnu-icecat.png",
+    "source": "https://www.gnu.org/graphics/gnu-head-mini.png",
+    "kind": "favicon"
   },
   "google-chrome": {
     "file": "/logos/google-chrome.svg",
@@ -163,6 +203,11 @@
     "file": "/logos/microsoft-edge.svg",
     "source": "https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "kind": "dataset"
+  },
+  "midori": {
+    "file": "/logos/midori.webp",
+    "source": "https://astian.org/wp-content/uploads/2026/08/cropped-favicon-192x192.webp",
+    "kind": "website"
   },
   "min": {
     "file": "/logos/min.png",
@@ -244,6 +289,11 @@
     "source": "https://raw.githubusercontent.com/qutebrowser/qutebrowser/main/qutebrowser/icons/qutebrowser.svg",
     "kind": "dataset"
   },
+  "r3dfox": {
+    "file": "/logos/r3dfox.ico",
+    "source": "https://eclipse.cx/images/favicon.ico",
+    "kind": "favicon"
+  },
   "responsively-app": {
     "file": "/logos/responsively-app.png",
     "source": "https://responsively.app/android-chrome-512x512.png",
@@ -263,6 +313,16 @@
     "file": "/logos/servo.png",
     "source": "https://raw.githubusercontent.com/servo/servo/main/resources/servo_64.png",
     "kind": "dataset"
+  },
+  "sigmaos": {
+    "file": "/logos/sigmaos.png",
+    "source": "https://framerusercontent.com/images/almQbXgcRPeHszIPCrTPJ07yKM.png",
+    "kind": "favicon"
+  },
+  "sizzy": {
+    "file": "/logos/sizzy.png",
+    "source": "https://sizzy.co/favicon-512.png",
+    "kind": "website"
   },
   "supermium": {
     "file": "/logos/supermium.svg",
@@ -307,6 +367,11 @@
   "wavebox": {
     "file": "/logos/wavebox.png",
     "source": "https://wavebox.io/website/images/favicon/android-chrome-512x512.png",
+    "kind": "website"
+  },
+  "wren": {
+    "file": "/logos/wren.png",
+    "source": "https://wrenbrowser.com/icon.png?icon.40_qonpa33xgr.png",
     "kind": "website"
   },
   "yab": {

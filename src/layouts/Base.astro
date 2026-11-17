@@ -25,6 +25,7 @@ const path = Astro.url.pathname;
       <a href="/" class="brand"><Icon name="Globe02Icon" size={20} /> <span>browser<b>wall</b></span></a>
       <nav aria-label="Main">
         <a href="/" aria-current={path === "/" ? "page" : undefined}>Wall</a>
+        <a href="/tiers" aria-current={path.startsWith("/tiers") ? "page" : undefined}>Tier list</a>
         <a href="/quiz" aria-current={path.startsWith("/quiz") ? "page" : undefined}>Quiz <span class="soon">soon</span></a>
       </nav>
     </header>

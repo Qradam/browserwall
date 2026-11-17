@@ -1,0 +1,212 @@
+{
+  "arc": [],
+  "aloha-browser": [
+    "alohabrowser"
+  ],
+  "aside": [
+    "AsideAI"
+  ],
+  "avast-secure-browser": [
+    "Avast"
+  ],
+  "blisk": [
+    "BliskBrowser"
+  ],
+  "avg-secure-browser": [],
+  "avira-secure-browser": [],
+  "ardia": [
+    "charlielamb",
+    "jsmasterypro",
+    "luke_judges",
+    "itsOmSarraf_",
+    "sprice",
+    "andywang",
+    "mielke_jack",
+    "pablopunk"
+  ],
+  "brave": [
+    "brave",
+    "bravesearchapi"
+  ],
+  "brave-nightly": [
+    "brave",
+    "bravesearchapi"
+  ],
+  "brave-origin": [
+    "brave",
+    "bravesearchapi"
+  ],
+  "brave-beta": [
+    "brave",
+    "bravesearchapi"
+  ],
+  "chrome-canary": [
+    "googlechrome"
+  ],
+  "comet": [
+    "comet",
+    "perplexity_ai"
+  ],
+  "chatgpt-atlas": [],
+  "chromium": [],
+  "browseros": [
+    "browserOS_ai",
+    "browseros_ai"
+  ],
+  "dia": [
+    "diabrowser"
+  ],
+  "ecosia-browser": [],
+  "browsh": [],
+  "cursed-browser": [],
+  "facet": [],
+  "crest": [],
+  "epic-privacy-browser": [],
+  "falkon": [],
+  "elinks": [],
+  "duckduckgo": [],
+  "firedragon": [],
+  "fellou": [],
+  "firefox": [
+    "mozilla",
+    "firefox"
+  ],
+  "firefox-nightly": [],
+  "firefox-beta": [],
+  "firefox-developer-edition": [],
+  "firefox-esr": [],
+  "epiphany": [],
+  "google-chrome": [
+    "Google",
+    "googlechrome"
+  ],
+  "internet-explorer": [],
+  "gnu-icecat": [],
+  "island": [],
+  "glide-browser": [],
+  "lynx": [],
+  "helium": [
+    "heliumbrowser"
+  ],
+  "librewolf": [],
+  "ladybird": [
+    "publicqi",
+    "ladybirdbrowser"
+  ],
+  "floorp": [
+    "Floorp_Browser"
+  ],
+  "min": [],
+  "netscape-navigator": [],
+  "mullvad-browser": [
+    "mullvadnet"
+  ],
+  "midori": [
+    "grupoastian"
+  ],
+  "norton-neo": [
+    "neobrowser"
+  ],
+  "norton-private-browser": [
+    "norton"
+  ],
+  "opera": [
+    "opera"
+  ],
+  "nook": [],
+  "opera-gx": [
+    "operagxofficial"
+  ],
+  "opera-air": [
+    "opera"
+  ],
+  "opera-neon": [],
+  "orion": [
+    "OrionBrowser"
+  ],
+  "pale-moon": [],
+  "naver-whale": [],
+  "polypane": [
+    "polypane"
+  ],
+  "pissandshittium": [
+    "pissandshittium"
+  ],
+  "qutebrowser": [],
+  "phi": [
+    "phibrowser"
+  ],
+  "safari": [
+    "Apple"
+  ],
+  "responsively-app": [
+    "ResponsivelyApp",
+    "vivek_jonam",
+    "PrashantPalikhe",
+    "gorogoroumaru",
+    "s3lf"
+  ],
+  "safari-technology-preview": [],
+  "r3dfox": [],
+  "servo": [],
+  "sizzy": [
+    "thekitze"
+  ],
+  "sigmaos": [
+    "sigmaos_hq",
+    "SigmaOS",
+    "SigmaOS_HQ",
+    "sigmaos"
+  ],
+  "supermium": [],
+  "thorium": [],
+  "tor-browser": [
+    "torproject"
+  ],
+  "microsoft-edge": [],
+  "ungoogled-chromium": [],
+  "ulaa": [],
+  "vieb": [],
+  "vivaldi": [
+    "vivaldibrowser",
+    "thomas_steurer",
+    "agngw_",
+    "bughuntar",
+    "iamrayyaann",
+    "jameshuisang",
+    "saintsatplay",
+    "0xPixy",
+    "aryanrajseo",
+    "aileeni365",
+    "wmouton_dev",
+    "Umbral_Ice",
+    "BobbyFlowState"
+  ],
+  "yab": [
+    "christopherrli",
+    "glor3hole",
+    "flaxodotdev",
+    "pinwin004",
+    "TheVesper97",
+    "ChrisCree",
+    "JMSantolin",
+    "StormDzns",
+    "opensource003",
+    "kasuncfdo",
+    "widepipe",
+    "takafu3",
+    "enricopaun",
+    "sahiln123",
+    "yab_browser"
+  ],
+  "yandex-browser": [],
+  "waterfox": [],
+  "wavebox": [
+    "waveboxio"
+  ],
+  "wren": [
+    "WrenBrowser"
+  ],
+  "zen-browser": [],
+  "cromite": []
+}

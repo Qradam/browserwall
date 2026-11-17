@@ -25,7 +25,7 @@ page.on("pageerror", (e) => errors.push(String(e)));
 
 await page.goto("http://localhost:4399/", { waitUntil: "networkidle" });
 const total = await page.locator("#grid > .card").count();
-check(total === 67, `renders all cards (${total})`);
+check(total === 85, `renders all cards (${total})`);
 const visible = () => page.locator("#grid > .card:not([hidden])").count();
 
 await page.screenshot({ path: "data/screens/wall.png" });
@@ -63,6 +63,12 @@ const overflow = await mobile.evaluate(() => document.documentElement.scrollWidt
 check(!overflow, "no horizontal overflow on narrow screen");
 await mobile.screenshot({ path: "data/screens/narrow.png" });
 
+await page.goto("http://localhost:4399/tiers", { waitUntil: "networkidle" });
+const tierItems = await page.locator(".items li").count();
+check(tierItems === total, `tier list places every browser once (${tierItems})`);
+await page.screenshot({ path: "data/screens/tiers.png", fullPage: true });
+await page.goto("http://localhost:4399/?q=zen", { waitUntil: "networkidle" });
+check((await page.locator('#grid > .card:not([hidden]) a[aria-label$="on Reddit"]').count()) >= 1, "cards show Reddit link");
 check(errors.length === 0, `no console errors ${errors.join(" | ")}`);
 await browser.close();
 server.close();

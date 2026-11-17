@@ -3,19 +3,19 @@
     "ACTIVE: a usable desktop browser you can download today (no waitlists), with a release in roughly the last 12 months, AND people actually use or discuss it today: major vendor, or 1k+ GitHub stars, or covered by several current (2026) roundups. A Wikipedia article alone is NOT enough.",
     "OUTDATED = OUT: last release >12 months ago, or a legacy/hobbyist browser nobody picks today even if technically maintained (Konqueror, Otter, Dillo, NetSurf, suckless-style WebKit shells).",
     "DEAD: only household names or recent high-profile shutdowns (rip tag).",
-    "OUT: Chinese browsers; OS-specific ports; engine experiments without a usable browser; antivirus/vendor rebrands of Chromium; tiny forks of forks.",
+    "OUT: Chinese and region-specific browsers (except Yandex and Naver Whale); OS-specific ports; engine experiments without a usable browser; tiny forks of forks.",
     "EXCEPTION: meme browsers the community actually knows (Pissandshittium)."
   ],
   "include": [
-    "google-chrome", "chromium", "microsoft-edge", "brave", "vivaldi", "opera", "opera-gx", "opera-air", "opera-neon",
+    "google-chrome", "chrome-canary", "chromium", "microsoft-edge", "brave", "brave-beta", "brave-nightly", "brave-origin", "vivaldi", "opera", "opera-gx", "opera-air", "opera-neon",
     "dia", "comet", "helium", "thorium", "ungoogled-chromium", "supermium", "cromite", "yandex-browser", "naver-whale",
-    "coc-coc", "norton-neo", "ulaa", "wavebox", "min", "polypane", "responsively-app", "island", "browseros", "fellou",
-    "flow-browser", "ecosia-browser", "aside",
+    "norton-neo", "norton-private-browser", "avast-secure-browser", "avg-secure-browser", "avira-secure-browser", "epic-privacy-browser", "aloha-browser", "ulaa", "wavebox", "min", "polypane", "sizzy", "blisk", "responsively-app", "island", "browseros", "fellou",
+    "wren", "ecosia-browser", "aside",
 
-    "phi", "crest", "yab", "ardia", "duckduckgo",
+    "phi", "crest", "yab", "ardia", "duckduckgo", "facet", "sigmaos",
 
-    "firefox", "firefox-esr", "firefox-developer-edition", "firefox-nightly", "librewolf", "floorp", "zen-browser",
-    "waterfox", "pale-moon", "tor-browser", "mullvad-browser", "firedragon", "glide-browser",
+    "firefox", "firefox-esr", "firefox-beta", "firefox-developer-edition", "firefox-nightly", "librewolf", "floorp", "zen-browser",
+    "waterfox", "pale-moon", "tor-browser", "mullvad-browser", "firedragon", "glide-browser", "midori", "r3dfox", "gnu-icecat",
 
     "safari", "safari-technology-preview", "orion", "epiphany", "falkon", "nook",
     "ladybird", "servo",
@@ -24,6 +24,6 @@
 
     "internet-explorer", "netscape-navigator", "arc", "chatgpt-atlas",
 
-    "pissandshittium"
+    "pissandshittium", "cursed-browser"
   ]
 }

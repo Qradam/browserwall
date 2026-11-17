@@ -1,0 +1,342 @@
+{
+  "aloha-browser": {
+    "reddit": "https://www.reddit.com/r/alohabrowser",
+    "x": "https://x.com/alohabrowser"
+  },
+  "arc": {
+    "reddit": "https://www.reddit.com/r/ArcBrowser",
+    "x": "https://x.com/arcinternet"
+  },
+  "ardia": {
+    "reddit": "https://www.reddit.com/r/ArdiaBrowser",
+    "x": null
+  },
+  "aside": {
+    "reddit": null,
+    "x": "https://x.com/AsideAI"
+  },
+  "avast-secure-browser": {
+    "reddit": "https://www.reddit.com/r/avast",
+    "x": "https://x.com/Avast"
+  },
+  "avg-secure-browser": {
+    "reddit": null,
+    "x": null
+  },
+  "avira-secure-browser": {
+    "reddit": "https://www.reddit.com/r/avira",
+    "x": null
+  },
+  "blisk": {
+    "reddit": null,
+    "x": "https://x.com/BliskBrowser"
+  },
+  "brave": {
+    "reddit": "https://www.reddit.com/r/brave_browser",
+    "x": "https://x.com/brave"
+  },
+  "brave-beta": {
+    "reddit": "https://www.reddit.com/r/brave_browser",
+    "x": "https://x.com/brave"
+  },
+  "brave-nightly": {
+    "reddit": "https://www.reddit.com/r/brave_browser",
+    "x": "https://x.com/brave"
+  },
+  "brave-origin": {
+    "reddit": "https://www.reddit.com/r/brave_browser",
+    "x": "https://x.com/brave"
+  },
+  "browseros": {
+    "reddit": "https://www.reddit.com/r/BrowserOS",
+    "x": "https://x.com/browserOS_ai"
+  },
+  "browsh": {
+    "reddit": null,
+    "x": null
+  },
+  "chatgpt-atlas": {
+    "reddit": "https://www.reddit.com/r/ChatGPTAtlas",
+    "x": null
+  },
+  "chrome-canary": {
+    "reddit": "https://www.reddit.com/r/chrome",
+    "x": "https://x.com/googlechrome"
+  },
+  "chromium": {
+    "reddit": "https://www.reddit.com/r/Chromium",
+    "x": "https://x.com/ChromiumDev"
+  },
+  "comet": {
+    "reddit": "https://www.reddit.com/r/PerplexityComet",
+    "x": "https://x.com/comet"
+  },
+  "crest": {
+    "reddit": "https://www.reddit.com/r/CrestBrowser",
+    "x": null
+  },
+  "cromite": {
+    "reddit": "https://www.reddit.com/r/Cromite",
+    "x": null
+  },
+  "cursed-browser": {
+    "reddit": null,
+    "x": null
+  },
+  "dia": {
+    "reddit": "https://www.reddit.com/r/diabrowser",
+    "x": "https://x.com/diabrowser"
+  },
+  "duckduckgo": {
+    "reddit": "https://www.reddit.com/r/duckduckgo",
+    "x": "https://x.com/DuckDuckGo"
+  },
+  "ecosia-browser": {
+    "reddit": "https://www.reddit.com/r/Ecosia",
+    "x": "https://x.com/ecosia"
+  },
+  "elinks": {
+    "reddit": null,
+    "x": null
+  },
+  "epic-privacy-browser": {
+    "reddit": null,
+    "x": null
+  },
+  "facet": {
+    "reddit": null,
+    "x": null
+  },
+  "falkon": {
+    "reddit": "https://www.reddit.com/r/FalkonBrowser",
+    "x": null
+  },
+  "fellou": {
+    "reddit": null,
+    "x": null
+  },
+  "firedragon": {
+    "reddit": "https://www.reddit.com/r/FireDragon",
+    "x": null
+  },
+  "firefox": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox"
+  },
+  "firefox-beta": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox"
+  },
+  "firefox-developer-edition": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox"
+  },
+  "firefox-esr": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox"
+  },
+  "firefox-nightly": {
+    "reddit": "https://www.reddit.com/r/firefox",
+    "x": "https://x.com/firefox"
+  },
+  "floorp": {
+    "reddit": "https://www.reddit.com/r/Floorp",
+    "x": "https://x.com/Floorp_Browser"
+  },
+  "glide-browser": {
+    "reddit": "https://www.reddit.com/r/glidebrowser",
+    "x": null
+  },
+  "epiphany": {
+    "reddit": null,
+    "x": null
+  },
+  "gnu-icecat": {
+    "reddit": null,
+    "x": null
+  },
+  "google-chrome": {
+    "reddit": "https://www.reddit.com/r/chrome",
+    "x": "https://x.com/googlechrome"
+  },
+  "helium": {
+    "reddit": null,
+    "x": "https://x.com/heliumbrowser"
+  },
+  "internet-explorer": {
+    "reddit": "https://www.reddit.com/r/InternetExplorer",
+    "x": null
+  },
+  "island": {
+    "reddit": null,
+    "x": null
+  },
+  "ladybird": {
+    "reddit": "https://www.reddit.com/r/Ladybird",
+    "x": "https://x.com/ladybirdbrowser"
+  },
+  "librewolf": {
+    "reddit": "https://www.reddit.com/r/LibreWolf",
+    "x": null
+  },
+  "lynx": {
+    "reddit": null,
+    "x": null
+  },
+  "microsoft-edge": {
+    "reddit": "https://www.reddit.com/r/MicrosoftEdge",
+    "x": "https://x.com/MicrosoftEdge"
+  },
+  "midori": {
+    "reddit": null,
+    "x": "https://x.com/grupoastian"
+  },
+  "min": {
+    "reddit": "https://www.reddit.com/r/minbrowser",
+    "x": null
+  },
+  "mullvad-browser": {
+    "reddit": "https://www.reddit.com/r/mullvad",
+    "x": "https://x.com/mullvadnet"
+  },
+  "naver-whale": {
+    "reddit": null,
+    "x": null
+  },
+  "netscape-navigator": {
+    "reddit": null,
+    "x": null
+  },
+  "nook": {
+    "reddit": null,
+    "x": null
+  },
+  "norton-neo": {
+    "reddit": null,
+    "x": "https://x.com/neobrowser"
+  },
+  "norton-private-browser": {
+    "reddit": null,
+    "x": "https://x.com/norton"
+  },
+  "opera": {
+    "reddit": "https://www.reddit.com/r/operabrowser",
+    "x": "https://x.com/opera"
+  },
+  "opera-air": {
+    "reddit": "https://www.reddit.com/r/operabrowser",
+    "x": "https://x.com/opera"
+  },
+  "opera-gx": {
+    "reddit": "https://www.reddit.com/r/OperaGX",
+    "x": "https://x.com/operagxofficial"
+  },
+  "opera-neon": {
+    "reddit": "https://www.reddit.com/r/operabrowser",
+    "x": "https://x.com/opera"
+  },
+  "orion": {
+    "reddit": "https://www.reddit.com/r/OrionBrowser",
+    "x": "https://x.com/OrionBrowser"
+  },
+  "pale-moon": {
+    "reddit": "https://www.reddit.com/r/palemoon",
+    "x": null
+  },
+  "phi": {
+    "reddit": "https://www.reddit.com/r/phibrowser",
+    "x": "https://x.com/phibrowser"
+  },
+  "pissandshittium": {
+    "reddit": null,
+    "x": "https://x.com/pissandshittium"
+  },
+  "polypane": {
+    "reddit": null,
+    "x": "https://x.com/polypane"
+  },
+  "qutebrowser": {
+    "reddit": "https://www.reddit.com/r/qutebrowser",
+    "x": null
+  },
+  "r3dfox": {
+    "reddit": null,
+    "x": null
+  },
+  "responsively-app": {
+    "reddit": null,
+    "x": "https://x.com/responsivelyapp"
+  },
+  "safari": {
+    "reddit": "https://www.reddit.com/r/Safari",
+    "x": null
+  },
+  "safari-technology-preview": {
+    "reddit": "https://www.reddit.com/r/Safari",
+    "x": null
+  },
+  "servo": {
+    "reddit": "https://www.reddit.com/r/servo",
+    "x": "https://x.com/servo"
+  },
+  "sigmaos": {
+    "reddit": "https://www.reddit.com/r/sigmaos",
+    "x": "https://x.com/sigmaos"
+  },
+  "sizzy": {
+    "reddit": null,
+    "x": "https://x.com/thekitze"
+  },
+  "supermium": {
+    "reddit": "https://www.reddit.com/r/Supermium",
+    "x": null
+  },
+  "thorium": {
+    "reddit": null,
+    "x": null
+  },
+  "tor-browser": {
+    "reddit": "https://www.reddit.com/r/torbrowser",
+    "x": "https://x.com/torproject"
+  },
+  "ulaa": {
+    "reddit": null,
+    "x": null
+  },
+  "ungoogled-chromium": {
+    "reddit": "https://www.reddit.com/r/UngoogledChromium",
+    "x": null
+  },
+  "vieb": {
+    "reddit": null,
+    "x": null
+  },
+  "vivaldi": {
+    "reddit": "https://www.reddit.com/r/vivaldibrowser",
+    "x": "https://x.com/vivaldibrowser"
+  },
+  "waterfox": {
+    "reddit": "https://www.reddit.com/r/waterfox",
+    "x": null
+  },
+  "wavebox": {
+    "reddit": "https://www.reddit.com/r/wavebox",
+    "x": "https://x.com/waveboxio"
+  },
+  "wren": {
+    "reddit": null,
+    "x": "https://x.com/WrenBrowser"
+  },
+  "yandex-browser": {
+    "reddit": "https://www.reddit.com/r/Yandex",
+    "x": null
+  },
+  "yab": {
+    "reddit": null,
+    "x": "https://x.com/yab_browser"
+  },
+  "zen-browser": {
+    "reddit": "https://www.reddit.com/r/zen_browser",
+    "x": "https://x.com/zen_browser"
+  }
+}

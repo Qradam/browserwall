@@ -1,0 +1,336 @@
+[
+  {
+    "id": "wren",
+    "name": "Wren",
+    "engine": "blink",
+    "basedOn": "Chromium (Wren Runtime)",
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Formerly Flow Browser, rewritten in Rust on embedded Chromium: spaces with their own profile and theme, split tabs, uBlock Origin built in.",
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "ad-blocking",
+      "chrome-extensions"
+    ],
+    "website": "https://wrenbrowser.com",
+    "repo": "https://github.com/MultiboxLabs/wren-browser",
+    "logo": null,
+    "sources": [
+      "https://wrenbrowser.com/"
+    ]
+  },
+  {
+    "id": "brave-beta",
+    "name": "Brave Beta",
+    "engine": "blink",
+    "basedOn": "Brave",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Brave's preview channel: features that have left Nightly get their final testing here before reaching the stable release.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "experimental",
+      "chrome-extensions"
+    ],
+    "website": "https://brave.com/download-beta/",
+    "repo": "https://github.com/brave/brave-browser",
+    "logo": null,
+    "sources": [
+      "https://brave.com/download-beta/",
+      "https://github.com/brave/brave-browser/wiki/Release-Channel-Descriptions"
+    ]
+  },
+  {
+    "id": "brave-nightly",
+    "name": "Brave Nightly",
+    "engine": "blink",
+    "basedOn": "Brave",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Daily Brave builds with the newest features within days of landing in the codebase. Expect breakage.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "experimental",
+      "developer"
+    ],
+    "website": "https://brave.com/download-nightly/",
+    "repo": "https://github.com/brave/brave-browser",
+    "logo": null,
+    "sources": [
+      "https://brave.com/download-nightly/",
+      "https://github.com/brave/brave-browser/wiki/Release-Channel-Descriptions"
+    ]
+  },
+  {
+    "id": "brave-origin",
+    "name": "Brave Origin",
+    "engine": "blink",
+    "basedOn": "Brave",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Stripped-down paid edition of Brave ($59.99 once, free on Linux): Shields ad blocking and privacy without the crypto, AI and extras.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "minimal",
+      "chrome-extensions"
+    ],
+    "website": "https://brave.com/origin/",
+    "repo": "https://github.com/brave/brave-browser",
+    "logo": null,
+    "sources": [
+      "https://brave.com/origin/"
+    ]
+  },
+  {
+    "id": "firefox-beta",
+    "name": "Firefox Beta",
+    "engine": "gecko",
+    "basedOn": "Firefox",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "The next Firefox release about four weeks early; stable enough to daily-drive, used to catch bugs before launch.",
+    "tags": [
+      "experimental",
+      "firefox-addons",
+      "sync"
+    ],
+    "website": "https://www.mozilla.org/firefox/channel/desktop/",
+    "repo": "https://github.com/mozilla-firefox/firefox",
+    "logo": null,
+    "sources": [
+      "https://www.mozilla.org/firefox/channel/desktop/"
+    ]
+  },
+  {
+    "id": "midori",
+    "name": "Midori",
+    "engine": "gecko",
+    "basedOn": "Firefox (via Floorp)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Astian's lightweight privacy browser, rebuilt on Gecko from Floorp code, with ad blocking, workspaces and its own E2E-encrypted sync.",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "workspaces",
+      "lightweight",
+      "firefox-addons"
+    ],
+    "website": "https://astian.org/midori-browser/",
+    "repo": "https://github.com/goastian/midori-desktop",
+    "logo": null,
+    "sources": [
+      "https://github.com/goastian/midori-desktop",
+      "https://alternativeto.net/news/2026/7/midori-11-9-brings-revamped-control-center-interface-improvements-and-better-ad-blocking/"
+    ]
+  },
+  {
+    "id": "r3dfox",
+    "name": "r3dfox",
+    "engine": "gecko",
+    "basedOn": "Firefox",
+    "os": [
+      "windows",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Current Firefox kept running on Windows 7 and 8, with performance patches and telemetry stripped out.",
+    "tags": [
+      "old-hardware",
+      "performance",
+      "privacy",
+      "firefox-addons"
+    ],
+    "website": "https://eclipse.cx/projects/r3dfox",
+    "repo": "https://github.com/Eclipse-Community/r3dfox",
+    "logo": null,
+    "sources": [
+      "https://github.com/Eclipse-Community/r3dfox"
+    ]
+  },
+  {
+    "id": "sizzy",
+    "name": "Sizzy",
+    "engine": "blink",
+    "basedOn": "Chromium (Electron)",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Paid developer browser: many synced device previews with isolated sessions, plus console, API client, terminals and coding agents.",
+    "tags": [
+      "developer",
+      "split-view",
+      "power-user"
+    ],
+    "website": "https://sizzy.co",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://sizzy.co/compare",
+      "https://sizzy.co/download"
+    ]
+  },
+  {
+    "id": "blisk",
+    "name": "Blisk",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Chromium browser for web developers with emulated phone and tablet panes beside the desktop view and per-device DevTools.",
+    "tags": [
+      "developer",
+      "split-view",
+      "chrome-extensions"
+    ],
+    "website": "https://blisk.io",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://sizzy.co/compare",
+      "https://www.softpedia.com/get/Internet/Browsers/Blisk.shtml"
+    ]
+  },
+  {
+    "id": "chrome-canary",
+    "name": "Chrome Canary",
+    "engine": "blink",
+    "basedOn": "Chrome",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Google's nightly Chrome build, installed side by side with stable, for testing web platform features the moment they land.",
+    "tags": [
+      "developer",
+      "experimental",
+      "chrome-extensions"
+    ],
+    "website": "https://www.google.com/chrome/canary/",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.google.com/chrome/canary/"
+    ]
+  },
+  {
+    "id": "facet",
+    "name": "Facet",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Liquid Glass Mac browser built for touch and trackpad: Facets (spaces), Peek, built-in ad blocking and Chrome extensions on WebKit.",
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "ad-blocking",
+      "ai",
+      "chrome-extensions"
+    ],
+    "website": "https://facet.surf",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://facet.surf/",
+      "https://note.com/yasashii_tech/n/n66884ce6a2aa"
+    ]
+  },
+  {
+    "id": "cursed-browser",
+    "name": "Cursed Browser",
+    "engine": "other",
+    "basedOn": "a vision LLM",
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "\"True AI-native browser\": a vision LLM reads the HTML and hallucinates what the page probably looks like. Every load is a surprise.",
+    "tags": [
+      "meme",
+      "ai",
+      "experimental"
+    ],
+    "website": null,
+    "repo": "https://github.com/scosman/cursed_browser",
+    "logo": null,
+    "sources": [
+      "https://github.com/scosman/cursed_browser"
+    ]
+  },
+  {
+    "id": "avira-secure-browser",
+    "name": "Avira Secure Browser",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Avira (Gen Digital) Chromium browser that blocks phishing sites, dangerous downloads and risky extensions, with ad and tracker blocking.",
+    "tags": [
+      "security-hardened",
+      "ad-blocking",
+      "privacy",
+      "chrome-extensions"
+    ],
+    "website": "https://www.avira.com/en/avira-secure-browser",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.avira.com/en/avira-secure-browser"
+    ]
+  }
+]

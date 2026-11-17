@@ -53,6 +53,8 @@ const visibleTags = b.tags.filter((t) => t !== "rip");
     </span>
     <span class="links">
       {b.openSource && <span class="oss" title="Open source">OSS</span>}
+      {b.reddit && <a href={b.reddit} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} on Reddit`} title={b.reddit.replace("https://www.reddit.com/", "")}><Icon name="RedditIcon" size={15} /></a>}
+      {b.x && <a href={b.x} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} on X`} title={"@" + b.x.split("/").pop()}><Icon name="NewTwitterIcon" size={15} /></a>}
       {b.repo && <a href={b.repo} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} source code`}><Icon name="GithubIcon" size={15} /></a>}
       {b.website && <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} website`}><Icon name="ArrowUpRight01Icon" size={15} /></a>}
     </span>

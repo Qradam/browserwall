@@ -37,5 +37,11 @@
   "slimjet": "wiki:Slimjet",
   "comodo-dragon": "wiki:Comodo Dragon",
   "cent-browser": "wiki:Cent Browser",
-  "chatgpt-atlas": "wiki:ChatGPT Atlas"
+  "chatgpt-atlas": "wiki:ChatGPT Atlas",
+  "brave-beta": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave/product_logo_128_beta.png",
+  "brave-nightly": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave/product_logo_128_nightly.png",
+  "brave-origin": "https://raw.githubusercontent.com/brave/brave-core/master/app/theme/brave/product_logo_128.png",
+  "firefox-beta": "https://raw.githubusercontent.com/mozilla-firefox/firefox/main/browser/branding/official/default128.png",
+  "chrome-canary": "https://www.gstatic.com/images/branding/product/2x/chrome_canary_96dp.png",
+  "avg-secure-browser": "none"
 }

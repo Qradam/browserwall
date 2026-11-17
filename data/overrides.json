@@ -1,35 +1,254 @@
 {
   "_note": "Manual corrections applied after merging raw files. Verified 2026-11-17 via GitHub commit feeds (scripts/check-repos.mjs) and web search.",
-  "elinks": { "status": "maintenance", "repo": "https://github.com/rkd77/elinks", "tags": ["text-mode", "power-user", "lightweight"], "description": "Feature-rich text-mode browser with tabs, colours and scripting; maintained as the rkd77 fork." },
-  "carbonyl": { "status": "discontinued", "description": "Chromium running inside a terminal, rendering pages with Unicode blocks. No commits since early 2023." },
-  "otter-browser": { "status": "active" },
-  "vieb": { "status": "active" },
-  "browsh": { "status": "active" },
-  "luakit": { "status": "active" },
-  "vimb": { "status": "active" },
-  "dillo": { "status": "active" },
-  "centaury": { "status": "active" },
-  "serpent": { "status": "active" },
-  "new-moon": { "status": "active" },
-  "mercury": { "status": "maintenance" },
-  "cachy-browser": { "status": "maintenance" },
-  "firefox-os2": { "status": "discontinued" },
-  "interwebppc": { "status": "discontinued" },
-  "odyssey-web-browser": { "status": "maintenance" },
-  "chatgpt-atlas": { "status": "discontinued", "os": ["macos"], "description": "OpenAI's Chromium-based AI browser for macOS. Launched Oct 2025, shut down Aug 9, 2026.", "sources": ["https://help.openai.com/en/articles/20001371-chatgpt-atlas-retirement"] },
-  "arc": { "status": "discontinued", "description": "Design-led browser with a sidebar, Spaces and Boosts. The Browser Company sunsets it on Dec 22, 2026 in favour of Dia.", "sources": ["https://techcrunch.com/2026/10/22/arc-browser-sunsets-december-22-as-the-browser-company-doubles-down-on-dia/"] },
-  "google-disco": { "status": "active", "tags": ["ai", "experimental"], "description": "Google Labs experimental Chromium browser for macOS that turns open tabs into Gemini-generated GenTabs apps." },
-  "k-meleon": { "repo": "https://github.com/roytam1/kmeleon" },
-  "peersky": { "repo": "https://github.com/p2plabsxyz/peersky-browser" },
-  "sushi-browser": { "repo": "https://github.com/kura52/sushi-browser" },
-  "waterfox-classic": { "repo": "https://github.com/BrowserWorks/Waterfox-Classic" },
-  "amaya": { "repo": "https://github.com/w3c/Amaya-Editor" },
-  "catsxp": { "repo": null },
-  "internet-explorer": { "tags": ["retro", "mainstream", "rip"] },
-  "icab": { "tags": ["retro", "customizable"] },
-  "seamonkey": { "tags": ["retro", "customizable", "power-user"] },
-  "konqueror": { "engine": "blink", "basedOn": "QtWebEngine (KHTML historically)", "tags": ["customizable", "power-user"], "description": "KDE's long-running file manager and web browser in one, now rendering with QtWebEngine." },
-  "comet": { "os": ["windows", "macos"], "sources": ["https://www.perplexity.ai/hub/blog/comet-is-now-available-to-everyone-worldwide"] },
-  "ladybird": { "description": "Truly independent browser with its own engine (LibWeb), not based on Chromium, Gecko or WebKit. Pre-alpha; first alpha due late 2026.", "sources": ["https://ladybird.org/", "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md"] },
-  "pissandshittium": { "status": "active", "description": "Joke Chromium fork with funny UI strings and colours like 'Literal Shit'. Its own FAQ begs you not to daily-drive it.", "os": ["windows", "linux"], "sources": ["https://github.com/Pissandshittium", "https://pissandshittium.org/"] }
+  "elinks": {
+    "status": "maintenance",
+    "repo": "https://github.com/rkd77/elinks",
+    "tags": [
+      "text-mode",
+      "power-user",
+      "lightweight"
+    ],
+    "description": "Feature-rich text-mode browser with tabs, colours and scripting; maintained as the rkd77 fork."
+  },
+  "carbonyl": {
+    "status": "discontinued",
+    "description": "Chromium running inside a terminal, rendering pages with Unicode blocks. No commits since early 2023."
+  },
+  "otter-browser": {
+    "status": "active"
+  },
+  "vieb": {
+    "status": "active"
+  },
+  "browsh": {
+    "status": "active"
+  },
+  "luakit": {
+    "status": "active"
+  },
+  "vimb": {
+    "status": "active"
+  },
+  "dillo": {
+    "status": "active"
+  },
+  "centaury": {
+    "status": "active"
+  },
+  "serpent": {
+    "status": "active"
+  },
+  "new-moon": {
+    "status": "active"
+  },
+  "mercury": {
+    "status": "maintenance"
+  },
+  "cachy-browser": {
+    "status": "maintenance"
+  },
+  "firefox-os2": {
+    "status": "discontinued"
+  },
+  "interwebppc": {
+    "status": "discontinued"
+  },
+  "odyssey-web-browser": {
+    "status": "maintenance"
+  },
+  "chatgpt-atlas": {
+    "status": "discontinued",
+    "os": [
+      "macos"
+    ],
+    "description": "OpenAI's Chromium-based AI browser for macOS. Launched Oct 2025, shut down Aug 9, 2026.",
+    "sources": [
+      "https://help.openai.com/en/articles/20001371-chatgpt-atlas-retirement"
+    ]
+  },
+  "arc": {
+    "status": "discontinued",
+    "description": "Design-led browser with a sidebar, Spaces and Boosts. The Browser Company sunsets it on Dec 22, 2026 in favour of Dia.",
+    "sources": [
+      "https://techcrunch.com/2026/10/22/arc-browser-sunsets-december-22-as-the-browser-company-doubles-down-on-dia/"
+    ]
+  },
+  "google-disco": {
+    "status": "active",
+    "tags": [
+      "ai",
+      "experimental"
+    ],
+    "description": "Google Labs experimental Chromium browser for macOS that turns open tabs into Gemini-generated GenTabs apps."
+  },
+  "k-meleon": {
+    "repo": "https://github.com/roytam1/kmeleon"
+  },
+  "peersky": {
+    "repo": "https://github.com/p2plabsxyz/peersky-browser"
+  },
+  "sushi-browser": {
+    "repo": "https://github.com/kura52/sushi-browser"
+  },
+  "waterfox-classic": {
+    "repo": "https://github.com/BrowserWorks/Waterfox-Classic"
+  },
+  "amaya": {
+    "repo": "https://github.com/w3c/Amaya-Editor"
+  },
+  "catsxp": {
+    "repo": null
+  },
+  "internet-explorer": {
+    "tags": [
+      "retro",
+      "mainstream",
+      "rip"
+    ]
+  },
+  "icab": {
+    "tags": [
+      "retro",
+      "customizable"
+    ]
+  },
+  "seamonkey": {
+    "tags": [
+      "retro",
+      "customizable",
+      "power-user"
+    ]
+  },
+  "konqueror": {
+    "engine": "blink",
+    "basedOn": "QtWebEngine (KHTML historically)",
+    "tags": [
+      "customizable",
+      "power-user"
+    ],
+    "description": "KDE's long-running file manager and web browser in one, now rendering with QtWebEngine."
+  },
+  "comet": {
+    "os": [
+      "windows",
+      "macos"
+    ],
+    "sources": [
+      "https://www.perplexity.ai/hub/blog/comet-is-now-available-to-everyone-worldwide"
+    ]
+  },
+  "ladybird": {
+    "description": "Truly independent browser with its own engine (LibWeb), not based on Chromium, Gecko or WebKit. Pre-alpha; first alpha due late 2026.",
+    "sources": [
+      "https://ladybird.org/",
+      "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md"
+    ]
+  },
+  "pissandshittium": {
+    "status": "active",
+    "description": "Joke Chromium fork with funny UI strings and colours like 'Literal Shit'. Its own FAQ begs you not to daily-drive it.",
+    "os": [
+      "windows",
+      "linux"
+    ],
+    "sources": [
+      "https://github.com/Pissandshittium",
+      "https://pissandshittium.org/"
+    ]
+  },
+  "gnu-icecat": {
+    "status": "active",
+    "tags": [
+      "privacy",
+      "de-googled",
+      "security-hardened",
+      "firefox-addons"
+    ],
+    "description": "The GNU Project's Firefox ESR rebuild with all non-free parts removed and LibreJS blocking non-free JavaScript.",
+    "sources": [
+      "https://www.gnu.org/software/gnuzilla/",
+      "https://www.itechguides.com/products/gnu-icecat/"
+    ],
+    "os": [
+      "linux"
+    ]
+  },
+  "avast-secure-browser": {
+    "status": "active",
+    "description": "Avast (Gen Digital) Chromium browser with ad, tracker and fingerprint blocking, Bank Mode and an optional paid built-in VPN.",
+    "tags": [
+      "security-hardened",
+      "ad-blocking",
+      "privacy",
+      "vpn",
+      "chrome-extensions"
+    ]
+  },
+  "avg-secure-browser": {
+    "status": "active",
+    "description": "AVG's twin of Avast Secure Browser: Chromium with anti-tracking, anti-phishing, ad blocking and a paid built-in VPN option.",
+    "tags": [
+      "security-hardened",
+      "ad-blocking",
+      "privacy",
+      "vpn",
+      "chrome-extensions"
+    ]
+  },
+  "norton-private-browser": {
+    "status": "active",
+    "tags": [
+      "security-hardened",
+      "ad-blocking",
+      "privacy",
+      "chrome-extensions"
+    ],
+    "description": "Norton's free Chromium browser that blocks phishing, malicious downloads and ad trackers; pairs with Norton's security suite.",
+    "os": [
+      "windows",
+      "macos"
+    ]
+  },
+  "epic-privacy-browser": {
+    "status": "active",
+    "description": "Chromium browser that always runs in private mode, blocks trackers and fingerprinting, with a free built-in encrypted proxy (VPN).",
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "vpn",
+      "chrome-extensions"
+    ]
+  },
+  "aloha-browser": {
+    "status": "active",
+    "description": "Privacy browser with a free unlimited no-logs VPN, ad blocking, video downloads and passcode-locked tabs.",
+    "sources": [
+      "https://alohabrowser.com/pc/"
+    ],
+    "tags": [
+      "privacy",
+      "vpn",
+      "ad-blocking",
+      "chrome-extensions"
+    ]
+  },
+  "opera": {
+    "tags": [
+      "mainstream",
+      "vpn",
+      "ad-blocking",
+      "workspaces",
+      "chrome-extensions"
+    ]
+  },
+  "vivaldi": {
+    "tags": [
+      "customizable",
+      "power-user",
+      "workspaces",
+      "split-view",
+      "vpn",
+      "chrome-extensions"
+    ]
+  }
 }

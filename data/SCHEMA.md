@@ -26,7 +26,7 @@ privacy, de-googled, ad-blocking, security-hardened, tor, vertical-tabs, workspa
 split-view, keyboard-driven, power-user, customizable, minimal, lightweight,
 old-hardware, performance, gaming, ai, crypto, developer, sync, mainstream,
 chrome-extensions, firefox-addons, independent-engine, text-mode, retro,
-portable, regional, enterprise, experimental, meme, rip
+portable, regional, enterprise, experimental, meme, rip, vpn
 
 - `rip` = discontinued. `meme` = joke project (shown on the wall, never recommended by the quiz).
 - `chrome-extensions` / `firefox-addons` = can install from the Chrome Web Store / AMO.

@@ -1,0 +1,194 @@
+{
+  "_note": "Manual social links; wins over data/raw/social-*.json. Reddit links verified by scripts/check-social.mjs (real page load). reddit:null = checked, none dedicated/unambiguous.",
+  "librewolf": {
+    "reddit": "https://www.reddit.com/r/LibreWolf"
+  },
+  "microsoft-edge": {
+    "reddit": "https://www.reddit.com/r/MicrosoftEdge"
+  },
+  "opera": {
+    "reddit": "https://www.reddit.com/r/operabrowser"
+  },
+  "opera-air": {
+    "reddit": "https://www.reddit.com/r/operabrowser"
+  },
+  "opera-neon": {
+    "reddit": "https://www.reddit.com/r/operabrowser"
+  },
+  "opera-gx": {
+    "reddit": "https://www.reddit.com/r/OperaGX",
+    "x": "https://x.com/operagxofficial"
+  },
+  "pale-moon": {
+    "reddit": "https://www.reddit.com/r/palemoon"
+  },
+  "qutebrowser": {
+    "reddit": "https://www.reddit.com/r/qutebrowser"
+  },
+  "safari": {
+    "reddit": "https://www.reddit.com/r/Safari"
+  },
+  "safari-technology-preview": {
+    "reddit": "https://www.reddit.com/r/Safari"
+  },
+  "servo": {
+    "reddit": "https://www.reddit.com/r/servo"
+  },
+  "tor-browser": {
+    "reddit": "https://www.reddit.com/r/TorBrowser"
+  },
+  "ungoogled-chromium": {
+    "reddit": "https://www.reddit.com/r/UngoogledChromium"
+  },
+  "vivaldi": {
+    "reddit": "https://www.reddit.com/r/vivaldibrowser"
+  },
+  "waterfox": {
+    "reddit": "https://www.reddit.com/r/waterfox"
+  },
+  "wavebox": {
+    "reddit": "https://www.reddit.com/r/Wavebox",
+    "x": "https://x.com/waveboxio"
+  },
+  "zen-browser": {
+    "reddit": "https://www.reddit.com/r/zen_browser"
+  },
+  "ladybird": {
+    "reddit": "https://www.reddit.com/r/Ladybird"
+  },
+  "mullvad-browser": {
+    "reddit": "https://www.reddit.com/r/mullvad",
+    "x": "https://x.com/mullvadnet"
+  },
+  "orion": {
+    "reddit": "https://www.reddit.com/r/OrionBrowser",
+    "x": "https://x.com/OrionBrowser"
+  },
+  "min": {
+    "reddit": "https://www.reddit.com/r/minbrowser"
+  },
+  "yandex-browser": {
+    "reddit": "https://www.reddit.com/r/Yandex"
+  },
+  "ardia": {
+    "reddit": "https://www.reddit.com/r/ArdiaBrowser"
+  },
+  "browseros": {
+    "reddit": "https://www.reddit.com/r/BrowserOS"
+  },
+  "cromite": {
+    "reddit": "https://www.reddit.com/r/Cromite"
+  },
+  "falkon": {
+    "reddit": "https://www.reddit.com/r/FalkonBrowser"
+  },
+  "firedragon": {
+    "reddit": "https://www.reddit.com/r/FireDragon"
+  },
+  "glide-browser": {
+    "reddit": "https://www.reddit.com/r/glidebrowser"
+  },
+  "internet-explorer": {
+    "reddit": "https://www.reddit.com/r/InternetExplorer"
+  },
+  "wren": {
+    "reddit": null,
+    "x": "https://x.com/WrenBrowser"
+  },
+  "midori": {
+    "reddit": null,
+    "x": "https://x.com/grupoastian"
+  },
+  "vieb": {
+    "reddit": null
+  },
+  "epiphany": {
+    "reddit": null
+  },
+  "thorium": {
+    "reddit": null
+  },
+  "aside": {
+    "reddit": null
+  },
+  "helium": {
+    "reddit": null
+  },
+  "naver-whale": {
+    "reddit": null
+  },
+  "r3dfox": {
+    "reddit": null
+  },
+  "norton-neo": {
+    "reddit": null,
+    "x": "https://x.com/neobrowser"
+  },
+  "phi": {
+    "reddit": "https://www.reddit.com/r/phibrowser",
+    "x": "https://x.com/phibrowser"
+  },
+  "pissandshittium": {
+    "x": "https://x.com/pissandshittium"
+  },
+  "yab": {
+    "reddit": null,
+    "x": "https://x.com/yab_browser"
+  },
+  "sizzy": {
+    "x": "https://x.com/thekitze"
+  },
+  "chatgpt-atlas": {
+    "x": null
+  },
+  "supermium": {
+    "reddit": "https://www.reddit.com/r/Supermium"
+  },
+  "lynx": {
+    "reddit": null
+  },
+  "nook": {
+    "reddit": null
+  },
+  "ulaa": {
+    "reddit": null
+  },
+  "netscape-navigator": {
+    "reddit": null
+  },
+  "sigmaos": {
+    "reddit": "https://www.reddit.com/r/sigmaos",
+    "x": "https://x.com/sigmaos"
+  },
+  "facet": {
+    "reddit": null
+  },
+  "cursed-browser": {
+    "x": null,
+    "reddit": null
+  },
+  "avast-secure-browser": {
+    "reddit": "https://www.reddit.com/r/avast",
+    "x": "https://x.com/Avast"
+  },
+  "avira-secure-browser": {
+    "reddit": "https://www.reddit.com/r/avira"
+  },
+  "aloha-browser": {
+    "reddit": "https://www.reddit.com/r/alohabrowser",
+    "x": "https://x.com/alohabrowser"
+  },
+  "gnu-icecat": {
+    "reddit": null
+  },
+  "avg-secure-browser": {
+    "reddit": null
+  },
+  "norton-private-browser": {
+    "reddit": null,
+    "x": "https://x.com/norton"
+  },
+  "epic-privacy-browser": {
+    "reddit": null
+  }
+}

@@ -1,5 +1,7 @@
 import raw from "./browsers.json";
 import logoMap from "./logos.json";
+import socialMap from "../../data/social.json";
+import tierData from "./tiers.json";
 
 export type Engine = "blink" | "gecko" | "webkit" | "goanna" | "servo" | "ladybird" | "trident" | "presto" | "text" | "other";
 export type OS = "windows" | "macos" | "linux" | "bsd" | "other";
@@ -18,13 +20,32 @@ export interface Browser {
   website: string | null;
   repo: string | null;
   logo: string | null; // local path in /public, resolved from logos.json
+  reddit: string | null;
+  x: string | null;
 }
 
 const logos = logoMap as Record<string, { file: string }>;
-export const browsers: Browser[] = (raw as Omit<Browser, "logo">[] & { logo?: unknown }[]).map((b) => ({
-  ...(b as Browser),
+const social = socialMap as Record<string, { reddit: string | null; x: string | null }>;
+export const browsers: Browser[] = (raw as unknown as Omit<Browser, "logo" | "reddit" | "x">[]).map((b) => ({
+  ...b,
   logo: logos[b.id]?.file ?? null,
+  reddit: social[b.id]?.reddit ?? null,
+  x: social[b.id]?.x ?? null,
 }));
+export const byId = new Map(browsers.map((b) => [b.id, b]));
+
+export interface Tier { id: string; label: string; title: string; blurb: string; unranked?: boolean; ids: string[]; notes?: Record<string, string> }
+export const tiers = (tierData as { tiers: Tier[] }).tiers;
+// Every browser must be placed exactly once – fail the build otherwise.
+{
+  const seen = tiers.flatMap((t) => t.ids);
+  const dup = seen.filter((id, i) => seen.indexOf(id) !== i);
+  const unknown = seen.filter((id) => !byId.has(id));
+  const missing = browsers.filter((b) => !seen.includes(b.id)).map((b) => b.id);
+  if (dup.length || unknown.length || missing.length)
+    throw new Error(`tiers.json: dup=[${dup}] unknown=[${unknown}] missing=[${missing}]`);
+}
+export const tierOf = new Map(tiers.flatMap((t) => t.ids.map((id) => [id, t] as const)));
 
 /** Display metadata for tags: label + Hugeicons name. Order = order of filter chips. */
 export const TAGS: Record<string, { label: string; icon: string }> = {
@@ -60,6 +81,7 @@ export const TAGS: Record<string, { label: string; icon: string }> = {
   experimental: { label: "Experimental", icon: "Rocket01Icon" },
   meme: { label: "Meme", icon: "LaughingIcon" },
   rip: { label: "RIP", icon: "SkullIcon" },
+  vpn: { label: "Built-in VPN", icon: "Shield02Icon" },
 };
 
 export const ENGINES: Record<Engine, string> = {

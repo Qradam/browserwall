@@ -7,14 +7,14 @@ const STATUSES = new Set(["active", "maintenance", "discontinued"]);
 const TAGS = new Set(("privacy de-googled ad-blocking security-hardened tor vertical-tabs workspaces split-view " +
   "keyboard-driven power-user customizable minimal lightweight old-hardware performance gaming ai crypto " +
   "developer sync mainstream chrome-extensions firefox-addons independent-engine text-mode retro portable " +
-  "regional enterprise experimental meme rip").split(" "));
+  "regional enterprise experimental meme rip vpn").split(" "));
 
 // Same browser under different ids across files -> canonical id.
 const ALIASES = {
   "webpositive": "haiku-webpositive", "mypal-68": "mypal68", "flow": "flow-browser",
 };
-// Raw-file priority when the same id appears twice (later wins for null fields only).
-const ORDER = ["chromium.json", "gecko.json", "independent.json", "niche.json", "mac.json"];
+// Raw-file priority: first file wins; later files only fill null fields. extras.json = hand-verified entries.
+const ORDER = ["extras.json", "chromium.json", "gecko.json", "independent.json", "niche.json", "mac.json"];
 
 const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 const byId = new Map();
