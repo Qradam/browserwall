@@ -63,6 +63,31 @@ for (const e of byId.values()) {
     website: e.website ?? null, repo: e.repo ?? null, logo: e.logo ?? null, sources: e.sources ?? [],
   });
 }
+// Scores: [privacy, experience, customisation, lightness], 1-5. See data/SCHEMA.md.
+const rawScores = JSON.parse(readFileSync("data/scores.json", "utf8"));
+const resolveScore = (id, seen = new Set()) => {
+  const v = rawScores[id];
+  if (v == null || seen.has(id)) return null;
+  seen.add(id);
+  let arr, low = false;
+  if (Array.isArray(v)) arr = v;
+  else if (v.like) {
+    const base = resolveScore(v.like, seen);
+    if (!base) return null;
+    arr = base.arr.map((n, i) => Math.min(5, Math.max(1, n + (v.adjust?.[i] ?? 0)))), (low = base.low);
+  } else (arr = v.s), (low = !!v.low);
+  return { arr, low };
+};
+for (const e of out) {
+  const s = resolveScore(e.id);
+  if (!s || s.arr.length !== 4 || !s.arr.every((n) => Number.isInteger(n) && n >= 1 && n <= 5)) {
+    problems.push(`${e.id}: missing or invalid scores`);
+    continue;
+  }
+  const [privacy, experience, customisation, lightness] = s.arr;
+  e.scores = { privacy, experience, customisation, lightness, ...(s.low ? { lowConfidence: true } : {}) };
+}
+for (const id of Object.keys(rawScores)) if (!id.startsWith("_") && !byId.has(id)) problems.push(`scores: unknown id ${id}`);
 out.sort((a, b) => a.name.localeCompare(b.name));
 mkdirSync("src/data", { recursive: true });
 writeFileSync("src/data/browsers.json", JSON.stringify(out, null, 2) + "\n");

@@ -7,6 +7,14 @@ export type Engine = "blink" | "gecko" | "webkit" | "goanna" | "servo" | "ladybi
 export type OS = "windows" | "macos" | "linux" | "bsd" | "other";
 export type Status = "active" | "maintenance" | "discontinued";
 
+export interface Scores {
+  privacy: number; // 1-5
+  experience: number; // 1-5
+  customisation: number; // 1-5
+  lightness: number; // 1-5, RAM/footprint, not a benchmark
+  lowConfidence?: boolean;
+}
+
 export interface Browser {
   id: string;
   name: string;
@@ -19,6 +27,7 @@ export interface Browser {
   tags: string[];
   website: string | null;
   repo: string | null;
+  scores: Scores;
   logo: string | null; // local path in /public, resolved from logos.json
   reddit: string | null;
   x: string | null;
