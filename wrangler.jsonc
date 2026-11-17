@@ -1,0 +1,16 @@
+// Cloudflare Workers static-assets deployment for the static Astro build (no Worker script needed).
+// "name" must match the Worker's name in the Cloudflare dashboard.
+{
+  "name": "browserwall",
+  "compatibility_date": "2026-11-17",
+  // Keep the *.workers.dev URL and per-version preview URLs (explicit, to silence Wrangler's warnings).
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./dist/",
+    // Unknown URLs get dist/404.html with a real 404 status.
+    "not_found_handling": "404-page",
+    // quiz.html is served at /quiz; /quiz.html and /quiz/ redirect there (matches our canonical URLs).
+    "html_handling": "auto-trailing-slash"
+  }
+}
