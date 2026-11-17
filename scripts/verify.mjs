@@ -25,7 +25,7 @@ page.on("pageerror", (e) => errors.push(String(e)));
 
 await page.goto("http://localhost:4399/", { waitUntil: "networkidle" });
 const total = await page.locator("#grid > .card").count();
-check(total === 76, `renders all cards (${total})`);
+check(total === 67, `renders all cards (${total})`);
 const visible = () => page.locator("#grid > .card:not([hidden])").count();
 
 await page.screenshot({ path: "data/screens/wall.png" });
@@ -50,12 +50,12 @@ await page.click("#reset");
 check((await visible()) === total, "reset restores all");
 await page.click('[data-toggle="rip"]');
 const rip = await visible();
-check(rip === 7, `RIP toggle -> ${rip}`);
+check(rip === 4, `RIP toggle -> ${rip}`);
 await page.click('[data-toggle="alive"]');
 check((await visible()) === total - rip, "alive excludes RIP (mutually exclusive)");
 
 await page.goto("http://localhost:4399/?engine=text", { waitUntil: "networkidle" });
-check((await visible()) === 6, "URL state restored (engine=text -> 6)");
+check((await visible()) === 3, "URL state restored (engine=text -> 3)");
 
 const mobile = await browser.newPage({ viewport: { width: 390, height: 844 } });
 await mobile.goto("http://localhost:4399/", { waitUntil: "networkidle" });

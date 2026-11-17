@@ -14,7 +14,7 @@ const ALIASES = {
   "webpositive": "haiku-webpositive", "mypal-68": "mypal68", "flow": "flow-browser",
 };
 // Raw-file priority when the same id appears twice (later wins for null fields only).
-const ORDER = ["chromium.json", "gecko.json", "independent.json", "niche.json"];
+const ORDER = ["chromium.json", "gecko.json", "independent.json", "niche.json", "mac.json"];
 
 const norm = (s) => s.toLowerCase().replace(/[^a-z0-9]/g, "");
 const byId = new Map();

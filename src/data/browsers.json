@@ -26,6 +26,57 @@
     ]
   },
   {
+    "id": "ardia",
+    "name": "Ardia",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Free, open-source Mac browser with Arc's sidebar and Dia's polish on real Chromium, uBlock Origin built in.",
+    "tags": [
+      "vertical-tabs",
+      "split-view",
+      "ad-blocking",
+      "chrome-extensions"
+    ],
+    "website": "https://ardia.dev",
+    "repo": "https://github.com/ardia-browser/ardia",
+    "logo": null,
+    "sources": [
+      "https://ardia.dev/",
+      "https://toolfolio.com/articles/what-is-ardia-browser-free-open-source-arc-alternative-for-mac-how-to-import-arc-and-what-it-lacks"
+    ]
+  },
+  {
+    "id": "aside",
+    "name": "Aside",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "macos",
+      "windows"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "YC-backed AI-agent browser that sends messages, fills forms and runs scheduled routines on sites you're logged into.",
+    "tags": [
+      "ai",
+      "split-view",
+      "vertical-tabs",
+      "chrome-extensions"
+    ],
+    "website": "https://aside.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://www.uneed.best/alternatives/arc-browser",
+      "https://openhunts.com/blog/arc-alternatives"
+    ]
+  },
+  {
     "id": "brave",
     "name": "Brave",
     "engine": "blink",
@@ -103,32 +154,6 @@
     "logo": null,
     "sources": [
       "https://github.com/browsh-org/browsh"
-    ]
-  },
-  {
-    "id": "carbonyl",
-    "name": "Carbonyl",
-    "engine": "text",
-    "basedOn": "Chromium",
-    "os": [
-      "linux",
-      "macos",
-      "windows"
-    ],
-    "status": "discontinued",
-    "openSource": true,
-    "description": "Chromium running inside a terminal, rendering pages with Unicode blocks. No commits since early 2023.",
-    "tags": [
-      "text-mode",
-      "keyboard-driven",
-      "experimental",
-      "rip"
-    ],
-    "website": null,
-    "repo": "https://github.com/fathyb/carbonyl",
-    "logo": null,
-    "sources": [
-      "https://github.com/fathyb/carbonyl"
     ]
   },
   {
@@ -230,6 +255,32 @@
     ]
   },
   {
+    "id": "crest",
+    "name": "Crest",
+    "engine": "blink",
+    "basedOn": "ungoogled-chromium + WebKit",
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Open-source 'browser for life after Arc': Spaces, Peek, split view and Arc import, with Chromium or WebKit per site.",
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "privacy",
+      "chrome-extensions"
+    ],
+    "website": "https://crestbrowser.com",
+    "repo": "https://github.com/pauljoda/Crest",
+    "logo": null,
+    "sources": [
+      "https://crestbrowser.com/",
+      "https://github.com/pauljoda/Crest"
+    ]
+  },
+  {
     "id": "cromite",
     "name": "Cromite",
     "engine": "blink",
@@ -280,53 +331,56 @@
     ]
   },
   {
-    "id": "dillo",
-    "name": "Dillo",
-    "engine": "other",
-    "basedOn": null,
+    "id": "duckduckgo",
+    "name": "DuckDuckGo",
+    "engine": "webkit",
+    "basedOn": "WebKit (Mac), WebView2 (Windows)",
     "os": [
-      "linux",
-      "bsd",
-      "macos"
+      "macos",
+      "windows"
     ],
     "status": "active",
     "openSource": true,
-    "description": "Extremely lightweight graphical browser in FLTK with no JavaScript, focused on speed and tiny footprint.",
+    "description": "DuckDuckGo's privacy browser with tracker blocking, cookie-popup handling, ad-free YouTube player and private search built in.",
     "tags": [
-      "lightweight",
-      "old-hardware",
+      "privacy",
+      "ad-blocking",
+      "mainstream",
       "minimal",
-      "independent-engine"
+      "sync"
     ],
-    "website": "https://dillo-browser.github.io/",
-    "repo": "https://github.com/dillo-browser/dillo",
-    "logo": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Dillo-icon.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "website": "https://duckduckgo.com/app",
+    "repo": "https://github.com/duckduckgo/apple-browsers",
+    "logo": null,
     "sources": [
-      "https://en.wikipedia.org/wiki/Dillo",
-      "https://github.com/dillo-browser/dillo"
+      "https://duckduckgo.com/about",
+      "https://duckduckgo.com/duckduckgo-help-pages/get-duckduckgo/does-duckduckgo-make-a-browser"
     ]
   },
   {
-    "id": "google-disco",
-    "name": "Disco",
+    "id": "ecosia-browser",
+    "name": "Ecosia Browser",
     "engine": "blink",
     "basedOn": "Chromium",
     "os": [
-      "macos"
+      "windows",
+      "macos",
+      "linux"
     ],
     "status": "active",
     "openSource": false,
-    "description": "Google Labs experimental Chromium browser for macOS that turns open tabs into Gemini-generated GenTabs apps.",
+    "description": "Chromium browser from the tree-planting search engine Ecosia; searches and shopping help fund reforestation projects.",
     "tags": [
-      "ai",
-      "experimental"
+      "chrome-extensions",
+      "mainstream",
+      "minimal"
     ],
-    "website": "https://labs.google/disco",
+    "website": "https://www.ecosia.org/browser",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://labs.google/disco",
-      "https://www.nohackspod.com/blog/agentic-browser-landscape-2026"
+      "https://blog.ecosia.org/desktop-browser/",
+      "https://browsers.to/fr/ecosia-browser"
     ]
   },
   {
@@ -746,31 +800,6 @@
     ]
   },
   {
-    "id": "konqueror",
-    "name": "Konqueror",
-    "engine": "blink",
-    "basedOn": "QtWebEngine (KHTML historically)",
-    "os": [
-      "linux",
-      "bsd",
-      "windows"
-    ],
-    "status": "maintenance",
-    "openSource": true,
-    "description": "KDE's long-running file manager and web browser in one, now rendering with QtWebEngine.",
-    "tags": [
-      "customizable",
-      "power-user"
-    ],
-    "website": "https://apps.kde.org/konqueror/",
-    "repo": "https://invent.kde.org/network/konqueror",
-    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Breezeicons-apps-48-konqueror.svg/60px-Breezeicons-apps-48-konqueror.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "sources": [
-      "https://en.wikipedia.org/wiki/Konqueror",
-      "https://apps.kde.org/konqueror/"
-    ]
-  },
-  {
     "id": "ladybird",
     "name": "Ladybird",
     "engine": "ladybird",
@@ -825,57 +854,6 @@
     ]
   },
   {
-    "id": "links",
-    "name": "Links",
-    "engine": "text",
-    "basedOn": null,
-    "os": [
-      "linux",
-      "bsd",
-      "windows",
-      "macos"
-    ],
-    "status": "maintenance",
-    "openSource": true,
-    "description": "Text and graphics-mode browser (Links2) with tables, frames and menu-driven interface.",
-    "tags": [
-      "text-mode",
-      "lightweight",
-      "old-hardware"
-    ],
-    "website": "http://links.twibright.com/",
-    "repo": null,
-    "logo": null,
-    "sources": [
-      "https://en.wikipedia.org/wiki/Links_(web_browser)"
-    ]
-  },
-  {
-    "id": "luakit",
-    "name": "Luakit",
-    "engine": "webkit",
-    "basedOn": "WebKitGTK",
-    "os": [
-      "linux",
-      "bsd"
-    ],
-    "status": "active",
-    "openSource": true,
-    "description": "Fast, extensible, micro-framework browser using WebKit2GTK and configurable with Lua.",
-    "tags": [
-      "keyboard-driven",
-      "customizable",
-      "power-user",
-      "lightweight"
-    ],
-    "website": "https://luakit.github.io/",
-    "repo": "https://github.com/luakit/luakit",
-    "logo": "https://raw.githubusercontent.com/luakit/luakit/develop/extras/luakit.svg",
-    "sources": [
-      "https://github.com/luakit/luakit"
-    ]
-  },
-  {
     "id": "lynx",
     "name": "Lynx",
     "engine": "text",
@@ -904,32 +882,6 @@
     ]
   },
   {
-    "id": "mercury",
-    "name": "Mercury",
-    "engine": "gecko",
-    "basedOn": "Firefox",
-    "os": [
-      "windows",
-      "linux",
-      "macos"
-    ],
-    "status": "maintenance",
-    "openSource": true,
-    "description": "Firefox fork with compiler optimizations and patches from LibreWolf, Waterfox and GNU IceCat.",
-    "tags": [
-      "performance",
-      "privacy",
-      "firefox-addons",
-      "customizable"
-    ],
-    "website": "https://thorium.rocks/mercury",
-    "repo": "https://github.com/Alex313031/Mercury",
-    "logo": null,
-    "sources": [
-      "https://github.com/Alex313031/Mercury"
-    ]
-  },
-  {
     "id": "microsoft-edge",
     "name": "Microsoft Edge",
     "engine": "blink",
@@ -952,28 +904,6 @@
     "website": "https://www.microsoft.com/edge",
     "repo": null,
     "logo": "https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
-    "sources": [
-      "https://en.wikipedia.org/wiki/Microsoft_Edge"
-    ]
-  },
-  {
-    "id": "edge-legacy",
-    "name": "Microsoft Edge Legacy",
-    "engine": "other",
-    "basedOn": "EdgeHTML",
-    "os": [
-      "windows"
-    ],
-    "status": "discontinued",
-    "openSource": false,
-    "description": "Original EdgeHTML-based Edge shipped with Windows 10 (2015–2021), replaced by Chromium Edge.",
-    "tags": [
-      "rip",
-      "retro"
-    ],
-    "website": null,
-    "repo": null,
-    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/960px-Microsoft_Edge_logo_%282019%29.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "sources": [
       "https://en.wikipedia.org/wiki/Microsoft_Edge"
     ]
@@ -1083,34 +1013,6 @@
     ]
   },
   {
-    "id": "netsurf",
-    "name": "NetSurf",
-    "engine": "other",
-    "basedOn": null,
-    "os": [
-      "linux",
-      "bsd",
-      "other",
-      "windows"
-    ],
-    "status": "active",
-    "openSource": true,
-    "description": "Small, fast, lightweight browser with its own engine (Hubbub, LibCSS, Duktape) running on many platforms including RISC OS.",
-    "tags": [
-      "independent-engine",
-      "lightweight",
-      "old-hardware",
-      "minimal"
-    ],
-    "website": "https://www.netsurf-browser.org/",
-    "repo": "https://git.netsurf-browser.org/netsurf.git",
-    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/NetSurf-logo.svg/960px-NetSurf-logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "sources": [
-      "https://en.wikipedia.org/wiki/NetSurf",
-      "https://www.netsurf-browser.org/"
-    ]
-  },
-  {
     "id": "nook",
     "name": "Nook",
     "engine": "webkit",
@@ -1161,32 +1063,6 @@
     ]
   },
   {
-    "id": "nyxt",
-    "name": "Nyxt",
-    "engine": "webkit",
-    "basedOn": "WebKitGTK",
-    "os": [
-      "linux",
-      "macos",
-      "windows"
-    ],
-    "status": "active",
-    "openSource": true,
-    "description": "Keyboard-driven, programmable 'hacker's browser' written in Common Lisp using WebKitGTK; Emacs-like extensibility.",
-    "tags": [
-      "keyboard-driven",
-      "power-user",
-      "customizable",
-      "developer"
-    ],
-    "website": "https://nyxt.atlas.engineer/",
-    "repo": "https://github.com/atlas-engineer/nyxt",
-    "logo": null,
-    "sources": [
-      "https://github.com/atlas-engineer/nyxt"
-    ]
-  },
-  {
     "id": "opera",
     "name": "Opera",
     "engine": "blink",
@@ -1210,33 +1086,6 @@
     "repo": null,
     "logo": null,
     "sources": [
-      "https://en.wikipedia.org/wiki/Opera_(web_browser)"
-    ]
-  },
-  {
-    "id": "opera-presto",
-    "name": "Opera 12 (Presto)",
-    "engine": "presto",
-    "basedOn": "Presto",
-    "os": [
-      "windows",
-      "macos",
-      "linux"
-    ],
-    "status": "discontinued",
-    "openSource": false,
-    "description": "Last Presto-engine release of Opera (2012), known for speed, mouse gestures and built-in tools.",
-    "tags": [
-      "retro",
-      "rip",
-      "customizable",
-      "power-user"
-    ],
-    "website": null,
-    "repo": null,
-    "logo": null,
-    "sources": [
-      "https://en.wikipedia.org/wiki/Presto_(browser_engine)",
       "https://en.wikipedia.org/wiki/Opera_(web_browser)"
     ]
   },
@@ -1343,33 +1192,6 @@
     ]
   },
   {
-    "id": "otter-browser",
-    "name": "Otter Browser",
-    "engine": "blink",
-    "basedOn": "QtWebEngine (Chromium) / QtWebKit",
-    "os": [
-      "windows",
-      "macos",
-      "linux",
-      "bsd"
-    ],
-    "status": "active",
-    "openSource": true,
-    "description": "Qt browser aiming to recreate the classic Opera 12 UI.",
-    "tags": [
-      "customizable",
-      "power-user",
-      "retro"
-    ],
-    "website": "https://otter-browser.org",
-    "repo": "https://github.com/OtterBrowser/otter-browser",
-    "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Otter_Browser_Logo.svg/960px-Otter_Browser_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "sources": [
-      "https://github.com/OtterBrowser/otter-browser",
-      "https://en.wikipedia.org/wiki/Otter_Browser"
-    ]
-  },
-  {
     "id": "pale-moon",
     "name": "Pale Moon",
     "engine": "goanna",
@@ -1394,6 +1216,32 @@
     "sources": [
       "https://www.palemoon.org",
       "https://en.wikipedia.org/wiki/Pale_Moon"
+    ]
+  },
+  {
+    "id": "phi",
+    "name": "Phi",
+    "engine": "blink",
+    "basedOn": "Chromium",
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": true,
+    "description": "Native AppKit/SwiftUI Chromium browser with Arc-style Spaces and an optional AI agent that can run on local models.",
+    "tags": [
+      "ai",
+      "workspaces",
+      "vertical-tabs",
+      "split-view",
+      "chrome-extensions"
+    ],
+    "website": "https://phibrowser.com",
+    "repo": "https://github.com/phibrowser/phibrowser-mac",
+    "logo": null,
+    "sources": [
+      "https://phibrowser.com/",
+      "https://www.uneed.best/alternatives/arc-browser"
     ]
   },
   {
@@ -1572,30 +1420,6 @@
     ]
   },
   {
-    "id": "sigmaos",
-    "name": "SigmaOS",
-    "engine": "webkit",
-    "basedOn": "WebKit",
-    "os": [
-      "macos"
-    ],
-    "status": "maintenance",
-    "openSource": false,
-    "description": "WebKit-based macOS browser with vertical tabs and workspaces aimed at productivity; development has slowed.",
-    "tags": [
-      "vertical-tabs",
-      "workspaces",
-      "split-view",
-      "ai"
-    ],
-    "website": "https://www.sigmaos.com/",
-    "repo": null,
-    "logo": null,
-    "sources": [
-      "https://www.sigmaos.com/"
-    ]
-  },
-  {
     "id": "supermium",
     "name": "Supermium",
     "engine": "blink",
@@ -1617,31 +1441,6 @@
     "logo": null,
     "sources": [
       "https://github.com/win32ss/supermium"
-    ]
-  },
-  {
-    "id": "surf",
-    "name": "surf",
-    "engine": "webkit",
-    "basedOn": "WebKitGTK",
-    "os": [
-      "linux",
-      "bsd"
-    ],
-    "status": "maintenance",
-    "openSource": true,
-    "description": "Simple suckless WebKit2GTK browser with no UI chrome, controlled by keybindings and configured at compile time.",
-    "tags": [
-      "minimal",
-      "keyboard-driven",
-      "lightweight",
-      "customizable"
-    ],
-    "website": "https://surf.suckless.org/",
-    "repo": "https://git.suckless.org/surf",
-    "logo": null,
-    "sources": [
-      "https://surf.suckless.org/"
     ]
   },
   {
@@ -1775,30 +1574,6 @@
     ]
   },
   {
-    "id": "vimb",
-    "name": "Vimb",
-    "engine": "webkit",
-    "basedOn": "WebKitGTK",
-    "os": [
-      "linux",
-      "bsd"
-    ],
-    "status": "active",
-    "openSource": true,
-    "description": "Vim-like WebKit2GTK browser with modal interface that stays out of the way.",
-    "tags": [
-      "keyboard-driven",
-      "minimal",
-      "lightweight"
-    ],
-    "website": "https://fanglingsu.github.io/vimb/",
-    "repo": "https://github.com/fanglingsu/vimb",
-    "logo": null,
-    "sources": [
-      "https://github.com/fanglingsu/vimb"
-    ]
-  },
-  {
     "id": "vivaldi",
     "name": "Vivaldi",
     "engine": "blink",
@@ -1823,32 +1598,6 @@
     "logo": null,
     "sources": [
       "https://en.wikipedia.org/wiki/Vivaldi_(web_browser)"
-    ]
-  },
-  {
-    "id": "w3m",
-    "name": "w3m",
-    "engine": "text",
-    "basedOn": null,
-    "os": [
-      "linux",
-      "bsd",
-      "macos"
-    ],
-    "status": "maintenance",
-    "openSource": true,
-    "description": "Text-based terminal browser and pager with table and frame rendering and inline image display support.",
-    "tags": [
-      "text-mode",
-      "lightweight",
-      "keyboard-driven"
-    ],
-    "website": "https://w3m.sourceforge.net/",
-    "repo": "https://github.com/tats/w3m",
-    "logo": null,
-    "sources": [
-      "https://en.wikipedia.org/wiki/W3m",
-      "https://github.com/tats/w3m"
     ]
   },
   {
@@ -1929,6 +1678,32 @@
     "logo": null,
     "sources": [
       "https://en.wikipedia.org/wiki/Yandex_Browser"
+    ]
+  },
+  {
+    "id": "yab",
+    "name": "Yet Another Browser",
+    "engine": "webkit",
+    "basedOn": "WebKit",
+    "os": [
+      "macos"
+    ],
+    "status": "active",
+    "openSource": false,
+    "description": "Yab: the most complete Arc clone on WebKit – Spaces, Boosts, Live Folders – plus your own Claude or ChatGPT acting in tabs.",
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "ai",
+      "chrome-extensions"
+    ],
+    "website": "https://yetanotherbrowser.com",
+    "repo": null,
+    "logo": null,
+    "sources": [
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://www.uneed.best/alternatives/arc-browser"
     ]
   },
   {

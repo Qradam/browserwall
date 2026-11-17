@@ -4,6 +4,16 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/3/37/Arc_%28browser%29_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "kind": "manual"
   },
+  "ardia": {
+    "file": "/logos/ardia.png",
+    "source": "https://ardia.dev/apple-touch-icon.png",
+    "kind": "website"
+  },
+  "aside": {
+    "file": "/logos/aside.png",
+    "source": "https://aside.com/icon.png?icon.0lfc1q-r_ms2e.png",
+    "kind": "website"
+  },
   "brave": {
     "file": "/logos/brave.svg",
     "source": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Brave_lion_icon.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
@@ -39,19 +49,24 @@
     "source": "https://framerusercontent.com/images/bnQ1gGSCHS8T2mb5FVI2rQnx5YI.png",
     "kind": "favicon"
   },
+  "crest": {
+    "file": "/logos/crest.svg",
+    "source": "https://crestbrowser.com/assets/crest-logo.svg",
+    "kind": "website"
+  },
   "dia": {
     "file": "/logos/dia.svg",
     "source": "https://www.diabrowser.com/favicon.svg",
     "kind": "website"
   },
-  "dillo": {
-    "file": "/logos/dillo.png",
-    "source": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Dillo-icon.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail_unscaled",
-    "kind": "wikipedia"
+  "duckduckgo": {
+    "file": "/logos/duckduckgo.png",
+    "source": "https://duckduckgo.com/static-assets/favicons/DDG-iOS-icon_60x60.png",
+    "kind": "website"
   },
-  "edge-legacy": {
-    "file": "/logos/edge-legacy.svg",
-    "source": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Microsoft_Edge_logo_%282015%E2%80%932019%29.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+  "ecosia-browser": {
+    "file": "/logos/ecosia-browser.png",
+    "source": "https://www.ecosia.org/apple-touch-icon.png",
     "kind": "manual"
   },
   "epiphany": {
@@ -114,11 +129,6 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "kind": "dataset"
   },
-  "google-disco": {
-    "file": "/logos/google-disco.png",
-    "source": "https://labs.google/assets/icons/apple-touch-icon.png",
-    "kind": "website"
-  },
   "helium": {
     "file": "/logos/helium.png",
     "source": "https://helium.computer/favicon.png",
@@ -134,11 +144,6 @@
     "source": "https://cdn.prod.website-files.com/61a5e47b1afd0c116d16aa40/6a68fde8c2412f426d6c6e02_favicon-96x96.png",
     "kind": "website"
   },
-  "konqueror": {
-    "file": "/logos/konqueror.png",
-    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Breezeicons-apps-48-konqueror.svg/60px-Breezeicons-apps-48-konqueror.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "kind": "dataset"
-  },
   "ladybird": {
     "file": "/logos/ladybird.png",
     "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Ladybird-purple-on-black_logo.png/330px-Ladybird-purple-on-black_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -149,25 +154,10 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/d/d0/LibreWolf_icon.svg",
     "kind": "dataset"
   },
-  "links": {
-    "file": "/logos/links.png",
-    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/93/Links_web_browser_logo.png/330px-Links_web_browser_logo.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-    "kind": "commons"
-  },
-  "luakit": {
-    "file": "/logos/luakit.svg",
-    "source": "https://raw.githubusercontent.com/luakit/luakit/develop/extras/luakit.svg",
-    "kind": "dataset"
-  },
   "lynx": {
     "file": "/logos/lynx.ico",
     "source": "https://lynx.invisible-island.net/img/icons/lynx.ico",
     "kind": "favicon"
-  },
-  "mercury": {
-    "file": "/logos/mercury.png",
-    "source": "https://thorium.rocks/imgs/apple-touch-icon.png",
-    "kind": "website"
   },
   "microsoft-edge": {
     "file": "/logos/microsoft-edge.svg",
@@ -194,11 +184,6 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/4/47/Netscape_Navigator_Icon.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "kind": "commons"
   },
-  "netsurf": {
-    "file": "/logos/netsurf.png",
-    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0d/NetSurf-logo.svg/960px-NetSurf-logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "kind": "dataset"
-  },
   "nook": {
     "file": "/logos/nook.png",
     "source": "https://raw.githubusercontent.com/nook-browser/Nook/main/assets/icon.png",
@@ -208,11 +193,6 @@
     "file": "/logos/norton-neo.png",
     "source": "https://neobrowser.ai/app-icon-512.png",
     "kind": "website"
-  },
-  "nyxt": {
-    "file": "/logos/nyxt.ico",
-    "source": "https://nyxt.atlas.engineer/favicon.ico",
-    "kind": "favicon"
   },
   "opera": {
     "file": "/logos/opera.png",
@@ -234,25 +214,20 @@
     "source": "https://cdn-production-opera-website.operacdn.com/staticfiles/assets/neon/images/favicon/apple-touch-icon.e7d9308383ca.png",
     "kind": "website"
   },
-  "opera-presto": {
-    "file": "/logos/opera-presto.svg",
-    "source": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Opera_O.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-    "kind": "manual"
-  },
   "orion": {
     "file": "/logos/orion.png",
     "source": "https://orionbrowser.com/android-chrome-512x512.png",
     "kind": "website"
   },
-  "otter-browser": {
-    "file": "/logos/otter-browser.png",
-    "source": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f0/Otter_Browser_Logo.svg/960px-Otter_Browser_Logo.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
-    "kind": "dataset"
-  },
   "pale-moon": {
     "file": "/logos/pale-moon.ico",
     "source": "https://www.palemoon.org/favicon.ico",
     "kind": "favicon"
+  },
+  "phi": {
+    "file": "/logos/phi.svg",
+    "source": "https://phibrowser.com/icon.svg",
+    "kind": "website"
   },
   "pissandshittium": {
     "file": "/logos/pissandshittium.ico",
@@ -289,20 +264,10 @@
     "source": "https://raw.githubusercontent.com/servo/servo/main/resources/servo_64.png",
     "kind": "dataset"
   },
-  "sigmaos": {
-    "file": "/logos/sigmaos.png",
-    "source": "https://framerusercontent.com/images/almQbXgcRPeHszIPCrTPJ07yKM.png",
-    "kind": "favicon"
-  },
   "supermium": {
     "file": "/logos/supermium.svg",
     "source": "https://github.githubassets.com/favicons/favicon.svg",
     "kind": "website"
-  },
-  "surf": {
-    "file": "/logos/surf.svg",
-    "source": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Suckless_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
-    "kind": "manual"
   },
   "thorium": {
     "file": "/logos/thorium.png",
@@ -342,6 +307,11 @@
   "wavebox": {
     "file": "/logos/wavebox.png",
     "source": "https://wavebox.io/website/images/favicon/android-chrome-512x512.png",
+    "kind": "website"
+  },
+  "yab": {
+    "file": "/logos/yab.png",
+    "source": "https://yetanotherbrowser.com/apple-icon.png?73a485b04ea50a18",
     "kind": "website"
   },
   "yandex-browser": {
