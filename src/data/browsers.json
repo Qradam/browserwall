@@ -274,7 +274,8 @@
     "os": [
       "windows",
       "macos",
-      "linux"
+      "linux",
+      "bsd"
     ],
     "status": "active",
     "openSource": true,
@@ -297,7 +298,8 @@
     "sources": [
       "https://github.com/brave/brave-browser",
       "https://en.wikipedia.org/wiki/Brave_(web_browser)",
-      "https://brave.com/latest/"
+      "https://brave.com/latest/",
+      "https://www.freshports.org/www/brave/"
     ],
     "scores": {
       "privacy": 4,

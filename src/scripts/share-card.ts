@@ -1,7 +1,7 @@
 // Share dialog for the browser personality card (markup in src/components/ShareCard.astro).
 import { DESIGNS, renderCard, toBlob, type Design, type Format } from "./card";
 import { OS_VARIANTS, findVariant, type DesktopOS } from "../lib/os-marks";
-import { personality, shareText, type CardData } from "../lib/personality";
+import { personality, shareText, listText, type CardData } from "../lib/personality";
 import type { QuizState, Ranking } from "../lib/quiz";
 
 export interface ShareSource { state: QuizState; ranking: Ranking; total: number; url: string }
@@ -187,6 +187,7 @@ export function initShareCard(getSource: () => ShareSource) {
     if (act === "download") { download(await blob); say("Saved."); }
     else if (act === "copy-image") { const ok = await copyImage(); say(ok ? "Image copied." : "Your browser can't copy images – use Download instead.", !ok); }
     else if (act === "copy-link") { const ok = await copyText(src!.url); say(ok ? "Link to your results copied." : "Couldn't copy the link.", !ok); }
+    else if (act === "copy-list") { const ok = await copyText(listText(data!, src!.url)); say(ok ? `Copied your shortlist of ${data!.ranked.length} browsers as text.` : "Couldn't copy the list.", !ok); }
   });
   $("#sc-close").addEventListener("click", () => dlg.close());
 

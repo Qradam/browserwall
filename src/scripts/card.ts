@@ -4,10 +4,11 @@ import type { CardData } from "../lib/personality";
 import type { Mark } from "../lib/os-marks";
 import type { Browser } from "../data/browsers";
 
-export type Design = "wrapped" | "receipt" | "terminal" | "trading";
+export type Design = "wrapped" | "receipt" | "terminal" | "trading" | "list";
 export type Format = "post" | "story";
 export const DESIGNS: { id: Design; label: string }[] = [
-  { id: "wrapped", label: "Wrapped" }, { id: "receipt", label: "Receipt" }, { id: "terminal", label: "Terminal" }, { id: "trading", label: "Trading card" },
+  { id: "wrapped", label: "Wrapped" }, { id: "receipt", label: "Receipt" }, { id: "terminal", label: "Terminal" }, { id: "trading", label: "Trading" },
+  { id: "list", label: "Shortlist" },
 ];
 const W = 1080, BLOCK = 1350;
 export const sizeOf = (f: Format) => ({ w: W, h: f === "story" ? 1920 : BLOCK });
@@ -78,6 +79,11 @@ function rng(seed: number) {
   return () => { s = (s + 0x6d2b79f5) | 0; let t = Math.imul(s ^ (s >>> 15), 1 | s); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
 }
 const initials = (n: string) => n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+/** "Gecko · based on Firefox"; skips the upstream when it just repeats the engine (Orion: WebKit/WebKit). */
+function engineLine(b: Browser, pre: string, post = "") {
+  const eng = ENGINE[b.engine] ?? b.engine;
+  return b.basedOn && b.basedOn.toLowerCase() !== eng.toLowerCase() ? `${eng}${pre}${b.basedOn}${post}` : eng;
+}
 
 /** OS / distro mark from a 24×24 path (lettered disc when there's no path). */
 function drawMark(c: Ctx, mark: Mark, x: number, y: number, size: number, fill?: string) {
@@ -144,7 +150,7 @@ function drawLogo(c: Ctx, img: HTMLImageElement | null, b: Browser | undefined, 
 
 // ---------------------------------------------------------------------------- designs
 
-interface Env { c: Ctx; d: CardData; logo: HTMLImageElement | null; H: number }
+interface Env { c: Ctx; d: CardData; logoOf: (b?: Browser | null) => HTMLImageElement | null; H: number }
 
 // 1. Wrapped: loud gradient blobs, huge type.
 function wrappedBg({ c, d, H }: Env) {
@@ -158,7 +164,7 @@ function wrappedBg({ c, d, H }: Env) {
   for (let i = 0; i < 5; i++) { c.beginPath(); c.arc(W * 0.92, H * 0.06, 180 + i * 110, 0, Math.PI * 2); c.stroke(); }
   c.restore();
 }
-function wrapped({ c, d, logo }: Env) {
+function wrapped({ c, d, logoOf }: Env) {
   const x = 90, maxW = 900, a = d.archetype;
   c.fillStyle = "#fff"; c.textBaseline = "alphabetic"; c.textAlign = "left";
   font(c, 650, 30); spacing(c, 6); c.globalAlpha = 0.85;
@@ -177,7 +183,7 @@ function wrapped({ c, d, logo }: Env) {
   font(c, 450, 38);
   c.globalAlpha = 0.88;
   y += 30;
-  for (const l of clampLines(c, wrap(c, a.roast, maxW), 3, maxW)) { y += 52; c.fillText(l, x, y); }
+  for (const l of clampLines(c, wrap(c, a.roast, maxW), name.lines.length > 1 ? 2 : 3, maxW)) { y += 52; c.fillText(l, x, y); }
   c.globalAlpha = 1;
 
   if (d.rising) {
@@ -191,28 +197,43 @@ function wrapped({ c, d, logo }: Env) {
     font(c, 400, 28, EMOJI); c.fillText(d.rising.emoji, x + 40 + tw, y + 40);
   }
 
-  // Browser panel, anchored to the bottom.
-  const py = d.osMark ? 900 : 950, ph = 230;
+  // Top-3 panel, anchored to the bottom.
+  const b = d.top?.browser;
+  const minis = d.ranked.slice(1, 3);
+  const ph = minis.length ? 290 : 200, py = (d.osMark ? 1150 : 1200) - ph;
   rrect(c, x, py, maxW, ph, 40);
   c.fillStyle = "rgb(0 0 0 / .38)"; c.fill();
   c.strokeStyle = "rgb(255 255 255 / .14)"; c.lineWidth = 2; c.stroke();
-  const b = d.top?.browser;
-  drawLogo(c, logo, b, x + 40, py + 40, 150);
-  const tx = x + 230, tw = maxW - 270;
+  drawLogo(c, logoOf(b), b, x + 36, py + 34, 130);
+  const tx = x + 200, tw = maxW - 236;
   c.fillStyle = "#fff";
   font(c, 650, 24); spacing(c, 4); c.globalAlpha = 0.7;
-  c.fillText("MY BROWSER", tx, py + 66);
+  c.fillText(minis.length ? `MY TOP ${minis.length + 1}` : "MY BROWSER", tx, py + 62);
   spacing(c, 0); c.globalAlpha = 1;
-  const bn = fit(c, b?.name ?? "None. Literally none.", tw, 64, 36, 780, HEAD, 1);
-  c.fillText(bn.lines[0], tx, py + 66 + bn.size + 4);
-  font(c, 500, 30);
-  c.globalAlpha = 0.85;
-  const sub = d.top ? `${d.top.match}% match` + (d.runnersUp.length ? ` · then ${d.runnersUp.map((r) => r.name).join(", ")}` : "") : `0 of ${d.total} browsers survived`;
-  c.fillText(ellipsize(c, sub, tw), tx, py + 190);
+  const bn = fit(c, b?.name ?? "None. Literally none.", tw, 60, 34, 780, HEAD, 1);
+  c.fillText(bn.lines[0], tx, py + 64 + bn.size);
+  font(c, 500, 30); c.globalAlpha = 0.85;
+  c.fillText(d.top ? `#1 · ${d.top.match}% match` : `0 of ${d.total} browsers survived`, tx, py + 166);
   c.globalAlpha = 1;
+  if (minis.length) {
+    c.fillStyle = "rgb(255 255 255 / .12)"; c.fillRect(x + 36, py + 192, maxW - 72, 2);
+    const colW = (maxW - 72) / minis.length;
+    minis.forEach((r, i) => {
+      const cx0 = x + 36 + i * colW;
+      font(c, 800, 26, HEAD); c.fillStyle = "#fff"; c.globalAlpha = 0.55;
+      c.fillText(`#${i + 2}`, cx0, py + 252);
+      c.globalAlpha = 1;
+      drawLogo(c, logoOf(r.browser), r.browser, cx0 + 48, py + 214, 56, false);
+      font(c, 700, 28);
+      c.fillText(ellipsize(c, r.browser.name, colW - 130), cx0 + 118, py + 238);
+      font(c, 500, 23); c.globalAlpha = 0.7;
+      c.fillText(`${r.match}% match`, cx0 + 118, py + 268);
+      c.globalAlpha = 1;
+    });
+  }
 
   if (d.osMark) {
-    const oy = py + ph + 40;
+    const oy = py + ph + 28;
     drawMark(c, d.osMark, x, oy, 48);
     font(c, 700, 30); c.fillStyle = "#fff";
     c.fillText(d.osMark.label, x + 68, oy + 35);
@@ -267,6 +288,7 @@ function receipt({ c, d }: Env) {
     { t: "dash" },
     { t: "kv", k: "TOTAL", v: U(d.top?.browser.name ?? "N/A"), size: 38, bold: true },
     { t: "kv", k: "MATCH", v: d.top ? `${d.top.match}%` : "0%" },
+    ...d.ranked.slice(1, 3).map((r, i): Row => ({ t: "kv", k: `${i + 2}. ${U(r.browser.name)}`, v: `${r.match}%` })),
     { t: "gap", h: 18 },
     { t: "barcode" },
     { t: "c", text: "THANK YOU FOR NOT USING INTERNET EXPLORER", size: 20 },
@@ -342,7 +364,7 @@ function terminalBg({ c, d, H }: Env) {
   c.fillStyle = bg; c.fillRect(0, 0, W, H);
   glow(c, W / 2, H / 2, 900, a1, 0.28);
 }
-function terminal({ c, d, logo }: Env) {
+function terminal({ c, d, logoOf }: Env) {
   const [, a1, a2] = d.archetype.colors;
   const wx = 60, wy = 110, ww = W - 120, wh = 1130;
   c.save();
@@ -363,7 +385,7 @@ function terminal({ c, d, logo }: Env) {
   c.fillStyle = "#e5e5e5"; c.fillText(" browserfetch --me", x + c.measureText("$").width, y);
 
   const b = d.top?.browser;
-  drawLogo(c, logo, b, x, y + 50, 260);
+  drawLogo(c, logoOf(b), b, x, y + 50, 260);
   // Like neofetch: the distro logo, under the browser's.
   if (d.osMark) drawMark(c, d.osMark, x + 70, y + 360, 120);
 
@@ -381,9 +403,9 @@ function terminal({ c, d, logo }: Env) {
   const rows: [string, string][] = [
     ["Personality", `${d.archetype.name}`],
     ...(d.rising ? [["Rising", d.rising.name] as [string, string]] : []),
-    ["Browser", b?.name ?? "none survived"],
-    ["Match", d.top ? `${d.top.match}%` : "0%"],
-    ["Engine", b ? `${ENGINE[b.engine] ?? b.engine}${b.basedOn ? ` (${b.basedOn})` : ""}` : "n/a"],
+    ["Browser", b ? `${b.name} (${d.top!.match}%)` : "none survived"],
+    ...(d.ranked.length > 1 ? [["Runners-up", d.ranked.slice(1, 3).map((r) => `${r.browser.name} ${r.match}%`).join(", ")] as [string, string]] : []),
+    ["Engine", b ? engineLine(b, " (", ")") : "n/a"],
     ...(d.osMark ? [["OS", d.osMark.label] as [string, string]] : []),
     ["Extensions", d.ext ?? "any"],
     ["Priorities", d.priorities.filter((p) => p.value >= 3).map((p) => p.label).join(", ") || "vibes"],
@@ -433,7 +455,7 @@ function tradingBg({ c, d, H }: Env) {
   for (let i = -H; i < W; i += 40) { c.beginPath(); c.moveTo(i, 0); c.lineTo(i + H, H); c.stroke(); }
   c.restore();
 }
-function trading({ c, d, logo }: Env) {
+function trading({ c, d, logoOf }: Env) {
   const [, a1, a2] = d.archetype.colors;
   const cx = 150, cy = 90, cw = 780, ch = 1170;
   c.save();
@@ -458,7 +480,7 @@ function trading({ c, d, logo }: Env) {
   c.textAlign = "left";
 
   // Art window
-  const ay = iy + 110, ah = 440;
+  const ay = iy + 110, ah = d.ranked.length > 1 ? 340 : 440, ls = d.ranked.length > 1 ? 240 : 300;
   c.save();
   rrect(c, px, ay, pw, ah, 22); c.clip();
   const art = c.createLinearGradient(px, ay, px + pw, ay + ah);
@@ -469,7 +491,7 @@ function trading({ c, d, logo }: Env) {
   for (let i = 0; i < 12; i++) { c.beginPath(); c.arc(px + pw / 2, ay + ah / 2, 60 + i * 50, 0, Math.PI * 2); c.lineWidth = 14; c.strokeStyle = "rgb(255 255 255 / .06)"; c.stroke(); }
   c.restore();
   rrect(c, px, ay, pw, ah, 22); c.strokeStyle = "rgb(255 255 255 / .25)"; c.lineWidth = 3; c.stroke();
-  if (b) drawLogo(c, logo, b, px + pw / 2 - 150, ay + ah / 2 - 150, 300);
+  if (b) drawLogo(c, logoOf(b), b, px + pw / 2 - ls / 2, ay + ah / 2 - ls / 2, ls);
   else { font(c, 400, 220, EMOJI); c.textAlign = "center"; c.fillText("💀", px + pw / 2, ay + ah / 2 + 80); c.textAlign = "left"; }
   if (d.osMark) {
     // OS badge in the corner of the art window
@@ -506,6 +528,24 @@ function trading({ c, d, logo }: Env) {
   }
 
   // Flavor text
+  const bench = d.ranked.slice(1, 3);
+  if (bench.length) {
+    c.fillStyle = "rgb(255 255 255 / .15)"; c.fillRect(px, sy - 22, pw, 2);
+    font(c, 700, 19); spacing(c, 3); c.fillStyle = "rgb(255 255 255 / .5)";
+    c.fillText("ALSO IN YOUR DECK", px, sy + 12);
+    spacing(c, 0);
+    const colW = pw / bench.length;
+    bench.forEach((r, i) => {
+      const bx1 = px + i * colW;
+      drawLogo(c, logoOf(r.browser), r.browser, bx1, sy + 30, 48, false);
+      font(c, 700, 26); c.fillStyle = "#fff";
+      c.fillText(ellipsize(c, r.browser.name, colW - 150), bx1 + 62, sy + 64);
+      const nw = Math.min(c.measureText(r.browser.name).width, colW - 150);
+      font(c, 700, 22, HEAD); c.fillStyle = a1;
+      c.fillText(`${r.match} HP`, bx1 + 62 + nw + 12, sy + 64);
+    });
+    sy += 114;
+  }
   sy += 4;
   c.fillStyle = "rgb(255 255 255 / .15)"; c.fillRect(px, sy - 20, pw, 2);
   font(c, "italic 450", 26); c.fillStyle = "rgb(255 255 255 / .75)";
@@ -520,11 +560,74 @@ function trading({ c, d, logo }: Env) {
   c.textAlign = "left";
 }
 
+// 5. Shortlist: every browser the results page shows, ranked.
+function listBg({ c, d, H }: Env) {
+  const [bg, a1, a2] = d.archetype.colors;
+  c.fillStyle = bg; c.fillRect(0, 0, W, H);
+  glow(c, W * 0.1, H * 0.05, 760, a1, 0.55);
+  glow(c, W * 0.95, H * 0.95, 700, a2, 0.35);
+}
+function list({ c, d, logoOf }: Env) {
+  const [, a1] = d.archetype.colors;
+  const x = 80, w = W - 160;
+  c.fillStyle = "#fff"; c.textAlign = "left"; c.textBaseline = "alphabetic";
+  font(c, 650, 26); spacing(c, 6); c.globalAlpha = 0.8;
+  c.fillText("MY BROWSER SHORTLIST", x, 110);
+  spacing(c, 0); c.globalAlpha = 1;
+  font(c, 400, 60, EMOJI); c.fillText(d.archetype.emoji, x, 192);
+  const t = fit(c, d.archetype.name, w - 90, 64, 36, 820, HEAD, 1);
+  c.fillText(t.lines[0], x + 90, 190);
+  let sx = x;
+  if (d.osMark) { drawMark(c, d.osMark, x, 220, 32); sx += 46; }
+  font(c, 500, 27); c.fillStyle = "#fff"; c.globalAlpha = 0.72;
+  c.fillText(`${d.osMark ? `${d.osMark.label} · ` : ""}${d.fit} of ${d.total} browsers fit my answers`, sx, 246);
+  c.globalAlpha = 1;
+
+  const rows = d.ranked;
+  if (!rows.length) {
+    font(c, 800, 72, HEAD); c.textAlign = "center";
+    c.fillText("Nothing survived.", W / 2, 700);
+    font(c, 500, 32); c.globalAlpha = 0.7;
+    c.fillText(d.archetype.roast.split(".")[0] + ".", W / 2, 760);
+    c.globalAlpha = 1; c.textAlign = "left";
+  }
+  const top = 290, avail = 1210 - top, rowH = Math.min(130, avail / Math.max(rows.length, 1));
+  const gap = 12, h = rowH - gap, logo = Math.min(76, h - 30);
+  rows.forEach((r, i) => {
+    const y = top + i * rowH, b = r.browser;
+    c.save();
+    rrect(c, x, y, w, h, 20); c.clip();
+    c.fillStyle = i < 3 ? "rgb(255 255 255 / .1)" : "rgb(255 255 255 / .05)"; c.fillRect(x, y, w, h);
+    c.fillStyle = hexA(a1, i < 3 ? 0.9 : 0.55); c.fillRect(x, y + h - 5, (w * r.match) / 100, 5); // match bar
+    c.restore();
+    const cy = y + h / 2;
+    font(c, 800, 34, HEAD); c.fillStyle = "#fff"; c.globalAlpha = i < 3 ? 1 : 0.55; c.textAlign = "center";
+    c.fillText(String(i + 1), x + 46, cy + 12);
+    c.globalAlpha = 1; c.textAlign = "left";
+    drawLogo(c, logoOf(b), b, x + 88, cy - logo / 2, logo, false);
+    const nx = x + 88 + logo + 24;
+    font(c, 800, 34, HEAD); c.textAlign = "right"; c.fillText(`${r.match}%`, x + w - 28, cy + 12);
+    const mw = c.measureText(`${r.match}%`).width; c.textAlign = "left";
+    const maxN = x + w - 28 - mw - 24 - nx;
+    font(c, 700, h > 90 ? 34 : 30); c.fillText(ellipsize(c, b.name, maxN), nx, cy - 2);
+    font(c, 450, h > 90 ? 23 : 21); c.globalAlpha = 0.6;
+    c.fillText(ellipsize(c, engineLine(b, " · based on "), maxN), nx, cy + 30);
+    c.globalAlpha = 1;
+  });
+
+  font(c, 650, 30); c.fillStyle = "#fff";
+  c.fillText(URL_TEXT, x, 1280);
+  c.textAlign = "right"; c.globalAlpha = 0.75;
+  c.fillText("find yours →", x + w, 1280);
+  c.globalAlpha = 1; c.textAlign = "left";
+}
+
 const RENDER: Record<Design, { bg: (e: Env) => void; fg: (e: Env) => void }> = {
   wrapped: { bg: wrappedBg, fg: wrapped },
   receipt: { bg: receiptBg, fg: receipt },
   terminal: { bg: terminalBg, fg: terminal },
   trading: { bg: tradingBg, fg: trading },
+  list: { bg: listBg, fg: list },
 };
 
 let fontsReady: Promise<unknown> | null = null;
@@ -535,12 +638,13 @@ const loadFonts = () => (fontsReady ??= Promise.all([
 
 /** Draws the card onto `canvas` (resizing it to the format). */
 export async function renderCard(canvas: HTMLCanvasElement, d: CardData, design: Design, format: Format) {
-  const [, logo] = await Promise.all([loadFonts(), loadLogo(d.top?.browser.logo ?? null)]);
+  const [, imgs] = await Promise.all([loadFonts(), Promise.all(d.ranked.map((r) => loadLogo(r.browser.logo)))]);
+  const logos = new Map(d.ranked.map((r, i) => [r.browser.id, imgs[i]]));
   const { w, h } = sizeOf(format);
   canvas.width = w; canvas.height = h;
   const c = canvas.getContext("2d")!;
   c.reset?.();
-  const env: Env = { c, d, logo, H: h };
+  const env: Env = { c, d, logoOf: (b) => (b ? logos.get(b.id) ?? null : null), H: h };
   RENDER[design].bg(env);
   c.save();
   c.translate(0, (h - BLOCK) / 2);

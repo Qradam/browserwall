@@ -57,11 +57,16 @@ const BALANCED: Archetype = { id: "balanced", name: "The Perfectly Balanced", em
 const NOTHING: Archetype = { id: "impossible", name: "The Impossible Standard", emoji: "💀", colors: ["#140505", "#f87171", "#fafafa"],
   roast: "Not a single browser survived your requirements. You may need to build your own." };
 
+/** Results shown on the quiz page: 3 top picks + 6 "also worth a look" (keep in sync with renderResults in quiz.astro). */
+export const SHOWN = 9;
+
 export interface CardData {
   archetype: Archetype;
   rising: Archetype | null;
   top: Result | null;
   runnersUp: Browser[];
+  /** Everything the results page shows (top 3 + "also worth a look"), best first. */
+  ranked: Result[];
   priorities: { label: string; level: string; value: number }[]; // sliders at "Somewhat" or more, strongest first
   must: string[];
   nice: string[];
@@ -113,6 +118,7 @@ export function personality(state: QuizState, ranking: Ranking, total: number, o
     rising: rising ? strip(rising) : null,
     top,
     runnersUp: ranking.results.slice(1, 3).map((r) => r.browser),
+    ranked: ranking.results.slice(0, SHOWN),
     priorities: SLIDERS.filter((sl) => state.sliders[sl.id] >= 2)
       .map((sl) => ({ label: sl.title, level: IMPORTANCE[state.sliders[sl.id]], value: state.sliders[sl.id] }))
       .sort((a, b) => b.value - a.value),
@@ -131,6 +137,17 @@ export function personality(state: QuizState, ranking: Ranking, total: number, o
 
 /** Text for the native share sheet / clipboard. */
 export function shareText(d: CardData) {
-  const pick = d.top ? `My browser is ${d.top.browser.name} (${d.top.match}% match)${d.osMark ? ` on ${d.osMark.label}` : ""}.` : "No browser could handle me.";
+  const pick = d.top
+    ? `My browser is ${d.top.browser.name} (${d.top.match}% match)${d.osMark ? ` on ${d.osMark.label}` : ""}${d.runnersUp.length ? `, then ${d.runnersUp.map((b) => b.name).join(" and ")}` : ""}.`
+    : "No browser could handle me.";
   return `My browser personality: ${d.archetype.name} ${d.archetype.emoji} ${pick} Find yours:`;
+}
+
+/** Plain-text shortlist of every browser the results page shows (for chats, forums, notes). */
+export function listText(d: CardData, url: string) {
+  const head = `My browser shortlist – ${d.archetype.name} ${d.archetype.emoji}${d.osMark ? ` on ${d.osMark.label}` : ""}`;
+  const rows = d.ranked.length
+    ? d.ranked.map((r, i) => `${i + 1}. ${r.browser.name} – ${r.match}% match`)
+    : ["No browser survived my requirements."];
+  return [head, "", ...rows, "", `${d.fit} of ${d.total} browsers fit my answers. Find yours: ${url}`].join("\n");
 }
