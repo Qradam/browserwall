@@ -1,12 +1,13 @@
 {
-  "_note": "Manual corrections applied after merging raw files. Verified 2026-11-17 via GitHub commit feeds (scripts/check-repos.mjs) and web search. Vertical tabs re-checked 2026-11-18 (Chrome 147+/Chromium M152+, Opera One, Firefox 136+/ESR 140 and forks). Also counted when only in beta/nightly builds (Safari 27.3 beta, Ladybird nightlies).",
+  "_note": "Manual corrections applied after merging raw files. Verified 2026-11-17 via GitHub commit feeds (scripts/check-repos.mjs) and web search. Vertical tabs re-checked 2026-11-18 (Chrome 147+/Chromium M152+, Opera One, Firefox 136+/ESR 140 and forks). Also counted when only in beta/nightly builds (Safari 27.3 beta, Ladybird nightlies). Feature tags (workspaces, split-view, ad-blocking, vpn, sync, etc.) audited 2026-11-18.",
   "elinks": {
     "status": "active",
     "repo": "https://github.com/rkd77/elinks",
     "tags": [
       "text-mode",
       "power-user",
-      "lightweight"
+      "lightweight",
+      "keyboard-driven"
     ],
     "description": "Feature-rich text-mode browser with tabs, colours and scripting; maintained as the rkd77 fork."
   },
@@ -18,7 +19,19 @@
     "status": "active"
   },
   "vieb": {
-    "status": "active"
+    "status": "active",
+    "tags": [
+      "keyboard-driven",
+      "power-user",
+      "privacy",
+      "split-view",
+      "ad-blocking"
+    ],
+    "sources": [
+      "https://github.com/Jelmerro/Vieb",
+      "https://vieb.dev",
+      "https://vieb.dev/features"
+    ]
   },
   "browsh": {
     "status": "active",
@@ -138,7 +151,13 @@
       "macos"
     ],
     "sources": [
-      "https://www.perplexity.ai/hub/blog/comet-is-now-available-to-everyone-worldwide"
+      "https://www.perplexity.ai/hub/blog/comet-is-now-available-to-everyone-worldwide",
+      "https://www.perplexity.ai/help-center/comet/en/articles/11734702-adblock"
+    ],
+    "tags": [
+      "chrome-extensions",
+      "sync",
+      "ad-blocking"
     ]
   },
   "ladybird": {
@@ -146,13 +165,15 @@
     "sources": [
       "https://ladybird.org/",
       "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md",
-      "https://ladybird.org/newsletter/2026-06-30/"
+      "https://ladybird.org/newsletter/2026-06-30/",
+      "https://piunikaweb.com/2026/10/06/ladybird-browser-alpha-update/"
     ],
     "tags": [
       "independent-engine",
       "experimental",
       "privacy",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking"
     ]
   },
   "pissandshittium": {
@@ -193,7 +214,8 @@
       "security-hardened",
       "ad-blocking",
       "vpn",
-      "chrome-extensions"
+      "chrome-extensions",
+      "sync"
     ]
   },
   "avg-secure-browser": {
@@ -203,7 +225,8 @@
       "security-hardened",
       "ad-blocking",
       "vpn",
-      "chrome-extensions"
+      "chrome-extensions",
+      "sync"
     ]
   },
   "norton-private-browser": {
@@ -247,11 +270,14 @@
       "ad-blocking",
       "workspaces",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "sync"
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Opera_(web_browser)",
-      "https://blogs.opera.com/desktop/2026/07/how-vertical-tabs-work-in-opera-one/"
+      "https://blogs.opera.com/desktop/2026/07/how-vertical-tabs-work-in-opera-one/",
+      "https://blogs.opera.com/desktop/2026/02/opera-128-stable/"
     ]
   },
   "vivaldi": {
@@ -263,7 +289,12 @@
       "vpn",
       "chrome-extensions",
       "vertical-tabs",
-      "ad-blocking"
+      "ad-blocking",
+      "sync"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vivaldi_(web_browser)",
+      "https://vivaldi.com/features/sync/"
     ]
   },
   "avira-secure-browser": {
@@ -276,30 +307,50 @@
   "opera-air": {
     "tags": [
       "mainstream",
-      "chrome-extensions"
+      "chrome-extensions",
+      "ad-blocking",
+      "vpn",
+      "sync"
+    ],
+    "sources": [
+      "https://www.opera.com/air",
+      "https://press.opera.com/2026/10/15/opera-air/"
     ]
   },
   "ecosia-browser": {
     "tags": [
       "chrome-extensions",
-      "mainstream"
+      "mainstream",
+      "ad-blocking"
+    ],
+    "sources": [
+      "https://blog.ecosia.org/desktop-browser/",
+      "https://browsers.to/fr/ecosia-browser",
+      "https://support.ecosia.org/article/575-privacy-settings-on-the-ecosia-browser"
     ]
   },
   "min": {
     "tags": [
       "minimal",
       "ad-blocking",
-      "privacy"
+      "privacy",
+      "workspaces"
+    ],
+    "sources": [
+      "https://github.com/minbrowser/min",
+      "https://minbrowser.org/tour/"
     ]
   },
   "thorium": {
     "tags": [
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "sources": [
       "https://github.com/Alex313031/thorium",
-      "https://github.com/Alex313031/Thorium-Win/issues/476"
+      "https://github.com/Alex313031/Thorium-Win/issues/476",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ]
   },
   "firefox": {
@@ -309,7 +360,15 @@
       "privacy",
       "sync",
       "developer",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "vpn"
+    ],
+    "sources": [
+      "https://www.mozilla.org/firefox/",
+      "https://en.wikipedia.org/wiki/Firefox",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://blog.mozilla.org/en/firefox/built-in-vpn/"
     ]
   },
   "brave": {
@@ -320,8 +379,14 @@
       "chrome-extensions",
       "sync",
       "vertical-tabs",
-      "ai",
-      "tor"
+      "tor",
+      "split-view",
+      "vpn"
+    ],
+    "sources": [
+      "https://github.com/brave/brave-browser",
+      "https://en.wikipedia.org/wiki/Brave_(web_browser)",
+      "https://brave.com/latest/"
     ]
   },
   "midori": {
@@ -349,14 +414,16 @@
       "https://kagi.com/orion/",
       "https://en.wikipedia.org/wiki/Orion_(web_browser)",
       "https://blog.kagi.com/update-orion-linux-windows",
-      "https://help.kagi.com/orion/features/vertical-tabs.html"
+      "https://help.kagi.com/orion/features/vertical-tabs.html",
+      "https://cdn.kagi.com/updates/orion-release-notes.html"
     ],
     "tags": [
       "privacy",
       "chrome-extensions",
       "firefox-addons",
       "ad-blocking",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync"
     ]
   },
   "brave-origin": {
@@ -365,7 +432,13 @@
       "ad-blocking",
       "minimal",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "sync"
+    ],
+    "sources": [
+      "https://brave.com/origin/",
+      "https://brave.com/latest/"
     ]
   },
   "brave-beta": {
@@ -375,7 +448,16 @@
       "experimental",
       "chrome-extensions",
       "vertical-tabs",
-      "tor"
+      "tor",
+      "sync",
+      "crypto",
+      "split-view",
+      "vpn"
+    ],
+    "sources": [
+      "https://brave.com/download-beta/",
+      "https://github.com/brave/brave-browser/wiki/Release-Channel-Descriptions",
+      "https://brave.com/latest/"
     ]
   },
   "brave-nightly": {
@@ -385,7 +467,17 @@
       "experimental",
       "developer",
       "vertical-tabs",
-      "tor"
+      "tor",
+      "chrome-extensions",
+      "sync",
+      "crypto",
+      "split-view",
+      "vpn"
+    ],
+    "sources": [
+      "https://brave.com/download-nightly/",
+      "https://github.com/brave/brave-browser/wiki/Release-Channel-Descriptions",
+      "https://brave.com/latest/"
     ]
   },
   "firefox-beta": {
@@ -393,12 +485,16 @@
       "experimental",
       "firefox-addons",
       "sync",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "vpn"
     ],
     "sources": [
       "https://www.mozilla.org/firefox/channel/desktop/",
       "https://en.wikipedia.org/wiki/Firefox#Release_channels",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://blog.mozilla.org/en/firefox/built-in-vpn/"
     ]
   },
   "firefox-developer-edition": {
@@ -406,12 +502,18 @@
       "developer",
       "firefox-addons",
       "experimental",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view",
+      "vpn"
     ],
     "sources": [
       "https://www.mozilla.org/firefox/developer/",
       "https://en.wikipedia.org/wiki/Firefox#Release_channels",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://support.mozilla.org/en-US/kb/how-do-i-set-sync-my-computer",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://blog.mozilla.org/en/firefox/built-in-vpn/"
     ]
   },
   "firefox-nightly": {
@@ -419,12 +521,18 @@
       "experimental",
       "developer",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view",
+      "vpn"
     ],
     "sources": [
       "https://www.mozilla.org/firefox/channel/desktop/",
       "https://en.wikipedia.org/wiki/Firefox#Release_channels",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://support.mozilla.org/en-US/kb/how-do-i-set-sync-my-computer",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://blog.mozilla.org/en/firefox/built-in-vpn/"
     ]
   },
   "firefox-esr": {
@@ -432,13 +540,16 @@
       "enterprise",
       "firefox-addons",
       "mainstream",
-      "security-hardened",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view"
     ],
     "sources": [
       "https://www.mozilla.org/firefox/enterprise/",
       "https://en.wikipedia.org/wiki/Firefox#Extended_Support_Release",
-      "https://www.firefox.com/en-US/firefox/140.0esr/releasenotes/"
+      "https://www.firefox.com/en-US/firefox/140.0esr/releasenotes/",
+      "https://support.mozilla.org/en-US/kb/how-do-i-set-sync-my-computer",
+      "https://www.firefox.com/en-US/firefox/153.0esr/releasenotes/"
     ]
   },
   "waterfox": {
@@ -446,13 +557,18 @@
       "privacy",
       "firefox-addons",
       "customizable",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking",
+      "split-view",
+      "sync"
     ],
     "sources": [
       "https://www.waterfox.net",
       "https://github.com/BrowserWorks/Waterfox",
       "https://en.wikipedia.org/wiki/Waterfox",
-      "https://www.waterfox.com/releases/6.6.0/"
+      "https://www.waterfox.com/releases/6.6.0/",
+      "https://www.waterfox.com/releases/6.7.0/",
+      "https://www.waterfox.com/releases/6.7.1/"
     ]
   },
   "librewolf": {
@@ -462,12 +578,15 @@
       "ad-blocking",
       "de-googled",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view"
     ],
     "sources": [
       "https://librewolf.net",
       "https://en.wikipedia.org/wiki/LibreWolf",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/"
     ]
   },
   "tor-browser": {
@@ -489,12 +608,14 @@
       "privacy",
       "security-hardened",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking"
     ],
     "sources": [
       "https://mullvad.net/browser",
       "https://github.com/mullvad/mullvad-browser",
-      "https://blog.torproject.org/new-release-tor-browser-150"
+      "https://blog.torproject.org/new-release-tor-browser-150",
+      "https://mullvad.net/en/browser"
     ]
   },
   "firedragon": {
@@ -502,11 +623,16 @@
       "privacy",
       "customizable",
       "de-googled",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking",
+      "sync",
+      "firefox-addons",
+      "split-view"
     ],
     "sources": [
       "https://gitlab.com/garuda-linux/firedragon",
-      "https://docs.floorp.app/docs/features/tab-bar-layout/"
+      "https://docs.floorp.app/docs/features/tab-bar-layout/",
+      "https://firedragon.garudalinux.org/"
     ]
   },
   "glide-browser": {
@@ -515,11 +641,14 @@
       "power-user",
       "customizable",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view"
     ],
     "sources": [
       "https://github.com/glide-browser/glide",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/"
     ]
   },
   "r3dfox": {
@@ -527,11 +656,14 @@
       "old-hardware",
       "privacy",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view"
     ],
     "sources": [
       "https://github.com/Eclipse-Community/r3dfox",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/"
     ]
   },
   "google-chrome": {
@@ -539,11 +671,13 @@
       "mainstream",
       "chrome-extensions",
       "sync",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Google_Chrome",
-      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ]
   },
   "chrome-canary": {
@@ -551,11 +685,14 @@
       "developer",
       "experimental",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "sync"
     ],
     "sources": [
       "https://www.google.com/chrome/canary/",
-      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ]
   },
   "chromium": {
@@ -563,11 +700,13 @@
       "developer",
       "chrome-extensions",
       "experimental",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Chromium_(web_browser)",
-      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ]
   },
   "naver-whale": {
@@ -575,7 +714,8 @@
       "regional",
       "split-view",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync"
     ],
     "sources": [
       "https://en.wikipedia.org/wiki/Naver_Whale",
@@ -586,24 +726,31 @@
     "tags": [
       "chrome-extensions",
       "sync",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "ad-blocking"
     ],
     "sources": [
       "https://www.diabrowser.com",
-      "https://www.diabrowser.com/changelog/1-3-1"
+      "https://www.diabrowser.com/changelog/1-3-1",
+      "https://www.diabrowser.com/plans"
     ]
   },
   "norton-neo": {
     "tags": [
       "security-hardened",
       "mainstream",
-      "vertical-tabs"
+      "vertical-tabs",
+      "vpn",
+      "ad-blocking",
+      "chrome-extensions"
     ],
     "sources": [
       "https://newsroom.gendigital.com/2025-12-02-Norton-Neo,-The-Worlds-First-Safe-AI-Native-Browser,-Now-Available-for-Free-Worldwide",
       "https://www.thurrott.com/cloud/web-browsers/324951/what-norton-neo-says-about-the-ai-powered-future-of-web-browsing",
       "https://techspot.com/downloads/7816-neo-ai-browser.html",
-      "https://help.neobrowser.ai/tabs-and-browsing"
+      "https://help.neobrowser.ai/tabs-and-browsing",
+      "https://newsroom.gendigital.com/2026-05-04-Norton-Neo-Raises-the-Bar-on-Security-and-Privacy-for-the-AI-Native-Browser"
     ]
   },
   "helium": {
@@ -613,11 +760,13 @@
       "ad-blocking",
       "minimal",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "sources": [
       "https://github.com/imputnet/helium",
-      "https://github.com/imputnet/helium/issues/1971"
+      "https://github.com/imputnet/helium/issues/1971",
+      "https://helium.computer/"
     ]
   },
   "ungoogled-chromium": {
@@ -625,11 +774,13 @@
       "privacy",
       "de-googled",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "sources": [
       "https://github.com/ungoogled-software/ungoogled-chromium",
-      "https://github.com/ungoogled-software/ungoogled-chromium/issues/3698"
+      "https://github.com/ungoogled-software/ungoogled-chromium/issues/3698",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ]
   },
   "cromite": {
@@ -638,7 +789,9 @@
       "ad-blocking",
       "de-googled",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "security-hardened"
     ],
     "sources": [
       "https://github.com/uazo/cromite",
@@ -651,7 +804,8 @@
       "power-user",
       "chrome-extensions",
       "enterprise",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "sources": [
       "https://wavebox.io",
@@ -661,8 +815,8 @@
   "strawberry": {
     "tags": [
       "chrome-extensions",
-      "workspaces",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "sources": [
       "https://strawberrybrowser.com/",
@@ -670,7 +824,8 @@
       "https://www.globaltechcouncil.org/ai/what-is-strawberry-browser-and-how-does-it-work/",
       "https://docs.strawberrybrowser.com/introduction/what-is-strawberry",
       "https://strawberrybrowser.com/best-ai-browser-for-windows",
-      "https://docs.strawberrybrowser.com/browser/tabs-and-sidebar"
+      "https://docs.strawberrybrowser.com/browser/tabs-and-sidebar",
+      "https://strawberrybrowser.com/updates/beta-0-0-88-updates"
     ]
   },
   "browseros": {
@@ -705,7 +860,8 @@
       "power-user",
       "minimal",
       "customizable",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking"
     ],
     "sources": [
       "https://github.com/qutebrowser/qutebrowser",
@@ -732,11 +888,13 @@
       "ad-blocking",
       "chrome-extensions",
       "workspaces",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync"
     ],
     "sources": [
       "https://www.zoho.com/ulaa",
-      "https://support.creatorscripts.com/portal/en/kb/articles/how-to-enable-vertical-tabs-in-the-ulaa-browser"
+      "https://support.creatorscripts.com/portal/en/kb/articles/how-to-enable-vertical-tabs-in-the-ulaa-browser",
+      "https://ulaabrowser.zohodesk.com/portal/en/kb/articles/sign-in-and-sync-in-ulaa"
     ]
   },
   "island": {
@@ -749,6 +907,240 @@
     "sources": [
       "https://www.island.io",
       "https://www.island.io/"
+    ]
+  },
+  "floorp": {
+    "tags": [
+      "customizable",
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "firefox-addons",
+      "sync",
+      "portable"
+    ],
+    "sources": [
+      "https://floorp.app",
+      "https://github.com/Floorp-Projects/Floorp",
+      "https://blog.floorp.app/en/notice/end-of-support-portable-v1"
+    ]
+  },
+  "zen-browser": {
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "minimal",
+      "customizable",
+      "firefox-addons",
+      "sync"
+    ],
+    "sources": [
+      "https://zen-browser.app",
+      "https://github.com/zen-browser/desktop",
+      "https://en.wikipedia.org/wiki/Zen_Browser",
+      "https://piunikaweb.com/2026/07/09/zen-browser-device-sync-twilight/"
+    ]
+  },
+  "pale-moon": {
+    "tags": [
+      "independent-engine",
+      "customizable",
+      "lightweight",
+      "old-hardware",
+      "power-user",
+      "sync",
+      "portable"
+    ],
+    "sources": [
+      "https://www.palemoon.org",
+      "https://en.wikipedia.org/wiki/Pale_Moon",
+      "https://www.palemoon.org/sync/",
+      "https://www.palemoon.org/download.shtml"
+    ]
+  },
+  "microsoft-edge": {
+    "tags": [
+      "mainstream",
+      "chrome-extensions",
+      "vertical-tabs",
+      "enterprise",
+      "workspaces",
+      "split-view",
+      "vpn",
+      "sync"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Microsoft_Edge",
+      "https://www.microsoft.com/en-us/edge/features/workspaces",
+      "https://www.microsoft.com/en-us/edge/features/split-screen",
+      "https://www.microsoft.com/en-us/edge/features/edge-secure-network-vpn"
+    ]
+  },
+  "opera-gx": {
+    "tags": [
+      "gaming",
+      "customizable",
+      "chrome-extensions",
+      "vpn",
+      "ad-blocking",
+      "split-view",
+      "sync",
+      "workspaces"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Opera_GX",
+      "https://www.opera.com/gx/features/free-vpn-windows",
+      "https://blogs.opera.com/news/2026/10/opera-gx-browser-booster"
+    ]
+  },
+  "opera-neon": {
+    "tags": [
+      "experimental",
+      "chrome-extensions",
+      "ad-blocking",
+      "vpn"
+    ],
+    "sources": [
+      "https://www.opera.com/neon",
+      "https://blogs.opera.com/news/2025/09/opera-neon-agentic-ai-browser-release/",
+      "https://blogs.opera.com/news/2026/08/your-ai-agents-can-use-opera-neon-free-of-charge/",
+      "https://www.nohackspod.com/blog/agentic-browser-landscape-2026",
+      "https://www.operaneon.com/subscription"
+    ]
+  },
+  "yandex-browser": {
+    "tags": [
+      "regional",
+      "chrome-extensions",
+      "mainstream",
+      "sync"
+    ]
+  },
+  "supermium": {
+    "tags": [
+      "old-hardware",
+      "retro",
+      "chrome-extensions",
+      "lightweight",
+      "portable",
+      "split-view"
+    ],
+    "sources": [
+      "https://github.com/win32ss/supermium",
+      "https://github.com/win32ss/supermium/discussions/177"
+    ]
+  },
+  "fellou": {
+    "tags": [
+      "chrome-extensions"
+    ]
+  },
+  "aside": {
+    "tags": [
+      "split-view",
+      "vertical-tabs",
+      "chrome-extensions",
+      "ad-blocking",
+      "sync"
+    ],
+    "sources": [
+      "https://www.uneed.best/alternatives/arc-browser",
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://docs.aside.com/help/devices.md"
+    ]
+  },
+  "ardia": {
+    "tags": [
+      "vertical-tabs",
+      "split-view",
+      "ad-blocking",
+      "chrome-extensions",
+      "sync"
+    ]
+  },
+  "crest": {
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "privacy",
+      "chrome-extensions",
+      "sync"
+    ],
+    "sources": [
+      "https://crestbrowser.com/",
+      "https://github.com/pauljoda/Crest"
+    ]
+  },
+  "yab": {
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "chrome-extensions",
+      "ad-blocking",
+      "sync"
+    ],
+    "sources": [
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://www.uneed.best/alternatives/arc-browser",
+      "https://yetanotherbrowser.com/"
+    ]
+  },
+  "sigmaos": {
+    "tags": [
+      "vertical-tabs",
+      "workspaces",
+      "split-view",
+      "ad-blocking",
+      "sync",
+      "chrome-extensions"
+    ],
+    "sources": [
+      "https://www.sigmaos.com/",
+      "https://sigmaos.com/"
+    ]
+  },
+  "safari-technology-preview": {
+    "tags": [
+      "developer",
+      "experimental",
+      "sync"
+    ]
+  },
+  "duckduckgo": {
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "mainstream",
+      "sync",
+      "vpn"
+    ],
+    "sources": [
+      "https://duckduckgo.com/about",
+      "https://duckduckgo.com/duckduckgo-help-pages/get-duckduckgo/does-duckduckgo-make-a-browser",
+      "https://duckduckgo.com/duckduckgo-help-pages/privacy-pro"
+    ]
+  },
+  "epiphany": {
+    "tags": [
+      "minimal",
+      "lightweight",
+      "privacy",
+      "ad-blocking"
+    ]
+  },
+  "polypane": {
+    "tags": [
+      "developer",
+      "power-user",
+      "split-view",
+      "chrome-extensions"
+    ],
+    "sources": [
+      "https://polypane.app",
+      "https://polypane.app/docs/browser-extensions/"
     ]
   }
 }

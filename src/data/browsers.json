@@ -78,7 +78,8 @@
       "vertical-tabs",
       "split-view",
       "ad-blocking",
-      "chrome-extensions"
+      "chrome-extensions",
+      "sync"
     ],
     "website": "https://ardia.dev",
     "repo": "https://github.com/ardia-browser/ardia",
@@ -112,6 +113,8 @@
       "split-view",
       "vertical-tabs",
       "chrome-extensions",
+      "ad-blocking",
+      "sync",
       "ai"
     ],
     "website": "https://aside.com",
@@ -119,7 +122,8 @@
     "logo": null,
     "sources": [
       "https://www.uneed.best/alternatives/arc-browser",
-      "https://openhunts.com/blog/arc-alternatives"
+      "https://openhunts.com/blog/arc-alternatives",
+      "https://docs.aside.com/help/devices.md"
     ],
     "scores": {
       "privacy": 2,
@@ -146,7 +150,8 @@
       "security-hardened",
       "ad-blocking",
       "vpn",
-      "chrome-extensions"
+      "chrome-extensions",
+      "sync"
     ],
     "website": "https://www.avast.com/secure-browser",
     "repo": null,
@@ -178,7 +183,8 @@
       "security-hardened",
       "ad-blocking",
       "vpn",
-      "chrome-extensions"
+      "chrome-extensions",
+      "sync"
     ],
     "website": "https://www.avg.com/secure-browser",
     "repo": null,
@@ -281,6 +287,8 @@
       "sync",
       "vertical-tabs",
       "tor",
+      "split-view",
+      "vpn",
       "ai"
     ],
     "website": "https://brave.com",
@@ -288,7 +296,8 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Brave_lion_icon.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "sources": [
       "https://github.com/brave/brave-browser",
-      "https://en.wikipedia.org/wiki/Brave_(web_browser)"
+      "https://en.wikipedia.org/wiki/Brave_(web_browser)",
+      "https://brave.com/latest/"
     ],
     "scores": {
       "privacy": 4,
@@ -318,6 +327,10 @@
       "chrome-extensions",
       "vertical-tabs",
       "tor",
+      "sync",
+      "crypto",
+      "split-view",
+      "vpn",
       "ai"
     ],
     "website": "https://brave.com/download-beta/",
@@ -325,7 +338,8 @@
     "logo": null,
     "sources": [
       "https://brave.com/download-beta/",
-      "https://github.com/brave/brave-browser/wiki/Release-Channel-Descriptions"
+      "https://github.com/brave/brave-browser/wiki/Release-Channel-Descriptions",
+      "https://brave.com/latest/"
     ],
     "scores": {
       "privacy": 4,
@@ -355,6 +369,11 @@
       "developer",
       "vertical-tabs",
       "tor",
+      "chrome-extensions",
+      "sync",
+      "crypto",
+      "split-view",
+      "vpn",
       "ai"
     ],
     "website": "https://brave.com/download-nightly/",
@@ -362,7 +381,8 @@
     "logo": null,
     "sources": [
       "https://brave.com/download-nightly/",
-      "https://github.com/brave/brave-browser/wiki/Release-Channel-Descriptions"
+      "https://github.com/brave/brave-browser/wiki/Release-Channel-Descriptions",
+      "https://brave.com/latest/"
     ],
     "scores": {
       "privacy": 4,
@@ -390,13 +410,16 @@
       "ad-blocking",
       "minimal",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "sync"
     ],
     "website": "https://brave.com/origin/",
     "repo": "https://github.com/brave/brave-browser",
     "logo": null,
     "sources": [
-      "https://brave.com/origin/"
+      "https://brave.com/origin/",
+      "https://brave.com/latest/"
     ],
     "scores": {
       "privacy": 5,
@@ -521,6 +544,8 @@
       "experimental",
       "chrome-extensions",
       "vertical-tabs",
+      "split-view",
+      "sync",
       "ai"
     ],
     "website": "https://www.google.com/chrome/canary/",
@@ -528,7 +553,8 @@
     "logo": null,
     "sources": [
       "https://www.google.com/chrome/canary/",
-      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ],
     "scores": {
       "privacy": 2,
@@ -556,14 +582,16 @@
       "developer",
       "chrome-extensions",
       "experimental",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "website": "https://www.chromium.org/",
     "repo": "https://chromium.googlesource.com/chromium/src",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/2/28/Chromium_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "sources": [
       "https://en.wikipedia.org/wiki/Chromium_(web_browser)",
-      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ],
     "scores": {
       "privacy": 3,
@@ -588,13 +616,15 @@
     "tags": [
       "chrome-extensions",
       "sync",
+      "ad-blocking",
       "ai"
     ],
     "website": "https://www.perplexity.ai/comet",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://www.perplexity.ai/hub/blog/comet-is-now-available-to-everyone-worldwide"
+      "https://www.perplexity.ai/hub/blog/comet-is-now-available-to-everyone-worldwide",
+      "https://www.perplexity.ai/help-center/comet/en/articles/11734702-adblock"
     ],
     "scores": {
       "privacy": 2,
@@ -620,7 +650,8 @@
       "workspaces",
       "split-view",
       "privacy",
-      "chrome-extensions"
+      "chrome-extensions",
+      "sync"
     ],
     "website": "https://crestbrowser.com",
     "repo": "https://github.com/pauljoda/Crest",
@@ -656,7 +687,9 @@
       "ad-blocking",
       "de-googled",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view",
+      "security-hardened"
     ],
     "website": "https://www.cromite.org",
     "repo": "https://github.com/uazo/cromite",
@@ -718,6 +751,8 @@
       "chrome-extensions",
       "sync",
       "vertical-tabs",
+      "split-view",
+      "ad-blocking",
       "ai"
     ],
     "website": "https://www.diabrowser.com",
@@ -725,7 +760,8 @@
     "logo": null,
     "sources": [
       "https://www.diabrowser.com",
-      "https://www.diabrowser.com/changelog/1-3-1"
+      "https://www.diabrowser.com/changelog/1-3-1",
+      "https://www.diabrowser.com/plans"
     ],
     "scores": {
       "privacy": 2,
@@ -751,22 +787,23 @@
       "privacy",
       "ad-blocking",
       "mainstream",
-      "minimal",
-      "sync"
+      "sync",
+      "vpn"
     ],
     "website": "https://duckduckgo.com/app",
     "repo": "https://github.com/duckduckgo/apple-browsers",
     "logo": null,
     "sources": [
       "https://duckduckgo.com/about",
-      "https://duckduckgo.com/duckduckgo-help-pages/get-duckduckgo/does-duckduckgo-make-a-browser"
+      "https://duckduckgo.com/duckduckgo-help-pages/get-duckduckgo/does-duckduckgo-make-a-browser",
+      "https://duckduckgo.com/duckduckgo-help-pages/privacy-pro"
     ],
     "scores": {
       "privacy": 4,
       "experience": 4,
       "customisation": 1,
       "lightness": 4,
-      "minimalism": 4
+      "minimalism": 3
     }
   },
   {
@@ -784,14 +821,16 @@
     "description": "Chromium browser from the tree-planting search engine Ecosia; searches and shopping help fund reforestation projects.",
     "tags": [
       "chrome-extensions",
-      "mainstream"
+      "mainstream",
+      "ad-blocking"
     ],
     "website": "https://www.ecosia.org/browser",
     "repo": null,
     "logo": null,
     "sources": [
       "https://blog.ecosia.org/desktop-browser/",
-      "https://browsers.to/fr/ecosia-browser"
+      "https://browsers.to/fr/ecosia-browser",
+      "https://support.ecosia.org/article/575-privacy-settings-on-the-ecosia-browser"
     ],
     "scores": {
       "privacy": 3,
@@ -819,7 +858,8 @@
     "tags": [
       "text-mode",
       "power-user",
-      "lightweight"
+      "lightweight",
+      "keyboard-driven"
     ],
     "website": "http://elinks.or.cz/",
     "repo": "https://github.com/rkd77/elinks",
@@ -951,7 +991,6 @@
     "description": "Agentic AI browser that automates multi-step web workflows and research.",
     "tags": [
       "chrome-extensions",
-      "workspaces",
       "ai"
     ],
     "website": "https://fellou.ai",
@@ -983,14 +1022,19 @@
       "privacy",
       "customizable",
       "de-googled",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking",
+      "sync",
+      "firefox-addons",
+      "split-view"
     ],
     "website": "https://garudalinux.org/",
     "repo": "https://gitlab.com/garuda-linux/firedragon/firedragon12",
     "logo": null,
     "sources": [
       "https://gitlab.com/garuda-linux/firedragon",
-      "https://docs.floorp.app/docs/features/tab-bar-layout/"
+      "https://docs.floorp.app/docs/features/tab-bar-layout/",
+      "https://firedragon.garudalinux.org/"
     ],
     "scores": {
       "privacy": 4,
@@ -1021,6 +1065,8 @@
       "sync",
       "developer",
       "vertical-tabs",
+      "split-view",
+      "vpn",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/",
@@ -1028,7 +1074,9 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
     "sources": [
       "https://www.mozilla.org/firefox/",
-      "https://en.wikipedia.org/wiki/Firefox"
+      "https://en.wikipedia.org/wiki/Firefox",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://blog.mozilla.org/en/firefox/built-in-vpn/"
     ],
     "scores": {
       "privacy": 4,
@@ -1056,6 +1104,8 @@
       "firefox-addons",
       "sync",
       "vertical-tabs",
+      "split-view",
+      "vpn",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/channel/desktop/",
@@ -1064,7 +1114,9 @@
     "sources": [
       "https://www.mozilla.org/firefox/channel/desktop/",
       "https://en.wikipedia.org/wiki/Firefox#Release_channels",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://blog.mozilla.org/en/firefox/built-in-vpn/"
     ],
     "scores": {
       "privacy": 4,
@@ -1092,6 +1144,9 @@
       "firefox-addons",
       "experimental",
       "vertical-tabs",
+      "sync",
+      "split-view",
+      "vpn",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/developer/",
@@ -1100,7 +1155,10 @@
     "sources": [
       "https://www.mozilla.org/firefox/developer/",
       "https://en.wikipedia.org/wiki/Firefox#Release_channels",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://support.mozilla.org/en-US/kb/how-do-i-set-sync-my-computer",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://blog.mozilla.org/en/firefox/built-in-vpn/"
     ],
     "scores": {
       "privacy": 4,
@@ -1128,8 +1186,9 @@
       "enterprise",
       "firefox-addons",
       "mainstream",
-      "security-hardened",
       "vertical-tabs",
+      "sync",
+      "split-view",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/enterprise/",
@@ -1138,7 +1197,9 @@
     "sources": [
       "https://www.mozilla.org/firefox/enterprise/",
       "https://en.wikipedia.org/wiki/Firefox#Extended_Support_Release",
-      "https://www.firefox.com/en-US/firefox/140.0esr/releasenotes/"
+      "https://www.firefox.com/en-US/firefox/140.0esr/releasenotes/",
+      "https://support.mozilla.org/en-US/kb/how-do-i-set-sync-my-computer",
+      "https://www.firefox.com/en-US/firefox/153.0esr/releasenotes/"
     ],
     "scores": {
       "privacy": 4,
@@ -1166,6 +1227,9 @@
       "developer",
       "firefox-addons",
       "vertical-tabs",
+      "sync",
+      "split-view",
+      "vpn",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/channel/desktop/#nightly",
@@ -1174,7 +1238,10 @@
     "sources": [
       "https://www.mozilla.org/firefox/channel/desktop/",
       "https://en.wikipedia.org/wiki/Firefox#Release_channels",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://support.mozilla.org/en-US/kb/how-do-i-set-sync-my-computer",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://blog.mozilla.org/en/firefox/built-in-vpn/"
     ],
     "scores": {
       "privacy": 3,
@@ -1202,14 +1269,17 @@
       "vertical-tabs",
       "workspaces",
       "split-view",
-      "firefox-addons"
+      "firefox-addons",
+      "sync",
+      "portable"
     ],
     "website": "https://floorp.app",
     "repo": "https://github.com/Floorp-Projects/Floorp",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Floorp_logo.png",
     "sources": [
       "https://floorp.app",
-      "https://github.com/Floorp-Projects/Floorp"
+      "https://github.com/Floorp-Projects/Floorp",
+      "https://blog.floorp.app/en/notice/end-of-support-portable-v1"
     ],
     "scores": {
       "privacy": 4,
@@ -1236,14 +1306,17 @@
       "power-user",
       "customizable",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view"
     ],
     "website": "https://glide-browser.app",
     "repo": "https://github.com/glide-browser/glide",
     "logo": null,
     "sources": [
       "https://github.com/glide-browser/glide",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/"
     ],
     "scores": {
       "privacy": 4,
@@ -1268,7 +1341,8 @@
     "tags": [
       "minimal",
       "lightweight",
-      "privacy"
+      "privacy",
+      "ad-blocking"
     ],
     "website": "https://apps.gnome.org/Epiphany/",
     "repo": "https://gitlab.gnome.org/GNOME/epiphany",
@@ -1337,6 +1411,7 @@
       "chrome-extensions",
       "sync",
       "vertical-tabs",
+      "split-view",
       "ai"
     ],
     "website": "https://www.google.com/chrome/",
@@ -1344,7 +1419,8 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "sources": [
       "https://en.wikipedia.org/wiki/Google_Chrome",
-      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ],
     "scores": {
       "privacy": 2,
@@ -1373,14 +1449,16 @@
       "ad-blocking",
       "minimal",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "website": "https://helium.computer",
     "repo": "https://github.com/imputnet/helium",
     "logo": null,
     "sources": [
       "https://github.com/imputnet/helium",
-      "https://github.com/imputnet/helium/issues/1971"
+      "https://github.com/imputnet/helium/issues/1971",
+      "https://helium.computer/"
     ],
     "scores": {
       "privacy": 4,
@@ -1472,7 +1550,8 @@
       "independent-engine",
       "experimental",
       "privacy",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking"
     ],
     "website": "https://ladybird.org/",
     "repo": "https://github.com/LadybirdBrowser/ladybird",
@@ -1480,7 +1559,8 @@
     "sources": [
       "https://ladybird.org/",
       "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md",
-      "https://ladybird.org/newsletter/2026-06-30/"
+      "https://ladybird.org/newsletter/2026-06-30/",
+      "https://piunikaweb.com/2026/10/06/ladybird-browser-alpha-update/"
     ],
     "scores": {
       "privacy": 4,
@@ -1509,7 +1589,9 @@
       "ad-blocking",
       "de-googled",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view"
     ],
     "website": "https://librewolf.net",
     "repo": "https://codeberg.org/librewolf/source",
@@ -1517,7 +1599,8 @@
     "sources": [
       "https://librewolf.net",
       "https://en.wikipedia.org/wiki/LibreWolf",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/"
     ],
     "scores": {
       "privacy": 5,
@@ -1580,13 +1663,20 @@
       "chrome-extensions",
       "vertical-tabs",
       "enterprise",
+      "workspaces",
+      "split-view",
+      "vpn",
+      "sync",
       "ai"
     ],
     "website": "https://www.microsoft.com/edge",
     "repo": null,
     "logo": "https://upload.wikimedia.org/wikipedia/commons/9/98/Microsoft_Edge_logo_%282019%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "sources": [
-      "https://en.wikipedia.org/wiki/Microsoft_Edge"
+      "https://en.wikipedia.org/wiki/Microsoft_Edge",
+      "https://www.microsoft.com/en-us/edge/features/workspaces",
+      "https://www.microsoft.com/en-us/edge/features/split-screen",
+      "https://www.microsoft.com/en-us/edge/features/edge-secure-network-vpn"
     ],
     "scores": {
       "privacy": 2,
@@ -1649,13 +1739,15 @@
     "tags": [
       "minimal",
       "ad-blocking",
-      "privacy"
+      "privacy",
+      "workspaces"
     ],
     "website": "https://minbrowser.org",
     "repo": "https://github.com/minbrowser/min",
     "logo": null,
     "sources": [
-      "https://github.com/minbrowser/min"
+      "https://github.com/minbrowser/min",
+      "https://minbrowser.org/tour/"
     ],
     "scores": {
       "privacy": 4,
@@ -1682,7 +1774,8 @@
       "privacy",
       "security-hardened",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking"
     ],
     "website": "https://mullvad.net/browser",
     "repo": "https://github.com/mullvad/mullvad-browser",
@@ -1690,7 +1783,8 @@
     "sources": [
       "https://mullvad.net/browser",
       "https://github.com/mullvad/mullvad-browser",
-      "https://blog.torproject.org/new-release-tor-browser-150"
+      "https://blog.torproject.org/new-release-tor-browser-150",
+      "https://mullvad.net/en/browser"
     ],
     "scores": {
       "privacy": 5,
@@ -1718,6 +1812,7 @@
       "split-view",
       "chrome-extensions",
       "vertical-tabs",
+      "sync",
       "ai"
     ],
     "website": "https://whale.naver.com",
@@ -1784,6 +1879,9 @@
       "security-hardened",
       "mainstream",
       "vertical-tabs",
+      "vpn",
+      "ad-blocking",
+      "chrome-extensions",
       "ai"
     ],
     "website": "https://neobrowser.ai",
@@ -1793,7 +1891,8 @@
       "https://newsroom.gendigital.com/2025-12-02-Norton-Neo,-The-Worlds-First-Safe-AI-Native-Browser,-Now-Available-for-Free-Worldwide",
       "https://www.thurrott.com/cloud/web-browsers/324951/what-norton-neo-says-about-the-ai-powered-future-of-web-browsing",
       "https://techspot.com/downloads/7816-neo-ai-browser.html",
-      "https://help.neobrowser.ai/tabs-and-browsing"
+      "https://help.neobrowser.ai/tabs-and-browsing",
+      "https://newsroom.gendigital.com/2026-05-04-Norton-Neo-Raises-the-Bar-on-Security-and-Privacy-for-the-AI-Native-Browser"
     ],
     "scores": {
       "privacy": 2,
@@ -1854,6 +1953,8 @@
       "workspaces",
       "chrome-extensions",
       "vertical-tabs",
+      "split-view",
+      "sync",
       "ai"
     ],
     "website": "https://www.opera.com",
@@ -1861,7 +1962,8 @@
     "logo": null,
     "sources": [
       "https://en.wikipedia.org/wiki/Opera_(web_browser)",
-      "https://blogs.opera.com/desktop/2026/07/how-vertical-tabs-work-in-opera-one/"
+      "https://blogs.opera.com/desktop/2026/07/how-vertical-tabs-work-in-opera-one/",
+      "https://blogs.opera.com/desktop/2026/02/opera-128-stable/"
     ],
     "scores": {
       "privacy": 2,
@@ -1886,20 +1988,24 @@
     "tags": [
       "mainstream",
       "chrome-extensions",
+      "ad-blocking",
+      "vpn",
+      "sync",
       "ai"
     ],
     "website": "https://www.opera.com/air",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://www.opera.com/air"
+      "https://www.opera.com/air",
+      "https://press.opera.com/2026/10/15/opera-air/"
     ],
     "scores": {
       "privacy": 2,
       "experience": 4,
       "customisation": 3,
       "lightness": 2,
-      "minimalism": 2
+      "minimalism": 1
     }
   },
   {
@@ -1918,13 +2024,20 @@
       "gaming",
       "customizable",
       "chrome-extensions",
+      "vpn",
+      "ad-blocking",
+      "split-view",
+      "sync",
+      "workspaces",
       "ai"
     ],
     "website": "https://www.opera.com/gx",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://en.wikipedia.org/wiki/Opera_GX"
+      "https://en.wikipedia.org/wiki/Opera_GX",
+      "https://www.opera.com/gx/features/free-vpn-windows",
+      "https://blogs.opera.com/news/2026/10/opera-gx-browser-booster"
     ],
     "scores": {
       "privacy": 2,
@@ -1949,6 +2062,8 @@
     "tags": [
       "experimental",
       "chrome-extensions",
+      "ad-blocking",
+      "vpn",
       "ai"
     ],
     "website": "https://www.opera.com/neon",
@@ -1958,7 +2073,8 @@
       "https://www.opera.com/neon",
       "https://blogs.opera.com/news/2025/09/opera-neon-agentic-ai-browser-release/",
       "https://blogs.opera.com/news/2026/08/your-ai-agents-can-use-opera-neon-free-of-charge/",
-      "https://www.nohackspod.com/blog/agentic-browser-landscape-2026"
+      "https://www.nohackspod.com/blog/agentic-browser-landscape-2026",
+      "https://www.operaneon.com/subscription"
     ],
     "scores": {
       "privacy": 2,
@@ -1984,7 +2100,8 @@
       "chrome-extensions",
       "firefox-addons",
       "ad-blocking",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync"
     ],
     "website": "https://kagi.com/orion/",
     "repo": null,
@@ -1993,7 +2110,8 @@
       "https://kagi.com/orion/",
       "https://en.wikipedia.org/wiki/Orion_(web_browser)",
       "https://blog.kagi.com/update-orion-linux-windows",
-      "https://help.kagi.com/orion/features/vertical-tabs.html"
+      "https://help.kagi.com/orion/features/vertical-tabs.html",
+      "https://cdn.kagi.com/updates/orion-release-notes.html"
     ],
     "scores": {
       "privacy": 4,
@@ -2020,14 +2138,18 @@
       "customizable",
       "lightweight",
       "old-hardware",
-      "power-user"
+      "power-user",
+      "sync",
+      "portable"
     ],
     "website": "https://www.palemoon.org",
     "repo": "https://repo.palemoon.org/MoonchildProductions/Pale-Moon",
     "logo": null,
     "sources": [
       "https://www.palemoon.org",
-      "https://en.wikipedia.org/wiki/Pale_Moon"
+      "https://en.wikipedia.org/wiki/Pale_Moon",
+      "https://www.palemoon.org/sync/",
+      "https://www.palemoon.org/download.shtml"
     ],
     "scores": {
       "privacy": 3,
@@ -2117,13 +2239,15 @@
     "tags": [
       "developer",
       "power-user",
-      "split-view"
+      "split-view",
+      "chrome-extensions"
     ],
     "website": "https://polypane.app",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://polypane.app"
+      "https://polypane.app",
+      "https://polypane.app/docs/browser-extensions/"
     ],
     "scores": {
       "privacy": 3,
@@ -2152,7 +2276,8 @@
       "power-user",
       "minimal",
       "customizable",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking"
     ],
     "website": "https://qutebrowser.org",
     "repo": "https://github.com/qutebrowser/qutebrowser",
@@ -2186,14 +2311,17 @@
       "old-hardware",
       "privacy",
       "firefox-addons",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync",
+      "split-view"
     ],
     "website": "https://eclipse.cx/projects/r3dfox",
     "repo": "https://github.com/Eclipse-Community/r3dfox",
     "logo": null,
     "sources": [
       "https://github.com/Eclipse-Community/r3dfox",
-      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/"
     ],
     "scores": {
       "privacy": 3,
@@ -2280,7 +2408,8 @@
     "description": "Apple's experimental Safari channel that previews upcoming WebKit and Safari features for developers.",
     "tags": [
       "developer",
-      "experimental"
+      "experimental",
+      "sync"
     ],
     "website": "https://developer.apple.com/safari/technology-preview/",
     "repo": null,
@@ -2343,13 +2472,17 @@
     "tags": [
       "vertical-tabs",
       "workspaces",
-      "split-view"
+      "split-view",
+      "ad-blocking",
+      "sync",
+      "chrome-extensions"
     ],
     "website": "https://www.sigmaos.com/",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://www.sigmaos.com/"
+      "https://www.sigmaos.com/",
+      "https://sigmaos.com/"
     ],
     "scores": {
       "privacy": 2,
@@ -2406,8 +2539,8 @@
     "description": "Stockholm-made AI browser built around \"companions\": agents that work in your logged-in tabs, run on schedules and take meeting notes.",
     "tags": [
       "chrome-extensions",
-      "workspaces",
       "vertical-tabs",
+      "split-view",
       "ai"
     ],
     "website": "https://strawberrybrowser.com",
@@ -2419,7 +2552,8 @@
       "https://www.globaltechcouncil.org/ai/what-is-strawberry-browser-and-how-does-it-work/",
       "https://docs.strawberrybrowser.com/introduction/what-is-strawberry",
       "https://strawberrybrowser.com/best-ai-browser-for-windows",
-      "https://docs.strawberrybrowser.com/browser/tabs-and-sidebar"
+      "https://docs.strawberrybrowser.com/browser/tabs-and-sidebar",
+      "https://strawberrybrowser.com/updates/beta-0-0-88-updates"
     ],
     "scores": {
       "privacy": 2,
@@ -2444,13 +2578,16 @@
       "old-hardware",
       "retro",
       "chrome-extensions",
-      "lightweight"
+      "lightweight",
+      "portable",
+      "split-view"
     ],
     "website": "https://github.com/win32ss/supermium",
     "repo": "https://github.com/win32ss/supermium",
     "logo": null,
     "sources": [
-      "https://github.com/win32ss/supermium"
+      "https://github.com/win32ss/supermium",
+      "https://github.com/win32ss/supermium/discussions/177"
     ],
     "scores": {
       "privacy": 2,
@@ -2475,14 +2612,16 @@
     "description": "Performance-optimized Chromium fork with compiler optimizations, extra codecs and patches.",
     "tags": [
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "website": "https://thorium.rocks",
     "repo": "https://github.com/Alex313031/thorium",
     "logo": null,
     "sources": [
       "https://github.com/Alex313031/thorium",
-      "https://github.com/Alex313031/Thorium-Win/issues/476"
+      "https://github.com/Alex313031/Thorium-Win/issues/476",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ],
     "scores": {
       "privacy": 3,
@@ -2546,14 +2685,16 @@
       "ad-blocking",
       "chrome-extensions",
       "workspaces",
-      "vertical-tabs"
+      "vertical-tabs",
+      "sync"
     ],
     "website": "https://www.zoho.com/ulaa",
     "repo": null,
     "logo": null,
     "sources": [
       "https://www.zoho.com/ulaa",
-      "https://support.creatorscripts.com/portal/en/kb/articles/how-to-enable-vertical-tabs-in-the-ulaa-browser"
+      "https://support.creatorscripts.com/portal/en/kb/articles/how-to-enable-vertical-tabs-in-the-ulaa-browser",
+      "https://ulaabrowser.zohodesk.com/portal/en/kb/articles/sign-in-and-sync-in-ulaa"
     ],
     "scores": {
       "privacy": 3,
@@ -2581,14 +2722,16 @@
       "privacy",
       "de-googled",
       "chrome-extensions",
-      "vertical-tabs"
+      "vertical-tabs",
+      "split-view"
     ],
     "website": "https://github.com/ungoogled-software/ungoogled-chromium",
     "repo": "https://github.com/ungoogled-software/ungoogled-chromium",
     "logo": null,
     "sources": [
       "https://github.com/ungoogled-software/ungoogled-chromium",
-      "https://github.com/ungoogled-software/ungoogled-chromium/issues/3698"
+      "https://github.com/ungoogled-software/ungoogled-chromium/issues/3698",
+      "https://developer.chrome.com/blog/split-view-api-extensions"
     ],
     "scores": {
       "privacy": 4,
@@ -2614,14 +2757,17 @@
     "tags": [
       "keyboard-driven",
       "power-user",
-      "privacy"
+      "privacy",
+      "split-view",
+      "ad-blocking"
     ],
     "website": "https://vieb.dev",
     "repo": "https://github.com/Jelmerro/Vieb",
     "logo": "https://raw.githubusercontent.com/Jelmerro/Vieb/master/app/img/icons/512x512.png",
     "sources": [
       "https://github.com/Jelmerro/Vieb",
-      "https://vieb.dev"
+      "https://vieb.dev",
+      "https://vieb.dev/features"
     ],
     "scores": {
       "privacy": 4,
@@ -2652,13 +2798,15 @@
       "vpn",
       "chrome-extensions",
       "vertical-tabs",
-      "ad-blocking"
+      "ad-blocking",
+      "sync"
     ],
     "website": "https://vivaldi.com",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://en.wikipedia.org/wiki/Vivaldi_(web_browser)"
+      "https://en.wikipedia.org/wiki/Vivaldi_(web_browser)",
+      "https://vivaldi.com/features/sync/"
     ],
     "scores": {
       "privacy": 3,
@@ -2685,7 +2833,10 @@
       "privacy",
       "firefox-addons",
       "customizable",
-      "vertical-tabs"
+      "vertical-tabs",
+      "ad-blocking",
+      "split-view",
+      "sync"
     ],
     "website": "https://www.waterfox.net",
     "repo": "https://github.com/BrowserWorks/Waterfox",
@@ -2694,7 +2845,9 @@
       "https://www.waterfox.net",
       "https://github.com/BrowserWorks/Waterfox",
       "https://en.wikipedia.org/wiki/Waterfox",
-      "https://www.waterfox.com/releases/6.6.0/"
+      "https://www.waterfox.com/releases/6.6.0/",
+      "https://www.waterfox.com/releases/6.7.0/",
+      "https://www.waterfox.com/releases/6.7.1/"
     ],
     "scores": {
       "privacy": 4,
@@ -2723,6 +2876,7 @@
       "chrome-extensions",
       "enterprise",
       "vertical-tabs",
+      "split-view",
       "ai"
     ],
     "website": "https://wavebox.io",
@@ -2790,6 +2944,7 @@
       "regional",
       "chrome-extensions",
       "mainstream",
+      "sync",
       "ai"
     ],
     "website": "https://browser.yandex.com",
@@ -2822,6 +2977,8 @@
       "workspaces",
       "split-view",
       "chrome-extensions",
+      "ad-blocking",
+      "sync",
       "ai"
     ],
     "website": "https://yetanotherbrowser.com",
@@ -2829,7 +2986,8 @@
     "logo": null,
     "sources": [
       "https://openhunts.com/blog/arc-alternatives",
-      "https://www.uneed.best/alternatives/arc-browser"
+      "https://www.uneed.best/alternatives/arc-browser",
+      "https://yetanotherbrowser.com/"
     ],
     "scores": {
       "privacy": 3,
@@ -2858,7 +3016,8 @@
       "split-view",
       "minimal",
       "customizable",
-      "firefox-addons"
+      "firefox-addons",
+      "sync"
     ],
     "website": "https://zen-browser.app",
     "repo": "https://github.com/zen-browser/desktop",
@@ -2866,7 +3025,8 @@
     "sources": [
       "https://zen-browser.app",
       "https://github.com/zen-browser/desktop",
-      "https://en.wikipedia.org/wiki/Zen_Browser"
+      "https://en.wikipedia.org/wiki/Zen_Browser",
+      "https://piunikaweb.com/2026/07/09/zen-browser-device-sync-twilight/"
     ],
     "scores": {
       "privacy": 4,

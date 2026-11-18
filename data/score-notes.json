@@ -180,7 +180,7 @@
     ]
   },
   "duckduckgo": {
-    "why": "Second-best mainstream result on privacytests (71 passes) though only 11/24 on fingerprinting; reviews praise easy defaults but note there are no third-party extensions. Duck.ai chat and a VPN subscription upsell are now integrated, though Duck.ai can be turned off; that is borderline for minimalism 4 (see calibration note).",
+    "why": "Second-best mainstream result on privacytests (71 passes) though only 11/24 on fingerprinting; reviews praise easy defaults but note there are no third-party extensions. Duck.ai chat and a VPN subscription are now integrated, though Duck.ai can be turned off; with the built-in VPN, minimalism is 3.",
     "sources": [
       "https://piunikaweb.com/2026/08/11/browser-privacy-test-results/",
       "https://piunikaweb.com/2026/11/12/browser-fingerprinting-protection-tests-privacytests/",
@@ -438,7 +438,7 @@
     ]
   },
   "opera-air": {
-    "why": "Reviewers (MakeUseOf, XDA, Tom's Guide) like its calm, rounded UI and find the wellbeing tools useful, though it keeps Opera's extras. It was the heaviest Opera variant in Notebookcheck's RAM test (~1.7 GB for 4 tabs), which supports lightness 2.",
+    "why": "Reviewers (MakeUseOf, XDA, Tom's Guide) like its calm, rounded UI and find the wellbeing tools useful, though it keeps Opera's extras: a free VPN, ad blocker and AI are bundled, so minimalism is 1 like Opera. It was the heaviest Opera variant in Notebookcheck's RAM test (~1.7 GB for 4 tabs), which supports lightness 2.",
     "sources": [
       "https://www.makeuseof.com/best-new-browser-2025-opera-air/",
       "https://www.xda-developers.com/replaced-chrome-firefox-brave-with-minimalist-browser-opera-air/",
