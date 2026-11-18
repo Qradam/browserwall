@@ -1578,7 +1578,8 @@
     "os": [
       "windows",
       "macos",
-      "linux"
+      "linux",
+      "bsd"
     ],
     "status": "active",
     "openSource": true,
@@ -1600,7 +1601,8 @@
       "https://librewolf.net",
       "https://en.wikipedia.org/wiki/LibreWolf",
       "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
-      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/"
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://www.freshports.org/www/librewolf/"
     ],
     "scores": {
       "privacy": 5,
@@ -2639,7 +2641,8 @@
     "os": [
       "windows",
       "macos",
-      "linux"
+      "linux",
+      "bsd"
     ],
     "status": "active",
     "openSource": true,
@@ -2657,7 +2660,8 @@
     "sources": [
       "https://www.torproject.org/download/",
       "https://en.wikipedia.org/wiki/Tor_(network)#Tor_Browser",
-      "https://blog.torproject.org/new-release-tor-browser-150"
+      "https://blog.torproject.org/new-release-tor-browser-150",
+      "https://www.freshports.org/www/tor-browser/"
     ],
     "scores": {
       "privacy": 5,
@@ -2824,7 +2828,8 @@
     "os": [
       "windows",
       "macos",
-      "linux"
+      "linux",
+      "bsd"
     ],
     "status": "active",
     "openSource": true,
@@ -2847,7 +2852,8 @@
       "https://en.wikipedia.org/wiki/Waterfox",
       "https://www.waterfox.com/releases/6.6.0/",
       "https://www.waterfox.com/releases/6.7.0/",
-      "https://www.waterfox.com/releases/6.7.1/"
+      "https://www.waterfox.com/releases/6.7.1/",
+      "https://www.freshports.org/www/waterfox/"
     ],
     "scores": {
       "privacy": 4,

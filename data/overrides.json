@@ -568,8 +568,10 @@
       "https://en.wikipedia.org/wiki/Waterfox",
       "https://www.waterfox.com/releases/6.6.0/",
       "https://www.waterfox.com/releases/6.7.0/",
-      "https://www.waterfox.com/releases/6.7.1/"
-    ]
+      "https://www.waterfox.com/releases/6.7.1/",
+      "https://www.freshports.org/www/waterfox/"
+    ],
+    "os": ["windows", "macos", "linux", "bsd"]
   },
   "librewolf": {
     "tags": [
@@ -586,8 +588,10 @@
       "https://librewolf.net",
       "https://en.wikipedia.org/wiki/LibreWolf",
       "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs",
-      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/"
-    ]
+      "https://www.firefox.com/en-US/firefox/149.0/releasenotes/",
+      "https://www.freshports.org/www/librewolf/"
+    ],
+    "os": ["windows", "macos", "linux", "bsd"]
   },
   "tor-browser": {
     "tags": [
@@ -600,8 +604,10 @@
     "sources": [
       "https://www.torproject.org/download/",
       "https://en.wikipedia.org/wiki/Tor_(network)#Tor_Browser",
-      "https://blog.torproject.org/new-release-tor-browser-150"
-    ]
+      "https://blog.torproject.org/new-release-tor-browser-150",
+      "https://www.freshports.org/www/tor-browser/"
+    ],
+    "os": ["windows", "macos", "linux", "bsd"]
   },
   "mullvad-browser": {
     "tags": [

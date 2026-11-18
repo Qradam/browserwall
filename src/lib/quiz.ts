@@ -10,7 +10,7 @@ const has = (b: Browser, t: string) => b.tags.includes(t);
 // ---------------------------------------------------------------------------- questions
 
 export const OS_OPTIONS = [
-  { id: "windows", label: "Windows" }, { id: "macos", label: "macOS" }, { id: "linux", label: "Linux" },
+  { id: "windows", label: "Windows" }, { id: "macos", label: "macOS" }, { id: "linux", label: "Linux" }, { id: "bsd", label: "BSD" },
 ] as const;
 
 export const EXT_OPTIONS = [
