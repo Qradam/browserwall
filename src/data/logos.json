@@ -249,11 +249,6 @@
     "source": "https://upload.wikimedia.org/wikipedia/commons/4/47/Netscape_Navigator_Icon.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "kind": "commons"
   },
-  "nook": {
-    "file": "/logos/nook.png",
-    "source": "https://raw.githubusercontent.com/nook-browser/Nook/main/assets/icon.png",
-    "kind": "dataset"
-  },
   "norton-neo": {
     "file": "/logos/norton-neo.png",
     "source": "https://neobrowser.ai/app-icon-512.png",

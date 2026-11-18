@@ -430,21 +430,6 @@
       "https://forum.whale.naver.com/announcement/137-desktop-v53941257-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8/"
     ]
   },
-  "nook": {
-    "level": 3,
-    "agent": true,
-    "agentPaid": false,
-    "models": "bring your own: Gemini (default provider), OpenRouter, OpenAI-compatible, Ollama, Apple Intelligence",
-    "onByDefault": true,
-    "canDisable": "fully",
-    "local": true,
-    "quality": 2,
-    "note": "The open-source app on GitHub has a sidebar AI chat whose browser tools can navigate, click and fill fields, with approval required for actions that change things. It also has Apple Intelligence tab organizing, link previews and Look It Up. The chat button is on by default but can be toggled off, and it needs your own key or a local model. It is a small, revived project with no independent reviews, and nookbrowser.app describes a separate Chromium beta with on-device-only AI.",
-    "sources": [
-      "https://github.com/nook-browser/Nook",
-      "https://nookbrowser.app/"
-    ]
-  },
   "norton-neo": {
     "level": 2,
     "agent": false,

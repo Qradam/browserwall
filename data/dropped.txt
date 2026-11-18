@@ -82,6 +82,7 @@ netscape-7
 netscape-navigator-9
 netsurf
 new-moon
+nook
 nyxt
 odyssey-web-browser
 omniweb

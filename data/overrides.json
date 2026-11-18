@@ -1,5 +1,5 @@
 {
-  "_note": "Manual corrections applied after merging raw files. Verified 2026-11-17 via GitHub commit feeds (scripts/check-repos.mjs) and web search.",
+  "_note": "Manual corrections applied after merging raw files. Verified 2026-11-17 via GitHub commit feeds (scripts/check-repos.mjs) and web search. Vertical tabs re-checked 2026-11-18 (Chrome 147+/Chromium M152+, Opera One, Firefox 136+/ESR 140 and forks). Also counted when only in beta/nightly builds (Safari 27.3 beta, Ladybird nightlies).",
   "elinks": {
     "status": "active",
     "repo": "https://github.com/rkd77/elinks",
@@ -145,7 +145,14 @@
     "description": "Truly independent browser with its own engine (LibWeb), not based on Chromium, Gecko or WebKit. Pre-alpha; first alpha due late 2026.",
     "sources": [
       "https://ladybird.org/",
-      "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md"
+      "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md",
+      "https://ladybird.org/newsletter/2026-06-30/"
+    ],
+    "tags": [
+      "independent-engine",
+      "experimental",
+      "privacy",
+      "vertical-tabs"
     ]
   },
   "pissandshittium": {
@@ -166,12 +173,14 @@
       "privacy",
       "de-googled",
       "security-hardened",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
     "description": "The GNU Project's Firefox ESR rebuild with all non-free parts removed and LibreJS blocking non-free JavaScript.",
     "sources": [
       "https://www.gnu.org/software/gnuzilla/",
-      "https://www.itechguides.com/products/gnu-icecat/"
+      "https://www.itechguides.com/products/gnu-icecat/",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
     ],
     "os": [
       "linux"
@@ -238,7 +247,11 @@
       "ad-blocking",
       "workspaces",
       "chrome-extensions",
-      "ai"
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Opera_(web_browser)",
+      "https://blogs.opera.com/desktop/2026/07/how-vertical-tabs-work-in-opera-one/"
     ]
   },
   "vivaldi": {
@@ -281,8 +294,12 @@
   },
   "thorium": {
     "tags": [
-      "performance",
-      "chrome-extensions"
+      "chrome-extensions",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://github.com/Alex313031/thorium",
+      "https://github.com/Alex313031/Thorium-Win/issues/476"
     ]
   },
   "firefox": {
@@ -312,9 +329,16 @@
       "ad-blocking",
       "workspaces",
       "vpn",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
-    "description": "Astian's Gecko browser rebuilt from Floorp code, with ad blocking, workspaces, its own sync, search and a bundled MidoriVPN."
+    "description": "Astian's Gecko browser rebuilt from Floorp code, with ad blocking, workspaces, its own sync, search and a bundled MidoriVPN.",
+    "sources": [
+      "https://github.com/goastian/midori-desktop",
+      "https://alternativeto.net/news/2026/7/midori-11-9-brings-revamped-control-center-interface-improvements-and-better-ad-blocking/",
+      "https://en.wikipedia.org/wiki/Midori_(web_browser)",
+      "https://piunikaweb.com/2026/07/14/midori-browser-11-9-update/"
+    ]
   },
   "orion": {
     "os": [
@@ -324,7 +348,15 @@
     "sources": [
       "https://kagi.com/orion/",
       "https://en.wikipedia.org/wiki/Orion_(web_browser)",
-      "https://blog.kagi.com/update-orion-linux-windows"
+      "https://blog.kagi.com/update-orion-linux-windows",
+      "https://help.kagi.com/orion/features/vertical-tabs.html"
+    ],
+    "tags": [
+      "privacy",
+      "chrome-extensions",
+      "firefox-addons",
+      "ad-blocking",
+      "vertical-tabs"
     ]
   },
   "brave-origin": {
@@ -354,6 +386,369 @@
       "developer",
       "vertical-tabs",
       "tor"
+    ]
+  },
+  "firefox-beta": {
+    "tags": [
+      "experimental",
+      "firefox-addons",
+      "sync",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.mozilla.org/firefox/channel/desktop/",
+      "https://en.wikipedia.org/wiki/Firefox#Release_channels",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+    ]
+  },
+  "firefox-developer-edition": {
+    "tags": [
+      "developer",
+      "firefox-addons",
+      "experimental",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.mozilla.org/firefox/developer/",
+      "https://en.wikipedia.org/wiki/Firefox#Release_channels",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+    ]
+  },
+  "firefox-nightly": {
+    "tags": [
+      "experimental",
+      "developer",
+      "firefox-addons",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.mozilla.org/firefox/channel/desktop/",
+      "https://en.wikipedia.org/wiki/Firefox#Release_channels",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+    ]
+  },
+  "firefox-esr": {
+    "tags": [
+      "enterprise",
+      "firefox-addons",
+      "mainstream",
+      "security-hardened",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.mozilla.org/firefox/enterprise/",
+      "https://en.wikipedia.org/wiki/Firefox#Extended_Support_Release",
+      "https://www.firefox.com/en-US/firefox/140.0esr/releasenotes/"
+    ]
+  },
+  "waterfox": {
+    "tags": [
+      "privacy",
+      "firefox-addons",
+      "customizable",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.waterfox.net",
+      "https://github.com/BrowserWorks/Waterfox",
+      "https://en.wikipedia.org/wiki/Waterfox",
+      "https://www.waterfox.com/releases/6.6.0/"
+    ]
+  },
+  "librewolf": {
+    "tags": [
+      "privacy",
+      "security-hardened",
+      "ad-blocking",
+      "de-googled",
+      "firefox-addons",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://librewolf.net",
+      "https://en.wikipedia.org/wiki/LibreWolf",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+    ]
+  },
+  "tor-browser": {
+    "tags": [
+      "tor",
+      "privacy",
+      "security-hardened",
+      "firefox-addons",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.torproject.org/download/",
+      "https://en.wikipedia.org/wiki/Tor_(network)#Tor_Browser",
+      "https://blog.torproject.org/new-release-tor-browser-150"
+    ]
+  },
+  "mullvad-browser": {
+    "tags": [
+      "privacy",
+      "security-hardened",
+      "firefox-addons",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://mullvad.net/browser",
+      "https://github.com/mullvad/mullvad-browser",
+      "https://blog.torproject.org/new-release-tor-browser-150"
+    ]
+  },
+  "firedragon": {
+    "tags": [
+      "privacy",
+      "customizable",
+      "de-googled",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://gitlab.com/garuda-linux/firedragon",
+      "https://docs.floorp.app/docs/features/tab-bar-layout/"
+    ]
+  },
+  "glide-browser": {
+    "tags": [
+      "keyboard-driven",
+      "power-user",
+      "customizable",
+      "firefox-addons",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://github.com/glide-browser/glide",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+    ]
+  },
+  "r3dfox": {
+    "tags": [
+      "old-hardware",
+      "privacy",
+      "firefox-addons",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://github.com/Eclipse-Community/r3dfox",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
+    ]
+  },
+  "google-chrome": {
+    "tags": [
+      "mainstream",
+      "chrome-extensions",
+      "sync",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Google_Chrome",
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+    ]
+  },
+  "chrome-canary": {
+    "tags": [
+      "developer",
+      "experimental",
+      "chrome-extensions",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.google.com/chrome/canary/",
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+    ]
+  },
+  "chromium": {
+    "tags": [
+      "developer",
+      "chrome-extensions",
+      "experimental",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Chromium_(web_browser)",
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
+    ]
+  },
+  "naver-whale": {
+    "tags": [
+      "regional",
+      "split-view",
+      "chrome-extensions",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Naver_Whale",
+      "https://help.whale.naver.com/en/desktop/etc/verticaltab/"
+    ]
+  },
+  "dia": {
+    "tags": [
+      "chrome-extensions",
+      "sync",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.diabrowser.com",
+      "https://www.diabrowser.com/changelog/1-3-1"
+    ]
+  },
+  "norton-neo": {
+    "tags": [
+      "security-hardened",
+      "mainstream",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://newsroom.gendigital.com/2025-12-02-Norton-Neo,-The-Worlds-First-Safe-AI-Native-Browser,-Now-Available-for-Free-Worldwide",
+      "https://www.thurrott.com/cloud/web-browsers/324951/what-norton-neo-says-about-the-ai-powered-future-of-web-browsing",
+      "https://techspot.com/downloads/7816-neo-ai-browser.html",
+      "https://help.neobrowser.ai/tabs-and-browsing"
+    ]
+  },
+  "helium": {
+    "tags": [
+      "privacy",
+      "de-googled",
+      "ad-blocking",
+      "minimal",
+      "chrome-extensions",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://github.com/imputnet/helium",
+      "https://github.com/imputnet/helium/issues/1971"
+    ]
+  },
+  "ungoogled-chromium": {
+    "tags": [
+      "privacy",
+      "de-googled",
+      "chrome-extensions",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://github.com/ungoogled-software/ungoogled-chromium",
+      "https://github.com/ungoogled-software/ungoogled-chromium/issues/3698"
+    ]
+  },
+  "cromite": {
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "de-googled",
+      "chrome-extensions",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://github.com/uazo/cromite",
+      "https://github.com/uazo/cromite/releases"
+    ]
+  },
+  "wavebox": {
+    "tags": [
+      "workspaces",
+      "power-user",
+      "chrome-extensions",
+      "enterprise",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://wavebox.io",
+      "https://hub.wavebox.io/webdock-explorer-layout/"
+    ]
+  },
+  "strawberry": {
+    "tags": [
+      "chrome-extensions",
+      "workspaces",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://strawberrybrowser.com/",
+      "https://windowsforum.com/news/strawberry-1-0-ai-browser-for-windows-agent-features-pricing-and-it-security-review.450031/",
+      "https://www.globaltechcouncil.org/ai/what-is-strawberry-browser-and-how-does-it-work/",
+      "https://docs.strawberrybrowser.com/introduction/what-is-strawberry",
+      "https://strawberrybrowser.com/best-ai-browser-for-windows",
+      "https://docs.strawberrybrowser.com/browser/tabs-and-sidebar"
+    ]
+  },
+  "browseros": {
+    "tags": [
+      "privacy",
+      "chrome-extensions",
+      "experimental",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://github.com/browseros-ai/BrowserOS",
+      "https://www.sigmabrowser.com/blog/what-is-an-agentic-browser-best-agentic-browsers-in-2026",
+      "https://docs.browseros.com/features/vertical-tabs"
+    ]
+  },
+  "falkon": {
+    "tags": [
+      "lightweight",
+      "ad-blocking",
+      "minimal",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Falkon",
+      "https://apps.kde.org/falkon/",
+      "https://www.falkon.org/posts/2024/2024-12-15-falkon-24-12-release-notes/"
+    ]
+  },
+  "qutebrowser": {
+    "tags": [
+      "keyboard-driven",
+      "power-user",
+      "minimal",
+      "customizable",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://github.com/qutebrowser/qutebrowser",
+      "https://en.wikipedia.org/wiki/Qutebrowser",
+      "https://qutebrowser.org/doc/help/settings.html"
+    ]
+  },
+  "safari": {
+    "tags": [
+      "mainstream",
+      "sync",
+      "privacy",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://en.wikipedia.org/wiki/Safari_(web_browser)",
+      "https://www.apple.com/safari/",
+      "https://9to5mac.com/2026/11/03/ios-27-3-and-macos-27-3-add-vertical-tabs-adaptive-dark-mode-and-more-to-safari/"
+    ]
+  },
+  "ulaa": {
+    "tags": [
+      "privacy",
+      "ad-blocking",
+      "chrome-extensions",
+      "workspaces",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.zoho.com/ulaa",
+      "https://support.creatorscripts.com/portal/en/kb/articles/how-to-enable-vertical-tabs-in-the-ulaa-browser"
+    ]
+  },
+  "island": {
+    "tags": [
+      "enterprise",
+      "security-hardened",
+      "chrome-extensions",
+      "vertical-tabs"
+    ],
+    "sources": [
+      "https://www.island.io",
+      "https://www.island.io/"
     ]
   }
 }

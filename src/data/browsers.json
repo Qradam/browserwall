@@ -423,6 +423,7 @@
       "privacy",
       "chrome-extensions",
       "experimental",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.browseros.com",
@@ -430,7 +431,8 @@
     "logo": null,
     "sources": [
       "https://github.com/browseros-ai/BrowserOS",
-      "https://www.sigmabrowser.com/blog/what-is-an-agentic-browser-best-agentic-browsers-in-2026"
+      "https://www.sigmabrowser.com/blog/what-is-an-agentic-browser-best-agentic-browsers-in-2026",
+      "https://docs.browseros.com/features/vertical-tabs"
     ],
     "scores": {
       "privacy": 3,
@@ -518,13 +520,15 @@
       "developer",
       "experimental",
       "chrome-extensions",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.google.com/chrome/canary/",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://www.google.com/chrome/canary/"
+      "https://www.google.com/chrome/canary/",
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
     ],
     "scores": {
       "privacy": 2,
@@ -551,13 +555,15 @@
     "tags": [
       "developer",
       "chrome-extensions",
-      "experimental"
+      "experimental",
+      "vertical-tabs"
     ],
     "website": "https://www.chromium.org/",
     "repo": "https://chromium.googlesource.com/chromium/src",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/2/28/Chromium_Logo.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "sources": [
-      "https://en.wikipedia.org/wiki/Chromium_(web_browser)"
+      "https://en.wikipedia.org/wiki/Chromium_(web_browser)",
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
     ],
     "scores": {
       "privacy": 3,
@@ -649,13 +655,15 @@
       "privacy",
       "ad-blocking",
       "de-googled",
-      "chrome-extensions"
+      "chrome-extensions",
+      "vertical-tabs"
     ],
     "website": "https://www.cromite.org",
     "repo": "https://github.com/uazo/cromite",
     "logo": null,
     "sources": [
-      "https://github.com/uazo/cromite"
+      "https://github.com/uazo/cromite",
+      "https://github.com/uazo/cromite/releases"
     ],
     "scores": {
       "privacy": 4,
@@ -709,13 +717,15 @@
     "tags": [
       "chrome-extensions",
       "sync",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.diabrowser.com",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://www.diabrowser.com"
+      "https://www.diabrowser.com",
+      "https://www.diabrowser.com/changelog/1-3-1"
     ],
     "scores": {
       "privacy": 2,
@@ -908,14 +918,16 @@
     "tags": [
       "lightweight",
       "ad-blocking",
-      "minimal"
+      "minimal",
+      "vertical-tabs"
     ],
     "website": "https://www.falkon.org",
     "repo": "https://invent.kde.org/network/falkon",
     "logo": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Breezeicons-apps-48-falkon.svg/960px-Breezeicons-apps-48-falkon.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "sources": [
       "https://en.wikipedia.org/wiki/Falkon",
-      "https://apps.kde.org/falkon/"
+      "https://apps.kde.org/falkon/",
+      "https://www.falkon.org/posts/2024/2024-12-15-falkon-24-12-release-notes/"
     ],
     "scores": {
       "privacy": 3,
@@ -970,13 +982,15 @@
     "tags": [
       "privacy",
       "customizable",
-      "de-googled"
+      "de-googled",
+      "vertical-tabs"
     ],
     "website": "https://garudalinux.org/",
     "repo": "https://gitlab.com/garuda-linux/firedragon/firedragon12",
     "logo": null,
     "sources": [
-      "https://gitlab.com/garuda-linux/firedragon"
+      "https://gitlab.com/garuda-linux/firedragon",
+      "https://docs.floorp.app/docs/features/tab-bar-layout/"
     ],
     "scores": {
       "privacy": 4,
@@ -1041,6 +1055,7 @@
       "experimental",
       "firefox-addons",
       "sync",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/channel/desktop/",
@@ -1048,7 +1063,8 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
     "sources": [
       "https://www.mozilla.org/firefox/channel/desktop/",
-      "https://en.wikipedia.org/wiki/Firefox#Release_channels"
+      "https://en.wikipedia.org/wiki/Firefox#Release_channels",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
     ],
     "scores": {
       "privacy": 4,
@@ -1075,6 +1091,7 @@
       "developer",
       "firefox-addons",
       "experimental",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/developer/",
@@ -1082,7 +1099,8 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/3/30/Firefox_Developer_Edition_logo%2C_2019.svg",
     "sources": [
       "https://www.mozilla.org/firefox/developer/",
-      "https://en.wikipedia.org/wiki/Firefox#Release_channels"
+      "https://en.wikipedia.org/wiki/Firefox#Release_channels",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
     ],
     "scores": {
       "privacy": 4,
@@ -1111,6 +1129,7 @@
       "firefox-addons",
       "mainstream",
       "security-hardened",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/enterprise/",
@@ -1118,7 +1137,8 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg",
     "sources": [
       "https://www.mozilla.org/firefox/enterprise/",
-      "https://en.wikipedia.org/wiki/Firefox#Extended_Support_Release"
+      "https://en.wikipedia.org/wiki/Firefox#Extended_Support_Release",
+      "https://www.firefox.com/en-US/firefox/140.0esr/releasenotes/"
     ],
     "scores": {
       "privacy": 4,
@@ -1145,6 +1165,7 @@
       "experimental",
       "developer",
       "firefox-addons",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.mozilla.org/firefox/channel/desktop/#nightly",
@@ -1152,7 +1173,8 @@
     "logo": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Firefox_Nightly_logo%2C_2019.svg",
     "sources": [
       "https://www.mozilla.org/firefox/channel/desktop/",
-      "https://en.wikipedia.org/wiki/Firefox#Release_channels"
+      "https://en.wikipedia.org/wiki/Firefox#Release_channels",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
     ],
     "scores": {
       "privacy": 3,
@@ -1213,13 +1235,15 @@
       "keyboard-driven",
       "power-user",
       "customizable",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
     "website": "https://glide-browser.app",
     "repo": "https://github.com/glide-browser/glide",
     "logo": null,
     "sources": [
-      "https://github.com/glide-browser/glide"
+      "https://github.com/glide-browser/glide",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
     ],
     "scores": {
       "privacy": 4,
@@ -1276,14 +1300,16 @@
       "privacy",
       "de-googled",
       "security-hardened",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
     "website": "https://www.gnu.org/software/gnuzilla/",
     "repo": null,
     "logo": null,
     "sources": [
       "https://www.gnu.org/software/gnuzilla/",
-      "https://www.itechguides.com/products/gnu-icecat/"
+      "https://www.itechguides.com/products/gnu-icecat/",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
     ],
     "scores": {
       "privacy": 4,
@@ -1310,13 +1336,15 @@
       "mainstream",
       "chrome-extensions",
       "sync",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.google.com/chrome/",
     "repo": null,
     "logo": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%28February_2022%29.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
     "sources": [
-      "https://en.wikipedia.org/wiki/Google_Chrome"
+      "https://en.wikipedia.org/wiki/Google_Chrome",
+      "https://blog.google/products-and-platforms/products/chrome/new-chrome-productivity-features"
     ],
     "scores": {
       "privacy": 2,
@@ -1344,13 +1372,15 @@
       "de-googled",
       "ad-blocking",
       "minimal",
-      "chrome-extensions"
+      "chrome-extensions",
+      "vertical-tabs"
     ],
     "website": "https://helium.computer",
     "repo": "https://github.com/imputnet/helium",
     "logo": null,
     "sources": [
-      "https://github.com/imputnet/helium"
+      "https://github.com/imputnet/helium",
+      "https://github.com/imputnet/helium/issues/1971"
     ],
     "scores": {
       "privacy": 4,
@@ -1407,13 +1437,15 @@
       "enterprise",
       "security-hardened",
       "chrome-extensions",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.island.io",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://www.island.io"
+      "https://www.island.io",
+      "https://www.island.io/"
     ],
     "scores": {
       "privacy": 2,
@@ -1439,14 +1471,16 @@
     "tags": [
       "independent-engine",
       "experimental",
-      "privacy"
+      "privacy",
+      "vertical-tabs"
     ],
     "website": "https://ladybird.org/",
     "repo": "https://github.com/LadybirdBrowser/ladybird",
     "logo": null,
     "sources": [
       "https://ladybird.org/",
-      "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md"
+      "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md",
+      "https://ladybird.org/newsletter/2026-06-30/"
     ],
     "scores": {
       "privacy": 4,
@@ -1474,14 +1508,16 @@
       "security-hardened",
       "ad-blocking",
       "de-googled",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
     "website": "https://librewolf.net",
     "repo": "https://codeberg.org/librewolf/source",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d0/LibreWolf_icon.svg",
     "sources": [
       "https://librewolf.net",
-      "https://en.wikipedia.org/wiki/LibreWolf"
+      "https://en.wikipedia.org/wiki/LibreWolf",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
     ],
     "scores": {
       "privacy": 5,
@@ -1577,7 +1613,8 @@
       "ad-blocking",
       "workspaces",
       "vpn",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
     "website": "https://astian.org/midori-browser/",
     "repo": "https://github.com/goastian/midori-desktop",
@@ -1585,7 +1622,8 @@
     "sources": [
       "https://github.com/goastian/midori-desktop",
       "https://alternativeto.net/news/2026/7/midori-11-9-brings-revamped-control-center-interface-improvements-and-better-ad-blocking/",
-      "https://en.wikipedia.org/wiki/Midori_(web_browser)"
+      "https://en.wikipedia.org/wiki/Midori_(web_browser)",
+      "https://piunikaweb.com/2026/07/14/midori-browser-11-9-update/"
     ],
     "scores": {
       "privacy": 2,
@@ -1643,14 +1681,16 @@
     "tags": [
       "privacy",
       "security-hardened",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
     "website": "https://mullvad.net/browser",
     "repo": "https://github.com/mullvad/mullvad-browser",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/7/70/Mullvad_Browser_logo.svg",
     "sources": [
       "https://mullvad.net/browser",
-      "https://github.com/mullvad/mullvad-browser"
+      "https://github.com/mullvad/mullvad-browser",
+      "https://blog.torproject.org/new-release-tor-browser-150"
     ],
     "scores": {
       "privacy": 5,
@@ -1677,13 +1717,15 @@
       "regional",
       "split-view",
       "chrome-extensions",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://whale.naver.com",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://en.wikipedia.org/wiki/Naver_Whale"
+      "https://en.wikipedia.org/wiki/Naver_Whale",
+      "https://help.whale.naver.com/en/desktop/etc/verticaltab/"
     ],
     "scores": {
       "privacy": 2,
@@ -1727,39 +1769,6 @@
     }
   },
   {
-    "id": "nook",
-    "name": "Nook",
-    "engine": "webkit",
-    "basedOn": null,
-    "os": [
-      "macos"
-    ],
-    "status": "active",
-    "openSource": true,
-    "description": "Open-source, sidebar-first minimal macOS browser with Rooms for grouping tasks; positioned as an Arc-style alternative.",
-    "tags": [
-      "vertical-tabs",
-      "workspaces",
-      "minimal",
-      "ai"
-    ],
-    "website": "https://nookbrowser.app",
-    "repo": "https://github.com/nook-browser/Nook",
-    "logo": "https://raw.githubusercontent.com/nook-browser/Nook/main/assets/icon.png",
-    "sources": [
-      "https://github.com/nook-browser/Nook",
-      "https://alternativeto.net/software/nook-browser/about"
-    ],
-    "scores": {
-      "privacy": 3,
-      "experience": 3,
-      "customisation": 3,
-      "lightness": 3,
-      "minimalism": 4,
-      "lowConfidence": true
-    }
-  },
-  {
     "id": "norton-neo",
     "name": "Norton Neo",
     "engine": "blink",
@@ -1774,6 +1783,7 @@
     "tags": [
       "security-hardened",
       "mainstream",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://neobrowser.ai",
@@ -1782,7 +1792,8 @@
     "sources": [
       "https://newsroom.gendigital.com/2025-12-02-Norton-Neo,-The-Worlds-First-Safe-AI-Native-Browser,-Now-Available-for-Free-Worldwide",
       "https://www.thurrott.com/cloud/web-browsers/324951/what-norton-neo-says-about-the-ai-powered-future-of-web-browsing",
-      "https://techspot.com/downloads/7816-neo-ai-browser.html"
+      "https://techspot.com/downloads/7816-neo-ai-browser.html",
+      "https://help.neobrowser.ai/tabs-and-browsing"
     ],
     "scores": {
       "privacy": 2,
@@ -1842,13 +1853,15 @@
       "ad-blocking",
       "workspaces",
       "chrome-extensions",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://www.opera.com",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://en.wikipedia.org/wiki/Opera_(web_browser)"
+      "https://en.wikipedia.org/wiki/Opera_(web_browser)",
+      "https://blogs.opera.com/desktop/2026/07/how-vertical-tabs-work-in-opera-one/"
     ],
     "scores": {
       "privacy": 2,
@@ -1970,7 +1983,8 @@
       "privacy",
       "chrome-extensions",
       "firefox-addons",
-      "ad-blocking"
+      "ad-blocking",
+      "vertical-tabs"
     ],
     "website": "https://kagi.com/orion/",
     "repo": null,
@@ -1978,7 +1992,8 @@
     "sources": [
       "https://kagi.com/orion/",
       "https://en.wikipedia.org/wiki/Orion_(web_browser)",
-      "https://blog.kagi.com/update-orion-linux-windows"
+      "https://blog.kagi.com/update-orion-linux-windows",
+      "https://help.kagi.com/orion/features/vertical-tabs.html"
     ],
     "scores": {
       "privacy": 4,
@@ -2136,14 +2151,16 @@
       "keyboard-driven",
       "power-user",
       "minimal",
-      "customizable"
+      "customizable",
+      "vertical-tabs"
     ],
     "website": "https://qutebrowser.org",
     "repo": "https://github.com/qutebrowser/qutebrowser",
     "logo": "https://raw.githubusercontent.com/qutebrowser/qutebrowser/main/qutebrowser/icons/qutebrowser.svg",
     "sources": [
       "https://github.com/qutebrowser/qutebrowser",
-      "https://en.wikipedia.org/wiki/Qutebrowser"
+      "https://en.wikipedia.org/wiki/Qutebrowser",
+      "https://qutebrowser.org/doc/help/settings.html"
     ],
     "scores": {
       "privacy": 3,
@@ -2168,13 +2185,15 @@
     "tags": [
       "old-hardware",
       "privacy",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
     "website": "https://eclipse.cx/projects/r3dfox",
     "repo": "https://github.com/Eclipse-Community/r3dfox",
     "logo": null,
     "sources": [
-      "https://github.com/Eclipse-Community/r3dfox"
+      "https://github.com/Eclipse-Community/r3dfox",
+      "https://support.mozilla.org/en-US/kb/use-sidebar-access-tools-and-vertical-tabs"
     ],
     "scores": {
       "privacy": 3,
@@ -2229,14 +2248,16 @@
     "tags": [
       "mainstream",
       "sync",
-      "privacy"
+      "privacy",
+      "vertical-tabs"
     ],
     "website": "https://www.apple.com/safari/",
     "repo": null,
     "logo": null,
     "sources": [
       "https://en.wikipedia.org/wiki/Safari_(web_browser)",
-      "https://www.apple.com/safari/"
+      "https://www.apple.com/safari/",
+      "https://9to5mac.com/2026/11/03/ios-27-3-and-macos-27-3-add-vertical-tabs-adaptive-dark-mode-and-more-to-safari/"
     ],
     "scores": {
       "privacy": 4,
@@ -2386,6 +2407,7 @@
     "tags": [
       "chrome-extensions",
       "workspaces",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://strawberrybrowser.com",
@@ -2396,7 +2418,8 @@
       "https://windowsforum.com/news/strawberry-1-0-ai-browser-for-windows-agent-features-pricing-and-it-security-review.450031/",
       "https://www.globaltechcouncil.org/ai/what-is-strawberry-browser-and-how-does-it-work/",
       "https://docs.strawberrybrowser.com/introduction/what-is-strawberry",
-      "https://strawberrybrowser.com/best-ai-browser-for-windows"
+      "https://strawberrybrowser.com/best-ai-browser-for-windows",
+      "https://docs.strawberrybrowser.com/browser/tabs-and-sidebar"
     ],
     "scores": {
       "privacy": 2,
@@ -2451,13 +2474,15 @@
     "openSource": true,
     "description": "Performance-optimized Chromium fork with compiler optimizations, extra codecs and patches.",
     "tags": [
-      "chrome-extensions"
+      "chrome-extensions",
+      "vertical-tabs"
     ],
     "website": "https://thorium.rocks",
     "repo": "https://github.com/Alex313031/thorium",
     "logo": null,
     "sources": [
-      "https://github.com/Alex313031/thorium"
+      "https://github.com/Alex313031/thorium",
+      "https://github.com/Alex313031/Thorium-Win/issues/476"
     ],
     "scores": {
       "privacy": 3,
@@ -2484,14 +2509,16 @@
       "tor",
       "privacy",
       "security-hardened",
-      "firefox-addons"
+      "firefox-addons",
+      "vertical-tabs"
     ],
     "website": "https://www.torproject.org/download/",
     "repo": "https://gitlab.torproject.org/tpo/applications/tor-browser",
     "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Tor_Browser_icon.svg",
     "sources": [
       "https://www.torproject.org/download/",
-      "https://en.wikipedia.org/wiki/Tor_(network)#Tor_Browser"
+      "https://en.wikipedia.org/wiki/Tor_(network)#Tor_Browser",
+      "https://blog.torproject.org/new-release-tor-browser-150"
     ],
     "scores": {
       "privacy": 5,
@@ -2518,13 +2545,15 @@
       "privacy",
       "ad-blocking",
       "chrome-extensions",
-      "workspaces"
+      "workspaces",
+      "vertical-tabs"
     ],
     "website": "https://www.zoho.com/ulaa",
     "repo": null,
     "logo": null,
     "sources": [
-      "https://www.zoho.com/ulaa"
+      "https://www.zoho.com/ulaa",
+      "https://support.creatorscripts.com/portal/en/kb/articles/how-to-enable-vertical-tabs-in-the-ulaa-browser"
     ],
     "scores": {
       "privacy": 3,
@@ -2551,13 +2580,15 @@
     "tags": [
       "privacy",
       "de-googled",
-      "chrome-extensions"
+      "chrome-extensions",
+      "vertical-tabs"
     ],
     "website": "https://github.com/ungoogled-software/ungoogled-chromium",
     "repo": "https://github.com/ungoogled-software/ungoogled-chromium",
     "logo": null,
     "sources": [
-      "https://github.com/ungoogled-software/ungoogled-chromium"
+      "https://github.com/ungoogled-software/ungoogled-chromium",
+      "https://github.com/ungoogled-software/ungoogled-chromium/issues/3698"
     ],
     "scores": {
       "privacy": 4,
@@ -2653,7 +2684,8 @@
     "tags": [
       "privacy",
       "firefox-addons",
-      "customizable"
+      "customizable",
+      "vertical-tabs"
     ],
     "website": "https://www.waterfox.net",
     "repo": "https://github.com/BrowserWorks/Waterfox",
@@ -2661,7 +2693,8 @@
     "sources": [
       "https://www.waterfox.net",
       "https://github.com/BrowserWorks/Waterfox",
-      "https://en.wikipedia.org/wiki/Waterfox"
+      "https://en.wikipedia.org/wiki/Waterfox",
+      "https://www.waterfox.com/releases/6.6.0/"
     ],
     "scores": {
       "privacy": 4,
@@ -2689,13 +2722,15 @@
       "power-user",
       "chrome-extensions",
       "enterprise",
+      "vertical-tabs",
       "ai"
     ],
     "website": "https://wavebox.io",
     "repo": "https://github.com/wavebox/waveboxapp",
     "logo": null,
     "sources": [
-      "https://wavebox.io"
+      "https://wavebox.io",
+      "https://hub.wavebox.io/webdock-explorer-layout/"
     ],
     "scores": {
       "privacy": 3,

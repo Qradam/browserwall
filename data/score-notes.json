@@ -412,14 +412,6 @@
       "https://en.wikipedia.org/wiki/Netscape_Navigator_9"
     ]
   },
-  "nook": {
-    "why": "It is a community open-source Arc-style browser ('not owned by Atlassian') with Spaces, split view, Peek, a command palette and SponsorBlock-style site tweaks. Releases are frequent but it is a small project. Independent reviews are scarce, and the name collides with several unrelated 'Nook' apps.",
-    "sources": [
-      "https://github.com/nook-browser/Nook",
-      "https://nookbrowser.app/",
-      "https://github.com/nook-browser/Nook/releases"
-    ]
-  },
   "norton-neo": {
     "why": "App-store reviewers are warm about the browser but cool on the AI. Review sites note on-device AI options and default local chat history, but it is closed source, comes from a security-suite vendor, and upsells its VPN.",
     "sources": [
