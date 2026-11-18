@@ -4,21 +4,37 @@ import Base from "../../layouts/Base.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
 import { byId } from "../../data/browsers";
-import { ALTERNATIVE_IDS, alternativesFor, YEAR, breadcrumbLd } from "../../lib/seo";
+import { ALTERNATIVE_IDS, alternativesFor, YEAR, breadcrumbLd, faqLd } from "../../lib/seo";
 
 const crumbs = [{ name: "Alternatives", href: "/alternatives" }];
 const list = ALTERNATIVE_IDS.map((id) => {
   const b = byId.get(id)!;
   return { b, top: alternativesFor(b, 3).map((a) => a.result.browser.name).join(", ") };
 });
+const faq = [
+  { q: "What is the best alternative to Chrome?", a: `For most people: ${list.find((x) => x.b.id === "google-chrome")?.top ?? "Brave, Firefox and Vivaldi"}. Chromium-based alternatives keep your Chrome Web Store extensions; Firefox-based ones also run the full uBlock Origin.` },
+  { q: "Will I lose my bookmarks and passwords if I switch?", a: "No. Almost every browser offers to import bookmarks, saved passwords, history and open tabs from your old browser on first launch. Extensions carry over only within the same store: Chromium browsers share the Chrome Web Store, Firefox forks share Firefox Add-ons." },
+  { q: "Why switch browsers at all?", a: "The most common reasons are privacy (an owner that earns money from your data), bloat (AI sidebars, shopping and news feeds, VPN upsells), resource use, a browser being discontinued, and missing features such as vertical tabs, workspaces or a built-in ad blocker." },
+];
 ---
-<Base title={`Browser alternatives ${YEAR}: switch from Chrome, Edge, Safari, Arc and more – browserwall`} description="Alternatives to the most popular desktop browsers, ranked by what they do better and what they keep: Chrome, Edge, Safari, Firefox, Opera, Brave, Arc, ChatGPT Atlas and more." jsonLd={[breadcrumbLd(Astro.site, crumbs)]} dialog={false}>
+<Base title={`Browser alternatives ${YEAR}: Chrome, Edge & more – browserwall`} description="Alternatives to the most popular desktop browsers, ranked by what they do better and what they keep: Chrome, Edge, Safari, Firefox, Opera, Brave, Arc, ChatGPT Atlas and more." jsonLd={[breadcrumbLd(Astro.site, crumbs), faqLd(faq)]} dialog={false}>
   <div class="doc">
     <Crumbs items={crumbs} />
     <p class="kicker">Alternatives</p>
     <h1>Browser alternatives</h1>
     <p class="lede">Pick the browser you want to leave. Each page ranks replacements that keep what it does well and fix what it doesn't.</p>
     <ul class="linkgrid">{list.map(({ b, top }) => <li><a href={`/alternatives/${b.id}`}>{b.logo && <img src={b.logo} alt="" width="24" height="24" loading="lazy" />}<span>{b.name} alternatives<small>{top}</small></span></a></li>)}</ul>
+    <h2>How we pick alternatives</h2>
+    <p class="prose">Each list starts from the browser you want to leave. We keep what it's good at – if it scores 4/5 or more on privacy, polish, customisation, lightness or minimalism, its replacements have to match that – and weight up whatever it's weakest at, because that's usually why you're leaving. On top of that, alternatives get credit for keeping its signature features (vertical tabs, workspaces, split view, a built-in VPN or ad blocker) and its extension store, and lose points if they don't run on the same operating systems or if they swap a free browser for a paid one.</p>
+    <p class="prose">AI-first browsers like ChatGPT Atlas, Comet and Dia are compared with other browsers that have a capable AI assistant or agent. Discontinued, beta-only and experimental browsers never appear as alternatives.</p>
+    <h2>Switching without losing anything</h2>
+    <ol class="prose">
+      <li>Install the new browser from its official site and let it import bookmarks, passwords and history from your old one.</li>
+      <li>Reinstall your extensions. Moving between Chromium browsers they come from the same Chrome Web Store; moving to a Firefox-based browser you'll find most of them on Firefox Add-ons. See <a href="/guides/browser-extensions">which browsers run which extensions</a>.</li>
+      <li>Set it as your default browser, then keep the old one installed for a week in case a site you need misbehaves.</li>
+    </ol>
     <QuizCta />
+    <h2>FAQ</h2>
+    <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
   </div>
 </Base>

@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import Icon from "../components/Icon.astro";
 import { browsers, FAMILIES, type Family } from "../data/browsers";
+import { faqLd } from "../lib/seo";
 
 const TIERS = [
   { id: "S", color: "#ff7f7f" }, { id: "A", color: "#ffbf7f" }, { id: "B", color: "#ffdf7f" },
@@ -9,9 +10,15 @@ const TIERS = [
 ];
 const famCount = new Map<Family, number>();
 for (const b of browsers) famCount.set(b.family, (famCount.get(b.family) ?? 0) + 1);
+const FAQ = [
+  { q: "How do I make a browser tier list?", a: "Drag each browser from the pool into a tier from S (best) to D, or tap a browser and then tap a tier. On a keyboard, focus a browser and press 1–5; 0 sends it back. Rename the tiers and the list title by clicking them." },
+  { q: "Can I share my tier list?", a: "Yes. Copy link puts your whole list into the URL, so anyone who opens it sees your tiers – nothing is uploaded. Save image downloads a PNG for Reddit, Discord or X." },
+  { q: "Which browsers are included?", a: `All ${browsers.length} browsers on the wall: mainstream ones like Chrome, Edge, Safari and Firefox, privacy browsers like Brave, LibreWolf and Mullvad Browser, new ones like Zen, Arc, Dia and Comet, plus discontinued classics and meme browsers. Use the family filters to rank only Chromium, Firefox or WebKit browsers.` },
+  { q: "Is my tier list saved?", a: "It saves automatically in this browser's local storage, so it's still there next time. Clearing site data or switching browsers starts a fresh list – copy the link first if you want to keep it." },
+];
 const initials = (n: string) => n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
 ---
-<Base title="Browser tier list maker – rank Chrome, Firefox, Brave, Arc and more – browserwall" description="Make your own browser tier list: drag 80+ desktop browsers into S–D tiers, filter by Chromium, Firefox or WebKit, then share a link or save it as an image. Free, no sign-up.">
+<Base jsonLd={[faqLd(FAQ)]} title="Browser tier list maker: rank 80+ browsers – browserwall" description="Make your own browser tier list: drag 80+ desktop browsers into S–D tiers, filter by Chromium, Firefox or WebKit, then share a link or save it as an image. Free, no sign-up.">
   <section class="hero">
     <h1>Tier maker</h1>
     <p>Rank browsers your way. Drag them into tiers, or tap one and then tap a tier. With the keyboard, focus a browser and press <kbd>1</kbd>–<kbd>5</kbd> (<kbd>0</kbd> sends it back). It saves in this browser automatically.</p>
@@ -75,6 +82,14 @@ const initials = (n: string) => n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).map
       ))}
     </ul>
     <p class="empty dim" id="pool-empty" hidden>Everything matching these filters is placed.</p>
+  </section>
+
+  <section class="about" aria-labelledby="about-t">
+    <h2 id="about-t">Rank every desktop browser</h2>
+    <p>The tier maker has every browser on browserwall – {browsers.length} in total, from Chrome and Safari to Zen, Helium, Ladybird and long-dead classics like Netscape. Filter by family to make a Chromium-only or Firefox-fork tier list, hide beta channels and meme browsers, or use "Tiers: only filtered" to clear out everything that doesn't match.</p>
+    <p>Not sure where a browser belongs? Every one has a <a href="/wall">profile on the wall</a> with scores for privacy, out-of-box experience, customisation, lightness and minimalism. To find the S-tier browser for you rather than for the internet, take the <a href="/quiz">2-minute browser quiz</a>.</p>
+    <h2>FAQ</h2>
+    <dl>{FAQ.map((f) => <><dt>{f.q}</dt><dd>{f.a}</dd></>)}</dl>
   </section>
 </Base>
 
@@ -276,6 +291,11 @@ const initials = (n: string) => n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).map
 </script>
 
 <style>
+  .about { max-width: 760px; margin: 40px 0 24px; color: var(--muted); font-size: 14.5px; line-height: 1.65; }
+  .about h2 { margin: 28px 0 8px; font-size: 18px; font-weight: 640; color: var(--text); letter-spacing: -0.01em; }
+  .about a { color: var(--accent); }
+  .about dt { margin-top: 14px; color: var(--text); font-weight: 600; }
+  .about dd { margin: 4px 0 0; }
   .hero { padding: 48px 0 20px; max-width: 760px; }
   h1 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.03em; margin: 0 0 10px; font-weight: 680; }
   .hero p { color: var(--muted); margin: 0; font-size: 15px; }

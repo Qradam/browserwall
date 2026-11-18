@@ -11,6 +11,15 @@ export const UPDATED = BUILD.toLocaleDateString("en-US", { month: "long", year: 
 export const abs = (site: URL | undefined, path: string) => new URL(path, site ?? "https://browserwall.org").href;
 /** Canonical path without ".html" / "index". */
 export const cleanPath = (p: string) => (p.replace(/(index)?\.html$/, "").replace(/(.)\/$/, "$1") || "/");
+/** Search engines cut titles at ~60 characters. Returns the first candidate that fits with the brand suffix,
+ *  then the first that fits on its own, then the shortest candidate (each candidate should be shorter than the last). */
+export const TITLE_MAX = 60;
+export function seoTitle(...candidates: string[]): string {
+  const brand = ` – ${SITE_NAME}`;
+  return candidates.find((c) => c.length + brand.length <= TITLE_MAX)?.concat(brand)
+    ?? candidates.find((c) => c.length <= TITLE_MAX)
+    ?? candidates[candidates.length - 1];
+}
 export const quizLink = (s: QuizState) => `/quiz#${encode(s)}&r=1`;
 
 const state = (o: Partial<Omit<QuizState, "sliders">> & { sliders?: Partial<QuizState["sliders"]> } = {}): QuizState => {
@@ -27,6 +36,10 @@ export interface Category {
   intro: string;
   how: string; // what we ranked by, shown under the list
   state: QuizState;
+  /** Extra hard filter on top of the quiz state (e.g. "no built-in AI at all", stricter than the quiz dealbreaker). */
+  filter?: (b: Browser) => boolean;
+  /** Browser ids shown first, in this order, regardless of score (e.g. the one browser built for the category). */
+  pin?: string[];
   faq?: { q: string; a: (top: Result[]) => string }[];
 }
 
@@ -34,9 +47,11 @@ const names = (rs: Result[], n = 3) => rs.slice(0, n).map((r) => r.browser.name)
 
 export const CATEGORIES: Category[] = [
   { slug: "browsers", short: "Best browsers overall", title: "The best web browsers in {year}",
-    intro: "Every desktop browser we track, ranked with balanced priorities: privacy and polish matter most, with a bit of customisation, lightness and minimalism.",
+    intro: "The top browsers to download in {year}. Every desktop browser we track, ranked with balanced priorities: privacy and polish matter most, with a bit of customisation, lightness and minimalism.",
     how: "Privacy and out-of-box experience at \"Somewhat\", everything else at \"A little\", on any OS.", state: state(),
-    faq: [{ q: "What is the best web browser in {year}?", a: (t) => `With balanced priorities, our top picks are ${names(t)}. The best one for you depends on your OS, the extensions you need and how much you care about privacy – the free quiz takes about two minutes.` }] },
+    faq: [{ q: "What is the best web browser in {year}?", a: (t) => `With balanced priorities, our top picks are ${names(t)}. The best one for you depends on your OS, the extensions you need and how much you care about privacy – the free quiz takes about two minutes.` },
+      { q: "What are good web browsers for most people?", a: (t) => `Good web browsers are fast enough (all mainstream ones are), get security updates every few weeks, block trackers and don't bury you in extras. ${names(t, 5)} all qualify. Chrome and Edge are fine too, but score lower on privacy because their owners make money from data.` },
+      { q: "Where should I download a browser?", a: () => "Only from the browser's official website or your system's app store (Microsoft Store, Mac App Store, your Linux distribution's packages or Flathub). Download sites that bundle browsers with installers often add adware. Every browser on this page links to its official download page." }] },
   { slug: "privacy-browsers", short: "Most private browsers", title: "The most private web browsers in {year}",
     intro: "Browsers that block tracking by default, keep telemetry to a minimum and aren't funded by selling your data. Ranked with privacy as the top priority.",
     how: "Privacy at \"Top priority\", out-of-box experience at \"Somewhat\".", state: state({ sliders: { privacy: 4 } }),
@@ -73,10 +88,32 @@ export const CATEGORIES: Category[] = [
     how: "Chrome Web Store support and \"No Google services\" as must-haves.", state: state({ ext: "chrome", features: { "de-googled": 2 } }) },
   { slug: "firefox-based-browsers", short: "Firefox-based browsers", title: "The best Firefox-based browsers in {year}",
     intro: "Firefox and its forks – everything that runs Firefox add-ons.", how: "Firefox add-ons required, balanced priorities.", state: state({ ext: "firefox" }) },
+  { slug: "gaming-browsers", short: "Gaming browsers", title: "The best gaming browsers in {year}",
+    intro: "Opera GX is the only browser built for gamers, with RAM, CPU and network limiters and Twitch and Discord in the sidebar. After it, these are the Windows browsers that stay out of your game's way: light on RAM and CPU, without bundled extras.",
+    how: "Opera GX first as the only gaming-branded browser, then Windows browsers ranked with light on resources at \"Top priority\" and minimal at \"Somewhat\".",
+    state: state({ os: "windows", sliders: { light: 4, minimal: 2 } }), pin: ["opera-gx"],
+    faq: [
+      { q: "What is the best gaming browser?", a: (t) => `Opera GX is the only browser made for gaming: it can cap its own RAM, CPU and network use while you play, and has Twitch, Discord and game-deal integrations. It's heavy and ad-funded though (lightness ${byId.get("opera-gx")?.scores.lightness}/5, privacy ${byId.get("opera-gx")?.scores.privacy}/5 in our scores). If you just want a browser that leaves resources for your game, ${names(t.slice(1))} use less RAM out of the box.` },
+      { q: "Does a browser affect gaming performance?", a: () => "Only through RAM and CPU. A browser with many tabs open in the background can take memory and CPU time from a game, which matters most on PCs with 16 GB of RAM or less. Closing tabs, turning off hardware acceleration for the browser, or using a lighter browser helps more than any \"gaming mode\"." },
+      { q: "Is Opera GX safe?", a: () => `Opera GX is a legitimate, regularly updated Chromium browser. It is not malware, but it's made by Opera, which earns money from search deals, ads and partner content, so it scores low on privacy (${byId.get("opera-gx")?.scores.privacy}/5). See our Opera GX alternatives page for options with the same features and better privacy.` },
+    ] },
+  { slug: "browsers-without-ai", short: "Browsers without AI", title: "The best browsers without AI in {year}",
+    intro: "No-AI browsers: no chatbot sidebar, no AI summaries, no agent – not even one you have to switch off. For people who want an anti-AI browser rather than a setting buried in a menu.",
+    how: "Only browsers with no built-in AI features, ranked with balanced priorities.",
+    state: state({ avoid: ["ai"] }), filter: (b) => !b.ai,
+    faq: [
+      { q: "Which browsers have no AI?", a: (t) => `In our data, the best browsers with no built-in AI at all are ${names(t, 5)}. Chrome, Edge, Opera and most new browsers now ship an AI assistant.` },
+      { q: "Can I turn off AI in Chrome, Edge or Firefox?", a: () => `Partly. ${["firefox", "brave", "safari"].map((id) => byId.get(id)).filter((b) => b?.ai?.canDisable === "fully").map((b) => b!.name).join(", ")} let you fully switch their AI features off; Chrome and Edge keep some AI features you can only partly disable. If you don't want to rely on settings that may change in an update, pick a browser that ships without AI.` },
+    ] },
   { slug: "keyboard-browsers", short: "Keyboard-driven browsers", title: "The best keyboard-driven (Vim-style) browsers in {year}",
     intro: "Browsers you can drive entirely from the keyboard, usually with Vim-style bindings.", how: "Keyboard / Vim control as a must-have.", state: state({ features: { "keyboard-driven": 2 } }) },
 ];
-export const categoryResults = (c: Category) => rank(browsers, c.state).results;
+export function categoryResults(c: Category): Result[] {
+  const results = rank(c.filter ? browsers.filter(c.filter) : browsers, c.state).results;
+  if (!c.pin) return results;
+  const pinned = c.pin.map((id) => results.find((r) => r.browser.id === id) ?? rank([byId.get(id)!], c.state).results[0]).filter(Boolean);
+  return [...pinned, ...results.filter((r) => !c.pin!.includes(r.browser.id))];
+}
 export const fillYear = (s: string) => s.replace(/\{year\}/g, String(YEAR));
 
 // ---------------------------------------------------------------------------- "X alternatives"
@@ -166,6 +203,24 @@ export function alternativesFor(src: Browser, n = 9): Alternative[] {
 const FEATURE_LABEL: Record<string, string> = { "vertical-tabs": "Vertical tabs", workspaces: "Workspaces", "split-view": "Split view", "keyboard-driven": "Keyboard control", "ad-blocking": "Built-in ad blocker", vpn: "Built-in VPN", tor: "Tor" };
 
 export const isQuizEligible = eligible;
+
+// ---------------------------------------------------------------------------- Hand-written guides (/guides/<slug>)
+
+export interface Guide { slug: string; title: string; short: string; description: string }
+export const GUIDES: Guide[] = [
+  { slug: "browser-extensions", short: "Browser extensions explained", title: "Browser extensions in {year}: which browsers run which",
+    description: "Which browsers support Chrome Web Store extensions, Firefox add-ons and Safari extensions, what Manifest V3 changed, and how to pick a browser for the extensions you rely on." },
+  { slug: "ublock-origin", short: "uBlock Origin in {year}", title: "uBlock Origin in {year}: Firefox, Chrome and which browsers still run it",
+    description: "Chrome and every other Chromium browser dropped the full uBlock Origin in 2026. Here's where it still works (Firefox and its forks), how to install it, and what to use instead." },
+  { slug: "incognito-mode", short: "Incognito & private browsing", title: "Incognito mode explained: what private browsing hides",
+    description: "What incognito and private browsing actually do in Chrome, Safari, Firefox, Edge and Brave, what they don't hide, keyboard shortcuts, and when you need a private browser instead." },
+];
+export const guideLd = (site: URL | undefined, g: Guide) => ({
+  "@type": "Article", headline: fillYear(g.title), description: g.description, inLanguage: "en",
+  datePublished: "2026-11-18", dateModified: BUILD.toISOString().slice(0, 10),
+  mainEntityOfPage: abs(site, `/guides/${g.slug}`), author: { "@id": `${abs(site, "/")}#org` }, publisher: { "@id": `${abs(site, "/")}#org` },
+});
+export const guide = (slug: string) => GUIDES.find((g) => g.slug === slug)!;
 
 // ---------------------------------------------------------------------------- JSON-LD builders
 

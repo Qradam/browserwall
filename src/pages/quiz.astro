@@ -23,7 +23,7 @@ const STEPS = [
   { label: "Features", icon: "SparklesIcon" }, { label: "Dealbreakers", icon: "Cancel01Icon" },
 ];
 ---
-<Base title={`Which browser should I use? Free 2-minute browser quiz (${YEAR}) – browserwall`} description={`Find the best web browser for you in two minutes: pick your OS and extensions, set what matters (privacy, speed of setup, customisation, AI) and get a ranked shortlist from ${browsers.length} desktop browsers. Free, no sign-up.`}
+<Base title={`Browser quiz ${YEAR}: which browser should I use? – browserwall`} description={`Find the best web browser for you in two minutes: pick your OS and extensions, set what matters (privacy, speed of setup, customisation, AI) and get a ranked shortlist from ${browsers.length} desktop browsers. Free, no sign-up.`}
   jsonLd={[
     { "@type": "WebApplication", name: "browserwall browser quiz", url: abs(Astro.site, "/quiz"), applicationCategory: "UtilitiesApplication", operatingSystem: "Any (runs in the browser)", isAccessibleForFree: true, offers: { "@type": "Offer", price: "0", priceCurrency: "USD" }, description: "Interactive quiz that recommends a desktop web browser based on OS, extensions, priorities, must-have features and dealbreakers." },
     faqLd(quizFaq),

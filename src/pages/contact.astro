@@ -9,7 +9,7 @@ const TOPICS = [
   { title: "Anything else", text: "Ideas for the quiz or tier maker, bugs, or just hello." },
 ];
 ---
-<Base title="Contact – browserwall" description="Get in touch about browserwall: corrections, missing browsers, ideas.">
+<Base title="Contact: corrections & missing browsers – browserwall" description="Get in touch about browserwall: corrections, missing browsers, ideas.">
   <section class="contact">
     <p class="kicker">Contact</p>
     <h1>Say hi</h1>
@@ -23,6 +23,15 @@ const TOPICS = [
     <ul class="topics">
       {TOPICS.map((t) => <li><h2>{t.title}</h2><p>{t.text}</p></li>)}
     </ul>
+
+    <div class="more">
+      <h2>How corrections work</h2>
+      <p>Every score on browserwall is an editorial 1–5 rating for privacy, out-of-box experience, customisation, lightness and minimalism. Scores are re-checked against reviews, community opinion and tests, and each browser page lists the sources behind them. If you think a score is wrong, the most useful thing you can send is a link – a changelog, a privacy policy, a benchmark or a review – that shows what changed.</p>
+      <h2>Suggesting a browser</h2>
+      <p>The wall covers desktop browsers you can download today, with a release in roughly the last 12 months, that people actually use or talk about: a major vendor, 1,000+ GitHub stars, or coverage in several current roundups. Household names that shut down stay on the wall as discontinued. Region-specific browsers, OS-specific ports and tiny forks of forks are left out, and browsers with a history of selling user data never appear in the quiz or rankings.</p>
+      <h2>What to expect</h2>
+      <p>browserwall has no ads, no sponsored placements and no affiliate links, so nobody can pay for a better score. Every message gets read, and corrections go live with the next data update.</p>
+    </div>
   </section>
 </Base>
 
@@ -51,5 +60,8 @@ const TOPICS = [
   .topics li { padding: 14px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--line); }
   .topics h2 { margin: 0 0 6px; font-size: 13.5px; font-weight: 620; }
   .topics p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+  .more { margin-top: 44px; text-align: left; }
+  .more h2 { margin: 26px 0 6px; font-size: 16px; font-weight: 620; }
+  .more p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
   @media (max-width: 640px) { .topics { grid-template-columns: 1fr; } .mail { flex-direction: column; align-items: stretch; } .copy { justify-content: center; } }
 </style>

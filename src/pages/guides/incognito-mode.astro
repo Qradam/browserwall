@@ -1,0 +1,115 @@
+---
+// Guide: what incognito / private browsing does in each browser, what it doesn't hide, and shortcuts.
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import { byId } from "../../data/browsers";
+import { guide, guideLd, fillYear, seoTitle, breadcrumbLd, faqLd, UPDATED, GUIDES, CATEGORIES, categoryResults } from "../../lib/seo";
+
+const g = guide("incognito-mode");
+const h1 = fillYear(g.title);
+const privateTop = categoryResults(CATEGORIES.find((c) => c.slug === "privacy-browsers")!).slice(0, 5).map((r) => r.browser);
+const href = (id: string) => (byId.has(id) ? `/browsers/${id}` : null);
+const MODES = [
+  { id: "google-chrome", name: "Chrome", mode: "Incognito window", win: "Ctrl+Shift+N", mac: "⌘+Shift+N", note: "Blocks third-party cookies by default." },
+  { id: "microsoft-edge", name: "Edge", mode: "InPrivate window", win: "Ctrl+Shift+N", mac: "⌘+Shift+N", note: "Can use Strict tracking prevention in InPrivate." },
+  { id: "safari", name: "Safari", mode: "Private window", win: "–", mac: "⌘+Shift+N", note: "Locks with Touch ID or password, strips tracking parameters from links." },
+  { id: "firefox", name: "Firefox", mode: "Private window", win: "Ctrl+Shift+P", mac: "⌘+Shift+P", note: "Tracking protection on; extensions off unless you allow them." },
+  { id: "brave", name: "Brave", mode: "Private window / Private window with Tor", win: "Ctrl+Shift+N / Alt+Shift+N", mac: "⌘+Shift+N / ⌥+⌘+N", note: "Tor windows also hide your IP address from sites." },
+  { id: "opera", name: "Opera", mode: "Private window", win: "Ctrl+Shift+N", mac: "⌘+Shift+N", note: "Built-in browser VPN can be used in private windows." },
+  { id: "vivaldi", name: "Vivaldi", mode: "Private window", win: "Ctrl+Shift+N", mac: "⌘+Shift+N", note: "Can use a different search engine for private windows." },
+];
+
+const faq = [
+  { q: "Is incognito mode really private?", a: "Only from other people using the same computer. Incognito and private windows don't save your history, cookies or form data after you close them. Websites, your internet provider, your employer or school network and your DNS provider can still see what you do, and if you log in to a site it knows it's you." },
+  { q: "Does Safari have incognito mode?", a: "Yes – Safari calls it Private Browsing. On a Mac, choose File > New Private Window or press ⌘+Shift+N. On iPhone and iPad, tap the tabs button, then swipe to Private. Private windows lock when you're away and need Face ID, Touch ID or your password to reopen." },
+  { q: "Can my employer or school see my incognito history?", a: "Often, yes. On a managed device or network, an administrator can log the sites you visit regardless of private browsing. Incognito only stops the browser itself from keeping a local record." },
+  { q: "Does incognito mode hide my IP address?", a: `No. For that you need a VPN or the Tor network. Brave's "Private window with Tor" and ${byId.get("tor-browser")?.name ?? "Tor Browser"} route traffic through Tor; Safari users with iCloud+ can turn on iCloud Private Relay.` },
+  { q: "What is the most private browser?", a: `In our scores: ${privateTop.slice(0, 3).map((b) => b.name).join(", ")}. A private browser protects you all the time, not only in a private window: it blocks trackers by default and isn't funded by your data.` },
+];
+const crumbs = [{ name: "Guides", href: "/best" }, { name: "Incognito mode", href: `/guides/${g.slug}` }];
+const title = seoTitle("Incognito mode explained: what it hides", h1);
+---
+<Base title={title} description={g.description} jsonLd={[guideLd(Astro.site, g), breadcrumbLd(Astro.site, crumbs), faqLd(faq)]} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Guide</p>
+    <h1>{h1}</h1>
+    <p class="lede">Incognito mode (Chrome), InPrivate (Edge) and Private Browsing (Safari, Firefox) all do the same thing: when you close the window, the browser forgets what you did. That's useful on a shared computer – but it doesn't make you anonymous online.</p>
+    <p class="updated">Updated {UPDATED}</p>
+
+    <section aria-labelledby="does">
+      <h2 id="does">What private browsing does</h2>
+      <ul class="prose">
+        <li>Doesn't save your browsing history, searches typed in the address bar or form entries.</li>
+        <li>Starts with no cookies and deletes cookies and site data when you close the last private window, so you're logged out of everything.</li>
+        <li>Keeps you separate from your normal session: sites can't read the cookies from your regular windows.</li>
+        <li>Most browsers also turn on stronger tracker blocking in private windows and disable extensions unless you allow them.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="doesnt">
+      <h2 id="doesnt">What it doesn't hide</h2>
+      <ul class="prose">
+        <li><b>Your IP address</b> – every site you visit still sees it, and so can roughly place you.</li>
+        <li><b>Your internet provider, employer or school</b> – they can see which sites you connect to.</li>
+        <li><b>Accounts</b> – log in to Google, Facebook or any other site and it knows exactly who you are.</li>
+        <li><b>Fingerprinting</b> – sites can still recognise your browser by its screen size, fonts and other details, although Safari and Firefox now make this harder in private windows.</li>
+        <li><b>Downloads and bookmarks</b> – files you download and bookmarks you save stay on your computer.</li>
+      </ul>
+      <p class="prose">In 2024 Google settled a class-action lawsuit claiming that Chrome's Incognito mode still let Google collect browsing data, and changed the wording on the Incognito start page to be clearer about these limits.</p>
+    </section>
+
+    <section aria-labelledby="how">
+      <h2 id="how">How to open a private window in every browser</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th scope="col">Browser</th><th scope="col">Called</th><th scope="col">Windows / Linux</th><th scope="col">Mac</th><th scope="col">Good to know</th></tr></thead>
+          <tbody>
+            {MODES.map((m) => (
+              <tr>
+                <th scope="row">{href(m.id) ? <a href={href(m.id)!}>{m.name}</a> : m.name}</th>
+                <td>{m.mode}</td>
+                <td>{m.win.split(" / ").map((k, i) => <>{i > 0 && " / "}{k === "–" ? k : <kbd>{k}</kbd>}</>)}</td>
+                <td>{m.mac.split(" / ").map((k, i) => <>{i > 0 && " / "}<kbd>{k}</kbd></>)}</td>
+                <td>{m.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="safari">
+      <h2 id="safari">Safari Private Browsing</h2>
+      <p class="prose">Safari's private mode goes further than most. On a Mac, open it with <b>File &gt; New Private Window</b> or <kbd>⌘+Shift+N</kbd>; the address bar turns dark so you know you're in one. On iPhone and iPad, tap the tabs button and swipe to <b>Private</b>.</p>
+      <ul class="prose">
+        <li><b>Locked private windows</b>: when you're away, Safari locks private windows and asks for Face ID, Touch ID or your password to reopen them.</li>
+        <li><b>Tracker blocking</b>: known trackers are blocked from loading, and tracking parameters are removed from links you open.</li>
+        <li><b>Fingerprinting protection</b>: Safari's advanced fingerprinting protection is on by default in private windows.</li>
+        <li><b>Separate tabs</b>: each private tab keeps its own cookies, so sites can't link what you do in different tabs.</li>
+        <li><b>Extensions</b> stay off in private windows unless you allow them in Safari's settings.</li>
+      </ul>
+      <p class="prose">It still doesn't hide your IP address on its own – iCloud Private Relay (part of iCloud+) does that for Safari. See <a href={href("safari") ?? "/wall"}>Safari's full profile</a> or <a href="/alternatives/safari">Safari alternatives</a>.</p>
+    </section>
+
+    <section aria-labelledby="instead">
+      <h2 id="instead">When you need more than a private window</h2>
+      <p class="prose">If you want protection all the time, use a private browser for everyday browsing rather than relying on incognito. In our scores the most private browsers are {privateTop.map((b, i) => <>{i > 0 && ", "}<a href={`/browsers/${b.id}`}>{b.name}</a></>)}. They block trackers by default, send little or no telemetry, and aren't funded by advertising. To hide your IP address as well, use {href("tor-browser") ? <a href={href("tor-browser")!}>Tor Browser</a> : "Tor Browser"} or a trustworthy VPN.</p>
+      <p class="prose">Want to stop the ads too? Our <a href="/guides/ublock-origin">uBlock Origin guide</a> explains which browsers still run the full blocker.</p>
+    </section>
+
+    <QuizCta href="/best/privacy-browsers" title="Looking for a private browser?" text="See the most private desktop browsers, ranked by business model, tracking defaults and telemetry." label="Most private browsers" />
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+
+    <section aria-labelledby="more">
+      <h2 id="more">More guides</h2>
+      <ul class="linkgrid">{GUIDES.filter((x) => x.slug !== g.slug).map((x) => <li><a href={`/guides/${x.slug}`}>{fillYear(x.short)}</a></li>)}<li><a href="/best">All browser guides</a></li></ul>
+    </section>
+  </article>
+</Base>

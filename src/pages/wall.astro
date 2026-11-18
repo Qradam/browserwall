@@ -17,7 +17,7 @@ const osChips = (["windows", "macos", "linux", "bsd"] as const);
 
 const alive = browsers.filter((b) => b.status !== "discontinued").length;
 ---
-<Base title={`Every desktop web browser in ${YEAR}, scored and compared – browserwall`} description={`A curated wall of ${browsers.length} desktop browsers – Chrome, Firefox, Safari, Edge, Brave, Arc, Zen, Comet and the rest – with honest privacy and feature scores, filters, a tier list maker and a 2-minute quiz to find yours.`}
+<Base title={`All ${browsers.length} desktop browsers, scored (${YEAR}) – browserwall`} description={`A curated wall of ${browsers.length} desktop browsers – Chrome, Firefox, Safari, Edge, Brave, Arc, Zen, Comet and the rest – with honest privacy and feature scores, filters, a tier list maker and a 2-minute quiz to find yours.`}
   jsonLd={[itemListLd(Astro.site, "Desktop web browsers", browsers)]}>
   <section class="hero">
     <h1>Every browser worth knowing.</h1>

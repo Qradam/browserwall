@@ -6,7 +6,7 @@ import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
 import ScoreBars from "../../components/ScoreBars.astro";
 import { byId, type Browser } from "../../data/browsers";
-import { ALTERNATIVE_IDS, alternativesFor, painPoints, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd } from "../../lib/seo";
+import { ALTERNATIVE_IDS, alternativesFor, painPoints, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle } from "../../lib/seo";
 
 export function getStaticPaths() {
   return ALTERNATIVE_IDS.map((id) => ({ params: { id }, props: { b: byId.get(id)! } }));
@@ -32,7 +32,7 @@ const faq = [
   { q: `How do I move from ${b.name} to another browser?`, a: "Most browsers import bookmarks, passwords and history on first launch. Chromium-based browsers also install the same Chrome Web Store extensions; Firefox-based ones use Firefox add-ons." },
 ];
 const crumbs = [{ name: "Alternatives", href: "/alternatives" }, { name: `${b.name} alternatives`, href: `/alternatives/${b.id}` }];
-const title = `Best ${b.name} alternatives (${YEAR}): ${top3.slice(0, 2).join(", ")} and more`;
+const title = seoTitle(`Best ${b.name} alternatives (${YEAR}): ${top3.slice(0, 2).join(", ")} and more`, `Best ${b.name} alternatives ${YEAR}: ${top3[0]} and more`, `Best ${b.name} alternatives in ${YEAR}`, `${b.name} alternatives ${YEAR}`);
 const description = `Looking to switch from ${b.name}? The best alternatives are ${top3.join(", ")} – ranked by what they do better, what they keep and the trade-offs. Updated ${UPDATED}.`;
 const jsonLd = [itemListLd(Astro.site, h1, alts.map((a) => a.result.browser)), breadcrumbLd(Astro.site, crumbs), faqLd(faq)];
 const others = ALTERNATIVE_IDS.filter((id) => id !== b.id).map((id) => byId.get(id)!);

@@ -1,0 +1,89 @@
+---
+// Guide: where the full uBlock Origin still runs after Chromium dropped Manifest V2, and what to use instead.
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import { browsers, byId } from "../../data/browsers";
+import { defaultState } from "../../lib/quiz";
+import { guide, guideLd, fillYear, seoTitle, quizLink, isQuizEligible, breadcrumbLd, faqLd, UPDATED, YEAR, GUIDES } from "../../lib/seo";
+
+const g = guide("ublock-origin");
+const h1 = fillYear(g.title);
+const gecko = browsers.filter((b) => isQuizEligible(b) && b.tags.includes("firefox-addons") && b.id !== "orion");
+const blockers = browsers.filter((b) => isQuizEligible(b) && b.family === "chromium" && b.tags.includes("ad-blocking"));
+const name = (id: string) => byId.get(id)?.name ?? id;
+const link = (id: string) => byId.has(id) ? `/browsers/${id}` : "/wall";
+
+const faq = [
+  { q: "Does uBlock Origin still work in Firefox?", a: `Yes. Firefox still supports the Manifest V2 APIs uBlock Origin needs, and Mozilla has publicly said its uBlock Origin support isn't going away. The full extension also works in Firefox-based browsers such as ${gecko.filter((b) => b.id !== "firefox").slice(0, 5).map((b) => b.name).join(", ")}, and in Firefox for Android.` },
+  { q: "Does uBlock Origin work in Chrome?", a: "Not any more. Chrome disabled the full uBlock Origin in 2025, Chromium removed the remaining Manifest V2 workarounds in versions 150 and 151 (mid-2026), and the extension is gone from the Chrome Web Store. On Chrome you can install uBlock Origin Lite, which blocks most ads but has fewer features." },
+  { q: "Is uBlock Origin Lite as good as uBlock Origin?", a: "For most people it blocks nearly as many ads, and it uses fewer resources. It loses advanced features: dynamic filtering, many custom filter rules, and filter lists that update on their own between extension releases. If you used uBlock Origin with default settings, you may barely notice; if you wrote your own rules, you will." },
+  { q: "Which Chromium browser is best without uBlock Origin?", a: `${name("brave")} has the strongest built-in blocker of any Chromium browser and supports most uBlock Origin filter lists. ${blockers.filter((b) => b.id !== "brave").slice(0, 3).map((b) => b.name).join(", ")} also block ads without an extension.` },
+  { q: "Is uBlock Origin safe?", a: "Yes. It's free, open source, has no paid \"acceptable ads\" programme and is maintained by Raymond Hill (gorhill). Install it only from Firefox Add-ons (addons.mozilla.org): copies with similar names on other sites can be malware." },
+];
+const crumbs = [{ name: "Guides", href: "/best" }, { name: "uBlock Origin", href: `/guides/${g.slug}` }];
+const title = seoTitle(h1, `uBlock Origin in ${YEAR}: which browsers still run it`);
+---
+<Base title={title} description={g.description} jsonLd={[guideLd(Astro.site, g), breadcrumbLd(Astro.site, crumbs), faqLd(faq)]} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Guide</p>
+    <h1>{h1}</h1>
+    <p class="lede">The short answer: the full uBlock Origin now only runs in <a href={link("firefox")}>Firefox</a> and Firefox-based browsers. Chrome, Edge, Brave, Vivaldi, Opera and every other Chromium browser are limited to uBlock Origin Lite or their own built-in blocker.</p>
+    <p class="updated">Updated {UPDATED}</p>
+
+    <section aria-labelledby="firefox">
+      <h2 id="firefox">How to install uBlock Origin in Firefox</h2>
+      <ol class="prose">
+        <li>Open <a href="https://addons.mozilla.org/firefox/addon/ublock-origin/" rel="noopener external">uBlock Origin on Firefox Add-ons</a> – the official listing by Raymond Hill.</li>
+        <li>Click <b>Add to Firefox</b>, then <b>Add</b> to confirm the permissions.</li>
+        <li>Optionally tick <b>Allow this extension to run in private windows</b> when Firefox asks, so it also blocks in private browsing.</li>
+        <li>That's it – the defaults are good. Open the extension's dashboard to enable extra lists such as annoyances or cookie banners.</li>
+      </ol>
+      <p class="prose">The same steps work in Firefox for Android: open the menu, choose <b>Extensions</b> and add uBlock Origin. In LibreWolf and Mullvad Browser it's already installed. Tor Browser deliberately ships without it: extra add-ons make you easier to fingerprint there.</p>
+    </section>
+
+    <section aria-labelledby="where">
+      <h2 id="where">Browsers that still run the full uBlock Origin</h2>
+      <p class="prose">Every browser here uses Firefox add-ons, so the full extension installs from addons.mozilla.org:</p>
+      <ul class="linkgrid">{gecko.map((b) => <li><a href={`/browsers/${b.id}`}>{b.logo && <img src={b.logo} alt="" width="24" height="24" loading="lazy" />}<span>{b.name}<small>{b.description}</small></span></a></li>)}</ul>
+      <p class="prose">Ranked by our scores: <a href="/best/firefox-based-browsers">the best Firefox-based browsers</a>.</p>
+    </section>
+
+    <section aria-labelledby="what">
+      <h2 id="what">What happened to uBlock Origin on Chrome</h2>
+      <p class="prose">Google replaced Chrome's extension platform, Manifest V2, with Manifest V3. Manifest V3 doesn't let extensions inspect and block network requests the way uBlock Origin did. Chrome switched the full extension off for most people in 2025. Chromium 150 and 151 (June–July 2026) removed the last switches people used to bring it back. Brave and Vivaldi had kept it alive with their own patches, but lost it with the same Chromium update. Microsoft began the same move in Edge in August 2026.</p>
+      <p class="prose">Some de-Googled Chromium builds patch the engine or bundle their own copy of the blocker. That depends on a small team keeping up with every Chromium release, so check the browser's own release notes before you rely on it.</p>
+    </section>
+
+    <section aria-labelledby="compare">
+      <h2 id="compare">uBlock Origin vs uBlock Origin Lite vs built-in blockers</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">uBlock Origin</th><th scope="col">uBlock Origin Lite</th><th scope="col">Built-in blocker (e.g. Brave)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Runs in</th><td>Firefox and its forks</td><td>Chrome, Edge and all Chromium browsers; Firefox</td><td>Only that browser</td></tr>
+            <tr><th scope="row">Blocks ads and trackers</th><td>Yes</td><td>Yes, most of them</td><td>Yes</td></tr>
+            <tr><th scope="row">YouTube ads</th><td>Best, updated fastest</td><td>Usually, with lag after YouTube changes</td><td>Usually</td></tr>
+            <tr><th scope="row">Custom rules and dynamic filtering</th><td>Full</td><td>Limited</td><td>Custom filter lists, fewer power-user tools</td></tr>
+            <tr><th scope="row">Filter list updates</th><td>Automatic, every few days, or on demand</td><td>Bundled with extension updates</td><td>Pushed by the browser</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">Staying on Chromium? The browsers with the best built-in blocking are {blockers.slice(0, 6).map((b, i) => <>{i > 0 && ", "}<a href={`/browsers/${b.id}`}>{b.name}</a></>)}. Our <a href="/guides/browser-extensions">browser extensions guide</a> covers which browsers run which store.</p>
+    </section>
+
+    <QuizCta href={quizLink({ ...defaultState(), ext: "firefox", features: { "ad-blocking": 1 } })} title="Want the full uBlock Origin?" text="This opens the quiz with Firefox add-ons preselected. Add your OS and priorities to get a ranked shortlist." label="Open in the quiz" />
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+
+    <section aria-labelledby="more">
+      <h2 id="more">More guides</h2>
+      <ul class="linkgrid">{GUIDES.filter((x) => x.slug !== g.slug).map((x) => <li><a href={`/guides/${x.slug}`}>{fillYear(x.short)}</a></li>)}<li><a href="/best/privacy-browsers">Most private browsers</a></li></ul>
+    </section>
+  </article>
+</Base>

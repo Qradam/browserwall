@@ -44,6 +44,21 @@
 .rk-line b { color: var(--text); font-weight: 600; }
 .rk-line.good b { color: var(--ok); }
 .rk-line.warn b { color: var(--warn); }
+.rk-dl { margin: 6px 0 0; font-size: 12.5px; }
+.rk-dl a { color: var(--accent); text-decoration: none; font-weight: 560; }
+.rk-dl a:hover { text-decoration: underline; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* Guide articles: tables and lists */
+.doc .tbl-wrap { overflow-x: auto; margin: 14px 0; border: 1px solid var(--line); border-radius: 10px; }
+.doc table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 13.5px; }
+.doc th, .doc td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.doc th { color: var(--text); font-weight: 600; background: var(--bg-2); }
+.doc td { color: var(--muted); }
+.doc tr:last-child td { border-bottom: 0; }
+.doc kbd { font: 12px var(--mono); color: var(--text); border: 1px solid var(--line-2); border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+.doc ul.prose, .doc ol.prose { padding-left: 20px; }
+.doc ul.prose li, .doc ol.prose li { margin: 4px 0; }
+.doc .prose a, .doc td a { color: var(--accent); }
 @media (max-width: 760px) {
   .ranked > li { grid-template-columns: 28px 44px 1fr; }
   .rk-scores { grid-column: 2 / -1; }

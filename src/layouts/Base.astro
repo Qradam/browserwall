@@ -6,7 +6,7 @@ import Logo from "../components/Logo.astro";
 import IconSprite from "../components/IconSprite.astro";
 import Consent from "../components/Consent.astro";
 import BrowserDialog from "../components/BrowserDialog.astro";
-import { SITE_NAME, abs, cleanPath, CATEGORIES, ALTERNATIVE_IDS, fillYear } from "../lib/seo";
+import { SITE_NAME, abs, cleanPath, CATEGORIES, GUIDES, ALTERNATIVE_IDS, fillYear } from "../lib/seo";
 import { byId } from "../data/browsers";
 
 interface Props {
@@ -20,7 +20,7 @@ interface Props {
   dialog?: boolean;
 }
 const {
-  title = "browserwall – every desktop browser, a tier maker and a browser quiz",
+  title = "browserwall – desktop browsers, a tier maker and a quiz",
   description = "A curated wall of 80+ desktop web browsers with honest scores, a tier list maker and a 2-minute quiz that finds the right browser for you.",
   jsonLd = [], ogType = "website", noindex = false, dialog = true,
 } = Astro.props;
@@ -92,6 +92,7 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
         <div>
           <p class="fh">More guides</p>
           {CATEGORIES.slice(5, 12).map((c) => <a href={`/best/${c.slug}`}>{c.short}</a>)}
+          {GUIDES.map((g) => <a href={`/guides/${g.slug}`}>{fillYear(g.short)}</a>)}
         </div>
         <div>
           <p class="fh">Alternatives</p>

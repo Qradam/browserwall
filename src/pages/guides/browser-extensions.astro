@@ -1,0 +1,104 @@
+---
+// Guide: which browsers run which extension store, and what Manifest V3 changed.
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import { browsers, ENGINES } from "../../data/browsers";
+import { defaultState } from "../../lib/quiz";
+import { guide, guideLd, fillYear, seoTitle, quizLink, isQuizEligible, breadcrumbLd, faqLd, UPDATED, YEAR, GUIDES } from "../../lib/seo";
+
+const g = guide("browser-extensions");
+const h1 = fillYear(g.title);
+const list = browsers.filter(isQuizEligible);
+const chrome = list.filter((b) => b.tags.includes("chrome-extensions"));
+const firefox = list.filter((b) => b.tags.includes("firefox-addons"));
+const both = list.filter((b) => b.tags.includes("chrome-extensions") && b.tags.includes("firefox-addons"));
+const neither = list.filter((b) => !b.tags.includes("chrome-extensions") && !b.tags.includes("firefox-addons"));
+const blockers = list.filter((b) => b.tags.includes("ad-blocking"));
+const nm = (bs: typeof list, n = 6) => bs.slice(0, n).map((b) => b.name).join(", ");
+const yes = "Yes", no = "–";
+
+const faq = [
+  { q: "Do all Chromium browsers support Chrome extensions?", a: `Almost all of them. ${chrome.length} of the ${list.length} browsers we recommend install extensions straight from the Chrome Web Store, including ${nm(chrome)}. Since 2026 they all run Manifest V3 only, so they share the same limits as Chrome.` },
+  { q: "Can I use Firefox add-ons in Chrome?", a: "No. Firefox add-ons only run in Firefox and Firefox-based browsers such as LibreWolf, Zen, Floorp and Waterfox. Many popular extensions (password managers, uBlock Origin, Dark Reader) are published for both stores, so you can usually find the same extension on either side." },
+  { q: "Which browser supports both Chrome and Firefox extensions?", a: both.length ? `${both.map((b) => b.name).join(" and ")} can install extensions from both the Chrome Web Store and Firefox Add-ons, although not every extension works perfectly.` : "None of the browsers we recommend fully supports both stores." },
+  { q: "What is Manifest V3?", a: "Manifest V3 is the extension platform Google made mandatory in Chrome. It limits how extensions can inspect and block network requests, which mostly affects ad blockers and privacy tools. Chromium removed the older Manifest V2 in mid-2026, so every Chromium browser is affected. Firefox supports Manifest V3 but kept the blocking APIs that ad blockers rely on." },
+  { q: "Are browser extensions safe?", a: "Most are, but extensions can read and change the pages you visit. Install only what you need, prefer well-known open-source extensions, check the permissions, and remove anything you no longer use. Popular extensions are sometimes sold to new owners who add tracking." },
+];
+const crumbs = [{ name: "Guides", href: "/best" }, { name: "Browser extensions", href: `/guides/${g.slug}` }];
+const title = seoTitle(h1, `Browser extensions ${YEAR}: which browser runs which`);
+---
+<Base title={title} description={g.description} jsonLd={[guideLd(Astro.site, g), breadcrumbLd(Astro.site, crumbs), faqLd(faq)]} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Guide</p>
+    <h1>{h1}</h1>
+    <p class="lede">Your extensions decide more about which browser you can use than almost anything else. There are three extension stores on desktop, and each browser can use one of them – sometimes two.</p>
+    <p class="updated">Updated {UPDATED} · {list.length} browsers checked</p>
+
+    <section aria-labelledby="stores">
+      <h2 id="stores">The three extension stores</h2>
+      <ul class="prose">
+        <li><b>Chrome Web Store</b> – by far the largest. Works in Chrome and in nearly every Chromium-based browser: {nm(chrome, 8)} and {chrome.length > 8 ? `${chrome.length - 8} more` : "others"}. Edge and Opera also have their own add-on stores, but they can install Chrome Web Store extensions too.</li>
+        <li><b>Firefox Add-ons</b> (addons.mozilla.org) – smaller, but the only store that still runs the full uBlock Origin and other Manifest V2 blockers. Works in Firefox and its forks: {nm(firefox, 8)}.</li>
+        <li><b>Safari extensions</b> – installed from the Mac App Store, often as part of an app, and frequently paid. Only Safari uses them{both.length ? `; ${both.map((b) => b.name).join(", ")} instead runs Chrome and Firefox extensions on WebKit` : ""}.</li>
+      </ul>
+      <p class="prose">Browsers with neither store ({nm(neither)}{neither.length > 6 ? " and others" : ""}) either use Safari's extensions, have their own small catalogue, or don't support extensions at all.</p>
+    </section>
+
+    <section aria-labelledby="mv3">
+      <h2 id="mv3">Manifest V3: what changed in {YEAR}</h2>
+      <p class="prose">Google spent years moving Chrome from the old Manifest V2 extension platform to Manifest V3. The change limits how extensions can watch and block network requests. For most extensions nothing changed; for content blockers like uBlock Origin it meant a weaker "Lite" version.</p>
+      <ul class="prose">
+        <li>Chromium 150 and 151 (June–July 2026) removed the last switches that kept Manifest V2 extensions running, and Google removed the remaining Manifest V2 extensions from the Chrome Web Store.</li>
+        <li>Brave, Vivaldi and Opera kept Manifest V2 alive for a while, but because they're built on Chromium they lost it with the same update.</li>
+        <li>Microsoft started moving Edge users off Manifest V2 in August 2026 and plans to finish by the end of the year.</li>
+        <li>Firefox supports Manifest V3 too, but kept the request-blocking API, and Mozilla has said its uBlock Origin support isn't going anywhere.</li>
+      </ul>
+      <p class="prose">If you rely on an advanced blocker or privacy extension, that makes a Firefox-based browser the safer bet. If you just want ads gone, a browser with a built-in blocker – {nm(blockers, 5)} – works without any extension. More in our <a href="/guides/ublock-origin">uBlock Origin guide</a>.</p>
+    </section>
+
+    <section aria-labelledby="table">
+      <h2 id="table">Extension support by browser</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th scope="col">Browser</th><th scope="col">Engine</th><th scope="col">Chrome Web Store</th><th scope="col">Firefox Add-ons</th><th scope="col">Built-in ad blocker</th></tr></thead>
+          <tbody>
+            {list.map((b) => (
+              <tr>
+                <th scope="row"><a href={`/browsers/${b.id}`}>{b.name}</a></th>
+                <td>{ENGINES[b.engine]}</td>
+                <td>{b.tags.includes("chrome-extensions") ? yes : no}</td>
+                <td>{b.tags.includes("firefox-addons") ? yes : no}</td>
+                <td>{b.tags.includes("ad-blocking") ? yes : no}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="pick">
+      <h2 id="pick">Picking a browser for your extensions</h2>
+      <ol class="prose">
+        <li>List the extensions you can't live without and check which store has them. Password managers, Dark Reader, SponsorBlock and most others are in both.</li>
+        <li>Need Chrome Web Store extensions without Google? See the <a href="/best/chromium-browsers-without-google">best de-Googled Chromium browsers</a>.</li>
+        <li>Need full uBlock Origin or other Manifest V2 tools? See the <a href="/best/firefox-based-browsers">best Firefox-based browsers</a>.</li>
+        <li>Switching keeps your extensions only within the same store. Moving from Chrome to Firefox means reinstalling them from Firefox Add-ons; settings usually don't carry over unless the extension has its own sync or export.</li>
+      </ol>
+    </section>
+
+    <QuizCta href={quizLink({ ...defaultState(), ext: "firefox" })} title="Already know your extension store?" text="The quiz starts with your OS and extension store, then ranks every browser that can run your extensions." label="Take the quiz" />
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+
+    <section aria-labelledby="more">
+      <h2 id="more">More guides</h2>
+      <ul class="linkgrid">{GUIDES.filter((x) => x.slug !== g.slug).map((x) => <li><a href={`/guides/${x.slug}`}>{fillYear(x.short)}</a></li>)}<li><a href="/best">All browser guides</a></li></ul>
+    </section>
+  </article>
+</Base>

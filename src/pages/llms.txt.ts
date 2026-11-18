@@ -1,7 +1,7 @@
 // /llms.txt – a plain-text map of the site for LLMs and AI search (https://llmstxt.org).
 import type { APIRoute } from "astro";
 import { browsers, byId } from "../data/browsers";
-import { CATEGORIES, ALTERNATIVE_IDS, abs, fillYear, categoryResults, UPDATED } from "../lib/seo";
+import { CATEGORIES, GUIDES, ALTERNATIVE_IDS, abs, fillYear, categoryResults, UPDATED } from "../lib/seo";
 
 export const GET: APIRoute = ({ site }) => {
   const u = (p: string) => abs(site, p);
@@ -25,6 +25,7 @@ Key facts:
 ## Guides
 
 ${CATEGORIES.map((c) => `- [${fillYear(c.title)}](${u(`/best/${c.slug}`)}): top picks ${categoryResults(c).slice(0, 3).map((r) => r.browser.name).join(", ")}`).join("\n")}
+${GUIDES.map((g) => `- [${fillYear(g.title)}](${u(`/guides/${g.slug}`)}): ${g.description}`).join("\n")}
 
 ## Alternatives
 

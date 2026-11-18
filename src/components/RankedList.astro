@@ -18,6 +18,7 @@ const OS = { windows: "Windows", macos: "macOS", linux: "Linux", bsd: "BSD", oth
         <p class="rk-meta">{b.basedOn ?? b.engine} · {b.os.map((o) => OS[o]).join(", ")} · {b.openSource ? "open source" : "closed source"}{badges.map((x) => <span class="rk-badge">{x}</span>)}</p>
         <p class="rk-desc">{b.description}</p>
         {lines.map((l) => <p class:list={["rk-line", l.tone]}><b>{l.label}</b> {l.text}</p>)}
+        {b.website && b.status !== "discontinued" && <p class="rk-dl"><a href={b.website} rel="noopener external" target="_blank">Download {b.name} <span class="sr">(official site, opens in a new tab)</span>↗</a></p>}
       </div>
       <div class="rk-scores"><ScoreBars b={b} compact /></div>
     </li>

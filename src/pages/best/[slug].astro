@@ -4,7 +4,7 @@ import Base from "../../layouts/Base.astro";
 import RankedList, { type Item } from "../../components/RankedList.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
-import { CATEGORIES, categoryResults, fillYear, quizLink, UPDATED, breadcrumbLd, faqLd, itemListLd, type Category } from "../../lib/seo";
+import { CATEGORIES, categoryResults, fillYear, quizLink, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle, type Category } from "../../lib/seo";
 
 export function getStaticPaths() {
   return CATEGORIES.map((c) => ({ params: { slug: c.slug }, props: { c } }));
@@ -27,8 +27,10 @@ const faq = [
   { q: "How is this list ranked?", a: `With the same engine as the browserwall quiz: ${c.how} Scores are editorial 1–5 ratings for privacy, out-of-box experience, customisation, lightness and minimalism, checked against reviews, community opinion and tests. Discontinued, beta, developer-only and experimental browsers are left out.` },
 ];
 const crumbs = [{ name: "Guides", href: "/best" }, { name: h1, href: `/best/${c.slug}` }];
-const title = `${h1} (ranked, updated ${UPDATED}) – browserwall`;
-const description = `${c.intro} Top picks: ${results.slice(0, 3).map((r) => r.browser.name).join(", ")}. Personalise the list with the 2-minute browser quiz.`.slice(0, 300);
+const short = h1.replace(/^The /, "").replace(/^./, (c) => c.toUpperCase());
+const title = seoTitle(`${short} (ranked)`, short);
+const intro = fillYear(c.intro);
+const description = `${intro} Top picks: ${results.slice(0, 3).map((r) => r.browser.name).join(", ")}. Personalise the list with the 2-minute browser quiz.`.slice(0, 300);
 const jsonLd = [itemListLd(Astro.site, h1, results.map((r) => r.browser)), breadcrumbLd(Astro.site, crumbs), faqLd(faq)];
 const related = CATEGORIES.filter((x) => x.slug !== c.slug);
 ---
@@ -37,7 +39,7 @@ const related = CATEGORIES.filter((x) => x.slug !== c.slug);
     <Crumbs items={crumbs} />
     <p class="kicker">Guide</p>
     <h1>{h1}</h1>
-    <p class="lede">{c.intro}</p>
+    <p class="lede">{intro}</p>
     <p class="updated">Updated {UPDATED} · {results.length} picks · ranked by the quiz engine</p>
 
     <QuizCta href={quizLink(c.state)} title="Make this list yours" text="This ranking uses fixed answers. Open it in the quiz to set your own OS, extensions, priorities and must-haves." label="Personalise in the quiz" />

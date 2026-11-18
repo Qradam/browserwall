@@ -6,7 +6,7 @@ import ScoreBars from "../../components/ScoreBars.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
 import { browsers, byId, TAGS, ENGINES, FAMILIES, type Browser } from "../../data/browsers";
-import { YEAR, UPDATED, ALTERNATIVE_IDS, alternativesFor, breadcrumbLd, faqLd, softwareLd, osNames, isQuizEligible } from "../../lib/seo";
+import { YEAR, UPDATED, ALTERNATIVE_IDS, alternativesFor, breadcrumbLd, faqLd, softwareLd, osNames, isQuizEligible, seoTitle } from "../../lib/seo";
 
 export function getStaticPaths() {
   return browsers.map((b) => ({ params: { id: b.id }, props: { b } }));
@@ -21,7 +21,7 @@ const os = osNames(b);
 const scoreLine = `privacy ${b.scores.privacy}/5, out-of-box experience ${b.scores.experience}/5, customisation ${b.scores.customisation}/5, lightness ${b.scores.lightness}/5 and minimalism ${b.scores.minimalism}/5`;
 const AI_LEVEL = { 1: "basic AI (chat or summaries)", 2: "an integrated AI assistant", 3: "an AI agent that can browse for you" } as const;
 
-const title = `${b.name} review ${YEAR}: privacy, features and alternatives – browserwall`;
+const title = seoTitle(`${b.name} review ${YEAR}: privacy, features & alternatives`, `${b.name} review ${YEAR}: privacy & alternatives`, `${b.name} review ${YEAR}: scores & alternatives`, `${b.name} review ${YEAR}`);
 const description = `${b.description} Scores: privacy ${b.scores.privacy}/5, experience ${b.scores.experience}/5, customisation ${b.scores.customisation}/5. See alternatives or take the 2-minute browser quiz.`.slice(0, 300);
 
 const faq = [

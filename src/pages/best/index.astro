@@ -3,14 +3,14 @@ import "../../styles/content.css";
 import Base from "../../layouts/Base.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
-import { CATEGORIES, ALTERNATIVE_IDS, categoryResults, fillYear, UPDATED, YEAR, breadcrumbLd } from "../../lib/seo";
+import { CATEGORIES, GUIDES, ALTERNATIVE_IDS, categoryResults, fillYear, UPDATED, YEAR, breadcrumbLd } from "../../lib/seo";
 import { byId } from "../../data/browsers";
 
 const crumbs = [{ name: "Guides", href: "/best" }];
 const cats = CATEGORIES.map((c) => ({ c, top: categoryResults(c).slice(0, 3).map((r) => r.browser.name).join(", ") }));
 const alts = ALTERNATIVE_IDS.map((id) => byId.get(id)!);
 ---
-<Base title={`Browser guides ${YEAR}: best browsers by need – browserwall`} description="Ranked guides to the best desktop browsers for privacy, Windows, Mac, Linux, AI, vertical tabs and more, plus alternatives to Chrome, Edge, Safari, Arc and others." jsonLd={[breadcrumbLd(Astro.site, crumbs)]} dialog={false}>
+<Base title={`Browser guides ${YEAR}: best browser by need – browserwall`} description="Ranked guides to the best desktop browsers for privacy, Windows, Mac, Linux, AI, vertical tabs and more, plus alternatives to Chrome, Edge, Safari, Arc and others." jsonLd={[breadcrumbLd(Astro.site, crumbs)]} dialog={false}>
   <div class="doc">
     <Crumbs items={crumbs} />
     <p class="kicker">Guides</p>
@@ -19,6 +19,8 @@ const alts = ALTERNATIVE_IDS.map((id) => byId.get(id)!);
     <QuizCta />
     <h2>Best browsers by need</h2>
     <ul class="linkgrid">{cats.map(({ c, top }) => <li><a href={`/best/${c.slug}`}><span>{fillYear(c.title)}<small>{top}</small></span></a></li>)}</ul>
+    <h2>Explainers</h2>
+    <ul class="linkgrid">{GUIDES.map((g) => <li><a href={`/guides/${g.slug}`}><span>{fillYear(g.title)}<small>{g.description.split(". ")[0]}.</small></span></a></li>)}</ul>
     <h2>Alternatives</h2>
     <ul class="linkgrid">{alts.map((b) => <li><a href={`/alternatives/${b.id}`}>{b.logo && <img src={b.logo} alt="" width="24" height="24" loading="lazy" />}<span>{b.name} alternatives</span></a></li>)}</ul>
   </div>
