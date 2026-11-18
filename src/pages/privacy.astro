@@ -1,0 +1,39 @@
+---
+import Base from "../layouts/Base.astro";
+
+const EMAIL = "ujhazyadam@gmail.com";
+const UPDATED = "18 November 2026";
+---
+<Base title="Privacy – browserwall" description="What browserwall collects, and how to opt out." dialog={false}>
+  <article class="privacy">
+    <p class="kicker">Privacy</p>
+    <h1>Privacy policy</h1>
+    <p class="sub">Last updated {UPDATED}</p>
+
+    <h2>The short version</h2>
+    <p>browserwall has no accounts, no ads and no forms. Your quiz answers and tier lists stay in your browser. If you agree, we use Google Tag Manager to count visits.</p>
+
+    <h2>Analytics (only with your consent)</h2>
+    <p>If you click "Accept" in the banner, Google Tag Manager loads and may set cookies or similar identifiers. It can collect your IP address, device and browser type, pages visited and referrer, to give us anonymous usage statistics. This data is processed by Google, which may transfer it outside the EU/EEA. If you click "Decline" or ignore the banner, nothing from Google is loaded.</p>
+    <p>The legal basis is your consent (GDPR Art. 6(1)(a)). You can withdraw it at any time with <a href="#" data-cookie-settings>Cookie settings</a>; this also stops future loading, and you can delete existing cookies in your browser settings.</p>
+
+    <h2>Stored in your browser</h2>
+    <p>We save your consent choice (<code>bw-consent</code>) and, for features like the tier maker, your own settings in local storage. This stays on your device and is not sent to us.</p>
+
+    <h2>Your rights</h2>
+    <p>Under GDPR you can ask for access to, correction or deletion of data about you, object to processing, or complain to your local data protection authority. Since we only see aggregated statistics, we usually cannot identify individual visitors, but just ask.</p>
+
+    <h2>Contact</h2>
+    <p>Questions: <a href={`mailto:${EMAIL}`}>{EMAIL}</a>. browserwall is run by one person.</p>
+  </article>
+</Base>
+
+<style>
+  .privacy { max-width: 680px; margin: 0 auto; padding: 72px 0 40px; line-height: 1.6; }
+  .kicker { margin: 0 0 10px; font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-size: clamp(30px, 5vw, 42px); letter-spacing: -0.035em; line-height: 1.05; margin: 0 0 10px; font-weight: 700; }
+  .sub { color: var(--muted); margin: 0 0 20px; font-size: 14px; }
+  h2 { margin: 28px 0 6px; font-size: 17px; font-weight: 620; }
+  p { margin: 0 0 10px; color: var(--muted); font-size: 14.5px; }
+  a { color: var(--accent); }
+</style>

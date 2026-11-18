@@ -4,6 +4,7 @@ import "@fontsource-variable/geist";
 import "../styles/global.css";
 import Logo from "../components/Logo.astro";
 import IconSprite from "../components/IconSprite.astro";
+import Consent from "../components/Consent.astro";
 import BrowserDialog from "../components/BrowserDialog.astro";
 import { SITE_NAME, abs, cleanPath, CATEGORIES, ALTERNATIVE_IDS, fillYear } from "../lib/seo";
 import { byId } from "../data/browsers";
@@ -102,9 +103,12 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
           <a href="/wall">Browser wall</a>
           <a href="/tiers">Tier maker</a>
           <a href="/contact">Contact</a>
+          <a href="/privacy">Privacy</a>
+          <a href="#" data-cookie-settings>Cookie settings</a>
         </div>
       </nav>
       <p class="fine">Logos are trademarks of their respective owners. Data curated by hand – spotted a mistake? <a href="/contact">Get in touch</a>.</p>
     </footer>
+    <Consent />
   </body>
 </html>

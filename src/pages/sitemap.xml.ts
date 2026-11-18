@@ -6,7 +6,7 @@ import { CATEGORIES, ALTERNATIVE_IDS, abs, BUILD } from "../lib/seo";
 export const GET: APIRoute = ({ site }) => {
   const day = BUILD.toISOString().slice(0, 10);
   const pages: [string, string][] = [
-    ["/", "1.0"], ["/quiz", "1.0"], ["/wall", "0.9"], ["/best", "0.8"], ["/alternatives", "0.8"], ["/tiers", "0.6"], ["/contact", "0.3"],
+    ["/", "1.0"], ["/quiz", "1.0"], ["/wall", "0.9"], ["/best", "0.8"], ["/alternatives", "0.8"], ["/tiers", "0.6"], ["/contact", "0.3"], ["/privacy", "0.1"],
     ...CATEGORIES.map((c) => [`/best/${c.slug}`, "0.8"] as [string, string]),
     ...ALTERNATIVE_IDS.map((id) => [`/alternatives/${id}`, "0.8"] as [string, string]),
     ...browsers.map((b) => [`/browsers/${b.id}`, b.status === "discontinued" || b.channelOf ? "0.4" : "0.6"] as [string, string]),

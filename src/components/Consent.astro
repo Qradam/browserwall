@@ -1,0 +1,54 @@
+---
+// Analytics consent: Google Tag Manager is only loaded after the visitor clicks "Accept".
+const GTM_ID = "GTM-NC48G35M";
+---
+<div class="consent" id="consent" role="dialog" aria-label="Analytics consent" hidden>
+  <p>We use Google Tag Manager for anonymous visit statistics, only if you agree. <a href="/privacy">Privacy</a></p>
+  <div class="btns">
+    <button type="button" data-choice="denied">Decline</button>
+    <button type="button" data-choice="granted" class="yes">Accept</button>
+  </div>
+</div>
+
+<script is:inline define:vars={{ GTM_ID }}>
+  (function () {
+    var KEY = "bw-consent";
+    var box = document.getElementById("consent");
+    function load() {
+      if (window.__gtmLoaded) return;
+      window.__gtmLoaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtm.js?id=" + GTM_ID;
+      document.head.appendChild(s);
+    }
+    function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+    var saved = get();
+    if (saved === "granted") load();
+    else if (!saved) box.hidden = false;
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest("button[data-choice]");
+      if (!b) return;
+      set(b.dataset.choice);
+      box.hidden = true;
+      if (b.dataset.choice === "granted") load();
+    });
+    // "Cookie settings" links in the footer re-open the banner.
+    document.addEventListener("click", function (e) {
+      if (e.target.closest("[data-cookie-settings]")) { e.preventDefault(); box.hidden = false; }
+    });
+  })();
+</script>
+
+<style>
+  .consent { position: fixed; z-index: 100; left: 16px; right: 16px; bottom: 16px; max-width: 520px; margin: 0 auto; display: flex; align-items: center; gap: 14px; padding: 12px 14px; border-radius: 12px; background: var(--bg-2); border: 1px solid var(--line-2); box-shadow: 0 20px 60px rgb(0 0 0 / .5); font-size: 13px; }
+  .consent[hidden] { display: none; }
+  p { margin: 0; color: var(--muted); line-height: 1.45; }
+  .btns { display: flex; gap: 6px; flex: none; }
+  button { height: 34px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--bg-3); color: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+  button.yes { background: var(--accent); color: #111; border-color: transparent; }
+  @media (max-width: 520px) { .consent { flex-direction: column; align-items: stretch; } .btns button { flex: 1; } }
+</style>
