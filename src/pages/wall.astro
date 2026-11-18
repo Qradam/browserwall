@@ -30,7 +30,15 @@ const alive = browsers.filter((b) => b.status !== "discontinued").length;
       <input id="q" type="search" placeholder="Search name, engine, feature…" autocomplete="off" spellcheck="false" aria-label="Search browsers" />
       <kbd>/</kbd>
     </label>
+    <button type="button" id="filters-open" class="filters-btn" aria-haspopup="dialog" aria-controls="filters" aria-expanded="false">
+      <Icon name="SlidersHorizontalIcon" size={16} />Filters<span id="filters-n" class="badge" hidden>0</span>
+    </button>
 
+    <div id="filters" class="panel">
+    <div class="panel-head">
+      <strong>Filters</strong>
+      <button type="button" id="filters-close" class="x" aria-label="Close filters"><Icon name="Cancel01Icon" size={18} /></button>
+    </div>
     <div class="row">
       <div class="seg" role="group" aria-label="Operating system">
         {osChips.map((o) => <button type="button" class="chip" data-filter="os" data-value={o} aria-pressed="false">{OSES[o]}</button>)}
@@ -52,6 +60,11 @@ const alive = browsers.filter((b) => b.status !== "discontinued").length;
         </button>
       ))}
     </div>
+    <div class="panel-foot">
+      <button type="button" id="filters-done" class="done">Show <span id="show-n">{browsers.length}</span> browsers</button>
+    </div>
+    </div>
+    <div id="filters-backdrop" class="backdrop"></div>
 
     <div class="summary">
       <span id="count" aria-live="polite">{browsers.length} browsers</span>
@@ -128,6 +141,11 @@ const alive = browsers.filter((b) => b.status !== "discontinued").length;
     }
     count.textContent = `${shown} browser${shown === 1 ? "" : "s"}`;
     empty.hidden = shown > 0;
+    document.querySelector("#show-n")!.textContent = String(shown);
+    const nActive = sets.os.size + sets.engine.size + sets.tag.size + Object.values(toggles).filter(Boolean).length;
+    const badge = document.querySelector<HTMLElement>("#filters-n")!;
+    badge.textContent = String(nActive);
+    badge.hidden = !nActive;
     const active = terms.length || sets.os.size || sets.engine.size || sets.tag.size || Object.values(toggles).some(Boolean);
     reset.hidden = !active;
     syncUrl();
@@ -182,6 +200,25 @@ const alive = browsers.filter((b) => b.status !== "discontinued").length;
     if (e.key === "Escape" && document.activeElement === q) { q.value = ""; apply(); }
   });
 
+  // Mobile drawer: slides in from the right over a dimmed backdrop.
+  const panel = document.querySelector<HTMLElement>("#filters")!;
+  const backdrop = document.querySelector<HTMLElement>("#filters-backdrop")!;
+  const openBtn = document.querySelector<HTMLElement>("#filters-open")!;
+  const mq = matchMedia("(max-width: 720px)");
+  function setDrawer(open: boolean) {
+    panel.classList.toggle("open", open);
+    backdrop.classList.toggle("open", open);
+    openBtn.setAttribute("aria-expanded", String(open));
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    if (open) panel.querySelector<HTMLElement>("button")!.focus(); else openBtn.focus({ preventScroll: true });
+  }
+  openBtn.addEventListener("click", () => setDrawer(true));
+  backdrop.addEventListener("click", () => setDrawer(false));
+  document.querySelector("#filters-close")!.addEventListener("click", () => setDrawer(false));
+  document.querySelector("#filters-done")!.addEventListener("click", () => setDrawer(false));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && panel.classList.contains("open")) setDrawer(false); });
+  mq.addEventListener("change", () => { if (!mq.matches && panel.classList.contains("open")) setDrawer(false); });
+
   // Restore state from URL (shareable filtered views).
   const p = new URLSearchParams(location.search);
   q.value = p.get("q") ?? "";
@@ -207,6 +244,10 @@ const alive = browsers.filter((b) => b.status !== "discontinued").length;
   .search input::-webkit-search-cancel-button { display: none; }
   kbd { font: 11px var(--mono); color: var(--faint); border: 1px solid var(--line-2); border-radius: 4px; padding: 1px 6px; }
 
+  /* Desktop: the panel is layout-transparent and the drawer chrome is hidden. */
+  .panel { display: contents; }
+  .panel-head, .panel-foot, .filters-btn, .backdrop { display: none; }
+  .controls { position: relative; }
   .row { display: flex; flex-wrap: wrap; gap: 8px 16px; }
   .seg { display: flex; flex-wrap: wrap; gap: 4px; }
   .tags-row { gap: 4px; }
@@ -270,4 +311,38 @@ const alive = browsers.filter((b) => b.status !== "discontinued").length;
   .grid :global(.links a) { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 6px; color: var(--muted); }
   .grid :global(.links a:hover) { background: var(--bg-3); color: var(--text); }
   .grid :global(.oss) { font: 600 10px var(--mono); color: var(--ok); border: 1px solid rgb(74 222 128 / .3); border-radius: 4px; padding: 1px 4px; margin-right: 4px; }
+
+  /* Mobile: search + Filters button on one line, filters live in a right-side drawer. */
+  @media (max-width: 720px) {
+    .controls { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .search { flex: 1; min-width: 0; }
+    .search kbd { display: none; }
+    .summary { flex-basis: 100%; }
+    .filters-btn {
+      display: inline-flex; align-items: center; gap: 6px; height: 42px; padding: 0 14px; border-radius: var(--radius);
+      background: var(--bg-2); border: 1px solid var(--line); color: var(--text); font-size: 14px; cursor: pointer;
+    }
+    .badge { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--accent); color: #000; font-size: 11px; font-weight: 650; display: inline-grid; place-items: center; }
+    .badge[hidden] { display: none; }
+
+    .panel {
+      display: flex; flex-direction: column; gap: 14px; position: fixed; top: 0; right: 0; bottom: 0; z-index: 101;
+      width: min(380px, 88vw); padding: 0 16px; overflow-y: auto; overscroll-behavior: contain;
+      background: var(--bg-2); border-left: 1px solid var(--line-2); box-shadow: -16px 0 48px rgb(0 0 0 / .5);
+      transform: translateX(100%); visibility: hidden; transition: transform .25s ease, visibility 0s linear .25s;
+    }
+    .panel.open { transform: none; visibility: visible; transition: transform .25s ease; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--bg-2); padding: 14px 0 10px; font-size: 15px; z-index: 1; }
+    .x { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 8px; background: none; border: 0; color: var(--muted); cursor: pointer; }
+    .x:hover { background: var(--bg-3); color: var(--text); }
+    .panel .row { flex-direction: column; gap: 14px; }
+    .panel .tags-row { flex-direction: row; gap: 6px; }
+    .chip { height: 34px; padding: 0 12px; font-size: 13px; }
+    .panel-foot { display: block; position: sticky; bottom: 0; margin-top: auto; padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); background: var(--bg-2); }
+    .done { width: 100%; height: 44px; border-radius: var(--radius); border: 0; background: var(--accent); color: #000; font-size: 14px; font-weight: 620; cursor: pointer; }
+
+    .backdrop { display: block; position: fixed; inset: 0; z-index: 100; background: rgb(0 0 0 / .6); opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+    .backdrop.open { opacity: 1; pointer-events: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) { .panel, .backdrop { transition: none !important; } }
 </style>
