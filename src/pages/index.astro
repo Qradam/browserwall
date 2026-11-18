@@ -35,7 +35,7 @@ const guides = [
 ];
 ---
 <Base
-  title={`Which browser should I use? Free browser quiz + ${browsers.length} browsers compared (${YEAR}) – browserwall`}
+  title={`Which browser should I use? ${browsers.length} compared (${YEAR}) – browserwall`}
   description={`Find the right web browser in two minutes. A free quiz ranks ${browsers.length} desktop browsers – Chrome, Firefox, Safari, Edge, Brave, Zen, Arc, Comet and more – against your OS, extensions, priorities and must-haves.`}
   jsonLd={[faqLd(faq), { "@type": "WebPage", name: "browserwall", url: abs(Astro.site, "/"), primaryImageOfPage: abs(Astro.site, "/og.png"), dateModified: new Date().toISOString().slice(0, 10) }]}
   dialog={false}>
@@ -344,6 +344,8 @@ const guides = [
     .mobile-only { display: block; margin-bottom: 22px; font-size: 17px; }
     .hero-actions { flex-direction: column; align-items: stretch; margin-top: 8px; }
     .glass { width: 100%; }
+    /* The hero clips overflow, so keep the results in flow on mobile and let the hero grow instead of cutting them off. */
+    .glass-drop { position: static; margin-top: 7px; padding: 0; border: 0; background: none; box-shadow: none; backdrop-filter: none; }
     .hero-dots { margin-bottom: 26px; }
     .guide-grid { grid-template-columns: 1fr; }
     .faq-sec { padding: 64px 0; }
