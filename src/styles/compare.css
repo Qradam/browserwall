@@ -1,0 +1,60 @@
+/* /compare and /compare/<a>-vs-<b> */
+.vs-head { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0 4px; }
+.vs-side { display: flex; align-items: center; gap: 14px; padding: 16px; border-radius: 12px; background: var(--bg-2); border: 1px solid var(--line); text-decoration: none; }
+.vs-side:last-of-type { flex-direction: row-reverse; text-align: right; }
+.vs-side:hover { border-color: var(--line-2); }
+.vs-side img, .vs-side .mono { width: 56px; height: 56px; object-fit: contain; flex: none; filter: drop-shadow(0 0 1px rgb(255 255 255 / .45)); }
+.vs-side .mono { display: grid; place-items: center; border-radius: 12px; background: var(--bg-3); font: 600 15px var(--mono); color: var(--muted); filter: none; }
+.vs-side b { display: block; font-size: 18px; font-weight: 650; }
+.vs-side small { color: var(--faint); font-size: 12px; }
+.vs-x { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%;
+  background: var(--bg); border: 1px solid var(--line-2); font: 600 12px var(--mono); color: var(--muted); }
+
+.doc table.cmp { table-layout: fixed; min-width: 560px; }
+.cmp thead th:first-child { width: 170px; }
+.cmp tbody th { font-weight: 500; color: var(--muted); background: none; }
+.cmp tr.scores td { font: 600 13px var(--mono); }
+.cmp td.win { color: var(--text); }
+.cmp td.win svg { color: var(--ok); margin-right: 5px; vertical-align: -2px; }
+.cmp tr.scores + tr.facts th, .cmp tr.scores + tr.facts td { border-top: 1px solid var(--line-2); }
+
+.vs-pick, .vs-scores { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; }
+.vs-pick h3, .vs-scores h3 { margin: 0 0 8px; font-size: 15px; font-weight: 650; }
+.vs-scores h3 a { text-decoration: none; }
+.vs-scores h3 a:hover { color: var(--accent); }
+.vs-pick ul { margin: 0; padding-left: 18px; }
+.vs-why { font-size: 13px; margin: 12px 0 0; }
+.vs-note { display: flex; gap: 8px; align-items: flex-start; margin: 10px 0 0; padding: 9px 11px; border-radius: 9px; background: rgb(251 191 36 / .08); border: 1px solid rgb(251 191 36 / .25); font-size: 13px; }
+.vs-note svg { color: var(--warn); flex: none; margin-top: 3px; }
+.vs-verdict { list-style: none; margin: 18px 0 6px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 8px; }
+.vs-verdict li { padding: 10px 12px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--line); }
+.vs-verdict span { display: block; font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: .05em; }
+.vs-verdict b { font-size: 14px; }
+.doc .bp-small { font-size: 12px; color: var(--faint); }
+.doc .bp-small a { color: var(--muted); }
+
+/* Interactive picker */
+.cmp-pick { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; margin: 18px 0 10px; }
+.cmp-pick label { display: flex; flex-direction: column; gap: 4px; font-size: 11px; color: var(--faint); text-transform: uppercase; letter-spacing: .05em; }
+.cmp-pick select { font: inherit; font-size: 14px; text-transform: none; letter-spacing: 0; color: var(--text); background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 9px; padding: 9px 10px; }
+.cmp-pick select:hover { border-color: var(--muted); }
+.cmp-head th { vertical-align: bottom; }
+.cmp-head a { display: flex; flex-direction: column; gap: 6px; text-decoration: none; }
+.cmp-head a:hover { color: var(--accent); }
+.cmp-head img { width: 36px; height: 36px; object-fit: contain; filter: drop-shadow(0 0 1px rgb(255 255 255 / .45)); }
+.cmp-full { margin: 10px 0 0; }
+.cmp-full a { color: var(--accent); }
+#cmp-why:empty { display: none; }
+
+@media (max-width: 760px) {
+  .vs-pick, .vs-scores { grid-template-columns: 1fr; }
+  .vs-side { padding: 12px; gap: 10px; }
+  .vs-side img, .vs-side .mono { width: 40px; height: 40px; }
+  .vs-side b { font-size: 15px; }
+  .vs-x { display: none; }
+  /* Two or three browsers fit on a phone; four scroll sideways. */
+  .doc table.cmp { min-width: 0; font-size: 12.5px; }
+  .doc table.cmp:has(thead th:nth-child(5)) { min-width: 560px; }
+  .cmp th, .cmp td { padding: 8px; }
+  .cmp thead th:first-child { width: 96px; }
+}

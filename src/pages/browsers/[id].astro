@@ -6,7 +6,7 @@ import ScoreBars from "../../components/ScoreBars.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
 import { browsers, byId, TAGS, ENGINES, FAMILIES, type Browser } from "../../data/browsers";
-import { YEAR, UPDATED, ALTERNATIVE_IDS, alternativesFor, breadcrumbLd, faqLd, softwareLd, osNames, isQuizEligible, seoTitle } from "../../lib/seo";
+import { YEAR, UPDATED, ALTERNATIVE_IDS, alternativesFor, breadcrumbLd, faqLd, softwareLd, osNames, isQuizEligible, seoTitle, COMPARISONS } from "../../lib/seo";
 
 export function getStaticPaths() {
   return browsers.map((b) => ({ params: { id: b.id }, props: { b } }));
@@ -15,6 +15,7 @@ const { b } = Astro.props as { b: Browser };
 const parent = b.channelOf ? byId.get(b.channelOf) : null;
 const alts = alternativesFor(b, 6);
 const hasAltPage = ALTERNATIVE_IDS.includes(b.id);
+const comparisons = COMPARISONS.filter((c) => c.a.id === b.id || c.b.id === b.id);
 const statusText = { active: "actively developed", maintenance: "in maintenance mode (slow updates)", discontinued: "discontinued" }[b.status];
 const engine = ENGINES[b.engine];
 const os = osNames(b);
@@ -99,6 +100,16 @@ const jsonLd = [softwareLd(Astro.site, b), breadcrumbLd(Astro.site, crumbs), faq
         {hasAltPage && <p class="prose"><a href={`/alternatives/${b.id}`}>See all {b.name} alternatives, with what each one does better →</a></p>}
       </section>
     )}
+
+    <section aria-labelledby="compare">
+      <h2 id="compare">Compare {b.name}</h2>
+      {comparisons.length > 0 && (
+        <ul class="linkgrid">
+          {comparisons.map((c) => { const o = c.a.id === b.id ? c.b : c.a; return <li><a href={`/compare/${c.slug}`}>{o.logo && <img src={o.logo} alt="" width="24" height="24" loading="lazy" />}<span>{c.a.name} vs {c.b.name}</span></a></li>; })}
+        </ul>
+      )}
+      <p class="prose"><a href={`/compare#${b.id},${(alts[0]?.result.browser.id ?? (b.id === "firefox" ? "brave" : "firefox"))}`}>Compare {b.name} side by side with any other browser →</a></p>
+    </section>
 
     <section aria-labelledby="faq">
       <h2 id="faq">FAQ</h2>

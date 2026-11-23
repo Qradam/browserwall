@@ -1,7 +1,7 @@
 // /sitemap.xml – every indexable page.
 import type { APIRoute } from "astro";
 import { browsers } from "../data/browsers";
-import { CATEGORIES, GUIDES, ALTERNATIVE_IDS, abs, BUILD } from "../lib/seo";
+import { CATEGORIES, GUIDES, ALTERNATIVE_IDS, COMPARISONS, abs, BUILD } from "../lib/seo";
 
 export const GET: APIRoute = ({ site }) => {
   const day = BUILD.toISOString().slice(0, 10);
@@ -10,6 +10,8 @@ export const GET: APIRoute = ({ site }) => {
     ...CATEGORIES.map((c) => [`/best/${c.slug}`, "0.8"] as [string, string]),
     ...GUIDES.map((g) => [`/guides/${g.slug}`, "0.7"] as [string, string]),
     ...ALTERNATIVE_IDS.map((id) => [`/alternatives/${id}`, "0.8"] as [string, string]),
+    ["/compare", "0.8"],
+    ...COMPARISONS.map((c) => [`/compare/${c.slug}`, "0.7"] as [string, string]),
     ...browsers.map((b) => [`/browsers/${b.id}`, b.status === "discontinued" || b.channelOf ? "0.4" : "0.6"] as [string, string]),
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

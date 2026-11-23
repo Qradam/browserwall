@@ -1,0 +1,128 @@
+---
+import "../../styles/content.css";
+import "../../styles/compare.css";
+import Base from "../../layouts/Base.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import ScoreBars from "../../components/ScoreBars.astro";
+import Icon from "../../components/Icon.astro";
+import type { Browser } from "../../data/browsers";
+import { COMPARISONS, ALTERNATIVE_IDS, compareVerdict, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle } from "../../lib/seo";
+import { compareRows, chooseIf, axisWins, extOf } from "../../lib/compare";
+
+export function getStaticPaths() {
+  return COMPARISONS.map((c) => ({ params: { slug: c.slug }, props: c }));
+}
+const { a, b, slug } = Astro.props as { a: Browser; b: Browser; slug: string };
+const pair = [a, b];
+const rows = compareRows(pair);
+const [winsA, winsB] = axisWins(a, b);
+const v = compareVerdict(a, b);
+const why = { a: chooseIf(a, b), b: chooseIf(b, a) };
+const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+const lead = v.overall
+  ? `With balanced priorities, ${v.overall.name} comes out ahead${v.privacy && v.privacy !== v.overall ? `, but ${v.privacy.name} wins if privacy is your top priority` : ""}.`
+  : `Neither is one we'd recommend as a daily browser today.`;
+const scoreLine = winsA === winsB ? `They split our five scores ${winsA}–${winsB}` : `${winsA > winsB ? a.name : b.name} wins ${Math.max(winsA, winsB)} of our five scores to ${Math.min(winsA, winsB)}`;
+
+const h1 = `${a.name} vs ${b.name}`;
+const title = seoTitle(`${a.name} vs ${b.name} (${YEAR}): which browser is better?`, `${a.name} vs ${b.name} (${YEAR}): which is better?`, `${a.name} vs ${b.name} (${YEAR})`, `${a.name} vs ${b.name}`);
+const description = `${a.name} vs ${b.name} compared: privacy, polish, customisation, RAM use, extensions, AI and price. ${lead} Updated ${UPDATED}.`.slice(0, 300);
+
+const lighter = a.scores.lightness === b.scores.lightness ? null : a.scores.lightness > b.scores.lightness ? a : b;
+const priv = a.scores.privacy === b.scores.privacy ? null : a.scores.privacy > b.scores.privacy ? a : b;
+const extSame = extOf(a) === extOf(b);
+const faq = [
+  { q: `Is ${a.name} better than ${b.name}?`, a: `${scoreLine}. ${lead} The better choice depends on what you need: pick ${a.name} if ${why.a[0] ?? "you prefer it"}; pick ${b.name} if ${why.b[0] ?? "you prefer it"}.` },
+  { q: `Is ${a.name} more private than ${b.name}?`, a: `${priv === a ? "Yes" : priv === b ? `No, ${b.name} is more private` : "They're level"}: ${a.name} scores ${a.scores.privacy}/5 on privacy and ${b.name} ${b.scores.privacy}/5. We judge privacy on the business model and default settings, not on marketing.` },
+  { q: `Which uses less RAM, ${a.name} or ${b.name}?`, a: lighter ? `${lighter.name} is lighter in our scores (${lighter.scores.lightness}/5 vs ${(lighter === a ? b : a).scores.lightness}/5). Real use depends far more on how many tabs and extensions you run than on the browser.` : `They score the same on lightness (${a.scores.lightness}/5). Real use depends far more on how many tabs and extensions you run than on the browser.` },
+  { q: `Can I use the same extensions in ${a.name} and ${b.name}?`, a: extSame ? `Yes. Both use ${extOf(a)}${extOf(a) === "Limited or none" ? "" : ", so your extensions carry over"}.` : `Not all of them. ${a.name} uses ${extOf(a)}; ${b.name} uses ${extOf(b)}. Most popular extensions exist in both stores, but you'll need to reinstall them.` },
+  { q: `Can I switch from ${a.name} to ${b.name} without losing anything?`, a: `Yes. ${b.name} can import bookmarks, saved passwords and history on first launch, and you can keep ${a.name} installed while you try it.` },
+];
+
+const crumbs = [{ name: "Compare", href: "/compare" }, { name: h1, href: `/compare/${slug}` }];
+const jsonLd = [itemListLd(Astro.site, h1, pair), breadcrumbLd(Astro.site, crumbs), faqLd(faq)];
+const related = [...COMPARISONS].filter((c) => c.slug !== slug)
+  .sort((x, y) => +[y.a.id, y.b.id].some((id) => id === a.id || id === b.id) - +[x.a.id, x.b.id].some((id) => id === a.id || id === b.id));
+const altLinks = pair.filter((x) => ALTERNATIVE_IDS.includes(x.id));
+---
+<Base title={title} description={description} jsonLd={jsonLd} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Comparison</p>
+    <h1>{h1}: which browser is better in {YEAR}?</h1>
+    <p class="lede">{scoreLine}. {lead} Here's how they differ on privacy, polish, extensions, AI and price. Updated {UPDATED}.</p>
+
+    <div class="vs-head">
+      {pair.map((x, i) => (
+        <a class="vs-side" href={`/browsers/${x.id}`}>
+          {x.logo ? <img src={x.logo} alt="" width="56" height="56" /> : <span class="mono">{x.name.slice(0, 2).toUpperCase()}</span>}
+          <span><b>{x.name}</b><small>{i === 0 ? winsA : winsB} of 5 scores won{v.overall === x && " · overall pick"}</small></span>
+        </a>
+      ))}
+      <span class="vs-x" aria-hidden="true">vs</span>
+    </div>
+
+    <h2>Side by side</h2>
+    <div class="tbl-wrap">
+      <table class="cmp">
+        <thead><tr><th scope="col"><span class="sr">Category</span></th>{pair.map((x) => <th scope="col">{x.name}</th>)}</tr></thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr class={r.group}>
+              <th scope="row">{r.label}</th>
+              {r.values.map((val, i) => <td class={r.best.includes(i) ? "win" : undefined}>{r.best.includes(i) && <Icon name="Tick02Icon" size={13} label="Better" />}{val}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Which should you choose?</h2>
+    <div class="vs-pick">
+      {pair.map((x, i) => {
+        const list = i === 0 ? why.a : why.b;
+        return (
+          <section>
+            <h3>Choose {x.name} if…</h3>
+            {list.length ? <ul class="prose">{list.map((r) => <li>{cap(r)}</li>)}</ul> : <p class="prose">It doesn't clearly beat {pair[1 - i].name} on anything we score – pick it if you simply prefer how it looks and feels.</p>}
+          </section>
+        );
+      })}
+    </div>
+    <ul class="vs-verdict">
+      {v.overall && <li><span>Balanced priorities</span><b>{v.overall.name}</b></li>}
+      {v.privacy && <li><span>Privacy first</span><b>{v.privacy.name}</b></li>}
+      {v.light && <li><span>Light on resources</span><b>{v.light.name}</b></li>}
+      {v.custom && <li><span>Customisation first</span><b>{v.custom.name}</b></li>}
+    </ul>
+    {v.overall && <p class="bp-small">Picks come from the same engine as the <a href="/quiz">browser quiz</a>, with one quality set to "Top priority".</p>}
+
+    <h2>Scores in detail</h2>
+    <div class="vs-scores">
+      {pair.map((x) => (
+        <section>
+          <h3><a href={`/browsers/${x.id}`}>{x.name}</a></h3>
+          <ScoreBars b={x} />
+          {x.scores.lowConfidence && <p class="bp-small">Rough estimate – little independent information exists yet.</p>}
+          {x.scoreWhy && <p class="prose vs-why">{x.scoreWhy}</p>}
+          {x.note && <p class="vs-note"><Icon name="Alert02Icon" size={14} />{x.note}</p>}
+        </section>
+      ))}
+    </div>
+
+    <QuizCta title={`Neither ${a.name} nor ${b.name}?`} text="The quiz ranks every browser against your OS, extensions, priorities, must-haves and dealbreakers." />
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+
+    <section aria-labelledby="more">
+      <h2 id="more">More comparisons</h2>
+      <p class="prose">Compare any two to four browsers with the <a href={`/compare#${a.id},${b.id}`}>comparison tool</a>{altLinks.length > 0 && <>, or see {altLinks.map((x, i) => <>{i > 0 && " and "}<a href={`/alternatives/${x.id}`}>{x.name} alternatives</a></>)}</>}.</p>
+      <ul class="linkgrid">{related.slice(0, 12).map((c) => <li><a href={`/compare/${c.slug}`}>{c.a.logo && <img src={c.a.logo} alt="" width="24" height="24" loading="lazy" />}<span>{c.a.name} vs {c.b.name}</span></a></li>)}</ul>
+    </section>
+  </article>
+</Base>

@@ -6,7 +6,7 @@ import Logo from "../components/Logo.astro";
 import IconSprite from "../components/IconSprite.astro";
 import Consent from "../components/Consent.astro";
 import BrowserDialog from "../components/BrowserDialog.astro";
-import { SITE_NAME, abs, cleanPath, CATEGORIES, GUIDES, ALTERNATIVE_IDS, fillYear } from "../lib/seo";
+import { SITE_NAME, abs, cleanPath, CATEGORIES, GUIDES, ALTERNATIVE_IDS, COMPARISONS, fillYear } from "../lib/seo";
 import { byId } from "../data/browsers";
 
 interface Props {
@@ -75,6 +75,7 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
       <nav aria-label="Main">
         <a href="/wall" aria-current={path.startsWith("/wall") ? "page" : undefined}>Wall</a>
         <a href="/tiers" aria-current={path.startsWith("/tiers") ? "page" : undefined}>Tier maker</a>
+        <a href="/compare" aria-current={path.startsWith("/compare") ? "page" : undefined}>Compare</a>
         <a href="/quiz" aria-current={path.startsWith("/quiz") ? "page" : undefined}>Quiz <span class="soon">beta</span></a>
         <a href="/contact" aria-current={path.startsWith("/contact") ? "page" : undefined}>Contact</a>
       </nav>
@@ -102,6 +103,8 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
         <div>
           <p class="fh">browserwall</p>
           <a href="/wall">Browser wall</a>
+          <a href="/compare">Compare browsers</a>
+          {COMPARISONS.slice(0, 3).map((c) => <a href={`/compare/${c.slug}`}>{c.a.name} vs {c.b.name}</a>)}
           <a href="/tiers">Tier maker</a>
           <a href="/contact">Contact</a>
           <a href="/privacy">Privacy</a>

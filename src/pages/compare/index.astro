@@ -1,0 +1,114 @@
+---
+import "../../styles/content.css";
+import "../../styles/compare.css";
+import Base from "../../layouts/Base.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import Icon from "../../components/Icon.astro";
+import { browsers, byId } from "../../data/browsers";
+import { COMPARISONS, comparisonOf, YEAR, UPDATED, breadcrumbLd, faqLd, seoTitle } from "../../lib/seo";
+import { compareRows, chooseIf } from "../../lib/compare";
+
+const MAX = 4;
+const DEFAULT = ["brave", "firefox"];
+const initial = DEFAULT.map((id) => byId.get(id)!);
+const rows = compareRows(initial);
+const why = [chooseIf(initial[0], initial[1]), chooseIf(initial[1], initial[0])];
+const full = comparisonOf(DEFAULT[0], DEFAULT[1]);
+
+const popular = browsers.filter((b) => b.usageRank != null);
+const rest = browsers.filter((b) => b.usageRank == null).sort((a, b) => a.name.localeCompare(b.name));
+// Only what the client needs to rebuild the table (see src/lib/compare.ts).
+const payload = JSON.stringify({
+  browsers: browsers.map(({ id, name, logo, engine, basedOn, os, status, openSource, tags, scores, price, ai, usageRank }) =>
+    ({ id, name, logo, engine, basedOn, os, status, openSource, tags, scores, price, ai, usageRank })),
+  pages: COMPARISONS.map((c) => [c.a.id, c.b.id, c.slug, `${c.a.name} vs ${c.b.name}`]),
+}).replace(/</g, "\\u003c");
+
+const faq = [
+  { q: "How are browsers compared?", a: "Every browser gets five hand-checked 1–5 scores – privacy, out-of-box experience, customisation, lightness and minimalism – plus facts like supported systems, engine, extension store, price, source code and built-in AI. The table marks the best value in each row; the \"choose if\" lists come from the biggest differences." },
+  { q: "Why is there no speed score?", a: "Mainstream browsers are within benchmark noise of each other on speed, and results change with every release. Lightness (RAM and CPU footprint) matters more day to day, so that's what we score." },
+  { q: "Which browser is the best overall?", a: "It depends on your OS, the extensions you need and how much you care about privacy versus polish. The browser quiz weighs all of that and gives you a ranked shortlist in about two minutes." },
+];
+const crumbs = [{ name: "Compare", href: "/compare" }];
+const title = seoTitle(`Compare browsers side by side (${YEAR})`, `Compare browsers (${YEAR})`);
+const description = `Compare up to four desktop browsers side by side: privacy, polish, customisation, RAM use, extensions, AI and price. Plus head-to-heads like Chrome vs Firefox and Brave vs Chrome. Updated ${UPDATED}.`;
+---
+<Base title={title} description={description} jsonLd={[breadcrumbLd(Astro.site, crumbs), faqLd(faq)]} dialog={false}>
+  <div class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Compare</p>
+    <h1>Compare browsers side by side</h1>
+    <p class="lede">Pick two to four browsers to see how they stack up on privacy, polish, customisation, RAM use, extensions, AI and price. Updated {UPDATED}.</p>
+
+    <script id="cmp-data" type="application/json" set:html={payload} />
+    <form class="cmp-pick" id="cmp-pick" aria-label="Browsers to compare" onsubmit="return false">
+      {Array.from({ length: MAX }, (_, i) => (
+        <label>Browser {i + 1}
+          <select name={`b${i}`}>
+            {i >= 2 && <option value="">None</option>}
+            <optgroup label="Popular">{popular.map((b) => <option value={b.id} selected={b.id === DEFAULT[i]}>{b.name}</option>)}</optgroup>
+            <optgroup label="All browsers A–Z">{rest.map((b) => <option value={b.id} selected={b.id === DEFAULT[i]}>{b.name}</option>)}</optgroup>
+          </select>
+        </label>
+      ))}
+    </form>
+
+    <div class="tbl-wrap" aria-live="polite">
+      <table class="cmp" id="cmp-table">
+        <thead><tr class="cmp-head"><th scope="col"><span class="sr">Category</span></th>{initial.map((b) => <th scope="col"><a href={`/browsers/${b.id}`}>{b.logo && <img src={b.logo} alt="" width="36" height="36" />}{b.name}</a></th>)}</tr></thead>
+        <tbody>{rows.map((r) => <tr class={r.group}><th scope="row">{r.label}</th>{r.values.map((v, i) => <td class={r.best.includes(i) ? "win" : undefined}>{r.best.includes(i) && <Icon name="Tick02Icon" size={13} label="Better" />}{v}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+    <p class="cmp-full" id="cmp-full">{full && <a href={`/compare/${full.slug}`}>Read the full {full.a.name} vs {full.b.name} comparison →</a>}</p>
+    <div class="vs-pick" id="cmp-why">
+      {initial.map((b, i) => <section><h3>Choose {b.name} if…</h3><ul class="prose">{why[i].map((r) => <li>{r.charAt(0).toUpperCase() + r.slice(1)}</li>)}</ul></section>)}
+    </div>
+
+    <h2>Popular comparisons</h2>
+    <ul class="linkgrid">{COMPARISONS.map((c) => <li><a href={`/compare/${c.slug}`}>{c.a.logo && <img src={c.a.logo} alt="" width="24" height="24" loading="lazy" />}<span>{c.a.name} vs {c.b.name}</span></a></li>)}</ul>
+
+    <QuizCta />
+    <h2>FAQ</h2>
+    <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+  </div>
+</Base>
+
+<script>
+  import { compareRows, chooseIf } from "../../lib/compare";
+  import type { Browser } from "../../data/browsers";
+
+  const data = JSON.parse(document.getElementById("cmp-data")!.textContent!) as { browsers: Browser[]; pages: [string, string, string, string][] };
+  const byId = new Map(data.browsers.map((b) => [b.id, b]));
+  const form = document.getElementById("cmp-pick") as HTMLFormElement;
+  const selects = [...form.querySelectorAll("select")];
+  const table = document.getElementById("cmp-table")!;
+  const fullEl = document.getElementById("cmp-full")!;
+  const whyEl = document.getElementById("cmp-why")!;
+  const tick = table.querySelector("td.win svg")?.outerHTML ?? "";
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+  const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+  function render() {
+    const picked = [...new Set(selects.map((s) => s.value).filter(Boolean))].map((id) => byId.get(id)!).filter(Boolean);
+    const rows = compareRows(picked);
+    table.innerHTML = `<thead><tr class="cmp-head"><th scope="col"><span class="sr">Category</span></th>${picked.map((b) =>
+      `<th scope="col"><a href="/browsers/${esc(b.id)}">${b.logo ? `<img src="${esc(b.logo)}" alt="" width="36" height="36">` : ""}${esc(b.name)}</a></th>`).join("")}</tr></thead>
+      <tbody>${rows.map((r) => `<tr class="${r.group}"><th scope="row">${esc(r.label)}</th>${r.values.map((v, i) =>
+        r.best.includes(i) ? `<td class="win">${tick}${esc(v)}</td>` : `<td>${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody>`;
+    const page = picked.length === 2 && data.pages.find(([a, b]) => (a === picked[0].id && b === picked[1].id) || (a === picked[1].id && b === picked[0].id));
+    fullEl.innerHTML = page ? `<a href="/compare/${esc(page[2])}">Read the full ${esc(page[3])} comparison →</a>` : "";
+    whyEl.innerHTML = picked.length === 2 ? picked.map((b, i) => {
+      const list = chooseIf(b, picked[1 - i]);
+      return `<section><h3>Choose ${esc(b.name)} if…</h3>${list.length ? `<ul class="prose">${list.map((r) => `<li>${esc(cap(r))}</li>`).join("")}</ul>`
+        : `<p class="prose">It doesn't clearly beat ${esc(picked[1 - i].name)} on anything we score.</p>`}</section>`;
+    }).join("") : "";
+    history.replaceState(null, "", picked.length ? `#${picked.map((b) => b.id).join(",")}` : location.pathname);
+  }
+
+  // Shared links: /compare#brave,firefox,vivaldi
+  const fromHash = decodeURIComponent(location.hash.slice(1)).split(",").filter((id) => byId.has(id)).slice(0, selects.length);
+  if (fromHash.length >= 2) selects.forEach((s, i) => (s.value = fromHash[i] ?? ""));
+  form.addEventListener("change", render);
+  if (fromHash.length >= 2) render();
+</script>

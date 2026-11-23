@@ -1,7 +1,7 @@
 // /llms.txt – a plain-text map of the site for LLMs and AI search (https://llmstxt.org).
 import type { APIRoute } from "astro";
 import { browsers, byId } from "../data/browsers";
-import { CATEGORIES, GUIDES, ALTERNATIVE_IDS, abs, fillYear, categoryResults, UPDATED } from "../lib/seo";
+import { CATEGORIES, GUIDES, ALTERNATIVE_IDS, COMPARISONS, abs, fillYear, categoryResults, UPDATED } from "../lib/seo";
 
 export const GET: APIRoute = ({ site }) => {
   const u = (p: string) => abs(site, p);
@@ -30,6 +30,11 @@ ${GUIDES.map((g) => `- [${fillYear(g.title)}](${u(`/guides/${g.slug}`)}): ${g.de
 ## Alternatives
 
 ${ALTERNATIVE_IDS.map((id) => `- [${byId.get(id)!.name} alternatives](${u(`/alternatives/${id}`)})`).join("\n")}
+
+## Comparisons
+
+- [Compare browsers side by side](${u("/compare")}): pick two to four browsers and compare scores, platforms, engine, extensions, price, source code and built-in AI.
+${COMPARISONS.map((c) => `- [${c.a.name} vs ${c.b.name}](${u(`/compare/${c.slug}`)})`).join("\n")}
 
 ## Browser profiles
 

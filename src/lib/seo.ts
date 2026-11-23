@@ -204,6 +204,37 @@ const FEATURE_LABEL: Record<string, string> = { "vertical-tabs": "Vertical tabs"
 
 export const isQuizEligible = eligible;
 
+// ---------------------------------------------------------------------------- "X vs Y" comparisons (/compare/<a>-vs-<b>)
+
+/** Head-to-head pairs people search for. Order within a pair = order in the URL and the H1. */
+const PAIRS: [string, string][] = [
+  ["google-chrome", "firefox"], ["google-chrome", "microsoft-edge"], ["brave", "google-chrome"], ["brave", "firefox"],
+  ["firefox", "microsoft-edge"], ["safari", "google-chrome"], ["brave", "microsoft-edge"], ["opera", "google-chrome"],
+  ["opera", "opera-gx"], ["brave", "opera"], ["brave", "vivaldi"], ["vivaldi", "opera"], ["vivaldi", "firefox"],
+  ["safari", "firefox"], ["brave", "safari"], ["opera-gx", "brave"], ["duckduckgo", "brave"], ["duckduckgo", "google-chrome"],
+  ["librewolf", "firefox"], ["librewolf", "brave"], ["librewolf", "mullvad-browser"], ["tor-browser", "brave"],
+  ["tor-browser", "mullvad-browser"], ["zen-browser", "firefox"], ["zen-browser", "arc"], ["floorp", "zen-browser"],
+  ["waterfox", "firefox"], ["arc", "dia"], ["arc", "brave"], ["orion", "safari"], ["chatgpt-atlas", "comet"],
+  ["chatgpt-atlas", "google-chrome"], ["comet", "dia"], ["helium", "brave"], ["ungoogled-chromium", "brave"],
+  ["thorium", "google-chrome"], ["chromium", "google-chrome"], ["yandex-browser", "google-chrome"],
+];
+export const compareSlug = (a: string, b: string) => `${a}-vs-${b}`;
+export const COMPARISONS = PAIRS.filter(([a, b]) => byId.has(a) && byId.has(b)).map(([a, b]) => ({ slug: compareSlug(a, b), a: byId.get(a)!, b: byId.get(b)! }));
+/** The curated comparison page for two browsers, in either order. */
+export const comparisonOf = (a: string, b: string) => COMPARISONS.find((c) => (c.a.id === a && c.b.id === b) || (c.a.id === b && c.b.id === a));
+
+/** Which of two browsers the quiz engine prefers with balanced priorities, and with one quality as top priority.
+ *  null when the quiz doesn't rank either (e.g. both discontinued). */
+export function compareVerdict(a: Browser, b: Browser) {
+  const winner = (s: QuizState) => rank([a, b], s).results[0]?.browser ?? null;
+  return {
+    overall: winner(state()),
+    privacy: winner(state({ sliders: { privacy: 4 } })),
+    light: winner(state({ sliders: { light: 4, minimal: 2 } })),
+    custom: winner(state({ sliders: { custom: 4 } })),
+  };
+}
+
 // ---------------------------------------------------------------------------- Hand-written guides (/guides/<slug>)
 
 export interface Guide { slug: string; title: string; short: string; description: string }
