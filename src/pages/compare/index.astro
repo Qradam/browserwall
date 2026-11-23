@@ -42,17 +42,33 @@ const description = `Compare up to four desktop browsers side by side: privacy, 
     <p class="lede">Pick two to four browsers to see how they stack up on privacy, polish, customisation, RAM use, extensions, AI and price. Updated {UPDATED}.</p>
 
     <script id="cmp-data" type="application/json" set:html={payload} />
-    <form class="cmp-pick" id="cmp-pick" aria-label="Browsers to compare" onsubmit="return false">
-      {Array.from({ length: MAX }, (_, i) => (
-        <label>Browser {i + 1}
-          <select name={`b${i}`}>
-            {i >= 2 && <option value="">None</option>}
-            <optgroup label="Popular">{popular.map((b) => <option value={b.id} selected={b.id === DEFAULT[i]}>{b.name}</option>)}</optgroup>
-            <optgroup label="All browsers A–Z">{rest.map((b) => <option value={b.id} selected={b.id === DEFAULT[i]}>{b.name}</option>)}</optgroup>
-          </select>
-        </label>
-      ))}
-    </form>
+    <section class="cmp-picker" aria-labelledby="cmp-pick-h">
+      <div class="cmp-tray-row">
+        <h2 id="cmp-pick-h" class="sr">Pick browsers</h2>
+        <ol class="cmp-tray" id="cmp-tray" aria-label="Selected browsers">
+          {Array.from({ length: MAX }, (_, i) => {
+            const b = initial[i];
+            return b
+              ? <li class="full"><img src={b.logo ?? ""} alt="" width="28" height="28" /><span>{b.name}</span><button type="button" data-remove={b.id} aria-label={`Remove ${b.name}`}><Icon name="Cancel01Icon" size={14} /></button></li>
+              : <li class="empty"><span>{i < 2 ? "Pick a browser" : "Optional"}</span></li>;
+          })}
+        </ol>
+        <label class="cmp-search"><Icon name="Search01Icon" size={15} /><span class="sr">Search browsers</span><input id="cmp-q" type="search" placeholder="Search browsers" autocomplete="off" /></label>
+      </div>
+      <p class="cmp-hint" id="cmp-hint" aria-live="polite">Click up to {MAX} browsers. Click again to remove.</p>
+      <ul class="cmp-grid" id="cmp-grid">
+        {[...popular, ...rest].map((b) => (
+          <li class:list={[{ more: b.usageRank == null, dead: b.status === "discontinued" }]} data-name={b.name.toLowerCase()}>
+            <button type="button" data-id={b.id} aria-pressed={DEFAULT.includes(b.id) ? "true" : "false"} title={b.name}>
+              {b.logo ? <img src={b.logo} alt="" width="40" height="40" loading="lazy" /> : <span class="mono">{b.name.slice(0, 2).toUpperCase()}</span>}
+              <span class="nm">{b.name}</span>
+              <span class="ck" aria-hidden="true"><Icon name="Tick02Icon" size={12} /></span>
+            </button>
+          </li>
+        ))}
+      </ul>
+      <button type="button" class="cmp-more" id="cmp-more" aria-expanded="false" aria-controls="cmp-grid">Show all {browsers.length} browsers</button>
+    </section>
 
     <div class="tbl-wrap" aria-live="polite">
       <table class="cmp" id="cmp-table">
@@ -78,37 +94,80 @@ const description = `Compare up to four desktop browsers side by side: privacy, 
   import { compareRows, chooseIf } from "../../lib/compare";
   import type { Browser } from "../../data/browsers";
 
+  const MAX = 4;
   const data = JSON.parse(document.getElementById("cmp-data")!.textContent!) as { browsers: Browser[]; pages: [string, string, string, string][] };
   const byId = new Map(data.browsers.map((b) => [b.id, b]));
-  const form = document.getElementById("cmp-pick") as HTMLFormElement;
-  const selects = [...form.querySelectorAll("select")];
+  const grid = document.getElementById("cmp-grid")!;
+  const tray = document.getElementById("cmp-tray")!;
+  const hint = document.getElementById("cmp-hint")!;
+  const q = document.getElementById("cmp-q") as HTMLInputElement;
+  const more = document.getElementById("cmp-more") as HTMLButtonElement;
   const table = document.getElementById("cmp-table")!;
   const fullEl = document.getElementById("cmp-full")!;
   const whyEl = document.getElementById("cmp-why")!;
   const tick = table.querySelector("td.win svg")?.outerHTML ?? "";
+  const cross = tray.querySelector("button svg")?.outerHTML ?? "×";
   const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
   const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+  const HINT = hint.textContent!;
+
+  let picked: string[] = [...tray.querySelectorAll<HTMLButtonElement>("button[data-remove]")].map((b) => b.dataset.remove!);
+
+  function toggle(id: string) {
+    if (picked.includes(id)) picked = picked.filter((x) => x !== id);
+    else if (picked.length >= MAX) { hint.textContent = `You can compare up to ${MAX} browsers. Remove one first.`; hint.classList.add("warn"); return; }
+    else picked = [...picked, id];
+    render();
+  }
 
   function render() {
-    const picked = [...new Set(selects.map((s) => s.value).filter(Boolean))].map((id) => byId.get(id)!).filter(Boolean);
-    const rows = compareRows(picked);
-    table.innerHTML = `<thead><tr class="cmp-head"><th scope="col"><span class="sr">Category</span></th>${picked.map((b) =>
+    hint.classList.remove("warn");
+    hint.textContent = picked.length < 2 ? "Pick at least two browsers to compare." : HINT;
+    for (const btn of grid.querySelectorAll<HTMLButtonElement>("button")) btn.setAttribute("aria-pressed", String(picked.includes(btn.dataset.id!)));
+    grid.classList.toggle("is-full", picked.length >= MAX);
+    const list = picked.map((id) => byId.get(id)!);
+    tray.innerHTML = Array.from({ length: MAX }, (_, i) => {
+      const b = list[i];
+      return b ? `<li class="full">${b.logo ? `<img src="${esc(b.logo)}" alt="" width="28" height="28">` : ""}<span>${esc(b.name)}</span><button type="button" data-remove="${esc(b.id)}" aria-label="Remove ${esc(b.name)}">${cross}</button></li>`
+        : `<li class="empty"><span>${i < 2 ? "Pick a browser" : "Optional"}</span></li>`;
+    }).join("");
+
+    const rows = compareRows(list);
+    table.closest(".tbl-wrap")!.toggleAttribute("hidden", list.length < 1);
+    table.innerHTML = `<thead><tr class="cmp-head"><th scope="col"><span class="sr">Category</span></th>${list.map((b) =>
       `<th scope="col"><a href="/browsers/${esc(b.id)}">${b.logo ? `<img src="${esc(b.logo)}" alt="" width="36" height="36">` : ""}${esc(b.name)}</a></th>`).join("")}</tr></thead>
       <tbody>${rows.map((r) => `<tr class="${r.group}"><th scope="row">${esc(r.label)}</th>${r.values.map((v, i) =>
         r.best.includes(i) ? `<td class="win">${tick}${esc(v)}</td>` : `<td>${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody>`;
-    const page = picked.length === 2 && data.pages.find(([a, b]) => (a === picked[0].id && b === picked[1].id) || (a === picked[1].id && b === picked[0].id));
+    const page = list.length === 2 && data.pages.find(([a, b]) => (a === list[0].id && b === list[1].id) || (a === list[1].id && b === list[0].id));
     fullEl.innerHTML = page ? `<a href="/compare/${esc(page[2])}">Read the full ${esc(page[3])} comparison →</a>` : "";
-    whyEl.innerHTML = picked.length === 2 ? picked.map((b, i) => {
-      const list = chooseIf(b, picked[1 - i]);
-      return `<section><h3>Choose ${esc(b.name)} if…</h3>${list.length ? `<ul class="prose">${list.map((r) => `<li>${esc(cap(r))}</li>`).join("")}</ul>`
-        : `<p class="prose">It doesn't clearly beat ${esc(picked[1 - i].name)} on anything we score.</p>`}</section>`;
+    whyEl.innerHTML = list.length === 2 ? list.map((b, i) => {
+      const r = chooseIf(b, list[1 - i]);
+      return `<section><h3>Choose ${esc(b.name)} if…</h3>${r.length ? `<ul class="prose">${r.map((x) => `<li>${esc(cap(x))}</li>`).join("")}</ul>`
+        : `<p class="prose">It doesn't clearly beat ${esc(list[1 - i].name)} on anything we score.</p>`}</section>`;
     }).join("") : "";
-    history.replaceState(null, "", picked.length ? `#${picked.map((b) => b.id).join(",")}` : location.pathname);
+    history.replaceState(null, "", list.length ? `#${list.map((b) => b.id).join(",")}` : location.pathname);
   }
 
+  grid.addEventListener("click", (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>("button[data-id]");
+    if (btn) toggle(btn.dataset.id!);
+  });
+  tray.addEventListener("click", (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>("button[data-remove]");
+    if (btn) toggle(btn.dataset.remove!);
+  });
+  more.addEventListener("click", () => {
+    const open = grid.classList.toggle("show-all");
+    more.setAttribute("aria-expanded", String(open));
+    more.textContent = open ? "Show fewer" : `Show all ${data.browsers.length} browsers`;
+  });
+  q.addEventListener("input", () => {
+    const term = q.value.trim().toLowerCase();
+    grid.classList.toggle("searching", !!term);
+    for (const li of grid.querySelectorAll<HTMLElement>("li")) li.hidden = !!term && !li.dataset.name!.includes(term);
+  });
+
   // Shared links: /compare#brave,firefox,vivaldi
-  const fromHash = decodeURIComponent(location.hash.slice(1)).split(",").filter((id) => byId.has(id)).slice(0, selects.length);
-  if (fromHash.length >= 2) selects.forEach((s, i) => (s.value = fromHash[i] ?? ""));
-  form.addEventListener("change", render);
-  if (fromHash.length >= 2) render();
+  const fromHash = [...new Set(decodeURIComponent(location.hash.slice(1)).split(","))].filter((id) => byId.has(id)).slice(0, MAX);
+  if (fromHash.length) { picked = fromHash; render(); }
 </script>
