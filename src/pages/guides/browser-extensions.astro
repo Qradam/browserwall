@@ -4,6 +4,7 @@ import "../../styles/content.css";
 import Base from "../../layouts/Base.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
+import ShareCard from "../../components/ShareCard.astro";
 import { browsers, ENGINES } from "../../data/browsers";
 import { defaultState } from "../../lib/quiz";
 import { guide, guideLd, fillYear, seoTitle, quizLink, isQuizEligible, breadcrumbLd, faqLd, UPDATED, YEAR, GUIDES } from "../../lib/seo";
@@ -90,6 +91,8 @@ const title = seoTitle(h1, `Browser extensions ${YEAR}: which browser runs which
     </section>
 
     <QuizCta href={quizLink({ ...defaultState(), ext: "firefox" })} title="Already know your extension store?" text="The quiz starts with your OS and extension store, then ranks every browser that can run your extensions." label="Take the quiz" />
+
+    <ShareCard heading="Share this guide" caption="The browsers this guide is about. Free to share with a link to this page." />
 
     <section aria-labelledby="faq">
       <h2 id="faq">FAQ</h2>

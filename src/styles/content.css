@@ -102,3 +102,9 @@
 .nl-desc { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
 .news-post .prose b { color: var(--text); font-weight: 600; }
 @media (max-width: 480px) { .newslist a { padding: 12px; gap: 12px; } .nl-logos img { width: 26px; height: 26px; } }
+
+/* Share card figure (components/ShareCard.astro) */
+.sharecard { margin: 14px 0 8px; max-width: 760px; }
+.sharecard img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); background: var(--bg-2); }
+.sharecard figcaption { margin-top: 8px; font-size: 12.5px; color: var(--faint); line-height: 1.5; }
+.sharecard figcaption a { color: var(--muted); }

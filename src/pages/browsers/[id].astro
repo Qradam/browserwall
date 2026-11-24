@@ -5,6 +5,7 @@ import Icon from "../../components/Icon.astro";
 import ScoreBars from "../../components/ScoreBars.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
+import ShareCard from "../../components/ShareCard.astro";
 import { browsers, byId, TAGS, ENGINES, FAMILIES, type Browser } from "../../data/browsers";
 import { YEAR, UPDATED, ALTERNATIVE_IDS, alternativesFor, breadcrumbLd, faqLd, softwareLd, osNames, isQuizEligible, seoTitle, COMPARISONS } from "../../lib/seo";
 import { newsFor, fmtDate } from "../../lib/news";
@@ -88,6 +89,8 @@ const jsonLd = [softwareLd(Astro.site, b), breadcrumbLd(Astro.site, crumbs), faq
         <p class="prose">{b.ai.note}</p>
       </section>
     )}
+
+    <ShareCard heading={`${b.name} at a glance`} caption={`${b.name}'s five browserwall scores out of 5, as explained above. Free to share with a link to this page.`} />
 
     <QuizCta title={`Is ${b.name} right for you?`} text={`The quiz weighs ${b.name} against ${browsers.length - 1} other browsers using your OS, extensions, priorities and must-haves.`} />
 

@@ -4,6 +4,7 @@ import Base from "../../layouts/Base.astro";
 import RankedList, { type Item } from "../../components/RankedList.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
+import ShareCard from "../../components/ShareCard.astro";
 import { CATEGORIES, categoryResults, fillYear, quizLink, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle, type Category } from "../../lib/seo";
 
 export function getStaticPaths() {
@@ -50,6 +51,8 @@ const related = CATEGORIES.filter((x) => x.slug !== c.slug);
       <h2 id="how">How we ranked</h2>
       <p class="prose">{c.how} Each browser has editorial 1–5 scores for privacy, out-of-box experience, customisation, lightness and minimalism, re-checked against reviews, community opinion and tests in November 2026. Discontinued, beta/nightly, developer-only, experimental and meme browsers are left out, as are browsers with a history of selling user data. Click any browser for its full profile and sources.</p>
     </section>
+
+    <ShareCard heading="Share this list" caption={`The top picks from "${fillYear(c.title)}", ranked by our quiz engine. Free to share with a link to this page.`} />
 
     <section aria-labelledby="faq">
       <h2 id="faq">FAQ</h2>

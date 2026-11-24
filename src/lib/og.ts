@@ -34,3 +34,11 @@ export const OG_CARDS = build();
 export const OG_AXES = AXES;
 /** Path of the share image for a page path, or the site-wide default. */
 export const ogImageFor = (path: string) => (OG_CARDS.has(path) ? `/og${path}.png` : "/og.png");
+
+const list = (names: string[]) => names.length <= 1 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+/** Alt text that says what the card shows, for when it's displayed on the page. */
+export function ogAlt(card: Card): string {
+  if (card.kind === "browser") return `${card.b.name} score card: ${AXES.map((ax) => `${ax.label.toLowerCase()} ${card.b.scores[ax.key]}/5`).join(", ")}.`;
+  if (card.kind === "compare") return `${card.a.name} vs ${card.b.name} score comparison: ${AXES.map((ax) => `${ax.label.toLowerCase()} ${card.a.scores[ax.key]} vs ${card.b.scores[ax.key]}`).join(", ")} (out of 5).`;
+  return card.logos.length ? `${card.title}, with the logos of ${list(card.logos.map((b) => b.name))}.` : card.title;
+}

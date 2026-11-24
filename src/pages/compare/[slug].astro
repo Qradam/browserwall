@@ -4,6 +4,7 @@ import "../../styles/compare.css";
 import Base from "../../layouts/Base.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
+import ShareCard from "../../components/ShareCard.astro";
 import ScoreBars from "../../components/ScoreBars.astro";
 import Icon from "../../components/Icon.astro";
 import type { Browser } from "../../data/browsers";
@@ -111,6 +112,8 @@ const altLinks = pair.filter((x) => ALTERNATIVE_IDS.includes(x.id));
         </section>
       ))}
     </div>
+
+    <ShareCard heading={`${a.name} vs ${b.name} at a glance`} caption={`Our five scores for ${a.name} and ${b.name}, side by side; the higher score in each row is brighter. Free to share with a link to this page.`} />
 
     <QuizCta title={`Neither ${a.name} nor ${b.name}?`} text="The quiz ranks every browser against your OS, extensions, priorities, must-haves and dealbreakers." />
 
