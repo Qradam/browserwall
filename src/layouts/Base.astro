@@ -9,6 +9,7 @@ import BrowserDialog from "../components/BrowserDialog.astro";
 import { SITE_NAME, abs, cleanPath, CATEGORIES, GUIDES, ALTERNATIVE_IDS, COMPARISONS, fillYear } from "../lib/seo";
 import { byId } from "../data/browsers";
 import { NEWS } from "../lib/news";
+import { ogImageFor } from "../lib/og";
 
 interface Props {
   title?: string;
@@ -27,13 +28,17 @@ const {
 } = Astro.props;
 const path = cleanPath(Astro.url.pathname);
 const canonical = abs(Astro.site, path);
-const ogImage = abs(Astro.site, "/og.png");
+const ogPath = ogImageFor(path);
+const ogImage = abs(Astro.site, ogPath);
 const site = abs(Astro.site, "/");
 const graph = [
   { "@type": "WebSite", "@id": `${site}#website`, name: SITE_NAME, url: site, inLanguage: "en",
     description: "Curated directory of desktop web browsers with editorial scores, a tier list maker and a browser recommendation quiz.",
     potentialAction: { "@type": "SearchAction", target: `${site}wall?q={search_term_string}`, "query-input": "required name=search_term_string" } },
   { "@type": "Organization", "@id": `${site}#org`, name: SITE_NAME, url: site, logo: abs(Astro.site, "/icon-512.png") },
+  ...(noindex ? [] : [{ "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: "en", isPartOf: { "@id": `${site}#website` },
+    primaryImageOfPage: { "@type": "ImageObject", url: ogImage, contentUrl: ogImage, width: 1200, height: 630, caption: ogPath === "/og.png" ? "browserwall – find your browser" : title,
+      creator: { "@id": `${site}#org` }, creditText: SITE_NAME } }]),
   ...jsonLd,
 ];
 const ld = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
@@ -46,7 +51,7 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {noindex ? <meta name="robots" content="noindex" /> : <><link rel="canonical" href={canonical} /><meta name="robots" content="max-image-preview:large, max-snippet:-1" /></>}
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -63,7 +68,7 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="browserwall – find your browser" />
+    <meta property="og:image:alt" content={ogPath === "/og.png" ? "browserwall – find your browser" : title} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />

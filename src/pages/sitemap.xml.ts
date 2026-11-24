@@ -3,6 +3,7 @@ import type { APIRoute } from "astro";
 import { browsers } from "../data/browsers";
 import { CATEGORIES, GUIDES, ALTERNATIVE_IDS, COMPARISONS, abs, BUILD } from "../lib/seo";
 import { NEWS } from "../lib/news";
+import { ogImageFor } from "../lib/og";
 
 export const GET: APIRoute = ({ site }) => {
   const day = BUILD.toISOString().slice(0, 10);
@@ -19,8 +20,12 @@ export const GET: APIRoute = ({ site }) => {
     ...browsers.map((b) => [`/browsers/${b.id}`, b.status === "discontinued" || b.channelOf ? "0.4" : "0.6"] as [string, string]),
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${pages.map(([p, pr, mod]) => `  <url><loc>${abs(site, p)}</loc><lastmod>${mod ?? day}</lastmod><priority>${pr}</priority></url>`).join("\n")}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${pages.map(([p, pr, mod]) => {
+    const img = ogImageFor(p);
+    const image = img === "/og.png" ? "" : `<image:image><image:loc>${abs(site, img)}</image:loc></image:image>`;
+    return `  <url><loc>${abs(site, p)}</loc><lastmod>${mod ?? day}</lastmod><priority>${pr}</priority>${image}</url>`;
+  }).join("\n")}
 </urlset>
 `;
   return new Response(xml, { headers: { "Content-Type": "application/xml; charset=utf-8" } });

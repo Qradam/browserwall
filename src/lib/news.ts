@@ -37,6 +37,6 @@ export const fmtDate = (d: string) => new Date(`${d}T12:00:00Z`).toLocaleDateStr
 export const newsLd = (site: URL | undefined, n: NewsPost) => ({
   "@type": "NewsArticle", headline: n.title, description: n.description, inLanguage: "en",
   datePublished: n.date, dateModified: n.updated ?? n.date,
-  image: abs(site, "/og.png"),
+  image: abs(site, `/og/news/${n.slug}.png`),
   mainEntityOfPage: abs(site, `/news/${n.slug}`), author: { "@id": `${abs(site, "/")}#org` }, publisher: { "@id": `${abs(site, "/")}#org` },
 });
