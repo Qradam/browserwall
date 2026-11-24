@@ -2,6 +2,7 @@
 import type { APIRoute } from "astro";
 import { browsers, byId } from "../data/browsers";
 import { CATEGORIES, GUIDES, ALTERNATIVE_IDS, COMPARISONS, abs, fillYear, categoryResults, UPDATED } from "../lib/seo";
+import { NEWS } from "../lib/news";
 
 export const GET: APIRoute = ({ site }) => {
   const u = (p: string) => abs(site, p);
@@ -35,6 +36,11 @@ ${ALTERNATIVE_IDS.map((id) => `- [${byId.get(id)!.name} alternatives](${u(`/alte
 
 - [Compare browsers side by side](${u("/compare")}): pick two to four browsers and compare scores, platforms, engine, extensions, price, source code and built-in AI.
 ${COMPARISONS.map((c) => `- [${c.a.name} vs ${c.b.name}](${u(`/compare/${c.slug}`)})`).join("\n")}
+
+## News
+
+- [Browser news](${u("/news")}): browser releases and site updates (RSS: ${u("/news/rss.xml")})
+${NEWS.map((n) => `- [${n.title}](${u(`/news/${n.slug}`)}) (${n.date}): ${n.description}`).join("\n")}
 
 ## Browser profiles
 

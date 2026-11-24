@@ -1,0 +1,38 @@
+---
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import { byId } from "../../data/browsers";
+import { breadcrumbLd, abs } from "../../lib/seo";
+import { NEWS, NEWS_KINDS, fmtDate } from "../../lib/news";
+
+const crumbs = [{ name: "News", href: "/news" }];
+const listLd = {
+  "@type": "ItemList", name: "browserwall news", numberOfItems: NEWS.length,
+  itemListElement: NEWS.map((n, i) => ({ "@type": "ListItem", position: i + 1, name: n.title, url: abs(Astro.site, `/news/${n.slug}`) })),
+};
+---
+<Base title="Browser news: releases and site updates – browserwall" description="Browser releases worth knowing about and what changed on browserwall: new browsers, score changes and features, written by hand." jsonLd={[breadcrumbLd(Astro.site, crumbs), listLd]} dialog={false}>
+  <div class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">News</p>
+    <h1>Browser news</h1>
+    <p class="lede">Browser releases worth knowing about, and what we changed on browserwall because of them. <a href="/news/rss.xml">Follow via RSS</a>.</p>
+    <ol class="newslist">
+      {NEWS.map((n) => (
+        <li>
+          <a href={`/news/${n.slug}`}>
+            <span class="nl-logos" aria-hidden="true">{n.browsers.map((id) => byId.get(id)?.logo).filter(Boolean).slice(0, 3).map((src) => <img src={src} alt="" width="32" height="32" loading="lazy" />)}</span>
+            <span class="nl-body">
+              <span class="nl-meta"><time datetime={n.date}>{fmtDate(n.date)}</time> · {NEWS_KINDS[n.kind]}</span>
+              <span class="nl-title">{n.title}</span>
+              <span class="nl-desc">{n.description}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <QuizCta />
+  </div>
+</Base>

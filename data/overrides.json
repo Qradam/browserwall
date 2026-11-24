@@ -161,9 +161,10 @@
     ]
   },
   "ladybird": {
-    "description": "Truly independent browser with its own engine (LibWeb), not based on Chromium, Gecko or WebKit. Pre-alpha; first alpha due late 2026.",
+    "description": "Truly independent browser with its own engine (LibWeb), not based on Chromium, Gecko or WebKit. In alpha since November 2026, with builds for macOS and Linux.",
     "sources": [
       "https://ladybird.org/",
+      "https://ladybird.org/posts/alpha/",
       "https://github.com/LadybirdBrowser/ladybird/blob/master/Documentation/FAQ.md",
       "https://ladybird.org/newsletter/2026-06-30/",
       "https://piunikaweb.com/2026/10/06/ladybird-browser-alpha-update/"

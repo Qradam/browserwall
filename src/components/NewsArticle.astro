@@ -1,0 +1,53 @@
+---
+// Shell for a news post: SEO, breadcrumbs, date line, the browsers it covers, sources and more news.
+import "../styles/content.css";
+import Base from "../layouts/Base.astro";
+import Crumbs from "./Crumbs.astro";
+import { byId } from "../data/browsers";
+import { breadcrumbLd, seoTitle } from "../lib/seo";
+import { NEWS, NEWS_KINDS, news, newsLd, fmtDate } from "../lib/news";
+
+interface Props {
+  slug: string;
+  /** Shorter <title> candidates, tried in order after the full headline (see seoTitle). */
+  titles?: string[];
+  sources: { name: string; href: string }[];
+}
+const { slug, titles = [], sources } = Astro.props;
+const n = news(slug);
+const crumbs = [{ name: "News", href: "/news" }, { name: n.short, href: `/news/${n.slug}` }];
+const covered = n.browsers.map((id) => byId.get(id)).filter((b) => b != null);
+const more = NEWS.filter((x) => x.slug !== n.slug).slice(0, 4);
+---
+<Base title={seoTitle(n.title, ...titles)} description={n.description} jsonLd={[newsLd(Astro.site, n), breadcrumbLd(Astro.site, crumbs)]} ogType="article" dialog={false}>
+  <article class="doc news-post">
+    <Crumbs items={crumbs} />
+    <p class="kicker">{NEWS_KINDS[n.kind]}</p>
+    <h1>{n.title}</h1>
+    <p class="updated">
+      <time datetime={n.date}>{fmtDate(n.date)}</time>
+      {n.updated && n.updated !== n.date && <> · updated <time datetime={n.updated}>{fmtDate(n.updated)}</time></>}
+    </p>
+    <slot />
+
+    {covered.length > 0 && (
+      <section aria-labelledby="covered">
+        <h2 id="covered">On browserwall</h2>
+        <ul class="linkgrid">{covered.map((b) => <li><a href={`/browsers/${b.id}`}>{b.logo && <img src={b.logo} alt="" width="24" height="24" loading="lazy" />}<span>{b.name}<small>Scores, facts and alternatives</small></span></a></li>)}</ul>
+      </section>
+    )}
+
+    <section aria-labelledby="sources">
+      <h2 id="sources">Sources</h2>
+      <ul class="prose">{sources.map((s) => <li><a href={s.href} rel="noopener external">{s.name}</a></li>)}</ul>
+    </section>
+
+    {more.length > 0 && (
+      <section aria-labelledby="more">
+        <h2 id="more">More news</h2>
+        <ul class="linkgrid">{more.map((x) => <li><a href={`/news/${x.slug}`}><span>{x.short}<small>{fmtDate(x.date)}</small></span></a></li>)}</ul>
+        <p class="prose"><a href="/news">All news →</a> · <a href="/news/rss.xml">RSS feed</a></p>
+      </section>
+    )}
+  </article>
+</Base>

@@ -1,0 +1,43 @@
+---
+// News: Helium 0.22.0–0.22.3 (November 16–23, 2026).
+import NewsArticle from "../../components/NewsArticle.astro";
+
+const sources = [
+  { name: "Helium 0.22.3 release notes – GitHub", href: "https://github.com/imputnet/helium/releases/tag/0.22.3" },
+  { name: "Helium 0.22.2 release notes – GitHub", href: "https://github.com/imputnet/helium/releases/tag/0.22.2" },
+  { name: "Helium 0.22.0 release notes – GitHub", href: "https://github.com/imputnet/helium/releases/tag/0.22.0" },
+  { name: "Helium 0.22.2 upgrades pinned tabs – PiunikaWeb", href: "https://piunikaweb.com/2026/11/21/helium-browser-update-pinned-tabs-redesigns-vertical-tabs/" },
+];
+---
+<NewsArticle slug="helium-0-22" titles={["Helium 0.22.3: shared pinned tabs and Chromium 158", "Helium 0.22.3: shared pinned tabs"]} sources={sources}>
+  <p class="lede">Helium, the minimal de-Googled Chromium browser with uBlock Origin built in, released four updates in a week. Version 0.22.3 came out on November 23, 2026. The big change is pinned tabs, which now behave much like they did in Arc.</p>
+
+  <section aria-labelledby="pins">
+    <h2 id="pins">Pinned tabs, reworked (0.22.2 and 0.22.3)</h2>
+    <ul class="prose">
+      <li><b>Shared across windows.</b> Pinned tabs are now one set for every window, instead of a separate set per window. Pins from older versions are merged into that set. Prefer the old behaviour? 0.22.3 adds a setting that keeps pins in their own window.</li>
+      <li><b>Hibernated, not closed.</b> Closing a pinned tab puts it to sleep, so it doesn't use memory and is still there when you click it.</li>
+      <li><b>Pins stay put.</b> Opening a link, typing a URL or searching from a pinned tab opens a new tab, so the pinned site stays where it was. A pin also goes back to the page it was pinned at.</li>
+      <li><b>Drag to pin.</b> Drag a tab into the pinned area to pin it, and drag it back among your tabs to unpin it (0.22.3).</li>
+      <li><b>Pinned split views</b> are also shared between windows.</li>
+      <li><b>A redesign for vertical tabs</b>: pins get outlines and balanced rows. In Zen mode (no toolbars), the floating sidebar now starts expanded.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="other">
+    <h2 id="other">Everything else</h2>
+    <ul class="prose">
+      <li><b>Chromium 158</b> (158.0.8127.36) arrived in 0.22.0. Version 0.22.1 then switched off new Google features that came with it.</li>
+      <li><b>uBlock Origin 1.77.0</b> is the built-in blocker in 0.22.3. Helium is one of the few Chromium browsers that still ship it.</li>
+      <li><b>Stronger anti-fingerprinting</b>: Helium now adds noise when a site reads only part of a canvas, as it already did for full canvas reads. That makes it harder for sites to fingerprint you through partial reads.</li>
+      <li><b>A spacious interface density</b> and simpler side panel position settings arrived in 0.22.0.</li>
+      <li><b>Smaller fixes</b>: left clicks that were sometimes ignored, and a zoom indicator that stays visible with long URLs.</li>
+    </ul>
+    <p class="prose">Get the latest version from <a href="https://helium.computer" rel="noopener external">helium.computer</a> or the <a href="https://github.com/imputnet/helium/releases" rel="noopener external">GitHub releases page</a>.</p>
+  </section>
+
+  <section aria-labelledby="take">
+    <h2 id="take">Our take</h2>
+    <p class="prose">Arc is shutting down, and Arc users have been looking for a browser with shared, sleeping pinned tabs. Helium now has them, without adding accounts, AI or anything else that phones home. We haven't changed <a href="/browsers/helium">Helium's scores</a>. It's still one of the cleanest Chromium browsers on the wall. See how it compares in <a href="/compare/helium-vs-brave">Helium vs Brave</a> and <a href="/alternatives/arc">our Arc alternatives</a>.</p>
+  </section>
+</NewsArticle>

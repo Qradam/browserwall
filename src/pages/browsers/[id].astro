@@ -7,6 +7,7 @@ import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
 import { browsers, byId, TAGS, ENGINES, FAMILIES, type Browser } from "../../data/browsers";
 import { YEAR, UPDATED, ALTERNATIVE_IDS, alternativesFor, breadcrumbLd, faqLd, softwareLd, osNames, isQuizEligible, seoTitle, COMPARISONS } from "../../lib/seo";
+import { newsFor, fmtDate } from "../../lib/news";
 
 export function getStaticPaths() {
   return browsers.map((b) => ({ params: { id: b.id }, props: { b } }));
@@ -16,6 +17,7 @@ const parent = b.channelOf ? byId.get(b.channelOf) : null;
 const alts = alternativesFor(b, 6);
 const hasAltPage = ALTERNATIVE_IDS.includes(b.id);
 const comparisons = COMPARISONS.filter((c) => c.a.id === b.id || c.b.id === b.id);
+const posts = newsFor(b.channelOf ?? b.id).slice(0, 4);
 const statusText = { active: "actively developed", maintenance: "in maintenance mode (slow updates)", discontinued: "discontinued" }[b.status];
 const engine = ENGINES[b.engine];
 const os = osNames(b);
@@ -88,6 +90,13 @@ const jsonLd = [softwareLd(Astro.site, b), breadcrumbLd(Astro.site, crumbs), faq
     )}
 
     <QuizCta title={`Is ${b.name} right for you?`} text={`The quiz weighs ${b.name} against ${browsers.length - 1} other browsers using your OS, extensions, priorities and must-haves.`} />
+
+    {posts.length > 0 && (
+      <section aria-labelledby="news">
+        <h2 id="news">{b.name} in the news</h2>
+        <ul class="linkgrid">{posts.map((n) => <li><a href={`/news/${n.slug}`}><span>{n.short}<small>{fmtDate(n.date)}</small></span></a></li>)}</ul>
+      </section>
+    )}
 
     {alts.length > 0 && (
       <section aria-labelledby="alts">

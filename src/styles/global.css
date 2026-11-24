@@ -41,6 +41,7 @@ button, input { font: inherit; color: inherit; }
 .topbar nav a[aria-current="page"] { color: var(--text); background: var(--bg-3); }
 .soon { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); border: 1px solid var(--line-2); padding: 0 5px; border-radius: 999px; }
 @media (max-width: 480px) { .topbar { padding: 0 12px; } .topbar nav { gap: 0; } .topbar nav a { padding: 6px 6px; font-size: 12.5px; } .topbar nav .soon { display: none; } .brand span { display: none; } }
+@media (max-width: 400px) { .topbar nav .nav-contact { display: none; } }
 
 /* ---------- ObsidianUI primitives (ported from obsidianui.dev, MIT) ---------- */
 /* RaisedButton: solid fill, hairline edge, top sheen, press-scale. */

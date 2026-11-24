@@ -343,9 +343,10 @@
     ]
   },
   "ladybird": {
-    "why": "In November 2026 Ladybird is still pre-alpha and you have to build it from source; the alpha is promised for later this year. Monthly updates add basics like private windows, profiles, session restore and auto-updating filter lists. A Trail of Bits audit found full exploit chains that are being fixed. The nonprofit, no-monetisation model justifies privacy 4.",
+    "why": "Ladybird's first alpha shipped on November 23, 2026 for macOS and Linux, with automatic updates, so you no longer have to build it from source. The team warns that sites break, it crashes and there are no security promises yet. Early testers say it feels fast and renders most sites. Installable, self-updating builds lift experience from 1 to 2; it stays low because sites still break and there are no extensions yet. A Trail of Bits audit found full exploit chains that are being fixed. The nonprofit, no-monetisation model justifies privacy 4.",
     "sources": [
-      "https://ladybird.org/",
+      "https://ladybird.org/posts/alpha/",
+      "https://simonwillison.net/2026/Nov/23/ladybird/",
       "https://piunikaweb.com/2026/10/06/ladybird-browser-alpha-update/",
       "https://piunikaweb.com/2026/08/06/ladybird-private-browsing-profiles/"
     ]
