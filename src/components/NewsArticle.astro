@@ -3,7 +3,7 @@
 import "../styles/content.css";
 import Base from "../layouts/Base.astro";
 import Crumbs from "./Crumbs.astro";
-import ShareCard from "./ShareCard.astro";
+import PageImage from "./PageImage.astro";
 import { byId } from "../data/browsers";
 import { breadcrumbLd, seoTitle } from "../lib/seo";
 import { NEWS, NEWS_KINDS, news, newsLd, fmtDate } from "../lib/news";
@@ -29,7 +29,7 @@ const more = NEWS.filter((x) => x.slug !== n.slug).slice(0, 4);
       <time datetime={n.date}>{fmtDate(n.date)}</time>
       {n.updated && n.updated !== n.date && <> · updated <time datetime={n.updated}>{fmtDate(n.updated)}</time></>}
     </p>
-    <ShareCard eager caption={`${n.short}. Free to share with a link to this post.`} />
+    <PageImage eager caption={`${n.short}. Free to share with a link to this post.`} />
     <slot />
 
     {covered.length > 0 && (

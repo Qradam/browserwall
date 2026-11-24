@@ -4,7 +4,7 @@ import "../../styles/content.css";
 import Base from "../../layouts/Base.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
-import ShareCard from "../../components/ShareCard.astro";
+import PageImage from "../../components/PageImage.astro";
 import { browsers, byId } from "../../data/browsers";
 import { defaultState } from "../../lib/quiz";
 import { guide, guideLd, fillYear, seoTitle, quizLink, isQuizEligible, breadcrumbLd, faqLd, UPDATED, YEAR, GUIDES } from "../../lib/seo";
@@ -77,7 +77,7 @@ const title = seoTitle(h1, `uBlock Origin in ${YEAR}: which browsers still run i
 
     <QuizCta href={quizLink({ ...defaultState(), ext: "firefox", features: { "ad-blocking": 1 } })} title="Want the full uBlock Origin?" text="This opens the quiz with Firefox add-ons preselected. Add your OS and priorities to get a ranked shortlist." label="Open in the quiz" />
 
-    <ShareCard heading="Share this guide" caption="The browsers this guide is about. Free to share with a link to this page." />
+    <PageImage heading="Share this guide" caption="The browsers this guide is about. Free to share with a link to this page." />
 
     <section aria-labelledby="faq">
       <h2 id="faq">FAQ</h2>

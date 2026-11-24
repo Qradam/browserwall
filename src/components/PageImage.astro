@@ -1,0 +1,36 @@
+---
+// The page's share image (src/lib/og.ts), shown on the page as a captioned figure with a download link.
+// Renders nothing on pages without a generated card.
+import { OG_CARDS, ogImageFor, ogAlt } from "../lib/og";
+import { cleanPath } from "../lib/seo";
+
+interface Props {
+  caption: string;
+  /** Section heading; omit to render just the figure (e.g. as a hero image). */
+  heading?: string;
+  /** Above the fold: load right away instead of lazily. */
+  eager?: boolean;
+}
+const { caption, heading, eager = false } = Astro.props;
+const path = cleanPath(Astro.url.pathname);
+const card = OG_CARDS.get(path);
+const src = ogImageFor(path);
+const file = `browserwall-${path.slice(1).replace(/\//g, "-")}.png`;
+const id = "share-card";
+---
+{card && (
+  heading ? (
+    <section aria-labelledby={id}>
+      <h2 id={id}>{heading}</h2>
+      <figure class="sharecard">
+        <img src={src} alt={ogAlt(card)} width="1200" height="630" loading={eager ? "eager" : "lazy"} decoding="async" />
+        <figcaption>{caption} <a href={src} download={file}>Download image</a></figcaption>
+      </figure>
+    </section>
+  ) : (
+    <figure class="sharecard">
+      <img src={src} alt={ogAlt(card)} width="1200" height="630" loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
+      <figcaption>{caption} <a href={src} download={file}>Download image</a></figcaption>
+    </figure>
+  )
+)}

@@ -4,7 +4,7 @@ import Base from "../../layouts/Base.astro";
 import RankedList, { type Item } from "../../components/RankedList.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
-import ShareCard from "../../components/ShareCard.astro";
+import PageImage from "../../components/PageImage.astro";
 import ScoreBars from "../../components/ScoreBars.astro";
 import { byId, type Browser } from "../../data/browsers";
 import { ALTERNATIVE_IDS, alternativesFor, painPoints, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle } from "../../lib/seo";
@@ -58,7 +58,7 @@ const others = ALTERNATIVE_IDS.filter((id) => id !== b.id).map((id) => byId.get(
 
     <QuizCta title={`Find your own ${b.name} replacement`} text="The quiz ranks every browser against your OS, extensions, priorities, must-haves and dealbreakers." />
 
-    <ShareCard heading="Share this list" caption={`${b.name} and the closest alternatives from the list above. Free to share with a link to this page.`} />
+    <PageImage heading="Share this list" caption={`${b.name} and the closest alternatives from the list above. Free to share with a link to this page.`} />
 
     <section aria-labelledby="faq">
       <h2 id="faq">FAQ</h2>

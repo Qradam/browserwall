@@ -1,36 +1,133 @@
 ---
-// The page's share image (src/lib/og.ts), shown on the page as a captioned figure with a download link.
-// Renders nothing on pages without a generated card.
-import { OG_CARDS, ogImageFor, ogAlt } from "../lib/og";
-import { cleanPath } from "../lib/seo";
+// "Browser personality" share dialog for the quiz results. Opened with initShareCard() from src/scripts/share-card.ts.
+import Icon from "./Icon.astro";
+import { DESIGNS } from "../scripts/card";
 
-interface Props {
-  caption: string;
-  /** Section heading; omit to render just the figure (e.g. as a hero image). */
-  heading?: string;
-  /** Above the fold: load right away instead of lazily. */
-  eager?: boolean;
-}
-const { caption, heading, eager = false } = Astro.props;
-const path = cleanPath(Astro.url.pathname);
-const card = OG_CARDS.get(path);
-const src = ogImageFor(path);
-const file = `browserwall-${path.slice(1).replace(/\//g, "-")}.png`;
-const id = "share-card";
+const TARGETS = [
+  { id: "native", label: "Share…", icon: "Share08Icon" },
+  { id: "x", label: "X", icon: "NewTwitterIcon" },
+  { id: "bluesky", label: "Bluesky", icon: "BlueskyIcon" },
+  { id: "reddit", label: "Reddit", icon: "RedditIcon" },
+  { id: "discord", label: "Discord", icon: "DiscordIcon" },
+  { id: "instagram", label: "Instagram", icon: "InstagramIcon" },
+  { id: "mastodon", label: "Mastodon", icon: "MastodonIcon" },
+  { id: "threads", label: "Threads", icon: "ThreadsIcon" },
+  { id: "telegram", label: "Telegram", icon: "TelegramIcon" },
+  { id: "whatsapp", label: "WhatsApp", icon: "WhatsappIcon" },
+];
 ---
-{card && (
-  heading ? (
-    <section aria-labelledby={id}>
-      <h2 id={id}>{heading}</h2>
-      <figure class="sharecard">
-        <img src={src} alt={ogAlt(card)} width="1200" height="630" loading={eager ? "eager" : "lazy"} decoding="async" />
-        <figcaption>{caption} <a href={src} download={file}>Download image</a></figcaption>
-      </figure>
-    </section>
-  ) : (
-    <figure class="sharecard">
-      <img src={src} alt={ogAlt(card)} width="1200" height="630" loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
-      <figcaption>{caption} <a href={src} download={file}>Download image</a></figcaption>
-    </figure>
-  )
-)}
+<dialog id="sc" class="sc" aria-labelledby="sc-title">
+  <div class="sc-wrap">
+    <div class="sc-preview" id="sc-preview" data-format="post">
+      <canvas id="sc-canvas" width="1080" height="1350" role="img" aria-label="Your browser personality card"></canvas>
+    </div>
+    <div class="sc-side">
+      <div class="sc-head">
+        <div>
+          <p class="sc-kicker">Your browser personality</p>
+          <h2 id="sc-title"><span id="sc-emoji" aria-hidden="true"></span> <span id="sc-name"></span></h2>
+        </div>
+        <button type="button" class="sc-close" id="sc-close" aria-label="Close"><Icon name="Cancel01Icon" size={16} /></button>
+      </div>
+      <p class="sc-roast" id="sc-roast"></p>
+
+      <fieldset class="sc-group">
+        <legend>Design</legend>
+        <div class="sc-seg cols-5">
+          {DESIGNS.map((d, i) => <label><input type="radio" name="sc-design" value={d.id} checked={i === 0} />{d.label}</label>)}
+        </div>
+      </fieldset>
+      <fieldset class="sc-group">
+        <legend>Format</legend>
+        <div class="sc-seg cols-2">
+          <label><input type="radio" name="sc-format" value="post" checked />Post <span class="dim">4:5</span></label>
+          <label><input type="radio" name="sc-format" value="story" />Story <span class="dim">9:16</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="sc-group">
+        <legend>Your OS on the card</legend>
+        <div class="sc-os">
+          <label class="sc-check"><input type="checkbox" id="sc-show-os" checked />Show it</label>
+          <span class="sc-mark" id="sc-mark" aria-hidden="true"></span>
+          <label class="sc-sel">
+            <span class="sr">Version or distro</span>
+            <select id="sc-variant"></select>
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="sc-group">
+        <p class="sc-legend">Share</p>
+        <div class="sc-targets">
+          {TARGETS.map((t) => <button type="button" class="sc-t" data-share={t.id} hidden={t.id === "native"}><Icon name={t.icon} size={16} />{t.label}</button>)}
+        </div>
+        <p class="sc-tip dim">X, Bluesky, Reddit and Discord can't attach images from a link, so we copy the image first – just paste it into your post.</p>
+      </div>
+      <div class="sc-actions">
+        <button type="button" class="sc-btn primary" data-act="download"><Icon name="Download01Icon" size={15} />Download PNG</button>
+        <button type="button" class="sc-btn" data-act="copy-image"><Icon name="Image01Icon" size={15} />Copy image</button>
+        <button type="button" class="sc-btn" data-act="copy-link"><Icon name="Link01Icon" size={15} />Copy link</button>
+        <button type="button" class="sc-btn" data-act="copy-list"><Icon name="Copy01Icon" size={15} />Copy list</button>
+      </div>
+      <p class="sc-status" id="sc-status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</dialog>
+
+<style is:global>
+  .sc { width: min(980px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); padding: 0; border: 1px solid var(--line-2); border-radius: 16px; background: var(--bg-2); color: var(--text); box-shadow: 0 30px 80px rgb(0 0 0 / .6); }
+  .sc::backdrop { background: rgb(0 0 0 / .7); backdrop-filter: blur(3px); }
+  .sc[open] { animation: sc-in .18s var(--ease); }
+  @keyframes sc-in { from { opacity: 0; transform: translateY(8px) scale(.985); } }
+  .sc-wrap { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 22px; padding: 20px; }
+  .sc-preview { display: grid; place-items: center; background: var(--bg); border: 1px solid var(--line); border-radius: 12px; padding: 14px; min-height: 0; }
+  .sc-preview canvas { display: block; width: auto; height: auto; max-width: 100%; max-height: calc(100dvh - 90px); aspect-ratio: 4 / 5; border-radius: 10px; box-shadow: 0 12px 40px rgb(0 0 0 / .5); transition: opacity .15s; }
+  .sc-preview[data-format="story"] canvas { aspect-ratio: 9 / 16; }
+  .sc-preview.busy canvas { opacity: .55; }
+  .sc-side { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .sc-head { display: flex; justify-content: space-between; gap: 10px; }
+  .sc-kicker { margin: 0 0 2px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--faint); }
+  .sc h2 { margin: 0; font-size: 22px; letter-spacing: -0.02em; line-height: 1.15; }
+  .sc-close { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; border: 0; background: none; color: var(--muted); cursor: pointer; }
+  .sc-close:hover { background: var(--bg-3); color: var(--text); }
+  .sc-roast { margin: -6px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.45; }
+  .sc-group { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .sc-group legend, .sc-legend { margin: 0 0 6px; padding: 0; font-size: 12px; font-weight: 600; color: var(--muted); }
+  .sc .dim { color: var(--faint); }
+  .sc-seg { display: grid; gap: 2px; padding: 2px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; }
+  .sc-seg.cols-5 { grid-template-columns: repeat(5, auto); }
+  .sc-seg.cols-2 { grid-template-columns: repeat(2, 1fr); }
+  .sc-seg label { position: relative; display: flex; align-items: center; justify-content: center; gap: 5px; height: 30px; padding: 0 6px; border-radius: 6px; font-size: 12.5px; color: var(--muted); cursor: pointer; white-space: nowrap; }
+  .sc-seg label:hover { color: var(--text); }
+  .sc-seg input { position: absolute; opacity: 0; pointer-events: none; }
+  .sc-seg label:has(input:checked) { background: var(--accent); color: #111; font-weight: 600; }
+  .sc-seg label:has(input:checked) .dim { color: #444; }
+  .sc-seg label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .sc-os { display: flex; align-items: center; gap: 10px; }
+  .sc-check { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer; white-space: nowrap; }
+  .sc-check input { accent-color: var(--accent); margin: 0; }
+  .sc-mark { flex: none; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px; background: var(--bg-3); }
+  .sc-mark svg { width: 18px; height: 18px; }
+  .sc-mark b { font: 700 10px var(--mono); color: #fff; }
+  .sc-sel { flex: 1; min-width: 0; }
+  .sc-sel select { width: 100%; height: 32px; padding: 0 8px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--bg); color: var(--text); font: inherit; font-size: 13px; }
+  .sc-os:has(#sc-show-os:not(:checked)) :is(.sc-mark, .sc-sel) { opacity: .4; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .sc-targets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .sc-t, .sc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 36px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--bg-3); color: var(--text); font-size: 13px; cursor: pointer; white-space: nowrap; transition: border-color .12s, background .12s, transform .12s; }
+  .sc-t[hidden] { display: none; }
+  .sc-t:hover, .sc-btn:hover { border-color: var(--muted); }
+  .sc-t:active, .sc-btn:active { transform: scale(.97); }
+  .sc-t[data-share="native"] { grid-column: 1 / -1; background: var(--accent); border-color: var(--accent); color: #111; font-weight: 600; }
+  .sc-tip { margin: 8px 0 0; font-size: 11.5px; line-height: 1.4; }
+  .sc-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .sc-btn.primary { background: var(--accent); border-color: var(--accent); color: #111; font-weight: 600; }
+  .sc-status { margin: 0; min-height: 1.4em; font-size: 12.5px; color: var(--ok); }
+  .sc-status a { color: var(--text); }
+  .sc-status.err { color: var(--warn); }
+  @media (max-width: 820px) {
+    .sc-wrap { grid-template-columns: 1fr; padding: 14px; gap: 14px; }
+    .sc-preview canvas { max-height: 52dvh; }
+  }
+  @media (max-width: 420px) { .sc-targets, .sc-actions { grid-template-columns: 1fr 1fr; } }
+</style>
