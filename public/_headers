@@ -1,0 +1,4 @@
+# Markdown copies of pages (scripts/markdown.mjs) are for AI agents; keep them out of search results.
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex

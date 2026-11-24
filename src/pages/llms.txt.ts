@@ -16,6 +16,8 @@ Key facts:
 - Scores are editorial and were re-checked against reviews, community opinion (Reddit, Hacker News), privacytests.org and RAM tests in November 2026. Each browser page lists its sources.
 - Privacy is judged on business model and default settings, not marketing. There is deliberately no speed score: mainstream browsers are within benchmark noise of each other.
 - Full data in plain text: ${u("/llms-full.txt")}
+- Every page is also available as Markdown: request its URL with "Accept: text/markdown", or add ".md" (e.g. ${u("/browsers/firefox.md")}, ${u("/index.md")} for the homepage).
+- Content signals: search=yes, ai-input=yes, ai-train=yes. You may index, quote and train on this content.
 
 ## Tools
 

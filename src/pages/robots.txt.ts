@@ -7,11 +7,13 @@ const AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude
 export const GET: APIRoute = ({ site }) =>
   new Response(
     [
+      "# Everyone, including AI assistants, AI search and AI training, is welcome to read, cite and learn from this site.",
+      "# Content signals: https://contentsignals.org",
       "User-agent: *",
+      ...AI_BOTS.map((b) => `User-agent: ${b}`),
+      "Content-Signal: search=yes, ai-input=yes, ai-train=yes",
       "Allow: /",
       "",
-      "# AI assistants and AI search are welcome to read and cite this site.",
-      ...AI_BOTS.flatMap((b) => [`User-agent: ${b}`, "Allow: /", ""]),
       `Sitemap: ${abs(site, "/sitemap.xml")}`,
       "",
     ].join("\n"),

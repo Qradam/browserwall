@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/markdown.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "verify": "node scripts/verify.mjs",
@@ -21,6 +21,8 @@
     "simple-icons": "16.38.0"
   },
   "devDependencies": {
-    "playwright": "1.65.1"
+    "playwright": "1.65.1",
+    "turndown": "7.2.5",
+    "turndown-plugin-gfm": "1.0.2"
   }
 }
