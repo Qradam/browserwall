@@ -24,13 +24,13 @@ const id = "share-card";
       <h2 id={id}>{heading}</h2>
       <figure class="sharecard">
         <img src={src} alt={ogAlt(card)} width="1200" height="630" loading={eager ? "eager" : "lazy"} decoding="async" />
-        <figcaption>{caption} <a href={src} download={file}>Download image</a></figcaption>
+        <figcaption>{caption} <a href={src} download={file}>Download image</a> · <a href="/image-license">CC BY 4.0</a></figcaption>
       </figure>
     </section>
   ) : (
     <figure class="sharecard">
       <img src={src} alt={ogAlt(card)} width="1200" height="630" loading={eager ? "eager" : "lazy"} decoding="async" fetchpriority={eager ? "high" : undefined} />
-      <figcaption>{caption} <a href={src} download={file}>Download image</a></figcaption>
+      <figcaption>{caption} <a href={src} download={file}>Download image</a> · <a href="/image-license">CC BY 4.0</a></figcaption>
     </figure>
   )
 )}

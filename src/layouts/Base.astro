@@ -38,7 +38,8 @@ const graph = [
   { "@type": "Organization", "@id": `${site}#org`, name: SITE_NAME, url: site, logo: abs(Astro.site, "/icon-512.png") },
   ...(noindex ? [] : [{ "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: "en", isPartOf: { "@id": `${site}#website` },
     primaryImageOfPage: { "@type": "ImageObject", url: ogImage, contentUrl: ogImage, width: 1200, height: 630, caption: ogPath === "/og.png" ? "browserwall – find your browser" : title,
-      creator: { "@id": `${site}#org` }, creditText: SITE_NAME } }]),
+      creator: { "@id": `${site}#org` }, creditText: SITE_NAME, copyrightNotice: `© ${new Date().getFullYear()} ${SITE_NAME}`,
+      license: "https://creativecommons.org/licenses/by/4.0/", acquireLicensePage: abs(Astro.site, "/image-license") } }]),
   ...jsonLd,
 ];
 const ld = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }).replace(/</g, "\\u003c");
@@ -119,6 +120,7 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
           {NEWS.slice(0, 2).map((n) => <a href={`/news/${n.slug}`}>{n.short}</a>)}
           <a href="/contact">Contact</a>
           <a href="/privacy">Privacy</a>
+          <a href="/image-license">Image licence</a>
           <a href="#" data-cookie-settings>Cookie settings</a>
         </div>
       </nav>

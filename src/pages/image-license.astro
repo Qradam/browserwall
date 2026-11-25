@@ -1,0 +1,32 @@
+---
+// Terms for reusing browserwall's generated images; referenced by license / acquireLicensePage in the image JSON-LD.
+import "../styles/content.css";
+import Base from "../layouts/Base.astro";
+import Crumbs from "../components/Crumbs.astro";
+import { breadcrumbLd } from "../lib/seo";
+
+const crumbs = [{ name: "Image licence", href: "/image-license" }];
+---
+<Base title="Image licence: reuse our score cards – browserwall" description="browserwall's score cards and share images are free to reuse under CC BY 4.0, with a link back. Browser logos stay the property of their owners." jsonLd={[breadcrumbLd(Astro.site, crumbs)]} dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Image licence</p>
+    <h1>Using our images</h1>
+    <p class="lede">The score cards and share images on browserwall (everything under <code>/og/</code>) are free to use, including commercially, under the <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener external">Creative Commons Attribution 4.0 (CC BY 4.0)</a> licence.</p>
+
+    <section aria-labelledby="how">
+      <h2 id="how">How to credit us</h2>
+      <p class="prose">Credit "browserwall" and link to the page the image comes from, for example: <i>Image: <a href="/compare/helium-vs-brave">browserwall.org</a></i>. You may crop or resize the images; if you change the scores or text on them, say so.</p>
+    </section>
+
+    <section aria-labelledby="logos">
+      <h2 id="logos">Browser logos</h2>
+      <p class="prose">The licence covers our design, layout and scores, not the browser logos shown on the cards. Logos are trademarks of their respective owners and are shown to identify each browser. If you need a logo on its own, get it from the browser's official press kit.</p>
+    </section>
+
+    <section aria-labelledby="other">
+      <h2 id="other">Anything else</h2>
+      <p class="prose">For other uses, or if you'd like an image in a different size, <a href="/contact">get in touch</a>.</p>
+    </section>
+  </article>
+</Base>
