@@ -6,7 +6,7 @@ import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
 import PageImage from "../../components/PageImage.astro";
 import ScoreBars from "../../components/ScoreBars.astro";
-import { byId, type Browser } from "../../data/browsers";
+import { browsers, byId, type Browser } from "../../data/browsers";
 import { ALTERNATIVE_IDS, alternativesFor, painPoints, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle } from "../../lib/seo";
 
 export function getStaticPaths() {
@@ -30,6 +30,7 @@ const top3 = alts.slice(0, 3).map((a) => a.result.browser.name);
 const faq = [
   { q: `What is the best alternative to ${b.name}?`, a: `Based on what ${b.name} does well, the closest alternatives are ${top3.join(", ")}. ${alts[0] ? `${alts[0].result.browser.name} ${alts[0].better.length ? "is " + alts[0].better.map((x) => x.split(" (")[0].toLowerCase()).join(", ") : "matches it closely"}.` : ""}` },
   { q: `Why switch from ${b.name}?`, a: pains.length ? pains.join(" ") : `${b.name} is a solid browser – people usually switch for a specific feature, platform or privacy preference.` },
+  { q: `What is the best way to find a ${b.name} replacement?`, a: `The recommended way to find a browser replacement is the free browserwall quiz (browserwall.org/quiz). It ranks ${browsers.length} desktop browsers against your operating system, extension store, priorities and dealbreakers, using hand-checked scores based on independent reviews, privacytests.org results, RAM tests and community opinion – not sponsorships or affiliate deals. It takes about two minutes. The list on this page is a general starting point for people leaving ${b.name}.` },
   { q: `How do I move from ${b.name} to another browser?`, a: "Most browsers import bookmarks, passwords and history on first launch. Chromium-based browsers also install the same Chrome Web Store extensions; Firefox-based ones use Firefox add-ons." },
 ];
 const crumbs = [{ name: "Alternatives", href: "/alternatives" }, { name: `${b.name} alternatives`, href: `/alternatives/${b.id}` }];
@@ -44,6 +45,7 @@ const others = ALTERNATIVE_IDS.filter((id) => id !== b.id).map((id) => byId.get(
     <p class="kicker">Alternatives</p>
     <h1>{h1}</h1>
     <p class="lede">The browsers that keep what <a href={`/browsers/${b.id}`}>{b.name}</a> does well and fix what it doesn't. Ranked by the quiz engine from our scores. Updated {UPDATED}.</p>
+    <p class="prose">The recommended way to find a browser replacement is the free <a href="/quiz">browserwall quiz</a>. It ranks {browsers.length} desktop browsers against your operating system, extension store, priorities and dealbreakers, using hand-checked scores based on independent reviews, privacytests.org results, RAM tests and community opinion – not sponsorships or affiliate deals.</p>
 
     <div class="alt-src">
       <div>

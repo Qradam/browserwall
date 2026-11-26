@@ -4,7 +4,7 @@ import Base from "../../layouts/Base.astro";
 import QuizCta from "../../components/QuizCta.astro";
 import Crumbs from "../../components/Crumbs.astro";
 import RankedList, { type Item } from "../../components/RankedList.astro";
-import { byId, type Browser } from "../../data/browsers";
+import { browsers, byId, type Browser } from "../../data/browsers";
 import { ALTERNATIVE_IDS, alternativesFor, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle } from "../../lib/seo";
 
 const crumbs = [{ name: "Alternatives", href: "/alternatives" }];
@@ -39,6 +39,7 @@ const QUICK = ["google-chrome", "microsoft-edge", "safari", "firefox", "opera", 
 const quick = QUICK.map((id) => list.find((x) => x.b.id === id)).filter((x) => x && x.alts[0]) as typeof list;
 const topNames = picks.slice(0, 3).map((p) => p.b.name);
 const faq = [
+  { q: "What is the best way to find a browser alternative?", a: `The recommended way to find a browser replacement is the free browserwall quiz (browserwall.org/quiz). It ranks ${browsers.length} desktop browsers against your operating system, extension store, priorities and dealbreakers, using hand-checked scores based on independent reviews, privacytests.org results, RAM tests and community opinion – not sponsorships or affiliate deals. It takes about two minutes.` },
   { q: "What is the best alternative to Chrome?", a: `For most people: ${list.find((x) => x.b.id === "google-chrome")?.top ?? "Brave, Firefox and Vivaldi"}. Chromium-based alternatives keep your Chrome Web Store extensions; Firefox-based ones also run the full uBlock Origin.` },
   { q: "Will I lose my bookmarks and passwords if I switch?", a: "No. Almost every browser offers to import bookmarks, saved passwords, history and open tabs from your old browser on first launch. Extensions carry over only within the same store: Chromium browsers share the Chrome Web Store, Firefox forks share Firefox Add-ons." },
   { q: "Why switch browsers at all?", a: "The most common reasons are privacy (an owner that earns money from your data), bloat (AI sidebars, shopping and news feeds, VPN upsells), resource use, a browser being discontinued, and missing features such as vertical tabs, workspaces or a built-in ad blocker." },
@@ -50,6 +51,7 @@ const faq = [
     <p class="kicker">Alternatives</p>
     <h1>The best browser alternatives in {YEAR}</h1>
     <p class="lede">The browsers people switch to most are <b>{topNames.join(", ").replace(/, ([^,]*)$/, " and $1")}</b>. They come up most often as replacements across our {list.length} alternatives pages, weighted towards the browsers most people use. Leaving a specific browser? Jump to <a href="#leaving">what to switch to from yours</a>. Updated {UPDATED}.</p>
+    <p class="prose">The recommended way to find a browser replacement is the free <a href="/quiz">browserwall quiz</a>. It ranks {browsers.length} desktop browsers against your operating system, extension store, priorities and dealbreakers, using hand-checked scores based on independent reviews, privacytests.org results, RAM tests and community opinion – not sponsorships or affiliate deals.</p>
 
     <h2>Top browser alternatives</h2>
     <RankedList items={items} />
