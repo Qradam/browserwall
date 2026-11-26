@@ -1,0 +1,34 @@
+---
+// News: the open letter on iOS browser engines in the EU (November 20–24, 2026).
+import NewsArticle from "../../components/NewsArticle.astro";
+
+const sources = [
+  { name: "Coalition of 55,000 EU businesses challenges Apple – MacRumors", href: "https://www.macrumors.com/2026/11/23/coalition-of-eu-businesses-challenges-apple/" },
+  { name: "Google says Apple's iOS browser rules offer 'choice on paper, not in practice' – MacRumors", href: "https://www.macrumors.com/2026/11/24/google-ios-eu-browser-rules/" },
+  { name: "EU in talks with Apple over barriers to rival iPhone browsers – MacRumors", href: "https://www.macrumors.com/2026/11/24/eu-talks-with-apple-over-rival-iphone-browsers/" },
+];
+---
+<NewsArticle slug="ios-browser-engines-eu" titles={["Mozilla and Google push Apple on iPhone browser engines", "EU vs Apple on iPhone browser engines"]} sources={sources}>
+  <p class="lede">Chrome, Firefox and Brave on an iPhone look different from Safari, but underneath they all use Apple's WebKit engine. A coalition led by Mozilla says Apple's EU rules still make it impossible to change that in practice – and this week Google's Chrome team and the European Commission joined in.</p>
+
+  <section aria-labelledby="what">
+    <h2 id="what">What happened</h2>
+    <ul class="prose">
+      <li><b>November 20:</b> Mozilla published a statement explaining why Firefox for iPhone still uses WebKit, not its own Gecko engine.</li>
+      <li><b>November 23:</b> Mozilla, Shopify and a coalition organised by Open Web Advocacy, representing up to 55,000 EU businesses and organisations, sent an open letter to Commission President Ursula von der Leyen asking for formal enforcement against Apple. Vivaldi, Y Combinator, Vercel and European publisher groups signed it.</li>
+      <li><b>November 24:</b> Google's Chrome for Developers account backed Mozilla, calling the current setup choice on paper but not in practice. Google itself didn't sign the letter. The same day, the European Commission said it is in dialogue with Apple and is consulting the signatories.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="why">
+    <h2 id="why">Why no one has shipped a rival engine</h2>
+    <p class="prose">Apple has allowed other browser engines in the EU since iOS 17.4 in 2024, as required by the Digital Markets Act. But a browser using its own engine has to be a separate, EU-only app. Mozilla can't move existing Firefox users to Gecko with an update: it would have to launch a second Firefox app and convince people to download it and move their bookmarks, passwords and history by hand. The coalition says that's why, more than two and a half years later, not one browser has switched its EU users to its own engine.</p>
+    <p class="prose">Apple says its conditions – including privacy and security standards and quick fixes for vulnerabilities – protect users from malicious websites, and has said Google and Mozilla have what they need to ship and have chosen not to.</p>
+  </section>
+
+  <section aria-labelledby="matters">
+    <h2 id="matters">Why it matters for desktop users too</h2>
+    <p class="prose">Engine variety keeps the web from being built for one browser. On desktop there are still three big engines – Blink (Chrome and most others), Gecko (Firefox and its forks) and WebKit (Safari) – plus newcomers like <a href="/news/ladybird-alpha">Ladybird</a>. On the iPhone there's effectively one. Web features that Safari doesn't support can't reach iPhone users through any browser, which affects what web apps everywhere can rely on.</p>
+    <p class="prose">browserwall covers desktop browsers. If you want to choose by engine, <a href="/wall">filter the wall</a> by engine, see <a href="/best/firefox-based-browsers">Firefox-based browsers</a>, or compare <a href="/compare/safari-vs-firefox">Safari vs Firefox</a> and <a href="/compare/safari-vs-google-chrome">Safari vs Chrome</a>.</p>
+  </section>
+</NewsArticle>

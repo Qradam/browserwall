@@ -3,7 +3,7 @@
 // llms.txt and the "In the news" block on browser profiles. Keep it sorted newest first.
 import { abs } from "./seo";
 
-export type NewsKind = "release" | "site";
+export type NewsKind = "release" | "industry" | "site";
 export interface NewsPost {
   slug: string;
   title: string; // H1 and RSS title
@@ -15,9 +15,21 @@ export interface NewsPost {
   browsers: string[]; // browser ids the post is about
 }
 
-export const NEWS_KINDS: Record<NewsKind, string> = { release: "Release", site: "Site update" };
+export const NEWS_KINDS: Record<NewsKind, string> = { release: "Release", industry: "Industry", site: "Site update" };
 
 export const NEWS: NewsPost[] = [
+  { slug: "firefox-161-nova", kind: "release", date: "2026-11-26", browsers: ["firefox", "waterfox", "librewolf", "zen-browser", "floorp"],
+    title: "Firefox 161: the Nova redesign is here to stay, Proton comes back as a colour theme",
+    short: "Firefox 161: Nova can't be turned off",
+    description: "Firefox 161 (November 24, 2026) adds a Proton colour theme, per-site VPN rules and a fire button, while Mozilla locks the switch that turned the Nova redesign off. What changed, and the Firefox forks like Floorp and Waterfox that still offer the old look." },
+  { slug: "arc-shutdown-december-22", kind: "industry", date: "2026-11-26", browsers: ["arc", "dia", "zen-browser"],
+    title: "Arc stops working on December 22: what to do before it's gone",
+    short: "Arc shuts down December 22",
+    description: "The Browser Company shuts Arc down on December 22, 2026. Mobile sync already ended on November 23. How to export your data, and which browsers replace Arc best." },
+  { slug: "ios-browser-engines-eu", kind: "industry", date: "2026-11-26", browsers: ["firefox", "google-chrome", "safari", "vivaldi"],
+    title: "Mozilla, Google and 55,000 EU businesses push Apple to allow real rival browsers on iPhone",
+    short: "EU vs Apple on iPhone browser engines",
+    description: "Every iPhone browser still runs on Apple's WebKit. A coalition led by Mozilla says Apple's EU rules make switching engines unworkable, Google's Chrome team agrees, and the European Commission is in talks with Apple." },
   { slug: "ladybird-alpha", kind: "release", date: "2026-11-24", browsers: ["ladybird"],
     title: "Ladybird alpha is out: the first new browser engine in years you can just install",
     short: "Ladybird alpha is out",

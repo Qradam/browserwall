@@ -1,0 +1,67 @@
+---
+// News: Firefox 161 and the end of the Nova opt-out (November 24, 2026).
+import NewsArticle from "../../components/NewsArticle.astro";
+
+const sources = [
+  { name: "Firefox 161.0 release notes – firefox.com", href: "https://www.firefox.com/en-US/firefox/161.0/releasenotes/" },
+  { name: "Firefox 161 release notes for developers – MDN", href: "https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Releases/161" },
+  { name: "Nova UI can't be disabled in Firefox 162 and later – AskVG", href: "https://www.askvg.com/nova-ui-cant-be-disabled-in-mozilla-firefox-162-and-later-versions/" },
+  { name: "You can no longer turn off the Firefox Nova redesign in latest Nightly – PiunikaWeb", href: "https://piunikaweb.com/2026/11/13/you-can-no-longer-turn-off-the-firefox-nova-redesign-in-latest-nightly/" },
+  { name: "Firefox 161 restores Proton colors, adds per-site VPN rules – WindowsForum", href: "https://windowsforum.com/news/firefox-161-restores-proton-colors-adds-per-site-vpn-rules-and-fixes-security-flaws.454033/" },
+  { name: "Floorp v12.21.2 release notes – Floorp blog", href: "https://blog.floorp.app/en/release/12.21.2/" },
+  { name: "Waterfox 6.7.0 “Supernova” release notes – waterfox.com", href: "https://www.waterfox.com/releases/6.7.0/" },
+  { name: "LibreWolf v157 lets you turn off the Nova design – PiunikaWeb", href: "https://piunikaweb.com/2026/10/02/librewolf-v157-turn-off-nova-design/" },
+  { name: "The new Firefox design is here – Mozilla blog", href: "https://blog.mozilla.org/en/firefox/new-firefox-design-is-here/" },
+];
+---
+<NewsArticle slug="firefox-161-nova" titles={["Firefox 161: Nova is here to stay, Proton returns as a theme", "Firefox 161: Nova can't be turned off"]} sources={sources}>
+  <p class="lede">Firefox 161 reached everyone on November 24, 2026. It's a small release with one big subtext: the Nova redesign that arrived in Firefox 157 is no longer optional. Mozilla is locking the switch that turned it off, and offers a Proton colour theme instead.</p>
+
+  <section aria-labelledby="nova">
+    <h2 id="nova">What's happening to Nova</h2>
+    <p class="prose">Nova rolled out to all Firefox users with version 157 on September 29: rounder tabs and toolbars, more padding, refreshed colours and a gradient in the title bar. Compact mode came back with it. Plenty of people didn't like it, and until now there was a way out: setting <code>browser.nova.enabled</code> to false in <code>about:config</code> brought the old look back.</p>
+    <ul class="prose">
+      <li><b>The opt-out is going.</b> Mozilla has locked <code>browser.nova.enabled</code> in Firefox 162 Nightly, and Mozilla's community moderators say the ability to turn Nova off ends with 161. Firefox 162 is due on December 8.</li>
+      <li><b>Why:</b> Mozilla wants to delete the code for the old interface instead of maintaining two designs.</li>
+      <li><b>The new Settings page is locked in too.</b> The matching switch for the redesigned settings page, <code>browser.settings-redesign.enabled</code>, is locked from 161.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="new">
+    <h2 id="new">What else is new in 161</h2>
+    <ul class="prose">
+      <li><b>Classic themes:</b> the Themes page in Add-ons now has a Classic section with the Proton theme from older versions, a Firefox OLED theme and solid colours. Proton here is a colour scheme, not the old layout: shapes and spacing stay Nova.</li>
+      <li><b>Per-site VPN rules:</b> the built-in VPN can be set to always on or always off for specific sites.</li>
+      <li><b>A fire button</b> in the toolbar clears browsing data in one click. It's rolling out gradually.</li>
+      <li><b>Copy URL shortcut:</b> you can assign your own key combination to copy the current tab's address.</li>
+      <li><b>Card security codes</b> can now be saved and autofilled (gradual rollout), and tab groups are listed in the app menu.</li>
+      <li><b>Security fixes</b>, which on their own are a good reason to update.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="do">
+    <h2 id="do">If you don't like Nova</h2>
+    <ul class="prose">
+      <li><b>Try the Proton theme first.</b> Add-ons and themes → Themes → Classic themes. It brings back the old muted greys, which is what many people miss most.</li>
+      <li><b>Use custom CSS.</b> A <code>userChrome.css</code> file can override Nova's rounded corners and gradient. It keeps working after the switch is gone, but updates can break it, so keep a copy.</li>
+      <li><b>Switch to a Firefox-based browser that keeps an older look</b> – you keep your add-ons, including the full uBlock Origin. This is the cleanest fix, because the design is the fork's choice, not Mozilla's.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="forks">
+    <h2 id="forks">Firefox forks that still offer the old look</h2>
+    <ul class="prose">
+      <li><b><a href="/browsers/floorp">Floorp</a></b> ships its own Lepton design instead of Nova – a refined take on the classic Firefox look that Floorp keeps updating (most recently in 12.21.2, on Firefox 160).</li>
+      <li><b><a href="/browsers/waterfox">Waterfox</a></b> lets you choose the browser style in Settings: Nova, Proton, or Photon, the classic Waterfox look with Lepton refinements. Version 6.7 moved to the Firefox ESR 153 base, and upgraders keep their current style unless they pick a new one.</li>
+      <li><b><a href="/browsers/librewolf">LibreWolf</a></b> has had an "Enable the Nova redesign" switch in Settings → Appearance since version 157. It follows Firefox releases closely, though, so the switch may not survive once Mozilla deletes the old interface code.</li>
+      <li><b><a href="/browsers/zen-browser">Zen Browser</a></b> doesn't look like either: it has its own calm interface built around vertical tabs, workspaces and split view.</li>
+    </ul>
+    <p class="prose">Forks that keep a pre-Nova look have to maintain that code themselves once Firefox removes it, so check each project's plans if the old look is your main reason to switch.</p>
+    <p class="prose">See <a href="/alternatives/firefox">the best Firefox alternatives</a>, <a href="/best/firefox-based-browsers">every Firefox-based browser</a>, or compare <a href="/compare/zen-browser-vs-firefox">Zen vs Firefox</a> and <a href="/compare/waterfox-vs-firefox">Waterfox vs Firefox</a>.</p>
+  </section>
+
+  <section aria-labelledby="changed">
+    <h2 id="changed">What we changed on browserwall</h2>
+    <p class="prose">Nothing in <a href="/browsers/firefox">Firefox's scores</a>. A redesign people dislike isn't a privacy, weight or customisation problem: Firefox is still one of the most customisable browsers, and the new release adds options rather than removing features. We'll keep an eye on whether Mozilla removes more of the old interface in 162.</p>
+  </section>
+</NewsArticle>

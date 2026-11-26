@@ -1,0 +1,48 @@
+---
+// News: Arc's shutdown on December 22, 2026 (announced October 22).
+import NewsArticle from "../../components/NewsArticle.astro";
+import { alternativesFor } from "../../lib/seo";
+import { byId } from "../../data/browsers";
+
+const alts = alternativesFor(byId.get("arc")!, 4).map((a) => a.result.browser);
+const sources = [
+  { name: "Arc sunset: key dates and what to expect – Arc Help Center", href: "https://resources.arc.net/hc/en-us/articles/44412972248471-Arc-Sunset-Key-Dates-and-What-to-Expect" },
+  { name: "Arc sunset: frequently asked questions – Arc Help Center", href: "https://resources.arc.net/hc/en-us/articles/44413577819159-Arc-Sunset-Frequently-Asked-Questions" },
+  { name: "Arc browser sunsets December 22 as The Browser Company doubles down on Dia – TechCrunch", href: "https://techcrunch.com/2026/10/22/arc-browser-sunsets-december-22-as-the-browser-company-doubles-down-on-dia/" },
+  { name: "Arc browser is shutting down in December, here's what to do next – How-To Geek", href: "https://www.howtogeek.com/arc-browser-shutdown-date/" },
+  { name: "Arc browser shutdown: how to save your data – TechRepublic", href: "https://www.techrepublic.com/article/news-arc-browser-shutdown-export-data/" },
+];
+---
+<NewsArticle slug="arc-shutdown-december-22" titles={["Arc stops working on December 22: what to do now", "Arc shuts down December 22"]} sources={sources}>
+  <p class="lede">The Browser Company is shutting Arc down on December 22, 2026. It isn't just sync going away: on that day Arc for Mac and Windows stops working entirely. If you still use it, you have less than four weeks to move.</p>
+
+  <section aria-labelledby="dates">
+    <h2 id="dates">The key dates</h2>
+    <ul class="prose">
+      <li><b>October 22:</b> The Browser Company announced the sunset and stopped new Arc sign-ups. It says it can no longer keep Arc as secure as a modern browser needs to be, and is moving everyone to Dia, its AI-first browser.</li>
+      <li><b>November 23 (already passed):</b> sign-in, tab sync and AI features such as Browse for Me stopped working in Arc for iPhone and Android. Arc Search is leaving Google Play; a stripped-down version stays usable on iOS.</li>
+      <li><b>December 22:</b> Arc for macOS and Windows stops working, accounts can't be signed in to, and all Arc services shut down. Account data is deleted within about 30 days after that.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="todo">
+    <h2 id="todo">What to do before December 22</h2>
+    <ol class="prose">
+      <li><b>Pick your next browser now</b>, while Arc still runs, so you can import from it directly. Most browsers import bookmarks, passwords and history on first launch.</li>
+      <li><b>Export what an import won't catch.</b> Arc's Spaces, pinned tabs and folders don't map cleanly onto other browsers. Export your bookmarks to an HTML file and your passwords to a CSV, or move them into a password manager.</li>
+      <li><b>Moving to Dia?</b> The Browser Company says Dia can bring over your Spaces, tabs and browsing data – do it before the 22nd.</li>
+      <li><b>Reinstall your extensions.</b> Arc is Chromium-based, so any other Chromium browser takes the same Chrome Web Store extensions.</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="where">
+    <h2 id="where">Where to go instead</h2>
+    <p class="prose">Dia is the official successor, but it's a different product: built around an AI assistant, Mac and Windows only, and it scores {byId.get("dia")!.scores.privacy}/5 for privacy in our data. If you mostly loved Arc for its sidebar, Spaces and calm design, our top Arc replacements are {alts.map((b, i) => <>{i > 0 && (i === alts.length - 1 ? " and " : ", ")}<a href={`/browsers/${b.id}`}>{b.name}</a></>)}. <a href="/browsers/zen-browser">Zen Browser</a> is the closest in feel: vertical tabs, workspaces and split view, on Firefox's engine.</p>
+    <p class="prose">See <a href="/alternatives/arc">all Arc alternatives</a> with what each one does better, compare <a href="/compare/zen-browser-vs-arc">Zen vs Arc</a> and <a href="/compare/arc-vs-dia">Arc vs Dia</a>, or browse <a href="/best/browsers-with-vertical-tabs">browsers with vertical tabs</a>.</p>
+  </section>
+
+  <section aria-labelledby="changed">
+    <h2 id="changed">On browserwall</h2>
+    <p class="prose"><a href="/browsers/arc">Arc</a> has been marked as discontinued since the announcement, so the quiz no longer suggests it. Its profile and the tier maker keep it, and we'll leave it up after December 22 as a record.</p>
+  </section>
+</NewsArticle>
