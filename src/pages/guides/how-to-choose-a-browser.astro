@@ -1,0 +1,88 @@
+---
+// Guide: what to look for in a web browser, with a checklist; ends in the quiz.
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import PageImage from "../../components/PageImage.astro";
+import { browsers } from "../../data/browsers";
+import { guide, guideLd, fillYear, seoTitle, breadcrumbLd, faqLd, UPDATED, GUIDES, CATEGORIES, categoryResults } from "../../lib/seo";
+
+const g = guide("how-to-choose-a-browser");
+const h1 = fillYear(g.title);
+const top = (slug: string, n = 3) => categoryResults(CATEGORIES.find((c) => c.slug === slug)!).slice(0, n).map((r) => r.browser);
+const overall = top("browsers");
+const priv = top("privacy-browsers");
+
+const faq = [
+  { q: "Which browser should I use?", a: `For most people, a privacy-respecting mainstream browser: ${overall.map((b) => b.name).join(", ")} top our balanced ranking. Mac users who only use Apple devices often do best with Safari. The best one for you depends on your OS, extensions and priorities – the quiz takes two minutes.` },
+  { q: "What should I look for in a web browser?", a: "In order: that it gets security updates quickly, that it runs the extensions you need, that it syncs with your other devices, how much it tracks you by default, and whether its extras (AI, VPN, crypto, sidebars) help you or get in the way. Speed barely matters – mainstream browsers are equally fast." },
+  { q: "Which browser is the fastest?", a: "In everyday use, none noticeably. Chrome, Edge, Firefox, Safari and Brave are within benchmark noise of each other on modern hardware. What slows a browser down is the number of tabs and extensions you run." },
+  { q: "Is it safe to switch browsers?", a: "Yes. Every major browser imports bookmarks, saved passwords and history from the others on first launch, and you can keep your old browser installed while you try the new one." },
+  { q: "Is Chrome a bad choice?", a: "Not for security or compatibility – it's excellent at both. It scores lower on privacy because Google's business is advertising and Chrome is tied to your Google account. If that bothers you, Chromium browsers like Brave or Vivaldi keep the same extensions with fewer data links to Google." },
+];
+const crumbs = [{ name: "Guides", href: "/best" }, { name: "How to choose a browser", href: `/guides/${g.slug}` }];
+const title = seoTitle(h1, "How to choose a web browser: what matters");
+---
+<Base title={title} description={g.description} jsonLd={[guideLd(Astro.site, g), breadcrumbLd(Astro.site, crumbs), faqLd(faq)]} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Guide</p>
+    <h1>{h1}</h1>
+    <p class="lede">Picking a browser comes down to five questions: which devices you use, which extensions you need, how much privacy matters to you, which extras you want, and whether you'll pay. Speed, despite what the ads say, isn't one of them.</p>
+    <p class="updated">Updated {UPDATED}</p>
+
+    <section aria-labelledby="check">
+      <h2 id="check">The checklist</h2>
+      <ol class="prose">
+        <li><b>Security updates.</b> Only use a browser that's actively maintained and follows its engine's security fixes within days. Every browser on <a href="/wall">the wall</a> shows whether it's still developed.</li>
+        <li><b>Your devices.</b> If you want tabs, bookmarks and passwords on your phone, pick a browser that exists there too. All-Apple households often do best with Safari; mixed Windows and Android users with Chrome, Edge, Brave, Vivaldi or Firefox.</li>
+        <li><b>Your extensions.</b> Chromium browsers share the Chrome Web Store; Firefox and its forks use Firefox add-ons. If you rely on the full <a href="/guides/ublock-origin">uBlock Origin</a>, that means Firefox. See <a href="/guides/browser-extensions">browser extensions explained</a>.</li>
+        <li><b>Privacy.</b> Look at who makes the browser and how it earns money, not the marketing. A browser funded by ads or data has less reason to protect you. Our privacy scores are based on business model and defaults.</li>
+        <li><b>Extras you'll actually use.</b> Vertical tabs, workspaces, split view, a built-in ad blocker, VPN or AI assistant. More features also mean more clutter – minimal browsers exist if you want less.</li>
+        <li><b>Price.</b> Almost every browser is free. A few charge for extras like an AI agent or a built-in VPN.</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="not">
+      <h2 id="not">What matters less than you'd think</h2>
+      <ul class="prose">
+        <li><b>Speed.</b> Mainstream browsers are within benchmark noise of each other. Fewer tabs and extensions make a bigger difference than switching.</li>
+        <li><b>The engine itself.</b> It affects extensions and the health of the web, but sites work in all of them. See <a href="/guides/browser-engines">browser engines explained</a>.</li>
+        <li><b>Incognito mode.</b> Every browser has it, and it hides less than people think – see <a href="/guides/incognito-mode">incognito explained</a>.</li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="who">
+      <h2 id="who">Quick picks by need</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th scope="col">If you want…</th><th scope="col">Start with</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">A good all-rounder</th><td>{overall.map((b, i) => <>{i > 0 && ", "}<a href={`/browsers/${b.id}`}>{b.name}</a></>)} – <a href="/best/browsers">full ranking</a></td></tr>
+            <tr><th scope="row">Maximum privacy</th><td>{priv.map((b, i) => <>{i > 0 && ", "}<a href={`/browsers/${b.id}`}>{b.name}</a></>)} – <a href="/best/privacy-browsers">most private browsers</a></td></tr>
+            <tr><th scope="row">Mac battery life</th><td><a href="/browsers/safari">Safari</a> or <a href="/browsers/orion">Orion</a> – <a href="/compare/safari-vs-google-chrome">Safari vs Chrome on Mac</a></td></tr>
+            <tr><th scope="row">Chrome without Google</th><td><a href="/best/chromium-browsers-without-google">De-Googled Chromium browsers</a></td></tr>
+            <tr><th scope="row">An AI assistant</th><td><a href="/best/ai-browsers">The best AI browsers</a> – and read <a href="/guides/ai-browsers">whether they're safe</a></td></tr>
+            <tr><th scope="row">Lots of customisation</th><td><a href="/best/customizable-browsers">The most customisable browsers</a></td></tr>
+            <tr><th scope="row">Something light</th><td><a href="/best/lightweight-browsers">Lightweight browsers</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <QuizCta title="Let the quiz do the checklist" text={`Five quick steps – OS, extensions, priorities, must-haves and dealbreakers – and you get a ranked shortlist from ${browsers.length} browsers, with reasons.`} />
+
+    <PageImage heading="Share this guide" caption="A few of the browsers this guide helps you choose between. Free to share with a link to this page." />
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+
+    <section aria-labelledby="more">
+      <h2 id="more">More guides</h2>
+      <ul class="linkgrid">{GUIDES.filter((x) => x.slug !== g.slug).map((x) => <li><a href={`/guides/${x.slug}`}>{fillYear(x.short)}</a></li>)}<li><a href="/best">All browser guides</a></li></ul>
+    </section>
+  </article>
+</Base>

@@ -25,6 +25,9 @@ function build(): Map<string, Card> {
     "ublock-origin": ["firefox", "librewolf", "zen-browser", "waterfox", "mullvad-browser", "floorp"],
     "browser-extensions": ["google-chrome", "firefox", "safari", "brave", "microsoft-edge", "vivaldi"],
     "incognito-mode": ["google-chrome", "safari", "firefox", "microsoft-edge", "brave", "tor-browser"],
+    "how-to-choose-a-browser": ["firefox", "brave", "safari", "google-chrome", "vivaldi", "zen-browser"],
+    "ai-browsers": ["comet", "chatgpt-atlas", "dia", "microsoft-edge", "opera", "brave"],
+    "browser-engines": ["google-chrome", "firefox", "safari", "ladybird", "servo", "brave"],
   };
   for (const g of GUIDES) m.set(`/guides/${g.slug}`, { kind: "list", kicker: "Guide", title: fillYear(g.short), subtitle: g.description, logos: pick(guideLogos[g.slug] ?? []) });
   return m;

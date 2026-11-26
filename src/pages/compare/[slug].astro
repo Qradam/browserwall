@@ -8,7 +8,7 @@ import PageImage from "../../components/PageImage.astro";
 import ScoreBars from "../../components/ScoreBars.astro";
 import Icon from "../../components/Icon.astro";
 import type { Browser } from "../../data/browsers";
-import { COMPARISONS, ALTERNATIVE_IDS, compareVerdict, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle } from "../../lib/seo";
+import { COMPARISONS, COMPARE_HEADLINES, ALTERNATIVE_IDS, compareVerdict, YEAR, UPDATED, breadcrumbLd, faqLd, itemListLd, seoTitle } from "../../lib/seo";
 import { compareRows, chooseIf, axisWins, extOf } from "../../lib/compare";
 
 export function getStaticPaths() {
@@ -27,8 +27,10 @@ const lead = v.overall
   : `Neither is one we'd recommend as a daily browser today.`;
 const scoreLine = winsA === winsB ? `They split our five scores ${winsA}–${winsB}` : `${winsA > winsB ? a.name : b.name} wins ${Math.max(winsA, winsB)} of our five scores to ${Math.min(winsA, winsB)}`;
 
-const h1 = `${a.name} vs ${b.name}`;
-const title = seoTitle(`${a.name} vs ${b.name} (${YEAR}): which browser is better?`, `${a.name} vs ${b.name} (${YEAR}): which is better?`, `${a.name} vs ${b.name} (${YEAR})`, `${a.name} vs ${b.name}`);
+const h1 = COMPARE_HEADLINES[slug] ?? `${a.name} vs ${b.name}`;
+const extras = import.meta.glob<{ default: unknown }>("../../components/compare-extras/*.astro", { eager: true });
+const Extra = extras[`../../components/compare-extras/${slug}.astro`]?.default as any;
+const title = seoTitle(`${h1} (${YEAR}): which browser is better?`, `${h1} (${YEAR}): which is better?`, `${h1} (${YEAR})`, h1);
 const description = `${a.name} vs ${b.name} compared: privacy, polish, customisation, RAM use, extensions, AI and price. ${lead} Updated ${UPDATED}.`.slice(0, 300);
 
 const lighter = a.scores.lightness === b.scores.lightness ? null : a.scores.lightness > b.scores.lightness ? a : b;
@@ -99,6 +101,8 @@ const altLinks = pair.filter((x) => ALTERNATIVE_IDS.includes(x.id));
       {v.custom && <li><span>Customisation first</span><b>{v.custom.name}</b></li>}
     </ul>
     {v.overall && <p class="bp-small">Picks come from the same engine as the <a href="/quiz">browser quiz</a>, with one quality set to "Top priority".</p>}
+
+    {Extra && <Extra />}
 
     <h2>Scores in detail</h2>
     <div class="vs-scores">

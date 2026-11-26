@@ -216,8 +216,10 @@ const PAIRS: [string, string][] = [
   ["tor-browser", "mullvad-browser"], ["zen-browser", "firefox"], ["zen-browser", "arc"], ["floorp", "zen-browser"],
   ["waterfox", "firefox"], ["arc", "dia"], ["arc", "brave"], ["orion", "safari"], ["chatgpt-atlas", "comet"],
   ["chatgpt-atlas", "google-chrome"], ["comet", "dia"], ["helium", "brave"], ["ungoogled-chromium", "brave"],
-  ["thorium", "google-chrome"], ["chromium", "google-chrome"], ["yandex-browser", "google-chrome"],
+  ["thorium", "google-chrome"], ["chromium", "google-chrome"], ["yandex-browser", "google-chrome"], ["vivaldi", "zen-browser"],
 ];
+/** Comparisons with a hand-written section (src/components/compare-extras/<slug>.astro) and a more specific headline. */
+export const COMPARE_HEADLINES: Record<string, string> = { "safari-vs-google-chrome": "Safari vs Chrome on Mac" };
 export const compareSlug = (a: string, b: string) => `${a}-vs-${b}`;
 export const COMPARISONS = PAIRS.filter(([a, b]) => byId.has(a) && byId.has(b)).map(([a, b]) => ({ slug: compareSlug(a, b), a: byId.get(a)!, b: byId.get(b)! }));
 /** The curated comparison page for two browsers, in either order. */
@@ -237,8 +239,14 @@ export function compareVerdict(a: Browser, b: Browser) {
 
 // ---------------------------------------------------------------------------- Hand-written guides (/guides/<slug>)
 
-export interface Guide { slug: string; title: string; short: string; description: string }
+export interface Guide { slug: string; title: string; short: string; description: string; published?: string }
 export const GUIDES: Guide[] = [
+  { slug: "how-to-choose-a-browser", short: "How to choose a browser", published: "2026-11-26", title: "How to choose a web browser in {year}: what actually matters",
+    description: "What to look for in a web browser: privacy, extensions, your devices, the engine, built-in AI and price, plus the things that don't matter much (like speed). With a quick checklist." },
+  { slug: "ai-browsers", short: "AI browsers explained", published: "2026-11-26", title: "What is an AI browser, and is it safe to use?",
+    description: "What AI browsers like Comet, ChatGPT Atlas and Dia actually do, the difference between an assistant and an agent, the prompt injection risk, and how to use one safely." },
+  { slug: "browser-engines", short: "Browser engines explained", published: "2026-11-26", title: "Browser engines explained: Chromium vs Gecko vs WebKit",
+    description: "Every browser runs on one of a handful of engines. What Blink (Chromium), Gecko (Firefox) and WebKit (Safari) are, why it matters for extensions and privacy, and the full list of which browser uses which." },
   { slug: "browser-extensions", short: "Browser extensions explained", title: "Browser extensions in {year}: which browsers run which",
     description: "Which browsers support Chrome Web Store extensions, Firefox add-ons and Safari extensions, what Manifest V3 changed, and how to pick a browser for the extensions you rely on." },
   { slug: "ublock-origin", short: "uBlock Origin in {year}", title: "uBlock Origin in {year}: Firefox, Chrome and which browsers still run it",
@@ -248,7 +256,7 @@ export const GUIDES: Guide[] = [
 ];
 export const guideLd = (site: URL | undefined, g: Guide) => ({
   "@type": "Article", headline: fillYear(g.title), description: g.description, inLanguage: "en",
-  datePublished: "2026-11-18", dateModified: BUILD.toISOString().slice(0, 10),
+  datePublished: g.published ?? "2026-11-18", dateModified: BUILD.toISOString().slice(0, 10),
   mainEntityOfPage: abs(site, `/guides/${g.slug}`), author: { "@id": `${abs(site, "/")}#org` }, publisher: { "@id": `${abs(site, "/")}#org` },
 });
 export const guide = (slug: string) => GUIDES.find((g) => g.slug === slug)!;

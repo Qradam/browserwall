@@ -1,0 +1,100 @@
+---
+// Guide: what browser engines are, the big three, and which browser uses which (generated from the data).
+import "../../styles/content.css";
+import Base from "../../layouts/Base.astro";
+import QuizCta from "../../components/QuizCta.astro";
+import Crumbs from "../../components/Crumbs.astro";
+import PageImage from "../../components/PageImage.astro";
+import { browsers, FAMILIES, ENGINES, type Family } from "../../data/browsers";
+import { guide, guideLd, fillYear, seoTitle, breadcrumbLd, faqLd, UPDATED, GUIDES } from "../../lib/seo";
+
+const g = guide("browser-engines");
+const h1 = fillYear(g.title);
+const live = browsers.filter((b) => b.status !== "discontinued" && !b.channelOf);
+const groups = (["chromium", "firefox", "webkit", "other"] as Family[]).map((f) => ({ f, list: live.filter((b) => b.family === f) }));
+const count = (f: Family) => groups.find((x) => x.f === f)!.list.length;
+const pct = Math.round((count("chromium") / live.length) * 100);
+
+const faq = [
+  { q: "What is a browser engine?", a: "The part of a browser that turns HTML, CSS and JavaScript into the page you see. The window, tabs, menus and settings around it are the browser; the engine is what actually loads and draws websites. Browsers that share an engine show sites almost identically." },
+  { q: "Which browsers are Chromium-based?", a: `Chrome, Edge, Brave, Opera, Vivaldi, Arc, Dia, Comet and most new browsers. Of the ${live.length} maintained desktop browsers we track, ${count("chromium")} (${pct}%) run on Chromium's Blink engine.` },
+  { q: "Is Firefox Chromium-based?", a: "No. Firefox uses Gecko, Mozilla's own engine, and so do its forks such as LibreWolf, Zen, Floorp, Waterfox, Tor Browser and Mullvad Browser. It is the only big independent engine not controlled by Google or Apple." },
+  { q: "What engine does Safari use?", a: "WebKit, Apple's engine. Chromium itself started as a fork of WebKit in 2013 (Blink), so they share distant roots but have developed separately for over a decade. On iPhone, every browser used WebKit until the EU allowed other engines in 2024." },
+  { q: "Does the engine affect speed?", a: "Barely, for everyday use. All three big engines are within benchmark noise of each other on a modern computer. The engine matters more for which extensions you can run, how privacy features work and who sets the direction of the web." },
+  { q: "Are there new browser engines?", a: "Yes, two: Ladybird, written from scratch and in alpha since November 2026, and Servo, a Rust engine now developed under the Linux Foundation. Neither is ready to be your main browser yet." },
+];
+const crumbs = [{ name: "Guides", href: "/best" }, { name: "Browser engines", href: `/guides/${g.slug}` }];
+const title = seoTitle(h1, "Browser engines explained: Chromium vs Gecko vs WebKit");
+---
+<Base title={title} description={g.description} jsonLd={[guideLd(Astro.site, g), breadcrumbLd(Astro.site, crumbs), faqLd(faq)]} ogType="article" dialog={false}>
+  <article class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">Guide</p>
+    <h1>{h1}</h1>
+    <p class="lede">Almost every browser you can download is built on one of three engines: <b>Blink</b> (Chromium, by Google), <b>Gecko</b> (Firefox, by Mozilla) or <b>WebKit</b> (Safari, by Apple). Of the {live.length} maintained desktop browsers we track, {count("chromium")} run on Chromium.</p>
+    <p class="updated">Updated {UPDATED}</p>
+
+    <section aria-labelledby="what">
+      <h2 id="what">What a browser engine does</h2>
+      <p class="prose">The engine reads a website's code and draws the page: layout, fonts, images, JavaScript, video. Everything around it – tabs, sidebar, settings, the built-in ad blocker or AI – is the browser. That's why Brave, Edge and Vivaldi look different but show websites identically: underneath, they're all Chromium. Building an engine takes huge teams and years, so new browsers almost always reuse an existing one.</p>
+    </section>
+
+    <section aria-labelledby="big3">
+      <h2 id="big3">The big three compared</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th scope="col"></th><th scope="col">Blink (Chromium)</th><th scope="col">Gecko</th><th scope="col">WebKit</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Made by</th><td>Google (open source, with Microsoft and others)</td><td>Mozilla, a non-profit-owned company</td><td>Apple (open source)</td></tr>
+            <tr><th scope="row">Main browser</th><td>Chrome</td><td>Firefox</td><td>Safari</td></tr>
+            <tr><th scope="row">Browsers we track</th><td>{count("chromium")}</td><td>{count("firefox")}</td><td>{count("webkit")}</td></tr>
+            <tr><th scope="row">Extensions</th><td>Chrome Web Store (Manifest V3 only)</td><td>Firefox add-ons, incl. full uBlock Origin</td><td>Safari extensions; Orion also runs Chrome and Firefox ones</td></tr>
+            <tr><th scope="row">Site compatibility</th><td>Best – most sites are tested on it first</td><td>Very good</td><td>Very good</td></tr>
+            <tr><th scope="row">Runs on</th><td>Windows, macOS, Linux</td><td>Windows, macOS, Linux</td><td>Mostly macOS (Linux via GNOME Web)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose">Chromium's dominance is the reason people worry about a "browser monoculture": when one company's engine runs most of the web, its decisions – like dropping the full <a href="/guides/ublock-origin">uBlock Origin</a> – apply almost everywhere. Choosing a Gecko or WebKit browser keeps the alternatives alive.</p>
+    </section>
+
+    <section aria-labelledby="list">
+      <h2 id="list">Which browser uses which engine</h2>
+      {groups.map(({ f, list }) => list.length > 0 && (
+        <>
+          <h3>{FAMILIES[f].label} <small class="eng-n">({list.length})</small></h3>
+          <ul class="linkgrid">{list.map((b) => <li><a href={`/browsers/${b.id}`}>{b.logo && <img src={b.logo} alt="" width="24" height="24" loading="lazy" />}<span>{b.name}<small>{ENGINES[b.engine]}{b.basedOn ? ` · based on ${b.basedOn}` : ""}</small></span></a></li>)}</ul>
+        </>
+      ))}
+      <p class="prose">Ranked lists: <a href="/best/firefox-based-browsers">the best Firefox-based browsers</a> and <a href="/best/chromium-browsers-without-google">Chromium browsers without Google</a>.</p>
+    </section>
+
+    <section aria-labelledby="matter">
+      <h2 id="matter">Does the engine matter for you?</h2>
+      <ul class="prose">
+        <li><b>For extensions, yes.</b> Chromium browsers share the Chrome Web Store; Gecko browsers share Firefox add-ons. That's the biggest practical difference.</li>
+        <li><b>For privacy, partly.</b> Privacy depends more on the company and its defaults than the engine, but Gecko forks give the most control.</li>
+        <li><b>For speed, hardly.</b> All three are fast; the number of tabs and extensions you run matters far more.</li>
+        <li><b>For the web, yes.</b> Every non-Chromium browser you use is a vote for an open, multi-engine web.</li>
+      </ul>
+    </section>
+
+    <PageImage heading="Share this guide" caption="Browsers built on each of the big engines. Free to share with a link to this page." />
+
+    <QuizCta title="Want a specific engine?" text="The quiz lets you choose your extension store (Chrome or Firefox), which is the engine choice that matters most day to day." />
+
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <div class="faq">{faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+    </section>
+
+    <section aria-labelledby="more">
+      <h2 id="more">More guides</h2>
+      <ul class="linkgrid">{GUIDES.filter((x) => x.slug !== g.slug).map((x) => <li><a href={`/guides/${x.slug}`}>{fillYear(x.short)}</a></li>)}<li><a href="/best">All browser guides</a></li></ul>
+    </section>
+  </article>
+</Base>
+
+<style>
+  .doc h3 { font-size: 15px; margin: 18px 0 8px; }
+  .eng-n { color: var(--faint); font-weight: 400; }
+</style>
