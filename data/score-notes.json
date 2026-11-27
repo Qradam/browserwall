@@ -679,5 +679,13 @@
       "https://strawberrybrowser.com/",
       "https://windowsforum.com/news/strawberry-1-0-ai-browser-for-windows-agent-features-pricing-and-it-security-review.450031/"
     ]
+  },
+  "surf": {
+    "why": "surf is a thin shell around WebKitGTK, so rendering and security fixes come from your distro's WebKitGTK, which is updated regularly. surf itself has no telemetry and now asks for HTTPS by default, but has no tracker or ad blocking and no anti-fingerprinting. The last tagged release is 2.1 (2021); development continues in git (WebKitGTK 4.1 support, PDF.js viewer, HTTPS-first in 2024–2025), and most distros ship it. No tabs (pair it with tabbed), no URL bar, no extensions, and settings live in config.h, so you recompile to change them – great for dwm users, rough for everyone else.",
+    "sources": [
+      "https://git.suckless.org/surf/log.html",
+      "https://surf.suckless.org/",
+      "https://www.linuxlinks.com/surf-simple-webkit-web-browser/"
+    ]
   }
 }

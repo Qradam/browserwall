@@ -2603,6 +2603,40 @@
     }
   },
   {
+    "id": "surf",
+    "name": "surf",
+    "engine": "webkit",
+    "basedOn": "WebKitGTK",
+    "os": [
+      "linux",
+      "bsd"
+    ],
+    "status": "maintenance",
+    "openSource": true,
+    "description": "Suckless WebKitGTK browser with no tabs or toolbars: driven by keybindings and dmenu, configured in C. Now HTTPS-first with a PDF viewer.",
+    "tags": [
+      "minimal",
+      "keyboard-driven",
+      "lightweight",
+      "power-user"
+    ],
+    "website": "https://surf.suckless.org/",
+    "repo": "https://git.suckless.org/surf",
+    "logo": null,
+    "sources": [
+      "https://surf.suckless.org/",
+      "https://git.suckless.org/surf/log.html",
+      "https://www.linuxlinks.com/surf-simple-webkit-web-browser/"
+    ],
+    "scores": {
+      "privacy": 3,
+      "experience": 2,
+      "customisation": 3,
+      "lightness": 4,
+      "minimalism": 5
+    }
+  },
+  {
     "id": "thorium",
     "name": "Thorium",
     "engine": "blink",

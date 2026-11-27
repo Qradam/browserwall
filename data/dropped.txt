@@ -112,7 +112,6 @@ slimjet
 sogou-explorer
 srware-iron
 stainless
-surf
 sushi-browser
 swiftfox
 swiftweasel

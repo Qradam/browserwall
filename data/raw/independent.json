@@ -707,18 +707,20 @@
     ],
     "status": "maintenance",
     "openSource": true,
-    "description": "Simple suckless WebKit2GTK browser with no UI chrome, controlled by keybindings and configured at compile time.",
+    "description": "Suckless WebKitGTK browser with no tabs or toolbars: driven by keybindings and dmenu, configured in C. Now HTTPS-first with a PDF viewer.",
     "tags": [
       "minimal",
       "keyboard-driven",
       "lightweight",
-      "customizable"
+      "power-user"
     ],
     "website": "https://surf.suckless.org/",
     "repo": "https://git.suckless.org/surf",
     "logo": null,
     "sources": [
-      "https://surf.suckless.org/"
+      "https://surf.suckless.org/",
+      "https://git.suckless.org/surf/log.html",
+      "https://www.linuxlinks.com/surf-simple-webkit-web-browser/"
     ]
   },
   {

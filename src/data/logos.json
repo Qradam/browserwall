@@ -354,6 +354,11 @@
     "source": "https://www.supermium.net/favicon.ico",
     "kind": "manual"
   },
+  "surf": {
+    "file": "/logos/surf.svg",
+    "source": "https://upload.wikimedia.org/wikipedia/commons/1/1a/Suckless_logo.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "kind": "manual"
+  },
   "thorium": {
     "file": "/logos/thorium.png",
     "source": "https://thorium.rocks/android-chrome-512x512.png",

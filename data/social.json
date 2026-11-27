@@ -334,5 +334,9 @@
   "zen-browser": {
     "reddit": "https://www.reddit.com/r/zen_browser",
     "x": "https://x.com/zen_browser"
+  },
+  "surf": {
+    "reddit": "https://www.reddit.com/r/suckless",
+    "x": null
   }
 }
