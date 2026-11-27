@@ -11,7 +11,7 @@ export const LOCALE_META: Record<Locale, { name: string; short: string; og: stri
   cs: { name: "Čeština", short: "CS", og: "cs_CZ", intl: "cs-CZ" },
 };
 
-export const LOCALIZED_BASES = ["/", "/quiz", "/wall", "/tiers"] as const;
+export const LOCALIZED_BASES = ["/", "/quiz", "/wall", "/tiers", "/compare", "/news", "/contact"] as const;
 
 export function isLocale(v: string | undefined): v is Locale {
   return !!v && (LOCALES as readonly string[]).includes(v);

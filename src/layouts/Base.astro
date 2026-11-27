@@ -97,10 +97,10 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
       <nav aria-label={ui.navAria}>
         <a href={localizedHref("/wall", lang)} aria-current={base.startsWith("/wall") ? "page" : undefined}>{ui.nav.wall}</a>
         <a href={localizedHref("/tiers", lang)} aria-current={base.startsWith("/tiers") ? "page" : undefined}>{ui.nav.tiers}</a>
-        <a href="/compare" aria-current={path.startsWith("/compare") ? "page" : undefined}>{ui.nav.compare}</a>
+        <a href={localizedHref("/compare", lang)} aria-current={base.startsWith("/compare") ? "page" : undefined}>{ui.nav.compare}</a>
         <a href={localizedHref("/quiz", lang)} aria-current={base.startsWith("/quiz") ? "page" : undefined}>{ui.nav.quiz} <span class="soon">{ui.nav.beta}</span></a>
-        <a href="/news" aria-current={path.startsWith("/news") ? "page" : undefined}>{ui.nav.news}</a>
-        <a href="/contact" class="nav-contact" aria-current={path.startsWith("/contact") ? "page" : undefined}>{ui.nav.contact}</a>
+        <a href={localizedHref("/news", lang)} aria-current={base.startsWith("/news") ? "page" : undefined}>{ui.nav.news}</a>
+        <a href={localizedHref("/contact", lang)} class="nav-contact" aria-current={base.startsWith("/contact") ? "page" : undefined}>{ui.nav.contact}</a>
         {isLocalized && (
           <select class="lang-switch" id="lang-switch" aria-label={ui.langLabel}>
             {LOCALES.map((l) => <option value={localePath(base, l)} selected={l === lang}>{LOCALE_META[l].short}</option>)}
@@ -131,12 +131,12 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
         <div>
           <p class="fh">browserwall</p>
           <a href={localizedHref("/wall", lang)}>{ui.footer.wall}</a>
-          <a href="/compare">{ui.footer.compare}</a>
+          <a href={localizedHref("/compare", lang)}>{ui.footer.compare}</a>
           {COMPARISONS.slice(0, 3).map((c) => <a href={`/compare/${c.slug}`}>{c.a.name} {ui.footer.vs} {c.b.name}</a>)}
           <a href={localizedHref("/tiers", lang)}>{ui.footer.tiers}</a>
-          <a href="/news">{ui.footer.news}</a>
+          <a href={localizedHref("/news", lang)}>{ui.footer.news}</a>
           {NEWS.slice(0, 2).map((n) => <a href={`/news/${n.slug}`}>{n.short}</a>)}
-          <a href="/contact">{ui.footer.contact}</a>
+          <a href={localizedHref("/contact", lang)}>{ui.footer.contact}</a>
           <a href="/privacy">{ui.footer.privacy}</a>
           <a href="/image-license">{ui.footer.imageLicense}</a>
           <a href="#" data-cookie-settings>{ui.footer.cookies}</a>
@@ -147,7 +147,7 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
           {LOCALES.map((l) => <a href={localePath(base, l)} hreflang={l} aria-current={l === lang ? "page" : undefined}>{LOCALE_META[l].name}</a>)}
         </nav>
       )}
-      <p class="fine">{ui.footer.fineBefore} <a href="/contact">{ui.footer.fineLink}</a>.</p>
+      <p class="fine">{ui.footer.fineBefore} <a href={localizedHref("/contact", lang)}>{ui.footer.fineLink}</a>.</p>
     </footer>
     <Consent lang={lang} />
     {isLocalized && (

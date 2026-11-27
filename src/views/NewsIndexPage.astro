@@ -1,0 +1,46 @@
+---
+import "../styles/content.css";
+import Base from "../layouts/Base.astro";
+import Crumbs from "../components/Crumbs.astro";
+import QuizCta from "../components/QuizCta.astro";
+import { byId } from "../data/browsers";
+import { breadcrumbLd, abs } from "../lib/seo";
+import { NEWS } from "../lib/news";
+import { LOCALE_META, localizedHref, type Locale } from "../i18n";
+import { NEWS_INDEX_COPY } from "../i18n/nav-pages";
+
+interface Props { lang?: Locale }
+const { lang = "en" } = Astro.props;
+const t = NEWS_INDEX_COPY[lang];
+const fmtNewsDate = (d: string) =>
+  new Date(`${d}T12:00:00Z`).toLocaleDateString(LOCALE_META[lang].intl, { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+
+const crumbs = [{ name: t.crumb, href: localizedHref("/news", lang) }];
+const listLd = {
+  "@type": "ItemList", name: t.ldName, numberOfItems: NEWS.length,
+  itemListElement: NEWS.map((n, i) => ({ "@type": "ListItem", position: i + 1, name: n.title, url: abs(Astro.site, `/news/${n.slug}`) })),
+};
+---
+<Base lang={lang} title={t.metaTitle} description={t.metaDesc} jsonLd={[breadcrumbLd(Astro.site, crumbs), listLd]} dialog={false}>
+  <div class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">{t.kicker}</p>
+    <h1>{t.h1}</h1>
+    <p class="lede">{t.ledeBefore} <a href="/news/rss.xml">{t.rssLink}</a>.</p>
+    <ol class="newslist">
+      {NEWS.map((n) => (
+        <li>
+          <a href={`/news/${n.slug}`}>
+            <span class="nl-logos" aria-hidden="true">{n.browsers.map((id) => byId.get(id)?.logo).filter(Boolean).slice(0, 3).map((src) => <img src={src} alt="" width="32" height="32" loading="lazy" />)}</span>
+            <span class="nl-body">
+              <span class="nl-meta"><time datetime={n.date}>{fmtNewsDate(n.date)}</time> · {t.kinds[n.kind]}</span>
+              <span class="nl-title">{n.title}</span>
+              <span class="nl-desc">{n.description}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+    <QuizCta lang={lang} />
+  </div>
+</Base>

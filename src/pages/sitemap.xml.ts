@@ -8,18 +8,16 @@ import { LOCALES, ALT_LOCALES, isLocalizedBase, localePath, stripLocale } from "
 
 export const GET: APIRoute = ({ site }) => {
   const day = BUILD.toISOString().slice(0, 10);
-  const mainPriorities: [string, string][] = [["/", "1.0"], ["/quiz", "1.0"], ["/wall", "0.9"], ["/tiers", "0.6"]];
+  const mainPriorities: [string, string][] = [["/", "1.0"], ["/quiz", "1.0"], ["/wall", "0.9"], ["/compare", "0.8"], ["/news", "0.7"], ["/tiers", "0.6"], ["/contact", "0.3"]];
   // [path, priority, lastmod?] – lastmod defaults to the build day.
   const pages: [string, string, string?][] = [
     ...mainPriorities,
     ...ALT_LOCALES.flatMap((lang) => mainPriorities.map(([base, pr]) => [localePath(base, lang), pr] as [string, string])),
-    ["/best", "0.8"], ["/alternatives", "0.8"], ["/contact", "0.3"], ["/privacy", "0.1"], ["/image-license", "0.1"],
+    ["/best", "0.8"], ["/alternatives", "0.8"], ["/privacy", "0.1"], ["/image-license", "0.1"],
     ...CATEGORIES.map((c) => [`/best/${c.slug}`, "0.8"] as [string, string]),
     ...GUIDES.map((g) => [`/guides/${g.slug}`, "0.7"] as [string, string]),
     ...ALTERNATIVE_IDS.map((id) => [`/alternatives/${id}`, "0.8"] as [string, string]),
-    ["/compare", "0.8"],
     ...COMPARISONS.map((c) => [`/compare/${c.slug}`, "0.7"] as [string, string]),
-    ["/news", "0.7"],
     ...NEWS.map((n) => [`/news/${n.slug}`, "0.6", n.updated ?? n.date] as [string, string, string]),
     ...browsers.map((b) => [`/browsers/${b.id}`, b.status === "discontinued" || b.channelOf ? "0.4" : "0.6"] as [string, string]),
   ];

@@ -1,0 +1,188 @@
+---
+import "../styles/content.css";
+import "../styles/compare.css";
+import Base from "../layouts/Base.astro";
+import QuizCta from "../components/QuizCta.astro";
+import Crumbs from "../components/Crumbs.astro";
+import Icon from "../components/Icon.astro";
+import { browsers, byId } from "../data/browsers";
+import { COMPARISONS, comparisonOf, YEAR, BUILD, breadcrumbLd, faqLd, seoTitle } from "../lib/seo";
+import { compareRows, chooseIf } from "../lib/compare";
+import { localizedHref, updatedMonth, type Locale } from "../i18n";
+import { COMPARE_I18N } from "../i18n/nav-pages";
+
+interface Props { lang?: Locale }
+const { lang = "en" } = Astro.props;
+const t = COMPARE_I18N[lang];
+const updated = updatedMonth(lang, BUILD);
+const fmt = (s: string, vars: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ""));
+
+const MAX = 4;
+const DEFAULT = ["brave", "firefox"];
+const initial = DEFAULT.map((id) => byId.get(id)!);
+const rows = compareRows(initial, lang);
+const why = [chooseIf(initial[0], initial[1], lang), chooseIf(initial[1], initial[0], lang)];
+const full = comparisonOf(DEFAULT[0], DEFAULT[1]);
+
+const popular = browsers.filter((b) => b.usageRank != null);
+const rest = browsers.filter((b) => b.usageRank == null).sort((a, b) => a.name.localeCompare(b.name));
+// Only what the client needs to rebuild the table (see src/lib/compare.ts).
+const payload = JSON.stringify({
+  lang,
+  browsers: browsers.map(({ id, name, logo, engine, basedOn, os, status, openSource, tags, scores, price, ai, usageRank }) =>
+    ({ id, name, logo, engine, basedOn, os, status, openSource, tags, scores, price, ai, usageRank })),
+  pages: COMPARISONS.map((c) => [c.a.id, c.b.id, c.slug, `${c.a.name} vs ${c.b.name}`]),
+  js: t.js,
+}).replace(/</g, "\\u003c");
+
+const crumbs = [{ name: t.crumb, href: localizedHref("/compare", lang) }];
+const title = lang === "en"
+  ? seoTitle(`Compare browsers side by side (${YEAR})`, `Compare browsers (${YEAR})`)
+  : `${t.metaTitle(YEAR)} – browserwall`;
+const description = t.metaDesc(updated);
+---
+<Base lang={lang} title={title} description={description} jsonLd={[breadcrumbLd(Astro.site, crumbs), faqLd(t.faq)]} dialog={false}>
+  <div class="doc">
+    <Crumbs items={crumbs} />
+    <p class="kicker">{t.kicker}</p>
+    <h1>{t.h1}</h1>
+    <p class="lede">{t.lede(updated)}</p>
+
+    <script id="cmp-data" type="application/json" set:html={payload} />
+    <section class="cmp-picker" aria-labelledby="cmp-pick-h">
+      <div class="cmp-tray-row">
+        <h2 id="cmp-pick-h" class="sr">{t.pickHeading}</h2>
+        <ol class="cmp-tray" id="cmp-tray" aria-label={t.trayAria}>
+          {Array.from({ length: MAX }, (_, i) => {
+            const b = initial[i];
+            return b
+              ? <li class="full"><img src={b.logo ?? ""} alt="" width="28" height="28" /><span>{b.name}</span><button type="button" data-remove={b.id} aria-label={t.removeAria(b.name)}><Icon name="Cancel01Icon" size={14} /></button></li>
+              : <li class="empty"><span>{i < 2 ? t.pickPlaceholder : t.optionalPlaceholder}</span></li>;
+          })}
+        </ol>
+        <label class="cmp-search"><Icon name="Search01Icon" size={15} /><span class="sr">{t.searchLabel}</span><input id="cmp-q" type="search" placeholder={t.searchPlaceholder} autocomplete="off" /></label>
+      </div>
+      <p class="cmp-hint" id="cmp-hint" aria-live="polite">{t.hintDefault(MAX)}</p>
+      <ul class="cmp-grid" id="cmp-grid">
+        {[...popular, ...rest].map((b) => (
+          <li class:list={[{ more: b.usageRank == null, dead: b.status === "discontinued" }]} data-name={b.name.toLowerCase()}>
+            <button type="button" data-id={b.id} aria-pressed={DEFAULT.includes(b.id) ? "true" : "false"} title={b.name}>
+              {b.logo ? <img src={b.logo} alt="" width="40" height="40" loading="lazy" /> : <span class="mono">{b.name.slice(0, 2).toUpperCase()}</span>}
+              <span class="nm">{b.name}</span>
+              <span class="ck" aria-hidden="true"><Icon name="Tick02Icon" size={12} /></span>
+            </button>
+          </li>
+        ))}
+      </ul>
+      <button type="button" class="cmp-more" id="cmp-more" aria-expanded="false" aria-controls="cmp-grid">{t.showAll(browsers.length)}</button>
+    </section>
+
+    <div class="tbl-wrap" aria-live="polite">
+      <table class="cmp" id="cmp-table">
+        <thead><tr class="cmp-head"><th scope="col"><span class="sr">{t.categoryCol}</span></th>{initial.map((b) => <th scope="col"><a href={`/browsers/${b.id}`}>{b.logo && <img src={b.logo} alt="" width="36" height="36" />}{b.name}</a></th>)}</tr></thead>
+        <tbody>{rows.map((r) => <tr class={r.group}><th scope="row">{r.label}</th>{r.values.map((v, i) => <td class={r.best.includes(i) ? "win" : undefined}>{r.best.includes(i) && <Icon name="Tick02Icon" size={13} label={t.betterLabel} />}{v}</td>)}</tr>)}</tbody>
+      </table>
+    </div>
+    <p class="cmp-full" id="cmp-full">{full && <a href={`/compare/${full.slug}`}>{fmt(t.fullComparison, { pair: `${full.a.name} vs ${full.b.name}` })}</a>}</p>
+    <div class="vs-pick" id="cmp-why">
+      {initial.map((b, i) => <section><h3>{fmt(t.chooseIf, { name: b.name })}</h3><ul class="prose">{why[i].map((r) => <li>{r.charAt(0).toUpperCase() + r.slice(1)}</li>)}</ul></section>)}
+    </div>
+
+    <h2>{t.popularTitle}</h2>
+    <ul class="linkgrid">{COMPARISONS.map((c) => <li><a href={`/compare/${c.slug}`}>{c.a.logo && <img src={c.a.logo} alt="" width="24" height="24" loading="lazy" />}<span>{c.a.name} vs {c.b.name}</span></a></li>)}</ul>
+
+    <QuizCta lang={lang} />
+    <h2>{t.faqTitle}</h2>
+    <div class="faq">{t.faq.map((f, i) => <details open={i === 0}><summary>{f.q}</summary><p>{f.a}</p></details>)}</div>
+  </div>
+</Base>
+
+<script>
+  import { compareRows, chooseIf } from "../lib/compare";
+  import type { Browser } from "../data/browsers";
+  import type { Locale } from "../i18n";
+  import type { CompareI18n } from "../i18n/nav-pages";
+
+  const MAX = 4;
+  const data = JSON.parse(document.getElementById("cmp-data")!.textContent!) as {
+    lang: Locale;
+    browsers: Browser[];
+    pages: [string, string, string, string][];
+    js: CompareI18n["js"];
+  };
+  const byId = new Map(data.browsers.map((b) => [b.id, b]));
+  const grid = document.getElementById("cmp-grid")!;
+  const tray = document.getElementById("cmp-tray")!;
+  const hint = document.getElementById("cmp-hint")!;
+  const q = document.getElementById("cmp-q") as HTMLInputElement;
+  const more = document.getElementById("cmp-more") as HTMLButtonElement;
+  const table = document.getElementById("cmp-table")!;
+  const fullEl = document.getElementById("cmp-full")!;
+  const whyEl = document.getElementById("cmp-why")!;
+  const tick = table.querySelector("td.win svg")?.outerHTML ?? "";
+  const cross = tray.querySelector("button svg")?.outerHTML ?? "×";
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+  const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+  const fmt = (s: string, vars: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ""));
+  const HINT = hint.textContent!;
+
+  let picked: string[] = [...tray.querySelectorAll<HTMLButtonElement>("button[data-remove]")].map((b) => b.dataset.remove!);
+
+  function toggle(id: string) {
+    if (picked.includes(id)) picked = picked.filter((x) => x !== id);
+    else if (picked.length >= MAX) { hint.textContent = fmt(data.js.maxReached, { max: MAX }); hint.classList.add("warn"); return; }
+    else picked = [...picked, id];
+    render();
+  }
+
+  function render() {
+    hint.classList.remove("warn");
+    hint.textContent = picked.length < 2 ? data.js.pickAtLeast2 : HINT;
+    for (const btn of grid.querySelectorAll<HTMLButtonElement>("button")) btn.setAttribute("aria-pressed", String(picked.includes(btn.dataset.id!)));
+    grid.classList.toggle("is-full", picked.length >= MAX);
+    const list = picked.map((id) => byId.get(id)!);
+    tray.innerHTML = Array.from({ length: MAX }, (_, i) => {
+      const b = list[i];
+      return b ? `<li class="full">${b.logo ? `<img src="${esc(b.logo)}" alt="" width="28" height="28">` : ""}<span>${esc(b.name)}</span><button type="button" data-remove="${esc(b.id)}" aria-label="${esc(fmt(data.js.removeAria, { name: b.name }))}">${cross}</button></li>`
+        : `<li class="empty"><span>${esc(i < 2 ? data.js.pickBrowser : data.js.optional)}</span></li>`;
+    }).join("");
+
+    const rows = compareRows(list, data.lang);
+    table.closest(".tbl-wrap")!.toggleAttribute("hidden", list.length < 1);
+    table.innerHTML = `<thead><tr class="cmp-head"><th scope="col"><span class="sr">${esc(data.js.categoryCol)}</span></th>${list.map((b) =>
+      `<th scope="col"><a href="/browsers/${esc(b.id)}">${b.logo ? `<img src="${esc(b.logo)}" alt="" width="36" height="36">` : ""}${esc(b.name)}</a></th>`).join("")}</tr></thead>
+      <tbody>${rows.map((r) => `<tr class="${r.group}"><th scope="row">${esc(r.label)}</th>${r.values.map((v, i) =>
+        r.best.includes(i) ? `<td class="win">${tick}${esc(v)}</td>` : `<td>${esc(v)}</td>`).join("")}</tr>`).join("")}</tbody>`;
+    const page = list.length === 2 && data.pages.find(([a, b]) => (a === list[0].id && b === list[1].id) || (a === list[1].id && b === list[0].id));
+    fullEl.innerHTML = page ? `<a href="/compare/${esc(page[2])}">${esc(fmt(data.js.fullComparison, { pair: page[3] }))}</a>` : "";
+    whyEl.innerHTML = list.length === 2 ? list.map((b, i) => {
+      const r = chooseIf(b, list[1 - i], data.lang);
+      return `<section><h3>${esc(fmt(data.js.chooseIf, { name: b.name }))}</h3>${r.length ? `<ul class="prose">${r.map((x) => `<li>${esc(cap(x))}</li>`).join("")}</ul>`
+        : `<p class="prose">${esc(fmt(data.js.noClearLead, { other: list[1 - i].name }))}</p>`}</section>`;
+    }).join("") : "";
+    history.replaceState(null, "", list.length ? `#${list.map((b) => b.id).join(",")}` : location.pathname);
+  }
+
+  grid.addEventListener("click", (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>("button[data-id]");
+    if (btn) toggle(btn.dataset.id!);
+  });
+  tray.addEventListener("click", (e) => {
+    const btn = (e.target as Element).closest<HTMLButtonElement>("button[data-remove]");
+    if (btn) toggle(btn.dataset.remove!);
+  });
+  more.addEventListener("click", () => {
+    const open = grid.classList.toggle("show-all");
+    more.setAttribute("aria-expanded", String(open));
+    more.textContent = open ? data.js.showFewer : fmt(data.js.showAll, { n: data.browsers.length });
+  });
+  q.addEventListener("input", () => {
+    const term = q.value.trim().toLowerCase();
+    grid.classList.toggle("searching", !!term);
+    for (const li of grid.querySelectorAll<HTMLElement>("li")) li.hidden = !!term && !li.dataset.name!.includes(term);
+  });
+
+  // Shared links: /compare#brave,firefox,vivaldi
+  const fromHash = [...new Set(decodeURIComponent(location.hash.slice(1)).split(","))].filter((id) => byId.has(id)).slice(0, MAX);
+  if (fromHash.length) { picked = fromHash; render(); }
+</script>
