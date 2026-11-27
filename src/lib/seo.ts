@@ -144,7 +144,7 @@ export interface Alternative { result: Result; better: string[]; keeps: string[]
 export function painPoints(b: Browser): string[] {
   const out: string[] = [];
   if (b.status === "discontinued") out.push(`${b.name} has been discontinued, so it no longer gets security updates.`);
-  if (b.status === "maintenance") out.push(`${b.name} only gets slow, maintenance-level updates.`);
+  if (b.status === "maintenance") out.push(`${b.name} only gets occasional, maintenance-level updates.`);
   if (b.scores.privacy <= 2) out.push(`Privacy: it scores ${b.scores.privacy}/5 – ${b.ai && b.ai.level >= 2 ? "AI features and " : ""}its owner's business model or defaults don't favour you.`);
   if (b.scores.minimalism <= 2) out.push(`Bloat: it bundles extras (${[b.ai && "AI", b.tags.includes("vpn") && "VPN", b.tags.includes("crypto") && "crypto wallet"].filter(Boolean).join(", ") || "sidebars and services"}) many people don't want.`);
   if (b.scores.lightness <= 2) out.push(`Resource use: it's on the heavy side for RAM and CPU.`);

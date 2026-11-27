@@ -19,7 +19,7 @@ const alts = alternativesFor(b, 6);
 const hasAltPage = ALTERNATIVE_IDS.includes(b.id);
 const comparisons = COMPARISONS.filter((c) => c.a.id === b.id || c.b.id === b.id);
 const posts = newsFor(b.channelOf ?? b.id).slice(0, 4);
-const statusText = { active: "actively developed", maintenance: "in maintenance mode (slow updates)", discontinued: "discontinued" }[b.status];
+const statusText = { active: "actively developed", maintenance: "in maintenance mode (updates are infrequent)", discontinued: "discontinued" }[b.status];
 const engine = ENGINES[b.engine];
 const os = osNames(b);
 const scoreLine = `privacy ${b.scores.privacy}/5, out-of-box experience ${b.scores.experience}/5, customisation ${b.scores.customisation}/5, lightness ${b.scores.lightness}/5 and minimalism ${b.scores.minimalism}/5`;

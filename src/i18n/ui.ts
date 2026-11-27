@@ -135,7 +135,7 @@ export const UI: Record<Locale, UiCopy> = {
     card: {
       status: { active: "Active", maintenance: "Maintenance", discontinued: "Discontinued" },
       ripShort: "RIP",
-      slowShort: "Slow",
+      slowShort: "Few updates",
       engineTitle: "Engine",
       basedOnTitle: "Based on",
       tagsAria: "Tags",
@@ -250,7 +250,7 @@ export const UI: Record<Locale, UiCopy> = {
     card: {
       status: { active: "Активен", maintenance: "Поддержка", discontinued: "Закрыт" },
       ripShort: "RIP",
-      slowShort: "Редко",
+      slowShort: "Поддержка",
       engineTitle: "Движок",
       basedOnTitle: "На базе",
       tagsAria: "Теги",
@@ -365,7 +365,7 @@ export const UI: Record<Locale, UiCopy> = {
     card: {
       status: { active: "Actif", maintenance: "Maintenance", discontinued: "Abandonné" },
       ripShort: "RIP",
-      slowShort: "Lent",
+      slowShort: "Maintenance",
       engineTitle: "Moteur",
       basedOnTitle: "Basé sur",
       tagsAria: "Tags",
@@ -480,7 +480,7 @@ export const UI: Record<Locale, UiCopy> = {
     card: {
       status: { active: "Ativo", maintenance: "Manutenção", discontinued: "Descontinuado" },
       ripShort: "RIP",
-      slowShort: "Lento",
+      slowShort: "Mantenimiento",
       engineTitle: "Motor",
       basedOnTitle: "Baseado em",
       tagsAria: "Tags",
@@ -595,7 +595,7 @@ export const UI: Record<Locale, UiCopy> = {
     card: {
       status: { active: "Aktivní", maintenance: "Údržba", discontinued: "Ukončený" },
       ripShort: "RIP",
-      slowShort: "Pomalu",
+      slowShort: "Údržba",
       engineTitle: "Jádro",
       basedOnTitle: "Založeno na",
       tagsAria: "Štítky",
