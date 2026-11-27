@@ -1,5 +1,6 @@
 // Browser details dialog. Data comes from <script id="browser-data"> rendered by BrowserDialog.astro.
 import type { Browser } from "../data/browsers";
+import type { UiCopy } from "../i18n/ui";
 
 interface Payload {
   browsers: Browser[];
@@ -8,6 +9,7 @@ interface Payload {
   oses: Record<string, string>;
   families: Record<string, { label: string }>;
   axes: { key: keyof Browser["scores"]; label: string; low: string; high: string }[];
+  ui: UiCopy["dialog"];
 }
 
 let data: Payload | null = null;
@@ -22,26 +24,27 @@ const link = (href: string | null, label: string, ico: string) =>
   href ? `<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${icon(ico, 15)}${esc(label)}</a>` : "";
 
 function render(b: Browser, d: Payload) {
+  const ui = d.ui;
   const engine = d.engines[b.engine];
-  const based = b.basedOn && b.basedOn.toLowerCase() !== engine.toLowerCase() ? ` · based on ${esc(b.basedOn)}` : "";
-  const status = { active: "Active", maintenance: "Maintenance only", discontinued: "Discontinued" }[b.status];
+  const based = b.basedOn && b.basedOn.toLowerCase() !== engine.toLowerCase() ? ` · ${esc(ui.basedOn)} ${esc(b.basedOn)}` : "";
+  const status = ui.status[b.status];
   const parent = b.channelOf ? d.browsers.find((x) => x.id === b.channelOf) : null;
   const scores = d.axes.map((a) => {
     const v = b.scores[a.key] as number;
     const segs = Array.from({ length: 5 }, (_, i) => `<i${i < v ? ' class="on"' : ""}></i>`).join("");
-    return `<li><span class="ax">${esc(a.label)}</span><span class="bar" role="img" aria-label="${v} out of 5">${segs}</span><b>${v}</b>
+    return `<li><span class="ax">${esc(a.label)}</span><span class="bar" role="img" aria-label="${v} ${esc(ui.outOf5)}">${segs}</span><b>${v}</b>
       <span class="scale"><span>${esc(a.low)}</span><span>${esc(a.high)}</span></span></li>`;
   }).join("");
   const facts: [string, string][] = [
-    ["Engine", `${esc(engine)} <span class="dim">(${esc(d.families[b.family].label)} family)</span>`],
-    ["Runs on", b.os.map((o) => esc(d.oses[o])).join(", ") || "–"],
-    ["Status", esc(status)],
-    ["Source", b.openSource ? "Open source" : "Closed source"],
+    [ui.engine, `${esc(engine)} <span class="dim">(${esc(d.families[b.family].label)}, ${esc(ui.familySuffix)})</span>`],
+    [ui.runsOn, b.os.map((o) => esc(d.oses[o])).join(", ") || "–"],
+    [ui.statusLabel, esc(status)],
+    [ui.source, b.openSource ? ui.openSource : ui.closedSource],
   ];
-  facts.push(["Price", b.price ? esc(b.price.note) : "Free"]);
-  if (b.stars != null) facts.push(["GitHub stars", compact(b.stars)]);
-  if (b.lastCommit) facts.push(["Last commit", esc(b.lastCommit)]);
-  if (parent) facts.push(["Channel of", `<button type="button" class="linkish" data-open="${esc(parent.id)}">${esc(parent.name)}</button>`]);
+  facts.push([ui.price, b.price ? esc(b.price.note) : ui.free]);
+  if (b.stars != null) facts.push([ui.stars, compact(b.stars)]);
+  if (b.lastCommit) facts.push([ui.lastCommit, esc(b.lastCommit)]);
+  if (parent) facts.push([ui.channelOf, `<button type="button" class="linkish" data-open="${esc(parent.id)}">${esc(parent.name)}</button>`]);
 
   return `
     <header class="bd-head">
@@ -50,32 +53,30 @@ function render(b: Browser, d: Payload) {
         <h2 id="bd-title">${esc(b.name)}</h2>
         <p>${esc(engine)}${based}</p>
       </div>
-      <button type="button" class="bd-close" data-close aria-label="Close">${icon("Cancel01Icon", 18)}</button>
+      <button type="button" class="bd-close" data-close aria-label="${esc(ui.close)}">${icon("Cancel01Icon", 18)}</button>
     </header>
     <p class="bd-desc">${esc(b.description)}</p>
     ${b.note ? `<p class="bd-note">${icon("Alert02Icon", 15)}<span>${esc(b.note)}</span></p>` : ""}
     <section aria-labelledby="bd-scores">
-      <h3 id="bd-scores">Scores <span class="dim">1–5, editorial</span></h3>
-      ${b.scores.lowConfidence ? `<p class="bd-low">${icon("InformationCircleIcon", 14)}Rough estimate: little is known about this one yet.</p>` : ""}
+      <h3 id="bd-scores">${esc(ui.scores)} <span class="dim">${esc(ui.scoresScale)}</span></h3>
+      ${b.scores.lowConfidence ? `<p class="bd-low">${icon("InformationCircleIcon", 14)}${esc(ui.lowConfidence)}</p>` : ""}
       <ul class="bd-scorelist">${scores}</ul>
-      ${b.scoreWhy ? `<p class="bd-why"><b>Why these scores:</b> ${esc(b.scoreWhy)}</p>` : ""}
-      ${b.scoreSources.length ? `<p class="bd-src">Sources: ${b.scoreSources.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(host(u))}</a>`).join(" · ")}</p>` : ""}
-      <p class="bd-foot">There is no speed score on purpose: mainstream browsers are within benchmark noise of each other. Lightness is about RAM and old hardware.</p>
+      ${b.scoreWhy ? `<p class="bd-why"><b>${esc(ui.whyScores)}</b> ${esc(b.scoreWhy)}</p>` : ""}
+      ${b.scoreSources.length ? `<p class="bd-src">${esc(ui.sources)} ${b.scoreSources.map((u) => `<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${esc(host(u))}</a>`).join(" · ")}</p>` : ""}
+      <p class="bd-foot">${esc(ui.noSpeedNote)}</p>
     </section>
-    ${b.ai ? aiBlock(b.ai) : ""}
-    <dl class="bd-facts">${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>
-    ${b.tags.length ? `<ul class="bd-tags" aria-label="Tags">${b.tags.filter((t) => t !== "rip").map((t) => `<li>${icon(d.tags[t].icon, 12)}${esc(d.tags[t].label)}</li>`).join("")}</ul>` : ""}
-    <nav class="bd-links" aria-label="Links">
-      <a href="/browsers/${esc(b.id)}">${icon("InformationCircleIcon", 15)}Full profile</a>
-      ${link(b.website, "Website", "ArrowUpRight01Icon")}${link(b.repo, "Source", "GithubIcon")}${link(b.reddit, "Reddit", "RedditIcon")}${link(b.x, "X", "NewTwitterIcon")}
+    ${b.ai ? aiBlock(b.ai, ui) : ""}
+    <dl class="bd-facts">${facts.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${v}</dd></div>`).join("")}</dl>
+    ${b.tags.length ? `<ul class="bd-tags" aria-label="${esc(ui.tagsAria)}">${b.tags.filter((t) => t !== "rip").map((t) => `<li>${icon(d.tags[t].icon, 12)}${esc(d.tags[t].label)}</li>`).join("")}</ul>` : ""}
+    <nav class="bd-links" aria-label="${esc(ui.linksAria)}">
+      <a href="/browsers/${esc(b.id)}">${icon("InformationCircleIcon", 15)}${esc(ui.fullProfile)}</a>
+      ${link(b.website, ui.website, "ArrowUpRight01Icon")}${link(b.repo, ui.sourceLink, "GithubIcon")}${link(b.reddit, "Reddit", "RedditIcon")}${link(b.x, "X", "NewTwitterIcon")}
     </nav>`;
 }
 
-const AI_LEVEL = { 1: "Basic AI (chat, summaries)", 2: "Integrated AI assistant", 3: "AI agent – can browse for you" } as const;
-const AI_OFF = { fully: "can be fully switched off", partly: "can only partly be switched off", no: "can't be switched off" } as const;
-function aiBlock(a: NonNullable<Browser["ai"]>) {
-  const bits = [esc(a.models), a.quality != null ? `quality ${a.quality}/5` : "", a.agent && a.agentPaid ? "agent needs a paid plan" : "", a.local ? "local model option" : "", esc(AI_OFF[a.canDisable])].filter(Boolean);
-  return `<section class="bd-ai" aria-label="Built-in AI"><h3>${icon("SparklesIcon", 14)}${AI_LEVEL[a.level]}</h3>
+function aiBlock(a: NonNullable<Browser["ai"]>, ui: Payload["ui"]) {
+  const bits = [esc(a.models), a.quality != null ? `${esc(ui.aiQuality)} ${a.quality}/5` : "", a.agent && a.agentPaid ? esc(ui.aiAgentPaid) : "", a.local ? esc(ui.aiLocal) : "", esc(ui.aiOff[a.canDisable])].filter(Boolean);
+  return `<section class="bd-ai" aria-label="${esc(ui.aiAria)}"><h3>${icon("SparklesIcon", 14)}${esc(ui.aiLevel[a.level])}</h3>
     <p class="bd-ai-meta">${bits.join(" · ")}</p><p class="bd-ai-note">${esc(a.note)}</p></section>`;
 }
 

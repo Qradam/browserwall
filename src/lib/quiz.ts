@@ -2,10 +2,13 @@
 // -> hard filters and a weighted match over the editorial scores (data/scores.json) and tags.
 // Pure module (no DOM) so the page can re-rank live and it can be sanity-checked from Node.
 import type { Browser } from "../data/browsers";
+import type { Locale } from "../i18n";
+import { QUIZ_I18N } from "../i18n/quiz";
 
 type Axis = "privacy" | "experience" | "customisation" | "lightness" | "minimalism";
 const AXES: Axis[] = ["privacy", "experience", "customisation", "lightness", "minimalism"];
 const has = (b: Browser, t: string) => b.tags.includes(t);
+const fmt = (s: string, vars: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ""));
 
 // ---------------------------------------------------------------------------- questions
 
@@ -111,10 +114,6 @@ export const eligible = (b: Browser) =>
   b.status !== "discontinued" && !b.channelOf && !has(b, "meme") && !has(b, "experimental") && !has(b, "text-mode") && !has(b, "old-hardware") &&
   !(has(b, "developer") && !has(b, "mainstream")) && b.scores.privacy > 1;
 
-const AXIS_WHY: Record<Axis, string> = {
-  privacy: "Privacy", experience: "Polished out of the box", customisation: "Customisation", lightness: "Light on resources", minimalism: "Clean, few extras",
-};
-
 export interface Result {
   browser: Browser;
   score: number;
@@ -127,14 +126,15 @@ export interface Result {
 export interface Ranking { results: Result[]; excluded: { why: string; count: number }[] }
 
 /** Hard filters in order; the first one a browser fails is reported in `excluded`. */
-function filters(s: QuizState): { why: string; fails: (b: Browser) => boolean }[] {
-  const osLabel = OS_OPTIONS.find((o) => o.id === s.os)?.label;
+function filters(s: QuizState, lang: Locale): { why: string; fails: (b: Browser) => boolean }[] {
+  const q = QUIZ_I18N[lang];
+  const osLabel = s.os ? q.osLabels[s.os as keyof typeof q.osLabels] ?? OS_OPTIONS.find((o) => o.id === s.os)?.label : undefined;
   const out: { why: string; fails: (b: Browser) => boolean }[] = [];
-  if (s.os) out.push({ why: `not on ${osLabel}`, fails: (b) => !b.os.includes(s.os as Browser["os"][number]) });
-  if (s.ext === "chrome") out.push({ why: "no Chrome Web Store", fails: (b) => !has(b, "chrome-extensions") });
-  if (s.ext === "firefox") out.push({ why: "no Firefox add-ons", fails: (b) => !has(b, "firefox-addons") });
-  for (const f of FEATURES) if (s.features[f.id] === 2) out.push({ why: `missing must-have “${f.label}”`, fails: (b) => !f.test(b) });
-  for (const a of AVOID) if (s.avoid.includes(a.id)) out.push({ why: `dealbreaker: ${a.label.toLowerCase()}`, fails: a.test });
+  if (s.os) out.push({ why: fmt(q.engine.notOn, { os: osLabel ?? s.os }), fails: (b) => !b.os.includes(s.os as Browser["os"][number]) });
+  if (s.ext === "chrome") out.push({ why: q.engine.noChrome, fails: (b) => !has(b, "chrome-extensions") });
+  if (s.ext === "firefox") out.push({ why: q.engine.noFirefox, fails: (b) => !has(b, "firefox-addons") });
+  for (const f of FEATURES) if (s.features[f.id] === 2) out.push({ why: fmt(q.engine.missingMust, { label: q.features[f.id] }), fails: (b) => !f.test(b) });
+  for (const a of AVOID) if (s.avoid.includes(a.id)) out.push({ why: fmt(q.engine.dealbreaker, { label: q.avoid[a.id].toLowerCase() }), fails: a.test });
   return out;
 }
 
@@ -156,9 +156,10 @@ const GRADED: FeatureId[] = ["ai", "ai-agent"];
 /** Unrequested AI that's on by default and can't be fully turned off counts as clutter. */
 const aiClutter = (b: Browser) => !!b.ai && b.ai.onByDefault && b.ai.canDisable !== "fully";
 
-export function rank(all: Browser[], s: QuizState): Ranking {
+export function rank(all: Browser[], s: QuizState, lang: Locale = "en"): Ranking {
+  const q = QUIZ_I18N[lang];
   const w = weights(s);
-  const fs = filters(s);
+  const fs = filters(s, lang);
   const { minimal, known: knownImp, custom } = s.sliders;
   const nice = FEATURES.filter((f) => s.features[f.id] === 1);
   // Graded must-haves (AI) still rank by strength among the browsers that pass the filter.
@@ -182,16 +183,16 @@ export function rank(all: Browser[], s: QuizState): Ranking {
     if (failed) { excluded.set(failed.why, (excluded.get(failed.why) ?? 0) + 1); continue; }
 
     const parts: { why: string; pts: number }[] = [];
-    for (const k of AXES) parts.push({ why: `${AXIS_WHY[k]} ${b.scores[k]}/5`, pts: w[k] * (b.scores[k] - 3) });
+    for (const k of AXES) parts.push({ why: `${q.engine.axisWhy[k]} ${b.scores[k]}/5`, pts: w[k] * (b.scores[k] - 3) });
     const coverage = wanted.reduce((a, f) => a + featureValue(f.id, b), 0); // shown in the ✓/✗ checklist
     // Unrequested extras annoy people who care about a clean browser.
     if (minimal >= 3) {
       const clutter = [aiClutter(b) && !s.features.ai && !s.features["ai-agent"], has(b, "crypto"), has(b, "vpn") && !s.features.vpn];
       for (const c of clutter) if (c) parts.push({ why: "", pts: -0.5 * IMP_W[minimal] });
     }
-    if (custom === 4 && has(b, "power-user")) parts.push({ why: "Power-user features", pts: 0.5 });
+    if (custom === 4 && has(b, "power-user")) parts.push({ why: q.engine.powerUser, pts: 0.5 });
     const known = b.usageRank != null || has(b, "mainstream");
-    if (known && knownPts) parts.push({ why: "Well-known", pts: knownPts });
+    if (known && knownPts) parts.push({ why: q.engine.wellKnown, pts: knownPts });
     if (b.scores.lowConfidence) parts.push({ why: "", pts: -(0.5 + 0.5 * IMP_W[knownImp]) }); // guessed scores shouldn't win ties
     // Paying is a real cost: about one score point on a "top priority" slider. Without an OS (guides), full penalty
     // if it costs money on Windows or macOS – where most people are – otherwise half.
@@ -209,8 +210,8 @@ export function rank(all: Browser[], s: QuizState): Ranking {
       reasons: parts.filter((p) => p.why && p.pts >= 0.9).sort((a, c) => c.pts - a.pts).slice(0, 3).map((p) => p.why),
       paid: paidHere ? b.price!.note : undefined,
       wanted: picked.map((f) => ({
-        label: f.id === "ai-agent" ? "AI agent" : f.label, ok: f.test(b), must: s.features[f.id] === 2,
-        detail: f.id === "ai" && b.ai ? `${b.ai.quality ?? "?"}/5` : f.id === "ai-agent" && b.ai?.agentPaid ? "paid" : undefined,
+        label: f.id === "ai-agent" ? q.engine.aiAgentShort : q.features[f.id], ok: f.test(b), must: s.features[f.id] === 2,
+        detail: f.id === "ai" && b.ai ? `${b.ai.quality ?? "?"}/5` : f.id === "ai-agent" && b.ai?.agentPaid ? q.engine.paidTag : undefined,
       })),
     });
   }
@@ -223,7 +224,7 @@ export function rank(all: Browser[], s: QuizState): Ranking {
   if (top.length && results.length > 2) {
     const prio = (b: Browser) => top.reduce((a, sl) => a + (sl.axis ? b.scores[sl.axis] : b.usageRank != null || has(b, "mainstream") ? 5 : 1), 0);
     const leaders = [...results].sort((a, b) => prio(b.browser) - prio(a.browser) || b.score - a.score).slice(0, 2);
-    const label = top.map((sl) => sl.title).join(" + ");
+    const label = top.map((sl) => q.sliders[sl.id].title).join(" + ");
     for (const r of leaders) r.lead = label;
     results.splice(0, results.length, ...leaders, ...results.filter((r) => !leaders.includes(r)));
   }

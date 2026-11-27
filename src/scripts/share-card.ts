@@ -3,8 +3,10 @@ import { DESIGNS, renderCard, toBlob, type Design, type Format } from "./card";
 import { OS_VARIANTS, findVariant, type DesktopOS } from "../lib/os-marks";
 import { personality, shareText, listText, type CardData } from "../lib/personality";
 import type { QuizState, Ranking } from "../lib/quiz";
+import { isLocale, type Locale } from "../i18n";
+import { QUIZ_I18N } from "../i18n/quiz";
 
-export interface ShareSource { state: QuizState; ranking: Ranking; total: number; url: string }
+export interface ShareSource { state: QuizState; ranking: Ranking; total: number; url: string; lang?: Locale }
 
 interface Prefs { design: Design; format: Format; showOs: boolean; variant: Partial<Record<DesktopOS, string>>; mastodon?: string }
 const KEY = "bw-share-card";
@@ -18,6 +20,7 @@ const loadPrefs = (): Prefs => {
   } catch { return base; }
 };
 const savePrefs = (p: Prefs) => { try { localStorage.setItem(KEY, JSON.stringify(p)); } catch { /* private mode */ } };
+const fmt = (s: string, vars: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ""));
 
 const enc = encodeURIComponent;
 /** Compose URLs. None of these can attach an image, so the image is copied to the clipboard first. */
@@ -46,6 +49,8 @@ export function initShareCard(getSource: () => ShareSource) {
   let blob: Promise<Blob> | null = null;
   let token = 0;
 
+  const lang = (): Locale => src?.lang ?? (isLocale(document.documentElement.lang) ? document.documentElement.lang : "en");
+  const copy = () => QUIZ_I18N[lang()].shareCard.status;
   const canShareFiles = (f: File) => !!navigator.canShare?.({ files: [f] });
   if ("share" in navigator) dlg.querySelector<HTMLElement>('[data-share="native"]')!.hidden = false;
 
@@ -81,7 +86,8 @@ export function initShareCard(getSource: () => ShareSource) {
   async function redraw() {
     if (!src) return;
     const mine = ++token;
-    data = personality(src.state, src.ranking, src.total, { showOs: showOs.checked, osVariant: variantSel.value || null });
+    const l = lang();
+    data = personality(src.state, src.ranking, src.total, { showOs: showOs.checked, osVariant: variantSel.value || null, lang: l });
     $("#sc-emoji").textContent = data.archetype.emoji;
     $("#sc-name").textContent = data.archetype.name;
     $("#sc-roast").textContent = data.archetype.roast;
@@ -91,8 +97,8 @@ export function initShareCard(getSource: () => ShareSource) {
     if (mine !== token) return;
     preview.classList.remove("busy");
     blob = toBlob(canvas);
-    const pick = data.top ? `, best match ${data.top.browser.name} at ${data.top.match}%` : "";
-    canvas.setAttribute("aria-label", `Share card: ${data.archetype.name}${pick}. ${data.archetype.roast}`);
+    const pick = data.top ? `, ${data.top.browser.name} (${data.top.match}%)` : "";
+    canvas.setAttribute("aria-label", fmt(copy().ariaLabel, { name: data.archetype.name, pick, roast: data.archetype.roast }));
   }
 
   const fileName = () => `browserwall-${data?.archetype.id ?? "card"}-${prefs.design}.png`;
@@ -114,7 +120,7 @@ export function initShareCard(getSource: () => ShareSource) {
   function openWindow(url: string, name: string) {
     const w = window.open(url, "_blank");
     if (w) { w.opener = null; return true; }
-    say("Your browser blocked the pop-up.", true, { href: url, label: `Open ${name}` });
+    say(copy().popupBlocked, true, { href: url, label: fmt(copy().openTarget, { name }) });
     return false;
   }
   /** Story-format blob, for Instagram (rendered off-screen if the preview is in post format). */
@@ -127,42 +133,43 @@ export function initShareCard(getSource: () => ShareSource) {
 
   async function share(target: string) {
     if (!src || !data || !blob) return;
+    const s = copy();
     const text = shareText(data), url = src.url;
     if (target === "native") {
       try {
         const f = await file();
         await navigator.share(canShareFiles(f) ? { files: [f], text: `${text} ${url}` } : { text, url });
-      } catch (e) { if ((e as Error).name !== "AbortError") say("Sharing didn't work here – try Download instead.", true); }
+      } catch (e) { if ((e as Error).name !== "AbortError") say(s.shareFailed, true); }
       return;
     }
     if (target === "instagram") {
       const b = await storyBlob();
       const f = await file(b);
       if (canShareFiles(f)) {
-        try { await navigator.share({ files: [f] }); } catch (e) { if ((e as Error).name !== "AbortError") say("Sharing didn't work here – try Download instead.", true); }
+        try { await navigator.share({ files: [f] }); } catch (e) { if ((e as Error).name !== "AbortError") say(s.shareFailed, true); }
       } else {
         download(b, fileName().replace(".png", "-story.png"));
-        say("Saved a 9:16 story image. Instagram only takes posts from the app, so send it to your phone and add it to your story.");
+        say(s.storySaved);
       }
       return;
     }
     if (target === "discord") {
       const ok = await copyImage();
-      if (ok) say("Image copied. Paste it into any Discord channel (Ctrl/Cmd+V).");
-      else { download(await blob); say("Discord has no share link, so we saved the image. Drag it into any channel."); }
+      if (ok) say(s.discordCopied);
+      else { download(await blob); say(s.discordSaved); }
       return;
     }
     let intent: string;
     if (target === "mastodon") {
-      const inst = prompt("Your Mastodon server (e.g. mastodon.social, fosstodon.org):", prefs.mastodon ?? "mastodon.social")?.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, "");
+      const inst = prompt(s.mastodonPrompt, prefs.mastodon ?? "mastodon.social")?.trim().replace(/^https?:\/\//, "").replace(/\/.*$/, "");
       if (!inst) return;
-      if (!HOST.test(inst)) { say("That doesn't look like a server name.", true); return; }
+      if (!HOST.test(inst)) { say(s.mastodonInvalid, true); return; }
       prefs.mastodon = inst; savePrefs(prefs);
       intent = `https://${inst}/share?text=${enc(`${text} ${url}`)}`;
     } else intent = INTENTS[target](text, url);
     const copied = await copyImage();
     if (openWindow(intent, NAMES[target])) {
-      say(copied ? `Image copied – paste it into your ${NAMES[target]} post (Ctrl/Cmd+V).` : `Opened ${NAMES[target]}. Your browser can't copy images, so use Download and attach the image.`, !copied);
+      say(copied ? fmt(s.copiedPaste, { name: NAMES[target] }) : fmt(s.openedNoCopy, { name: NAMES[target] }), !copied);
     }
   }
 
@@ -183,11 +190,12 @@ export function initShareCard(getSource: () => ShareSource) {
     const btn = el.closest<HTMLButtonElement>("[data-share], [data-act]");
     if (!btn || !blob) return;
     if (btn.dataset.share) return share(btn.dataset.share);
+    const s = copy();
     const act = btn.dataset.act;
-    if (act === "download") { download(await blob); say("Saved."); }
-    else if (act === "copy-image") { const ok = await copyImage(); say(ok ? "Image copied." : "Your browser can't copy images – use Download instead.", !ok); }
-    else if (act === "copy-link") { const ok = await copyText(src!.url); say(ok ? "Link to your results copied." : "Couldn't copy the link.", !ok); }
-    else if (act === "copy-list") { const ok = await copyText(listText(data!, src!.url)); say(ok ? `Copied your shortlist of ${data!.ranked.length} browsers as text.` : "Couldn't copy the list.", !ok); }
+    if (act === "download") { download(await blob); say(s.saved); }
+    else if (act === "copy-image") { const ok = await copyImage(); say(ok ? s.imageCopied : s.imageCopyFailed, !ok); }
+    else if (act === "copy-link") { const ok = await copyText(src!.url); say(ok ? s.linkCopied : s.linkCopyFailed, !ok); }
+    else if (act === "copy-list") { const ok = await copyText(listText(data!, src!.url)); say(ok ? fmt(s.listCopied, { n: data!.ranked.length }) : s.listCopyFailed, !ok); }
   });
   $("#sc-close").addEventListener("click", () => dlg.close());
 

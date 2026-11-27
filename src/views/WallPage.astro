@@ -1,0 +1,360 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import BrowserCard from "../components/BrowserCard.astro";
+import { browsers, TAGS, ENGINES, OSES, type Engine } from "../data/browsers";
+import { YEAR, itemListLd, CATEGORIES, fillYear } from "../lib/seo";
+import { formatCount, type Locale } from "../i18n";
+import { UI } from "../i18n/ui";
+import { WALL_PAGE_COPY } from "../i18n/pages";
+
+interface Props { lang?: Locale }
+const { lang = "en" } = Astro.props;
+const t = WALL_PAGE_COPY[lang];
+const ui = UI[lang];
+
+// Only show filter chips that actually match something, most-used first.
+const tagCounts = new Map<string, number>();
+for (const b of browsers) for (const tag of b.tags) tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+const tagChips = Object.keys(TAGS).filter((tag) => tagCounts.has(tag) && tag !== "rip").sort((a, b) => tagCounts.get(b)! - tagCounts.get(a)!);
+
+const engineCounts = new Map<Engine, number>();
+for (const b of browsers) engineCounts.set(b.engine, (engineCounts.get(b.engine) ?? 0) + 1);
+const engineChips = [...engineCounts.entries()].sort((a, b) => b[1] - a[1]).map(([e]) => e);
+const osChips = (["windows", "macos", "linux", "bsd"] as const);
+
+const alive = browsers.filter((b) => b.status !== "discontinued").length;
+const wallI18n = JSON.stringify({ lang, browsersWord: t.browsersWord }).replace(/</g, "\\u003c");
+---
+<Base lang={lang} title={t.metaTitle(browsers.length, YEAR)} description={t.metaDesc(browsers.length)}
+  jsonLd={[itemListLd(Astro.site, t.ldName, browsers)]}>
+  <section class="hero">
+    <h1>{t.h1}</h1>
+    <p>{t.heroSub(browsers.length, alive)}</p>
+  </section>
+
+  <section class="controls" aria-label={t.controlsAria}>
+    <label class="search">
+      <Icon name="Search01Icon" size={16} />
+      <input id="q" type="search" placeholder={t.searchPlaceholder} autocomplete="off" spellcheck="false" aria-label={t.searchAria} />
+      <kbd>/</kbd>
+    </label>
+    <button type="button" id="filters-open" class="filters-btn" aria-haspopup="dialog" aria-controls="filters" aria-expanded="false">
+      <Icon name="SlidersHorizontalIcon" size={16} />{t.filtersBtn}<span id="filters-n" class="badge" hidden>0</span>
+    </button>
+
+    <div id="filters" class="panel">
+    <div class="panel-head">
+      <strong>{t.filtersTitle}</strong>
+      <button type="button" id="filters-close" class="x" aria-label={t.closeFilters}><Icon name="Cancel01Icon" size={18} /></button>
+    </div>
+    <div class="row">
+      <div class="seg" role="group" aria-label={t.osAria}>
+        {osChips.map((o) => <button type="button" class="chip" data-filter="os" data-value={o} aria-pressed="false">{ui.oses[o] ?? OSES[o]}</button>)}
+      </div>
+      <div class="seg" role="group" aria-label={t.engineAria}>
+        {engineChips.map((e) => <button type="button" class="chip" data-filter="engine" data-value={e} aria-pressed="false">{ui.engines[e] ?? ENGINES[e]}</button>)}
+      </div>
+      <div class="seg" role="group" aria-label={t.statusAria}>
+        <button type="button" class="chip" data-toggle="alive" aria-pressed="false"><Icon name="Tick02Icon" size={13} />{t.aliveOnly}</button>
+        <button type="button" class="chip" data-toggle="oss" aria-pressed="false">{t.openSource}</button>
+        <button type="button" class="chip" data-toggle="rip" aria-pressed="false"><Icon name="SkullIcon" size={13} />{t.rip}</button>
+      </div>
+    </div>
+
+    <div class="row tags-row" role="group" aria-label={t.featuresAria}>
+      {tagChips.map((tag) => (
+        <button type="button" class="chip" data-filter="tag" data-value={tag} aria-pressed="false">
+          <Icon name={TAGS[tag].icon} size={13} />{ui.tags[tag] ?? TAGS[tag].label}<span class="n">{tagCounts.get(tag)}</span>
+        </button>
+      ))}
+    </div>
+    <div class="panel-foot">
+      <button type="button" id="filters-done" class="done">{t.showPrefix} <span id="show-n">{browsers.length}</span> <span id="show-w">{t.showSuffix[1]}</span></button>
+    </div>
+    </div>
+    <div id="filters-backdrop" class="backdrop"></div>
+
+    <div class="summary">
+      <span id="count" aria-live="polite">{formatCount(browsers.length, t.browsersWord, lang)}</span>
+      <button type="button" id="reset" class="reset" hidden><Icon name="Cancel01Icon" size={13} />{t.reset}</button>
+      <div class="seg sort" role="group" aria-label={t.sortAria}>
+        <button type="button" class="chip" data-sort="usage" aria-pressed="true" title={t.mostUsedTitle}>{t.mostUsed}</button>
+        <button type="button" class="chip" data-sort="az" aria-pressed="false">{t.az}</button>
+      </div>
+    </div>
+  </section>
+
+  <ul id="grid" class="grid">
+    {browsers.map((b) => <BrowserCard b={b} lang={lang} />)}
+  </ul>
+  <p id="empty" class="empty" hidden>{t.empty}</p>
+  <nav class="guides" aria-label={t.guidesHeading}>
+    <h2>{t.guidesHeading}</h2>
+    <ul>{CATEGORIES.map((c) => <li><a href={`/best/${c.slug}`}>{fillYear(c.title)}</a></li>)}<li><a href="/alternatives">{t.alternativesLink}</a></li></ul>
+  </nav>
+  <p class="order-note">{t.orderNote}</p>
+  <script type="application/json" id="wall-i18n" set:html={wallI18n} />
+</Base>
+
+<script>
+  import { openBrowser } from "../scripts/dialog";
+  import { formatCount, pluralForm, type Locale, type PluralForms } from "../i18n";
+
+  const w = JSON.parse(document.getElementById("wall-i18n")!.textContent!) as { lang: Locale; browsersWord: PluralForms };
+  // Card click (anywhere except its links) opens the details dialog; the name button gives keyboard access.
+  document.querySelector("#grid")!.addEventListener("click", (e) => {
+    const t = e.target as HTMLElement;
+    if (t.closest("a")) return;
+    const card = t.closest<HTMLElement>(".card");
+    if (card) openBrowser(card.dataset.id!);
+  });
+
+  // Sort: "usage" = server-rendered order (data/wall-order.json), "az" = by name.
+  const grid = document.querySelector<HTMLElement>("#grid")!;
+  const usageOrder = [...grid.children] as HTMLElement[];
+  const azOrder = [...usageOrder].sort((a, b) => a.dataset.name!.localeCompare(b.dataset.name!));
+  function setSort(mode: string) {
+    grid.append(...(mode === "az" ? azOrder : usageOrder));
+    document.querySelectorAll<HTMLElement>("[data-sort]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.sort === mode)));
+    const u = new URL(location.href);
+    mode === "az" ? u.searchParams.set("sort", "az") : u.searchParams.delete("sort");
+    history.replaceState(null, "", u.search ? u.search : location.pathname);
+  }
+  document.querySelectorAll<HTMLElement>("[data-sort]").forEach((b) => b.addEventListener("click", () => setSort(b.dataset.sort!)));
+  if (new URLSearchParams(location.search).get("sort") === "az") setSort("az");
+
+  // Filters: OS/engine are OR within the group; feature tags are AND (each tag narrows results).
+  const q = document.querySelector<HTMLInputElement>("#q")!;
+  const cards = [...document.querySelectorAll<HTMLElement>("#grid > .card")];
+  const count = document.querySelector("#count")!;
+  const empty = document.querySelector<HTMLElement>("#empty")!;
+  const reset = document.querySelector<HTMLButtonElement>("#reset")!;
+  const sets = { os: new Set<string>(), engine: new Set<string>(), tag: new Set<string>() };
+  const toggles = { alive: false, oss: false, rip: false };
+
+  function apply() {
+    const terms = q.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    for (const c of cards) {
+      const d = c.dataset;
+      const os = d.os!.split(" "), tags = d.tags!.split(" ");
+      const ok =
+        terms.every((t) => d.search!.includes(t)) &&
+        (!sets.os.size || os.some((o) => sets.os.has(o))) &&
+        (!sets.engine.size || sets.engine.has(d.engine!)) &&
+        [...sets.tag].every((t) => tags.includes(t)) &&
+        (!toggles.alive || d.status !== "discontinued") &&
+        (!toggles.rip || d.status === "discontinued") &&
+        (!toggles.oss || d.oss === "1");
+      c.hidden = !ok;
+      if (ok) shown++;
+    }
+    count.textContent = formatCount(shown, w.browsersWord, w.lang);
+    empty.hidden = shown > 0;
+    document.querySelector("#show-n")!.textContent = String(shown);
+    document.querySelector("#show-w")!.textContent = pluralForm(shown, w.browsersWord, w.lang);
+    const nActive = sets.os.size + sets.engine.size + sets.tag.size + Object.values(toggles).filter(Boolean).length;
+    const badge = document.querySelector<HTMLElement>("#filters-n")!;
+    badge.textContent = String(nActive);
+    badge.hidden = !nActive;
+    const active = terms.length || sets.os.size || sets.engine.size || sets.tag.size || Object.values(toggles).some(Boolean);
+    reset.hidden = !active;
+    syncUrl();
+  }
+
+  function syncUrl() {
+    const p = new URLSearchParams();
+    if (q.value.trim()) p.set("q", q.value.trim());
+    for (const [k, s] of Object.entries(sets)) if (s.size) p.set(k, [...s].join(","));
+    for (const [k, v] of Object.entries(toggles)) if (v) p.set(k, "1");
+    const sort = new URLSearchParams(location.search).get("sort");
+    if (sort) p.set("sort", sort);
+    const s = p.toString();
+    history.replaceState(null, "", s ? `?${s}` : location.pathname);
+  }
+
+  function setPressed(btn: HTMLElement, on: boolean) { btn.setAttribute("aria-pressed", String(on)); }
+
+  document.querySelectorAll<HTMLButtonElement>("[data-filter]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const set = sets[btn.dataset.filter as keyof typeof sets];
+      const v = btn.dataset.value!;
+      set.has(v) ? set.delete(v) : set.add(v);
+      setPressed(btn, set.has(v));
+      apply();
+    });
+  });
+  document.querySelectorAll<HTMLButtonElement>("[data-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const k = btn.dataset.toggle as keyof typeof toggles;
+      toggles[k] = !toggles[k];
+      // "Alive only" and "RIP" are mutually exclusive.
+      const other = k === "alive" ? "rip" : k === "rip" ? "alive" : null;
+      if (other && toggles[k]) {
+        toggles[other] = false;
+        setPressed(document.querySelector(`[data-toggle="${other}"]`)!, false);
+      }
+      setPressed(btn, toggles[k]);
+      apply();
+    });
+  });
+  reset.addEventListener("click", () => {
+    q.value = "";
+    Object.values(sets).forEach((s) => s.clear());
+    (Object.keys(toggles) as (keyof typeof toggles)[]).forEach((k) => (toggles[k] = false));
+    document.querySelectorAll("[aria-pressed]").forEach((b) => b.setAttribute("aria-pressed", "false"));
+    apply();
+  });
+  q.addEventListener("input", apply);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+    if (e.key === "Escape" && document.activeElement === q) { q.value = ""; apply(); }
+  });
+
+  // Mobile drawer: slides in from the right over a dimmed backdrop.
+  const panel = document.querySelector<HTMLElement>("#filters")!;
+  const backdrop = document.querySelector<HTMLElement>("#filters-backdrop")!;
+  const openBtn = document.querySelector<HTMLElement>("#filters-open")!;
+  const mq = matchMedia("(max-width: 720px)");
+  function setDrawer(open: boolean) {
+    panel.classList.toggle("open", open);
+    backdrop.classList.toggle("open", open);
+    openBtn.setAttribute("aria-expanded", String(open));
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    if (open) panel.querySelector<HTMLElement>("button")!.focus(); else openBtn.focus({ preventScroll: true });
+  }
+  openBtn.addEventListener("click", () => setDrawer(true));
+  backdrop.addEventListener("click", () => setDrawer(false));
+  document.querySelector("#filters-close")!.addEventListener("click", () => setDrawer(false));
+  document.querySelector("#filters-done")!.addEventListener("click", () => setDrawer(false));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && panel.classList.contains("open")) setDrawer(false); });
+  mq.addEventListener("change", () => { if (!mq.matches && panel.classList.contains("open")) setDrawer(false); });
+
+  // Restore state from URL (shareable filtered views).
+  const p = new URLSearchParams(location.search);
+  q.value = p.get("q") ?? "";
+  for (const k of Object.keys(sets) as (keyof typeof sets)[])
+    for (const v of (p.get(k) ?? "").split(",").filter(Boolean)) {
+      const btn = document.querySelector<HTMLElement>(`[data-filter="${k}"][data-value="${CSS.escape(v)}"]`);
+      if (btn) { sets[k].add(v); setPressed(btn, true); }
+    }
+  for (const k of Object.keys(toggles) as (keyof typeof toggles)[])
+    if (p.get(k) === "1") { toggles[k] = true; setPressed(document.querySelector(`[data-toggle="${k}"]`)!, true); }
+  apply();
+</script>
+
+<style>
+  .hero { padding: 48px 0 24px; max-width: 720px; }
+  h1 { font-size: clamp(28px, 4vw, 40px); line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 10px; font-weight: 680; }
+  .hero p { color: var(--muted); margin: 0; font-size: 15px; }
+
+  .controls { display: flex; flex-direction: column; gap: 10px; padding: 8px 0 20px; }
+  .search { display: flex; align-items: center; gap: 10px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 0 12px; height: 42px; color: var(--muted); transition: border-color .15s; }
+  .search:focus-within { border-color: var(--accent); }
+  .search input { flex: 1; background: none; border: 0; outline: 0; height: 100%; color: var(--text); font-size: 14px; }
+  .search input::-webkit-search-cancel-button { display: none; }
+  kbd { font: 11px var(--mono); color: var(--faint); border: 1px solid var(--line-2); border-radius: 4px; padding: 1px 6px; }
+
+  /* Desktop: the panel is layout-transparent and the drawer chrome is hidden. */
+  .panel { display: contents; }
+  .panel-head, .panel-foot, .filters-btn, .backdrop { display: none; }
+  .controls { position: relative; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .seg { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tags-row { gap: 4px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 5px; height: 28px; padding: 0 10px; border-radius: 6px;
+    background: var(--bg-2); border: 1px solid var(--line); color: var(--muted); font-size: 12.5px; cursor: pointer;
+    transition: background .12s, color .12s, border-color .12s;
+  }
+  .chip:hover { color: var(--text); border-color: var(--line-2); }
+  .chip[aria-pressed="true"] { background: var(--accent-bg); border-color: var(--accent); color: var(--text); }
+  .chip[aria-pressed="true"] :global(svg) { color: var(--accent); }
+  .chip .n { font-size: 11px; color: var(--faint); font-variant-numeric: tabular-nums; }
+
+  .summary { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; color: var(--muted); font-size: 12.5px; min-height: 24px; }
+  .sort { margin-left: auto; }
+  .guides { margin-top: 36px; }
+  .guides h2 { font-size: 15px; margin: 0 0 10px; font-weight: 620; }
+  .guides ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  .guides a { display: inline-block; padding: 6px 10px; border-radius: 7px; background: var(--bg-2); border: 1px solid var(--line); color: var(--muted); text-decoration: none; font-size: 12.5px; }
+  .guides a:hover { color: var(--text); border-color: var(--line-2); }
+  .order-note { color: var(--faint); font-size: 12px; text-align: center; margin: 24px 0 0; }
+  .reset { display: inline-flex; align-items: center; gap: 4px; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 2px 4px; font-size: 12.5px; }
+  .reset[hidden] { display: none; }
+
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 12px; }
+  .empty { color: var(--muted); text-align: center; padding: 48px 0; }
+
+  /* Card (styles live here so the grid owns layout) */
+  .grid :global(.card) {
+    position: relative; cursor: pointer;
+    display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 10px;
+    background: var(--bg-2); border: 1px solid var(--line); transition: border-color .15s, transform .15s, background .15s;
+  }
+  .grid :global(.open) { all: unset; cursor: pointer; }
+  .grid :global(.open:focus-visible) { outline: none; }
+  .grid :global(.card:has(.open:focus-visible)) { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .grid :global(.links a) { position: relative; z-index: 1; }
+  .grid :global(.card[hidden]) { display: none; }
+  .grid :global(.card:hover) { border-color: var(--line-2); background: #202020; }
+  .grid :global(.card[data-status="discontinued"]) { opacity: .72; }
+  .grid :global(.card[data-status="discontinued"] .logo img) { filter: grayscale(1); }
+  .grid :global(.card-head) { display: flex; align-items: center; gap: 12px; }
+  .grid :global(.logo) { flex: none; width: 40px; height: 40px; display: grid; place-items: center; }
+  .grid :global(.logo img) { width: 40px; height: 40px; object-fit: contain; }
+  .grid :global(.mono) { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: var(--bg-3); border: 1px solid var(--line-2); font: 600 13px var(--mono); color: var(--muted); }
+  .grid :global(.title) { min-width: 0; flex: 1; }
+  .grid :global(h2) { margin: 0; font-size: 15px; font-weight: 620; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .grid :global(.meta) { margin: 0; font-size: 12px; color: var(--faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .grid :global(.status) { flex: none; display: inline-flex; align-items: center; gap: 3px; font-size: 11px; padding: 2px 6px; border-radius: 5px; }
+  .grid :global(.status.discontinued) { color: var(--dead); background: rgb(248 113 113 / .1); }
+  .grid :global(.status.maintenance) { color: var(--warn); background: rgb(251 191 36 / .1); }
+  .grid :global(.desc) { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; flex: 1; }
+  .grid :global(.tags) { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+  .grid :global(.tag) { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; color: var(--muted); background: var(--bg-3); border-radius: 5px; padding: 2px 7px; }
+  .grid :global(.tag svg) { color: var(--faint); }
+  .grid :global(.tag-meme) { color: var(--warn); }
+  .grid :global(.tag-meme svg) { color: var(--warn); }
+  .grid :global(.card-foot) { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 10px; border-top: 1px solid var(--line); }
+  .grid :global(.os) { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11.5px; color: var(--faint); }
+  .grid :global(.links) { display: flex; align-items: center; gap: 2px; }
+  .grid :global(.links a) { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 6px; color: var(--muted); }
+  .grid :global(.links a:hover) { background: var(--bg-3); color: var(--text); }
+  .grid :global(.oss) { font: 600 10px var(--mono); color: var(--ok); border: 1px solid rgb(74 222 128 / .3); border-radius: 4px; padding: 1px 4px; margin-right: 4px; }
+
+  /* Mobile: search + Filters button on one line, filters live in a right-side drawer. */
+  @media (max-width: 720px) {
+    .controls { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    .search { flex: 1; min-width: 0; }
+    .search kbd { display: none; }
+    .summary { flex-basis: 100%; }
+    .filters-btn {
+      display: inline-flex; align-items: center; gap: 6px; height: 42px; padding: 0 14px; border-radius: var(--radius);
+      background: var(--bg-2); border: 1px solid var(--line); color: var(--text); font-size: 14px; cursor: pointer;
+    }
+    .badge { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--accent); color: #000; font-size: 11px; font-weight: 650; display: inline-grid; place-items: center; }
+    .badge[hidden] { display: none; }
+
+    .panel {
+      display: flex; flex-direction: column; gap: 14px; position: fixed; top: 0; right: 0; bottom: 0; z-index: 101;
+      width: min(380px, 88vw); padding: 0 16px; overflow-y: auto; overscroll-behavior: contain;
+      background: var(--bg-2); border-left: 1px solid var(--line-2); box-shadow: -16px 0 48px rgb(0 0 0 / .5);
+      transform: translateX(100%); visibility: hidden; transition: transform .25s ease, visibility 0s linear .25s;
+    }
+    .panel.open { transform: none; visibility: visible; transition: transform .25s ease; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--bg-2); padding: 14px 0 10px; font-size: 15px; z-index: 1; }
+    .x { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 8px; background: none; border: 0; color: var(--muted); cursor: pointer; }
+    .x:hover { background: var(--bg-3); color: var(--text); }
+    .panel .row { flex-direction: column; gap: 14px; }
+    .panel .tags-row { flex-direction: row; gap: 6px; }
+    .chip { height: 34px; padding: 0 12px; font-size: 13px; }
+    .panel-foot { display: block; position: sticky; bottom: 0; margin-top: auto; padding: 12px 0 calc(12px + env(safe-area-inset-bottom)); background: var(--bg-2); }
+    .done { width: 100%; height: 44px; border-radius: var(--radius); border: 0; background: var(--accent); color: #000; font-size: 14px; font-weight: 620; cursor: pointer; }
+
+    .backdrop { display: block; position: fixed; inset: 0; z-index: 100; background: rgb(0 0 0 / .6); opacity: 0; pointer-events: none; transition: opacity .25s ease; }
+    .backdrop.open { opacity: 1; pointer-events: auto; }
+  }
+  @media (prefers-reduced-motion: reduce) { .panel, .backdrop { transition: none !important; } }
+</style>

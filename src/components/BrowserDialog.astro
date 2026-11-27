@@ -1,8 +1,24 @@
 ---
 // Shared details dialog. Use openBrowser(id) from src/scripts/dialog.ts to open it.
 import { browsers, TAGS, ENGINES, OSES, FAMILIES, AXES } from "../data/browsers";
+import type { Locale } from "../i18n";
+import { UI } from "../i18n/ui";
+import { localizeDescription } from "../i18n/descriptions";
 
-const payload = JSON.stringify({ browsers, tags: TAGS, engines: ENGINES, oses: OSES, families: FAMILIES, axes: AXES }).replace(/</g, "\\u003c");
+interface Props { lang?: Locale }
+const { lang = "en" } = Astro.props;
+const ui = UI[lang];
+
+const localizedBrowsers = lang === "en"
+  ? browsers
+  : browsers.map((b) => ({ ...b, description: localizeDescription(b.id, b.description, lang) }));
+const tags = Object.fromEntries(Object.entries(TAGS).map(([k, v]) => [k, { ...v, label: ui.tags[k] ?? v.label }]));
+const engines = { ...ENGINES, ...ui.engines };
+const oses = { ...OSES, ...ui.oses };
+const families = ui.families;
+const axes = AXES.map((a) => ({ key: a.key, ...ui.axes[a.key] }));
+
+const payload = JSON.stringify({ browsers: localizedBrowsers, tags, engines, oses, families, axes, ui: ui.dialog }).replace(/</g, "\\u003c");
 ---
 <script id="browser-data" type="application/json" set:html={payload} />
 <dialog id="bd" class="bd" aria-labelledby="bd-title">

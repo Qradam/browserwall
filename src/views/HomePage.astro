@@ -1,0 +1,377 @@
+---
+// Homepage, built from ObsidianUI landing patterns (https://obsidianui.dev, MIT): spotlight hero with watermark,
+// raised button + glass search bar, drifting card marquee and the guide-line FAQ accordion.
+import "../styles/content.css";
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import { browsers, byId, ENGINES } from "../data/browsers";
+import { YEAR, BUILD, abs, faqLd, CATEGORIES, categoryResults } from "../lib/seo";
+import { localizedHref, updatedMonth, type Locale } from "../i18n";
+import { HOME_COPY } from "../i18n/pages";
+import { localizeDescription } from "../i18n/descriptions";
+
+interface Props { lang?: Locale }
+const { lang = "en" } = Astro.props;
+const t = HOME_COPY[lang];
+const updated = updatedMonth(lang, BUILD);
+
+const shown = browsers.filter((b) => b.status !== "discontinued" && !b.channelOf);
+const rows = [shown.slice(0, 12), shown.slice(12, 24)];
+const faces = ["google-chrome", "firefox", "safari", "brave", "zen-browser"].map((id) => byId.get(id)!);
+const top = (slug: string, n = 3) => {
+  const c = CATEGORIES.find((x) => x.slug === slug)!;
+  return categoryResults(c).slice(0, n).map((r) => r.browser.name).join(", ").replace(/, ([^,]*)$/, ` ${lang === "ru" ? "и" : lang === "fr" ? "et" : lang === "pt" ? "e" : lang === "cs" ? "a" : "and"} $1`);
+};
+const chrome = byId.get("google-chrome")!, firefox = byId.get("firefox")!, brave = byId.get("brave")!;
+const searchIndex = JSON.stringify(browsers.map((b) => ({ id: b.id, n: b.name, e: ENGINES[b.engine], l: b.logo }))).replace(/</g, "\\u003c");
+const homeI18n = JSON.stringify({
+  noMatch: t.noSearchMatch,
+  tryQuiz: t.tryQuiz,
+  quizHref: localizedHref("/quiz", lang),
+}).replace(/</g, "\\u003c");
+
+const faq = t.faq({
+  year: YEAR,
+  count: browsers.length,
+  topAll: top("browsers"),
+  topPrivacy: top("privacy-browsers"),
+  topMac: top("browsers-for-mac", 2),
+  topWin: top("browsers-for-windows", 2),
+  topLinux: top("browsers-for-linux", 2),
+  topAi: top("ai-browsers"),
+  chromePrivacy: chrome.scores.privacy,
+  chromeExp: chrome.scores.experience,
+  chromeCustom: chrome.scores.customisation,
+  ffPrivacy: firefox.scores.privacy,
+  ffExp: firefox.scores.experience,
+  ffCustom: firefox.scores.customisation,
+  bravePrivacy: brave.scores.privacy,
+  braveMinimal: brave.scores.minimalism,
+});
+
+const quizHref = localizedHref("/quiz", lang);
+const wallHref = localizedHref("/wall", lang);
+const pageUrl = abs(Astro.site, localizedHref("/", lang));
+---
+<Base
+  lang={lang}
+  title={t.metaTitle(browsers.length, YEAR)}
+  description={t.metaDesc(browsers.length)}
+  jsonLd={[faqLd(faq), { "@type": "WebPage", name: "browserwall", url: pageUrl, primaryImageOfPage: abs(Astro.site, "/og.png"), dateModified: new Date().toISOString().slice(0, 10), inLanguage: lang }]}
+  dialog={false}>
+  <div class="landing">
+    <!-- Hero -->
+    <section class="hero-wrap">
+      <div class="hero" id="hero">
+        <div class="hero-lines" aria-hidden="true"></div>
+        <div class="hero-grain" aria-hidden="true"></div>
+
+        <a class="ob-pill landing-intro" href={wallHref} style="--intro-delay:0ms"><b>{t.pillBrowsers(browsers.length)}</b><i></i>{t.pillUpdated(updated)}<Icon name="ArrowRight01Icon" size={13} /></a>
+
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="faces landing-intro" style="--intro-delay:20ms">
+              <span class="face-stack">{faces.map((b, i) => <img src={b.logo} alt="" width="40" height="40" style={`--d:${i * 0.12}s`} />)}</span>
+              <span class="face-copy"><span><b>{t.welcomeBold}</b> {t.welcomeRest}</span><small>{t.welcomeSub}</small></span>
+            </div>
+            <h1 class="hero-title landing-intro" style="--intro-delay:40ms">{t.heroTitleTop}<br />{t.heroTitleBottom}</h1>
+            <p class="hero-copy landing-intro mobile-only" style="--intro-delay:100ms">{t.heroCopy(browsers.length)}</p>
+            <ul class="hero-dots landing-intro" style="--intro-delay:120ms">{t.heroDots.map((d) => <li>{d}</li>)}</ul>
+          </div>
+          <div class="hero-right">
+            <p class="hero-copy landing-intro desktop-only" style="--intro-delay:100ms">{t.heroCopy(browsers.length)}</p>
+            <div class="hero-actions landing-intro" style="--intro-delay:160ms">
+              <a class="raised-btn" href={quizHref}>{t.startQuiz}<Icon name="ArrowRight01Icon" size={15} /></a>
+              <div class="glass" id="glass">
+                <div class="glass-core">
+                  <Icon name="Search01Icon" size={17} />
+                  <label for="hero-q" class="sr">{t.searchLabel}</label>
+                  <input id="hero-q" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="hero-results" placeholder={t.searchPlaceholder} autocomplete="off" spellcheck="false" />
+                  <kbd>/</kbd>
+                </div>
+                <div class="glass-drop" id="hero-drop" hidden><ul id="hero-results" role="listbox" aria-label={t.searchResultsAria}></ul></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <span class="watermark" aria-hidden="true">browserwall</span>
+      </div>
+    </section>
+
+    <!-- Wall preview: drifting marquee -->
+    <section class="wall-sec" aria-labelledby="wall-title">
+      <div class="sec-head">
+        <h2 id="wall-title" class="sec-title">{t.wallTitle}</h2>
+        <p class="sec-copy">{t.wallCopy} <a class="arrow-link" href={wallHref}>{t.openWall}<Icon name="ArrowRight01Icon" size={14} /></a></p>
+      </div>
+      <div class="marquee" id="marquee">
+        {rows.map((row) => (
+          <div class="mq-row">
+            <div class="mq-track">
+              {[0, 1].map((copy) => (
+                <ul class="mq-set" aria-hidden={copy === 1 ? "true" : undefined}>
+                  {row.map((b) => (
+                    <li class="mq-card">
+                      <a href={`/browsers/${b.id}`} tabindex={copy === 1 ? -1 : undefined}>
+                        <span class="mq-top">{b.logo ? <img src={b.logo} alt="" width="36" height="36" loading="lazy" decoding="async" /> : <span class="mono">{b.name.slice(0, 2)}</span>}<span><b>{b.name}</b><small>{b.basedOn ?? ENGINES[b.engine]}</small></span></span>
+                        <span class="mq-desc">{localizeDescription(b.id, b.description, lang)}</span>
+                        <span class="mq-score"><span>{t.scoreLabels[0]} <em>{b.scores.privacy}/5</em></span><span>{t.scoreLabels[1]} <em>{b.scores.experience}/5</em></span><span>{t.scoreLabels[2]} <em>{b.scores.minimalism}/5</em></span></span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ))}
+            </div>
+          </div>
+        ))}
+        <span class="mq-edge left" aria-hidden="true"></span><span class="mq-edge right" aria-hidden="true"></span>
+      </div>
+    </section>
+
+    <!-- SEO guide -->
+    <section class="guide-sec" aria-labelledby="guide-title">
+      <div class="sec-head">
+        <h2 id="guide-title" class="sec-title">{t.guideTitle(YEAR)}</h2>
+        <p class="sec-copy">{t.guideCopy}</p>
+      </div>
+      <div class="guide-grid">
+        {t.guides.map((g, i) => (
+          <article class="guide-card">
+            <span class="guide-n">0{i + 1}</span>
+            <h3>{g.h}</h3>
+            <p>{g.p}</p>
+            <p class="guide-links">{g.links.map(([label, href]) => <a class="arrow-link" href={href}>{label}<Icon name="ArrowRight01Icon" size={13} /></a>)}</p>
+          </article>
+        ))}
+      </div>
+      <p class="guide-more">{t.guideMore.beforeAlt} <a href="/alternatives/google-chrome">Chrome</a>, <a href="/alternatives/microsoft-edge">Edge</a>, <a href="/alternatives/safari">Safari</a>, <a href="/alternatives/arc">Arc</a> &amp; <a href="/alternatives">{t.guideMore.otherBrowsers}</a>. {t.guideMore.between} <a href="/compare">{t.guideMore.compareLink}</a>, {t.guideMore.like} <a href="/compare/google-chrome-vs-firefox">Chrome vs Firefox</a> / <a href="/compare/brave-vs-google-chrome">Brave vs Chrome</a> – {t.guideMore.orBrowse} <a href="/best">{t.guideMore.allGuides}</a>.</p>
+    </section>
+
+    <!-- FAQ (ObsidianUI landing-faq) -->
+    <section class="faq-sec" aria-labelledby="faq-title">
+      <div class="sec-head">
+        <h2 id="faq-title" class="sec-title">{t.faqTitle}</h2>
+        <p class="sec-copy">{t.faqCopy}</p>
+      </div>
+      <div class="ob-faq">
+        {faq.map((f, i) => (
+          <details class="ob-faq-item" open={i === 0}>
+            <span class="ob-faq-guides" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <summary><span>{f.q}</span><svg class="plus" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg></summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="end-sec">
+      <h2 class="sec-title">{t.endTitle}</h2>
+      <p class="sec-copy">{t.endCopy}</p>
+      <a class="raised-btn" href={quizHref}>{t.startQuiz}<Icon name="ArrowRight01Icon" size={15} /></a>
+    </section>
+  </div>
+  <script type="application/json" id="search-index" set:html={searchIndex} />
+  <script type="application/json" id="home-i18n" set:html={homeI18n} />
+</Base>
+
+<script>
+  // Hero spotlight follows the cursor (rAF-throttled, no re-layout).
+  const hero = document.getElementById("hero")!;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let raf = 0;
+  if (!reduce) hero.addEventListener("mousemove", (e) => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      raf = 0;
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", `${e.clientX - r.left}px`);
+      hero.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+  });
+
+  // Glass search bar: type to find a browser, arrows + Enter to open its page.
+  type Item = { id: string; n: string; e: string; l: string | null };
+  const index = JSON.parse(document.getElementById("search-index")!.textContent!) as Item[];
+  const i18n = JSON.parse(document.getElementById("home-i18n")!.textContent!) as { noMatch: string; tryQuiz: string; quizHref: string };
+  const input = document.getElementById("hero-q") as HTMLInputElement;
+  const drop = document.getElementById("hero-drop")!;
+  const list = document.getElementById("hero-results")!;
+  const glass = document.getElementById("glass")!;
+  let sel = 0, matches: Item[] = [];
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+  function render() {
+    const q = input.value.trim().toLowerCase();
+    matches = (q ? index.filter((i) => `${i.n} ${i.e}`.toLowerCase().includes(q)) : index).slice(0, 6);
+    sel = Math.min(sel, Math.max(0, matches.length - 1));
+    list.innerHTML = matches.length
+      ? matches.map((m, i) => `<li role="option" id="hr-${i}" aria-selected="${i === sel}"><a href="/browsers/${m.id}" tabindex="-1">${m.l ? `<img src="${esc(m.l)}" alt="" width="22" height="22">` : ""}<span>${esc(m.n)}</span><small>${esc(m.e)}</small></a></li>`).join("")
+      : `<li class="none">${esc(i18n.noMatch.replace("{q}", input.value))} <a href="${esc(i18n.quizHref)}">${esc(i18n.tryQuiz)}</a></li>`;
+    input.setAttribute("aria-activedescendant", matches.length ? `hr-${sel}` : "");
+  }
+  function open(v: boolean) { drop.hidden = !v; glass.classList.toggle("focus", v); input.setAttribute("aria-expanded", String(v)); if (v) render(); }
+  input.addEventListener("focus", () => open(true));
+  input.addEventListener("input", () => { sel = 0; open(true); });
+  input.addEventListener("blur", () => setTimeout(() => open(false), 150));
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") { e.preventDefault(); sel = (sel + 1) % Math.max(1, matches.length); render(); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); sel = (sel - 1 + matches.length) % Math.max(1, matches.length); render(); }
+    else if (e.key === "Enter" && matches[sel]) location.href = `/browsers/${matches[sel].id}`;
+    else if (e.key === "Escape") input.blur();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement !== input && !(e.target as HTMLElement).closest("input, textarea")) { e.preventDefault(); input.focus(); }
+  });
+
+  // Marquee only runs while visible.
+  const mq = document.getElementById("marquee")!;
+  new IntersectionObserver(([en]) => mq.toggleAttribute("data-running", en.isIntersecting), { threshold: 0.05 }).observe(mq);
+</script>
+
+<style>
+  .landing { --sec-max: 1180px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .sec-title { margin: 0; font: 500 clamp(28px, 3.6vw, 40px) var(--font-heading); letter-spacing: -0.04em; color: var(--text); text-wrap: balance; }
+  .sec-copy { margin: 12px auto 0; max-width: 58ch; color: var(--muted); font-size: 16px; line-height: 1.7; text-wrap: pretty; }
+  .sec-head { text-align: center; margin-bottom: 44px; }
+  .arrow-link { display: inline-flex; align-items: center; gap: 4px; color: var(--text); text-decoration: none; font-weight: 500; }
+  .arrow-link :global(svg) { transition: transform .2s var(--ease); }
+  .arrow-link:hover :global(svg) { transform: translateX(3px); }
+
+  /* ---------- Hero (ObsidianUI HeroSection) ---------- */
+  .hero-wrap { padding: 10px 0 40px; }
+  .hero { position: relative; isolation: isolate; height: calc(100svh - 56px - 20px); min-height: 560px; max-height: 860px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    overflow: hidden; border-radius: 32px; box-shadow: 0 8px 30px rgb(0 0 0 / .3); border: 1px solid var(--line);
+    background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 40%), rgb(255 255 255 / .035), transparent 40%), linear-gradient(to bottom, #000 0%, #0d0d0d 50%, #111 100%); }
+  .hero-lines { position: absolute; inset: 0; pointer-events: none; opacity: .05; background-image: linear-gradient(90deg, rgb(255 255 255 / .6) 1px, transparent 1px); background-size: 80px 100%; }
+  .hero-grain { position: absolute; inset: 0; pointer-events: none; opacity: .04; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .hero > .ob-pill { position: relative; z-index: 1; margin-bottom: 18px; }
+  .hero > .ob-pill :global(svg) { color: #8f8f96; }
+  .hero-grid { position: relative; z-index: 1; width: 100%; max-width: 1180px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; padding: 0 48px 48px; }
+  .faces { display: flex; align-items: center; gap: 12px; margin-bottom: 26px; }
+  .face-stack { display: flex; }
+  .face-stack img { width: 40px; height: 40px; padding: 6px; margin-left: -10px; border-radius: 50%; background: #18181b; border: 2px solid #27272a; object-fit: contain; transition: transform .2s var(--ease);
+    animation: landing-intro .6s var(--ease) backwards; animation-delay: var(--d); }
+  .face-stack img:first-child { margin-left: 0; }
+  .face-stack img:hover { transform: translateY(-8px) scale(1.1); }
+  .face-copy { display: flex; flex-direction: column; font-size: 14px; color: var(--muted); }
+  .face-copy b { color: var(--text); font-weight: 600; }
+  .face-copy small { font-size: 12px; color: var(--faint); font-weight: 500; }
+  .hero-title { margin: 0 0 22px; font: 700 clamp(44px, 6.2vw, 92px)/1.05 var(--font-heading); letter-spacing: -0.05em;
+    background: linear-gradient(to bottom, #fff, #e4e4e7 55%, #a1a1aa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-dots { list-style: none; display: flex; flex-wrap: wrap; gap: 14px; margin: 0; padding: 12px 0 0; border-top: 1px solid #27272a; font-size: 12px; font-weight: 500; color: var(--muted); }
+  .hero-dots li::before { content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 6px; border-radius: 50%; background: #52525b; vertical-align: 1px; }
+  .hero-copy { margin: 0 0 34px; max-width: 30rem; color: #b4b4b8; font-size: 20px; line-height: 1.6; text-wrap: pretty; }
+  .hero-actions { display: flex; align-items: center; gap: 14px; }
+  .mobile-only { display: none; }
+
+  /* Glass search bar (ObsidianUI GlassSearchBar) */
+  .glass { position: relative; z-index: 3; width: 340px; max-width: 100%; padding: 7px; border-radius: 22px; background: rgb(255 255 255 / .05); border: 1px solid rgb(255 255 255 / .09);
+    backdrop-filter: blur(40px); transition: box-shadow .3s; }
+  .glass.focus { box-shadow: 0 0 0 2px #a1a1aa; }
+  .glass-core { display: flex; align-items: center; gap: 10px; padding: 11px 14px; border-radius: 15px; background: #0a0a0a; box-shadow: 0 1px 2px rgb(0 0 0 / .4); color: var(--muted); }
+  .glass-core input { flex: 1; min-width: 0; background: none; border: 0; outline: 0; font-size: 14px; color: var(--text); }
+  .glass-core input::placeholder { color: var(--muted); }
+  .glass-core kbd { font: 11px var(--mono); color: var(--faint); border: 1px solid var(--line-2); border-radius: 5px; padding: 0 6px; }
+  .glass-drop { position: absolute; left: 0; right: 0; top: calc(100% + 6px); padding: 7px; border-radius: 24px; background: rgb(20 20 20 / .7); border: 1px solid rgb(255 255 255 / .09);
+    backdrop-filter: blur(40px); box-shadow: 0 24px 60px rgb(0 0 0 / .6); animation: drop-in .2s ease-out; }
+  @keyframes drop-in { from { opacity: 0; transform: scale(.98); } }
+  .glass-drop ul { list-style: none; margin: 0; padding: 6px; border-radius: 17px; background: #0a0a0a; display: flex; flex-direction: column; gap: 2px; }
+  .glass-drop :global(li a) { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 10px; text-decoration: none; font-size: 13.5px; }
+  .glass-drop :global(li a img) { object-fit: contain; }
+  .glass-drop :global(li a small) { margin-left: auto; color: var(--faint); font-size: 11.5px; }
+  .glass-drop :global(li[aria-selected="true"] a), .glass-drop :global(li a:hover) { background: #1a1a1a; }
+  .glass-drop :global(li.none) { padding: 10px; font-size: 13px; color: var(--muted); }
+  .glass-drop :global(li.none a) { color: var(--text); }
+
+  .watermark { position: absolute; bottom: -9%; left: 50%; z-index: 0; transform: translateX(-50%); font: 400 clamp(6rem, 17vw, 17rem)/1.15 var(--font-heading); letter-spacing: -0.075em; white-space: nowrap;
+    color: #fff; opacity: .09; filter: blur(2px); pointer-events: none; user-select: none;
+    mask-image: linear-gradient(to bottom, transparent 0%, transparent 8%, rgb(0 0 0 / .2) 35%, rgb(0 0 0 / .7) 70%, #000 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 8%, rgb(0 0 0 / .2) 35%, rgb(0 0 0 / .7) 70%, #000 100%); }
+
+  /* ---------- Wall marquee (ObsidianUI TestimonialsMarquee) ---------- */
+  .wall-sec { padding: 72px 0 40px; }
+  .marquee { --gap: 18px; position: relative; display: grid; gap: var(--gap); overflow: hidden; margin: 0 -20px; padding: 6px 0; }
+  .mq-track { display: flex; width: max-content; animation: mq-drift 90s linear infinite; animation-play-state: paused; }
+  .mq-row:nth-child(2) .mq-track { animation-duration: 104s; animation-direction: reverse; animation-delay: -14s; }
+  .marquee[data-running] .mq-track { animation-play-state: running; }
+  .mq-row:is(:hover, :focus-within) .mq-track { animation-play-state: paused; }
+  @keyframes mq-drift { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+  .mq-set { list-style: none; margin: 0; padding: 0 var(--gap) 0 0; display: flex; gap: var(--gap); flex-shrink: 0; }
+  .mq-card { width: 320px; flex-shrink: 0; }
+  .mq-card a { display: flex; flex-direction: column; gap: 14px; height: 100%; box-sizing: border-box; padding: 22px; border-radius: 10px; background: #0a0a0a; border: 1px solid var(--line);
+    text-decoration: none; transition: border-color .2s var(--ease), background .2s var(--ease); }
+  .mq-card a:hover { border-color: var(--line-2); background: #0f0f0f; }
+  .mq-top { display: flex; align-items: center; gap: 12px; }
+  .mq-top img, .mq-top .mono { width: 36px; height: 36px; object-fit: contain; flex: none; filter: drop-shadow(0 0 1px rgb(255 255 255 / .35)); }
+  .mq-top .mono { display: grid; place-items: center; border-radius: 9px; background: var(--bg-3); font: 600 12px var(--mono); color: var(--muted); }
+  .mq-top span { display: flex; flex-direction: column; min-width: 0; }
+  .mq-top b { font-weight: 500; font-size: 15px; color: var(--text); }
+  .mq-top small { font-size: 12px; color: var(--faint); }
+  .mq-desc { font-size: 13.5px; line-height: 1.55; color: var(--muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .mq-score { display: flex; gap: 12px; font-size: 11.5px; color: var(--faint); margin-top: auto; }
+  .mq-score em { font-style: normal; color: var(--text); font-variant-numeric: tabular-nums; }
+  .mq-edge { position: absolute; z-index: 1; inset-block: 0; width: clamp(28px, 12%, 140px); pointer-events: none; backdrop-filter: blur(3px); }
+  .mq-edge.left { left: 0; background: linear-gradient(to right, var(--bg), transparent); mask-image: linear-gradient(to right, #000 15%, transparent); }
+  .mq-edge.right { right: 0; background: linear-gradient(to left, var(--bg), transparent); mask-image: linear-gradient(to left, #000 15%, transparent); }
+  @media (prefers-reduced-motion: reduce) {
+    .mq-track { width: 100%; animation: none; }
+    .mq-set { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); width: 100%; padding: 0; }
+    .mq-set[aria-hidden], .mq-edge { display: none; }
+    .mq-card { width: auto; }
+  }
+
+  /* ---------- Guide ---------- */
+  .guide-sec { padding: 72px 0 24px; max-width: var(--sec-max); margin: 0 auto; }
+  .guide-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .guide-card { position: relative; padding: 28px; border-radius: 12px; background: #0a0a0a; border: 1px solid var(--line); }
+  .guide-n { font: 500 12px var(--mono); color: var(--faint); }
+  .guide-card h3 { margin: 10px 0 10px; font: 500 20px var(--font-heading); letter-spacing: -0.03em; color: var(--text); }
+  .guide-card p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.7; }
+  .guide-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 16px !important; }
+  .guide-links .arrow-link { font-size: 13.5px; }
+  .guide-more { text-align: center; color: var(--muted); margin: 28px 0 0; font-size: 14px; }
+  .guide-more a { color: var(--text); text-decoration-color: var(--line-2); text-underline-offset: 3px; }
+
+  /* ---------- FAQ (ObsidianUI LandingFAQ) ---------- */
+  .faq-sec { padding: 96px 24px; overflow: hidden; }
+  .ob-faq { max-width: 832px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .ob-faq-item { position: relative; border-radius: 8px; }
+  .ob-faq-item[open] { background: #0a0a0a; box-shadow: 0 1px 4px rgb(255 255 255 / .03), 0 0 0 1px var(--line-2); }
+  .ob-faq-item summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px; border-radius: 8px; list-style: none; cursor: pointer; color: var(--muted); font-size: 16px; line-height: 1.5; transition: background .15s, color .15s; }
+  .ob-faq-item summary::-webkit-details-marker { display: none; }
+  .ob-faq-item summary:hover { background: #111; color: var(--text); }
+  .ob-faq-item[open] summary { color: var(--text); }
+  .ob-faq-item summary:focus-visible { outline: 2px solid #a1a1aa; outline-offset: 4px; }
+  .plus { flex: none; transition: transform .25s var(--ease); }
+  .ob-faq-item[open] .plus { transform: rotate(45deg); }
+  .ob-faq-item p { margin: 0; padding: 0 48px 20px 16px; color: var(--muted); font-size: 14.5px; line-height: 1.8; }
+  .ob-faq-item[open] p { animation: landing-intro .3s var(--ease); }
+  .ob-faq-guides { position: absolute; inset: -2px; pointer-events: none; opacity: 0; transition: opacity .15s ease-out; }
+  .ob-faq-item[open] > .ob-faq-guides { opacity: 1; }
+  .ob-faq-guides i { position: absolute; --l: rgb(255 255 255 / .16); }
+  .ob-faq-guides i:nth-child(-n+2) { left: -50px; right: -50px; height: 1px; background: repeating-linear-gradient(to right, var(--l) 0 2px, transparent 2px 5px); mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent); }
+  .ob-faq-guides i:nth-child(1) { top: 0; } .ob-faq-guides i:nth-child(2) { bottom: 0; }
+  .ob-faq-guides i:nth-child(n+3) { top: -50px; bottom: -50px; width: 1px; background: repeating-linear-gradient(to bottom, var(--l) 0 2px, transparent 2px 5px); mask-image: linear-gradient(to bottom, transparent, #000 20%, #000 80%, transparent); }
+  .ob-faq-guides i:nth-child(3) { left: 0; } .ob-faq-guides i:nth-child(4) { right: 0; }
+
+  .end-sec { text-align: center; padding: 40px 0 96px; display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .end-sec .sec-copy { margin-top: -10px; }
+
+  @media (max-width: 860px) {
+    .hero { height: auto; min-height: 0; max-height: none; padding: 48px 0 80px; border-radius: 24px; }
+    .hero-grid { grid-template-columns: 1fr; padding: 0 24px; }
+    .desktop-only { display: none; }
+    .mobile-only { display: block; margin-bottom: 22px; font-size: 17px; }
+    .hero-actions { flex-direction: column; align-items: stretch; margin-top: 8px; }
+    .glass { width: 100%; }
+    /* The hero clips overflow, so keep the results in flow on mobile and let the hero grow instead of cutting them off. */
+    .glass-drop { position: static; margin-top: 7px; padding: 0; border: 0; background: none; box-shadow: none; backdrop-filter: none; }
+    .hero-dots { margin-bottom: 26px; }
+    .guide-grid { grid-template-columns: 1fr; }
+    .faq-sec { padding: 64px 0; }
+    .ob-faq-item p { padding: 0 12px 18px; }
+  }
+  @media (max-width: 480px) { .hero-title { font-size: clamp(36px, 10.5vw, 52px); } .mq-card { width: 280px; } }
+</style>

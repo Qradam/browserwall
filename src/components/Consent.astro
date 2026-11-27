@@ -1,12 +1,18 @@
 ---
 // Analytics consent: Google Tag Manager is only loaded after the visitor clicks "Accept".
+import type { Locale } from "../i18n";
+import { UI } from "../i18n/ui";
+
+interface Props { lang?: Locale }
+const { lang = "en" } = Astro.props;
+const c = UI[lang].consent;
 const GTM_ID = "GTM-NC48G35M";
 ---
-<div class="consent" id="consent" role="dialog" aria-label="Analytics consent" hidden>
-  <p>We use Google Tag Manager for anonymous visit statistics, only if you agree. <a href="/privacy">Privacy</a></p>
+<div class="consent" id="consent" role="dialog" aria-label={c.aria} hidden>
+  <p>{c.text} <a href="/privacy">{c.privacy}</a></p>
   <div class="btns">
-    <button type="button" data-choice="denied">Decline</button>
-    <button type="button" data-choice="granted" class="yes">Accept</button>
+    <button type="button" data-choice="denied">{c.decline}</button>
+    <button type="button" data-choice="granted" class="yes">{c.accept}</button>
   </div>
 </div>
 

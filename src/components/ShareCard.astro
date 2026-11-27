@@ -2,9 +2,15 @@
 // "Browser personality" share dialog for the quiz results. Opened with initShareCard() from src/scripts/share-card.ts.
 import Icon from "./Icon.astro";
 import { DESIGNS } from "../scripts/card";
+import type { Locale } from "../i18n";
+import { QUIZ_I18N } from "../i18n/quiz";
+
+interface Props { lang?: Locale }
+const { lang = "en" } = Astro.props;
+const sc = QUIZ_I18N[lang].shareCard;
 
 const TARGETS = [
-  { id: "native", label: "Share…", icon: "Share08Icon" },
+  { id: "native", label: sc.nativeShare, icon: "Share08Icon" },
   { id: "x", label: "X", icon: "NewTwitterIcon" },
   { id: "bluesky", label: "Bluesky", icon: "BlueskyIcon" },
   { id: "reddit", label: "Reddit", icon: "RedditIcon" },
@@ -19,55 +25,55 @@ const TARGETS = [
 <dialog id="sc" class="sc" aria-labelledby="sc-title">
   <div class="sc-wrap">
     <div class="sc-preview" id="sc-preview" data-format="post">
-      <canvas id="sc-canvas" width="1080" height="1350" role="img" aria-label="Your browser personality card"></canvas>
+      <canvas id="sc-canvas" width="1080" height="1350" role="img" aria-label={sc.canvasAria}></canvas>
     </div>
     <div class="sc-side">
       <div class="sc-head">
         <div>
-          <p class="sc-kicker">Your browser personality</p>
+          <p class="sc-kicker">{sc.kicker}</p>
           <h2 id="sc-title"><span id="sc-emoji" aria-hidden="true"></span> <span id="sc-name"></span></h2>
         </div>
-        <button type="button" class="sc-close" id="sc-close" aria-label="Close"><Icon name="Cancel01Icon" size={16} /></button>
+        <button type="button" class="sc-close" id="sc-close" aria-label={sc.close}><Icon name="Cancel01Icon" size={16} /></button>
       </div>
       <p class="sc-roast" id="sc-roast"></p>
 
       <fieldset class="sc-group">
-        <legend>Design</legend>
+        <legend>{sc.design}</legend>
         <div class="sc-seg cols-5">
-          {DESIGNS.map((d, i) => <label><input type="radio" name="sc-design" value={d.id} checked={i === 0} />{d.label}</label>)}
+          {DESIGNS.map((d, i) => <label><input type="radio" name="sc-design" value={d.id} checked={i === 0} />{sc.designs[d.id]}</label>)}
         </div>
       </fieldset>
       <fieldset class="sc-group">
-        <legend>Format</legend>
+        <legend>{sc.format}</legend>
         <div class="sc-seg cols-2">
-          <label><input type="radio" name="sc-format" value="post" checked />Post <span class="dim">4:5</span></label>
-          <label><input type="radio" name="sc-format" value="story" />Story <span class="dim">9:16</span></label>
+          <label><input type="radio" name="sc-format" value="post" checked />{sc.post} <span class="dim">4:5</span></label>
+          <label><input type="radio" name="sc-format" value="story" />{sc.story} <span class="dim">9:16</span></label>
         </div>
       </fieldset>
       <fieldset class="sc-group">
-        <legend>Your OS on the card</legend>
+        <legend>{sc.osOnCard}</legend>
         <div class="sc-os">
-          <label class="sc-check"><input type="checkbox" id="sc-show-os" checked />Show it</label>
+          <label class="sc-check"><input type="checkbox" id="sc-show-os" checked />{sc.showIt}</label>
           <span class="sc-mark" id="sc-mark" aria-hidden="true"></span>
           <label class="sc-sel">
-            <span class="sr">Version or distro</span>
+            <span class="sr">{sc.versionDistro}</span>
             <select id="sc-variant"></select>
           </label>
         </div>
       </fieldset>
 
       <div class="sc-group">
-        <p class="sc-legend">Share</p>
+        <p class="sc-legend">{sc.share}</p>
         <div class="sc-targets">
           {TARGETS.map((t) => <button type="button" class="sc-t" data-share={t.id} hidden={t.id === "native"}><Icon name={t.icon} size={16} />{t.label}</button>)}
         </div>
-        <p class="sc-tip dim">X, Bluesky, Reddit and Discord can't attach images from a link, so we copy the image first – just paste it into your post.</p>
+        <p class="sc-tip dim">{sc.tip}</p>
       </div>
       <div class="sc-actions">
-        <button type="button" class="sc-btn primary" data-act="download"><Icon name="Download01Icon" size={15} />Download PNG</button>
-        <button type="button" class="sc-btn" data-act="copy-image"><Icon name="Image01Icon" size={15} />Copy image</button>
-        <button type="button" class="sc-btn" data-act="copy-link"><Icon name="Link01Icon" size={15} />Copy link</button>
-        <button type="button" class="sc-btn" data-act="copy-list"><Icon name="Copy01Icon" size={15} />Copy list</button>
+        <button type="button" class="sc-btn primary" data-act="download"><Icon name="Download01Icon" size={15} />{sc.download}</button>
+        <button type="button" class="sc-btn" data-act="copy-image"><Icon name="Image01Icon" size={15} />{sc.copyImage}</button>
+        <button type="button" class="sc-btn" data-act="copy-link"><Icon name="Link01Icon" size={15} />{sc.copyLink}</button>
+        <button type="button" class="sc-btn" data-act="copy-list"><Icon name="Copy01Icon" size={15} />{sc.copyList}</button>
       </div>
       <p class="sc-status" id="sc-status" role="status" aria-live="polite"></p>
     </div>

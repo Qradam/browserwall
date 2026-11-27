@@ -1,0 +1,8 @@
+---
+import HomePage from "../../views/HomePage.astro";
+import { ALT_LOCALES, type Locale } from "../../i18n";
+
+export const getStaticPaths = () => ALT_LOCALES.map((lang) => ({ params: { lang } }));
+const { lang } = Astro.params as { lang: Locale };
+---
+<HomePage lang={lang} />

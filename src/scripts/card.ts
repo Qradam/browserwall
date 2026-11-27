@@ -3,6 +3,9 @@
 import type { CardData } from "../lib/personality";
 import type { Mark } from "../lib/os-marks";
 import type { Browser } from "../data/browsers";
+import { LOCALE_META, formatCount, type Locale } from "../i18n";
+import { QUIZ_I18N } from "../i18n/quiz";
+import { UI } from "../i18n/ui";
 
 export type Design = "wrapped" | "receipt" | "terminal" | "trading" | "list";
 export type Format = "post" | "story";
@@ -17,8 +20,10 @@ const HEAD = '"Inter Variable", Inter, system-ui, sans-serif';
 const BODY = '"Geist Variable", Geist, system-ui, sans-serif';
 const MONO = '"JetBrains Mono", "Cascadia Code", Consolas, "SF Mono", ui-monospace, monospace';
 const EMOJI = '"Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif';
-const URL_TEXT = "browserwall.org/quiz";
 const ENGINE: Record<string, string> = { blink: "Blink", gecko: "Gecko", webkit: "WebKit", goanna: "Goanna", servo: "Servo", ladybird: "LibWeb", trident: "Trident", presto: "Presto", text: "Text", other: "Other" };
+const fmt = (s: string, vars: Record<string, string | number>) => s.replace(/\{(\w+)\}/g, (_, k) => String(vars[k] ?? ""));
+const urlText = (lang: Locale) => (lang === "en" ? "browserwall.org/quiz" : `browserwall.org/${lang}/quiz`);
+const engineName = (e: string, lang: Locale) => UI[lang].engines[e as keyof (typeof UI)[Locale]["engines"]] ?? ENGINE[e] ?? e;
 
 type Ctx = CanvasRenderingContext2D;
 
@@ -80,8 +85,8 @@ function rng(seed: number) {
 }
 const initials = (n: string) => n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
 /** "Gecko · based on Firefox"; skips the upstream when it just repeats the engine (Orion: WebKit/WebKit). */
-function engineLine(b: Browser, pre: string, post = "") {
-  const eng = ENGINE[b.engine] ?? b.engine;
+function engineLine(b: Browser, lang: Locale, pre: string, post = "") {
+  const eng = engineName(b.engine, lang);
   return b.basedOn && b.basedOn.toLowerCase() !== eng.toLowerCase() ? `${eng}${pre}${b.basedOn}${post}` : eng;
 }
 
@@ -165,10 +170,13 @@ function wrappedBg({ c, d, H }: Env) {
   c.restore();
 }
 function wrapped({ c, d, logoOf }: Env) {
+  const lang = d.lang ?? "en";
+  const t = QUIZ_I18N[lang].shareCard.canvas;
+  const u = urlText(lang);
   const x = 90, maxW = 900, a = d.archetype;
   c.fillStyle = "#fff"; c.textBaseline = "alphabetic"; c.textAlign = "left";
   font(c, 650, 30); spacing(c, 6); c.globalAlpha = 0.85;
-  c.fillText("MY BROWSER PERSONALITY", x, 120);
+  c.fillText(t.wrappedTitle, x, 120);
   spacing(c, 0); c.globalAlpha = 1;
 
   font(c, 400, 150, EMOJI);
@@ -188,7 +196,7 @@ function wrapped({ c, d, logoOf }: Env) {
 
   if (d.rising) {
     y += 46;
-    const label = `Rising sign: ${d.rising.name}`;
+    const label = fmt(t.rising, { name: d.rising.name });
     font(c, 600, 28);
     const tw = c.measureText(label).width;
     rrect(c, x, y, tw + 100, 58, 29);
@@ -208,12 +216,12 @@ function wrapped({ c, d, logoOf }: Env) {
   const tx = x + 200, tw = maxW - 236;
   c.fillStyle = "#fff";
   font(c, 650, 24); spacing(c, 4); c.globalAlpha = 0.7;
-  c.fillText(minis.length ? `MY TOP ${minis.length + 1}` : "MY BROWSER", tx, py + 62);
+  c.fillText(minis.length ? fmt(t.myTop, { n: minis.length + 1 }) : t.myBrowser, tx, py + 62);
   spacing(c, 0); c.globalAlpha = 1;
-  const bn = fit(c, b?.name ?? "None. Literally none.", tw, 60, 34, 780, HEAD, 1);
+  const bn = fit(c, b?.name ?? t.nonePick, tw, 60, 34, 780, HEAD, 1);
   c.fillText(bn.lines[0], tx, py + 64 + bn.size);
   font(c, 500, 30); c.globalAlpha = 0.85;
-  c.fillText(d.top ? `#1 · ${d.top.match}% match` : `0 of ${d.total} browsers survived`, tx, py + 166);
+  c.fillText(d.top ? fmt(t.topMatch, { match: d.top.match }) : fmt(t.survivedZero, { total: d.total }), tx, py + 166);
   c.globalAlpha = 1;
   if (minis.length) {
     c.fillStyle = "rgb(255 255 255 / .12)"; c.fillRect(x + 36, py + 192, maxW - 72, 2);
@@ -227,7 +235,7 @@ function wrapped({ c, d, logoOf }: Env) {
       font(c, 700, 28);
       c.fillText(ellipsize(c, r.browser.name, colW - 130), cx0 + 118, py + 238);
       font(c, 500, 23); c.globalAlpha = 0.7;
-      c.fillText(`${r.match}% match`, cx0 + 118, py + 268);
+      c.fillText(fmt(t.matchPct, { match: r.match }), cx0 + 118, py + 268);
       c.globalAlpha = 1;
     });
   }
@@ -244,9 +252,9 @@ function wrapped({ c, d, logoOf }: Env) {
   }
 
   font(c, 650, 30);
-  c.fillText(URL_TEXT, x, 1270);
+  c.fillText(u, x, 1270);
   c.textAlign = "right"; c.globalAlpha = 0.75;
-  c.fillText("find yours →", x + maxW, 1270);
+  c.fillText(t.findYoursArrow, x + maxW, 1270);
   c.globalAlpha = 1; c.textAlign = "left";
 }
 
@@ -259,40 +267,44 @@ function receiptBg({ c, d, H }: Env) {
 }
 type Row = { t: "c"; text: string; size: number; bold?: boolean } | { t: "kv"; k: string; v: string; size?: number; bold?: boolean } | { t: "dash" } | { t: "gap"; h: number } | { t: "barcode" };
 function receipt({ c, d }: Env) {
+  const lang = d.lang ?? "en";
+  const t = QUIZ_I18N[lang].shareCard.canvas;
+  const u = urlText(lang);
   const pw = 780, px = (W - pw) / 2, pad = 56, iw = pw - pad * 2;
   const now = new Date();
-  const date = now.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }).toUpperCase();
-  const time = now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+  const intl = LOCALE_META[lang].intl;
+  const date = now.toLocaleDateString(intl, { day: "2-digit", month: "short", year: "numeric" }).toUpperCase();
+  const time = now.toLocaleTimeString(intl, { hour: "2-digit", minute: "2-digit" });
   const U = (s: string) => s.toUpperCase();
   // Answer lines are trimmed from the end until the receipt fits the card (first ones are the strongest picks).
   const prios = d.priorities.map((p): Row => ({ t: "kv", k: U(p.label), v: U(p.level) }));
-  const feats = [...d.must.map((f) => ({ k: `+ ${U(f)}`, v: "MUST" })), ...d.nice.map((f) => ({ k: `+ ${U(f)}`, v: "NICE" }))].map((r): Row => ({ t: "kv", ...r }));
-  const nopes = d.avoid.map((a): Row => ({ t: "kv", k: `- ${U(a)}`, v: "NOPE" }));
+  const feats = [...d.must.map((f) => ({ k: `+ ${U(f)}`, v: t.mustVal })), ...d.nice.map((f) => ({ k: `+ ${U(f)}`, v: t.niceVal }))].map((r): Row => ({ t: "kv", ...r }));
+  const nopes = d.avoid.map((a): Row => ({ t: "kv", k: `- ${U(a)}`, v: t.nopeVal }));
   const build = (np: number, nf: number, na: number): Row[] => [
     { t: "c", text: "BROWSERWALL", size: 46, bold: true },
-    { t: "c", text: "PERSONALITY RECEIPT", size: 24 },
-    { t: "c", text: `${date}  ${time}   ORDER #${String(d.seed % 100000).padStart(5, "0")}`, size: 21 },
+    { t: "c", text: t.receiptSubtitle, size: 24 },
+    { t: "c", text: `${date}  ${time}   ${t.orderPrefix}${String(d.seed % 100000).padStart(5, "0")}`, size: 21 },
     { t: "dash" },
-    ...(d.osMark ? [{ t: "kv", k: "OS", v: U(d.osMark.label) } as Row] : []),
+    ...(d.osMark ? [{ t: "kv", k: t.osKey, v: U(d.osMark.label) } as Row] : []),
     ...(d.osMark && d.osMark.label !== d.os ? [{ t: "c", text: `"${d.osMark.quip}"`, size: 20 } as Row] : []),
-    { t: "kv", k: "EXTENSIONS", v: U((d.ext ?? "ANY").replace(" Web Store", "")) },
+    { t: "kv", k: t.extKey, v: U((d.ext ?? t.anyExt).replace(" Web Store", "")) },
     { t: "dash" },
     ...prios.slice(0, np), ...feats.slice(0, nf), ...nopes.slice(0, na),
-    ...(feats.length > nf || nopes.length > na ? [{ t: "c", text: `+ ${feats.length - nf + nopes.length - na} MORE ITEMS`, size: 20 } as Row] : []),
+    ...(feats.length > nf || nopes.length > na ? [{ t: "c", text: fmt(t.moreItems, { n: feats.length - nf + nopes.length - na }), size: 20 } as Row] : []),
     { t: "dash" },
-    { t: "kv", k: "BROWSERS ON THE WALL", v: String(d.total) },
-    { t: "kv", k: "SURVIVED YOUR FILTERS", v: String(d.fit) },
+    { t: "kv", k: t.wallCount, v: String(d.total) },
+    { t: "kv", k: t.survivedCount, v: String(d.fit) },
     { t: "dash" },
-    { t: "c", text: "YOU ARE", size: 22 },
+    { t: "c", text: t.youAre, size: 22 },
     { t: "c", text: U(d.archetype.name), size: 44, bold: true },
     { t: "dash" },
-    { t: "kv", k: "TOTAL", v: U(d.top?.browser.name ?? "N/A"), size: 38, bold: true },
-    { t: "kv", k: "MATCH", v: d.top ? `${d.top.match}%` : "0%" },
+    { t: "kv", k: t.totalKey, v: U(d.top?.browser.name ?? "N/A"), size: 38, bold: true },
+    { t: "kv", k: t.matchKey, v: d.top ? `${d.top.match}%` : "0%" },
     ...d.ranked.slice(1, 3).map((r, i): Row => ({ t: "kv", k: `${i + 2}. ${U(r.browser.name)}`, v: `${r.match}%` })),
     { t: "gap", h: 18 },
     { t: "barcode" },
-    { t: "c", text: "THANK YOU FOR NOT USING INTERNET EXPLORER", size: 20 },
-    { t: "c", text: URL_TEXT, size: 20, bold: true },
+    { t: "c", text: t.thankYou, size: 20 },
+    { t: "c", text: u, size: 20, bold: true },
   ];
   const heightOf = (r: Row) => {
     if (r.t === "c") { font(c, r.bold ? 800 : 500, r.size, MONO); return wrap(c, r.text, iw).length * r.size * 1.3 + 4; }
@@ -365,6 +377,9 @@ function terminalBg({ c, d, H }: Env) {
   glow(c, W / 2, H / 2, 900, a1, 0.28);
 }
 function terminal({ c, d, logoOf }: Env) {
+  const lang = d.lang ?? "en";
+  const t = QUIZ_I18N[lang].shareCard.canvas;
+  const u = urlText(lang);
   const [, a1, a2] = d.archetype.colors;
   const wx = 60, wy = 110, ww = W - 120, wh = 1130;
   c.save();
@@ -401,17 +416,17 @@ function terminal({ c, d, logoOf }: Env) {
   font(c, 500, 30, MONO); c.fillStyle = "#555"; c.fillText("─".repeat(18), kx, y + 22);
   y += 30;
   const rows: [string, string][] = [
-    ["Personality", `${d.archetype.name}`],
-    ...(d.rising ? [["Rising", d.rising.name] as [string, string]] : []),
-    ["Browser", b ? `${b.name} (${d.top!.match}%)` : "none survived"],
-    ...(d.ranked.length > 1 ? [["Runners-up", d.ranked.slice(1, 3).map((r) => `${r.browser.name} ${r.match}%`).join(", ")] as [string, string]] : []),
-    ["Engine", b ? engineLine(b, " (", ")") : "n/a"],
-    ...(d.osMark ? [["OS", d.osMark.label] as [string, string]] : []),
-    ["Extensions", d.ext ?? "any"],
-    ["Priorities", d.priorities.filter((p) => p.value >= 3).map((p) => p.label).join(", ") || "vibes"],
-    ["Must-haves", d.must.join(", ") || "none"],
-    ["Dealbreakers", d.avoid.join(", ") || "none"],
-    ["Survivors", `${d.fit}/${d.total} browsers`],
+    [t.termPersonality, `${d.archetype.name}`],
+    ...(d.rising ? [[t.termRising, d.rising.name] as [string, string]] : []),
+    [t.termBrowser, b ? `${b.name} (${d.top!.match}%)` : t.termNone],
+    ...(d.ranked.length > 1 ? [[t.termRunnersUp, d.ranked.slice(1, 3).map((r) => `${r.browser.name} ${r.match}%`).join(", ")] as [string, string]] : []),
+    [t.termEngine, b ? engineLine(b, lang, " (", ")") : t.termNa],
+    ...(d.osMark ? [[t.termOs, d.osMark.label] as [string, string]] : []),
+    [t.termExt, d.ext ?? t.anyExt.toLowerCase()],
+    [t.termPriorities, d.priorities.filter((p) => p.value >= 3).map((p) => p.label).join(", ") || t.termVibes],
+    [t.termMust, d.must.join(", ") || t.termEmpty],
+    [t.termAvoid, d.avoid.join(", ") || t.termEmpty],
+    [t.termSurvivors, `${d.fit}/${d.total} ${formatCount(d.total, t.browsersWord, lang).replace(/^\d+\s*/, "")}`],
   ];
   const fs = 26, lh = 40;
   for (const [k, v] of rows) {
@@ -440,8 +455,8 @@ function terminal({ c, d, logoOf }: Env) {
   y += 24;
   font(c, 600, 30, MONO);
   c.fillStyle = a1; c.fillText("$", x, y);
-  c.fillStyle = "#e5e5e5"; c.fillText(` open ${URL_TEXT}`, x + c.measureText("$").width, y);
-  const cw = c.measureText(`$ open ${URL_TEXT} `).width;
+  c.fillStyle = "#e5e5e5"; c.fillText(` open ${u}`, x + c.measureText("$").width, y);
+  const cw = c.measureText(`$ open ${u} `).width;
   c.fillStyle = a1; c.fillRect(x + cw, y - 26, 18, 32);
 }
 
@@ -456,6 +471,9 @@ function tradingBg({ c, d, H }: Env) {
   c.restore();
 }
 function trading({ c, d, logoOf }: Env) {
+  const lang = d.lang ?? "en";
+  const t = QUIZ_I18N[lang].shareCard.canvas;
+  const u = urlText(lang);
   const [, a1, a2] = d.archetype.colors;
   const cx = 150, cy = 90, cw = 780, ch = 1170;
   c.save();
@@ -505,16 +523,17 @@ function trading({ c, d, logoOf }: Env) {
   const ty = ay + ah + 26;
   rrect(c, px, ty, pw, 64, 14); c.fillStyle = "rgb(255 255 255 / .07)"; c.fill();
   font(c, 400, 30, EMOJI); c.fillStyle = "#fff"; c.fillText(d.archetype.emoji, px + 20, ty + 43);
-  const eng = b ? `${ENGINE[b.engine] ?? b.engine} type` : "??? type";
+  const eng = b ? fmt(t.engineType, { engine: engineName(b.engine, lang) }) : t.unknownEngineType;
   font(c, 500, 24); const ew = c.measureText(eng).width;
   const at = fit(c, d.archetype.name, pw - ew - 110, 30, 20, 700, HEAD, 1);
   c.fillText(at.lines[0], px + 70, ty + 42);
   font(c, 500, 24); c.textAlign = "right"; c.globalAlpha = 0.6; c.fillText(eng, px + pw - 20, ty + 41); c.globalAlpha = 1; c.textAlign = "left";
 
   // Stats from the editorial scores
+  const [sPriv, sExp, sCust, sLight, sMin] = t.stats;
   const stats: [string, number][] = b
-    ? [["Privacy", b.scores.privacy], ["Polish", b.scores.experience], ["Customisation", b.scores.customisation], ["Lightness", b.scores.lightness], ["Minimalism", b.scores.minimalism]]
-    : [["Privacy", 0], ["Polish", 0], ["Customisation", 0], ["Lightness", 0], ["Minimalism", 0]];
+    ? [[sPriv, b.scores.privacy], [sExp, b.scores.experience], [sCust, b.scores.customisation], [sLight, b.scores.lightness], [sMin, b.scores.minimalism]]
+    : [[sPriv, 0], [sExp, 0], [sCust, 0], [sLight, 0], [sMin, 0]];
   let sy = ty + 110;
   const bx = px + 300, seg = (pw - 300 - 60) / 5;
   for (const [label, v] of stats) {
@@ -532,7 +551,7 @@ function trading({ c, d, logoOf }: Env) {
   if (bench.length) {
     c.fillStyle = "rgb(255 255 255 / .15)"; c.fillRect(px, sy - 22, pw, 2);
     font(c, 700, 19); spacing(c, 3); c.fillStyle = "rgb(255 255 255 / .5)";
-    c.fillText("ALSO IN YOUR DECK", px, sy + 12);
+    c.fillText(t.alsoInDeck, px, sy + 12);
     spacing(c, 0);
     const colW = pw / bench.length;
     bench.forEach((r, i) => {
@@ -553,7 +572,7 @@ function trading({ c, d, logoOf }: Env) {
 
   // Footer
   const fy = iy + ih - 30;
-  font(c, 600, 22); c.fillStyle = "rgb(255 255 255 / .5)"; c.fillText(URL_TEXT, px, fy);
+  font(c, 600, 22); c.fillStyle = "rgb(255 255 255 / .5)"; c.fillText(u, px, fy);
   const stars = "★".repeat(d.rarity.stars) + "☆".repeat(5 - d.rarity.stars);
   c.textAlign = "right"; c.fillStyle = a2; font(c, 700, 22);
   c.fillText(`${stars}  ${d.rarity.label.toUpperCase()}`, px + pw, fy);
@@ -568,25 +587,28 @@ function listBg({ c, d, H }: Env) {
   glow(c, W * 0.95, H * 0.95, 700, a2, 0.35);
 }
 function list({ c, d, logoOf }: Env) {
+  const lang = d.lang ?? "en";
+  const t = QUIZ_I18N[lang].shareCard.canvas;
+  const u = urlText(lang);
   const [, a1] = d.archetype.colors;
   const x = 80, w = W - 160;
   c.fillStyle = "#fff"; c.textAlign = "left"; c.textBaseline = "alphabetic";
   font(c, 650, 26); spacing(c, 6); c.globalAlpha = 0.8;
-  c.fillText("MY BROWSER SHORTLIST", x, 110);
+  c.fillText(t.shortlistTitle, x, 110);
   spacing(c, 0); c.globalAlpha = 1;
   font(c, 400, 60, EMOJI); c.fillText(d.archetype.emoji, x, 192);
-  const t = fit(c, d.archetype.name, w - 90, 64, 36, 820, HEAD, 1);
-  c.fillText(t.lines[0], x + 90, 190);
+  const headFit = fit(c, d.archetype.name, w - 90, 64, 36, 820, HEAD, 1);
+  c.fillText(headFit.lines[0], x + 90, 190);
   let sx = x;
   if (d.osMark) { drawMark(c, d.osMark, x, 220, 32); sx += 46; }
   font(c, 500, 27); c.fillStyle = "#fff"; c.globalAlpha = 0.72;
-  c.fillText(`${d.osMark ? `${d.osMark.label} · ` : ""}${d.fit} of ${d.total} browsers fit my answers`, sx, 246);
+  c.fillText(`${d.osMark ? `${d.osMark.label} · ` : ""}${fmt(t.shortlistSub, { fit: d.fit, total: d.total })}`, sx, 246);
   c.globalAlpha = 1;
 
   const rows = d.ranked;
   if (!rows.length) {
     font(c, 800, 72, HEAD); c.textAlign = "center";
-    c.fillText("Nothing survived.", W / 2, 700);
+    c.fillText(t.nothingSurvived, W / 2, 700);
     font(c, 500, 32); c.globalAlpha = 0.7;
     c.fillText(d.archetype.roast.split(".")[0] + ".", W / 2, 760);
     c.globalAlpha = 1; c.textAlign = "left";
@@ -611,14 +633,14 @@ function list({ c, d, logoOf }: Env) {
     const maxN = x + w - 28 - mw - 24 - nx;
     font(c, 700, h > 90 ? 34 : 30); c.fillText(ellipsize(c, b.name, maxN), nx, cy - 2);
     font(c, 450, h > 90 ? 23 : 21); c.globalAlpha = 0.6;
-    c.fillText(ellipsize(c, engineLine(b, " · based on "), maxN), nx, cy + 30);
+    c.fillText(ellipsize(c, engineLine(b, lang, t.basedOnInline), maxN), nx, cy + 30);
     c.globalAlpha = 1;
   });
 
   font(c, 650, 30); c.fillStyle = "#fff";
-  c.fillText(URL_TEXT, x, 1280);
+  c.fillText(u, x, 1280);
   c.textAlign = "right"; c.globalAlpha = 0.75;
-  c.fillText("find yours →", x + w, 1280);
+  c.fillText(t.findYoursArrow, x + w, 1280);
   c.globalAlpha = 1; c.textAlign = "left";
 }
 

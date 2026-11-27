@@ -10,8 +10,11 @@ import { SITE_NAME, abs, cleanPath, CATEGORIES, GUIDES, ALTERNATIVE_IDS, COMPARI
 import { byId } from "../data/browsers";
 import { NEWS } from "../lib/news";
 import { ogImageFor } from "../lib/og";
+import { LOCALES, LOCALE_META, isLocalizedBase, localePath, localizedHref, stripLocale, type Locale } from "../i18n";
+import { UI } from "../i18n/ui";
 
 interface Props {
+  lang?: Locale;
   title?: string;
   description?: string;
   /** JSON-LD objects for this page (WebSite/Organization are added on every page). */
@@ -21,22 +24,28 @@ interface Props {
   /** Set false on pages that don't need the details dialog (saves the embedded data). */
   dialog?: boolean;
 }
+const path = cleanPath(Astro.url.pathname);
+const detected = stripLocale(path);
 const {
+  lang = detected.lang,
   title = "browserwall – desktop browsers, a tier maker and a quiz",
   description = "A curated wall of 80+ desktop web browsers with honest scores, a tier list maker and a 2-minute quiz that finds the right browser for you.",
   jsonLd = [], ogType = "website", noindex = false, dialog = true,
 } = Astro.props;
-const path = cleanPath(Astro.url.pathname);
+const base = detected.base;
+const isLocalized = isLocalizedBase(base);
+const ui = UI[lang];
 const canonical = abs(Astro.site, path);
 const ogPath = ogImageFor(path);
 const ogImage = abs(Astro.site, ogPath);
 const site = abs(Astro.site, "/");
+const wallUrl = abs(Astro.site, localizedHref("/wall", lang));
 const graph = [
-  { "@type": "WebSite", "@id": `${site}#website`, name: SITE_NAME, url: site, inLanguage: "en",
-    description: "Curated directory of desktop web browsers with editorial scores, a tier list maker and a browser recommendation quiz.",
-    potentialAction: { "@type": "SearchAction", target: `${site}wall?q={search_term_string}`, "query-input": "required name=search_term_string" } },
+  { "@type": "WebSite", "@id": `${site}#website`, name: SITE_NAME, url: site, inLanguage: lang,
+    description: ui.siteDescription,
+    potentialAction: { "@type": "SearchAction", target: `${wallUrl}?q={search_term_string}`, "query-input": "required name=search_term_string" } },
   { "@type": "Organization", "@id": `${site}#org`, name: SITE_NAME, url: site, logo: abs(Astro.site, "/icon-512.png") },
-  ...(noindex ? [] : [{ "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: "en", isPartOf: { "@id": `${site}#website` },
+  ...(noindex ? [] : [{ "@type": "WebPage", "@id": `${canonical}#webpage`, url: canonical, name: title, description, inLanguage: lang, isPartOf: { "@id": `${site}#website` },
     primaryImageOfPage: { "@type": "ImageObject", url: ogImage, contentUrl: ogImage, width: 1200, height: 630, caption: ogPath === "/og.png" ? "browserwall – find your browser" : title,
       creator: { "@id": `${site}#org` }, creditText: SITE_NAME, copyrightNotice: `© ${new Date().getFullYear()} ${SITE_NAME}`,
       license: "https://creativecommons.org/licenses/by/4.0/", acquireLicensePage: abs(Astro.site, "/image-license") } }]),
@@ -46,13 +55,15 @@ const ld = JSON.stringify({ "@context": "https://schema.org", "@graph": graph })
 const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <><link rel="canonical" href={canonical} /><meta name="robots" content="max-image-preview:large, max-snippet:-1" /></>}
+    {!noindex && isLocalized && LOCALES.map((l) => <link rel="alternate" hreflang={l} href={abs(Astro.site, localePath(base, l))} />)}
+    {!noindex && isLocalized && <link rel="alternate" hreflang="x-default" href={abs(Astro.site, base)} />}
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#000000" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -63,6 +74,8 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
     <link rel="alternate" type="application/rss+xml" title="browserwall news" href="/news/rss.xml" />
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content={LOCALE_META[lang].og} />
+    {isLocalized && LOCALES.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALE_META[l].og} />)}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -78,54 +91,71 @@ const popularAlt = ALTERNATIVE_IDS.slice(0, 6).map((id) => byId.get(id)!);
   </head>
   <body>
     <IconSprite />
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main">{ui.skip}</a>
     <header class="topbar">
-      <a href="/" class="brand" aria-label="browserwall home"><Logo size={26} /> <span>browserwall</span></a>
-      <nav aria-label="Main">
-        <a href="/wall" aria-current={path.startsWith("/wall") ? "page" : undefined}>Wall</a>
-        <a href="/tiers" aria-current={path.startsWith("/tiers") ? "page" : undefined}>Tier maker</a>
-        <a href="/compare" aria-current={path.startsWith("/compare") ? "page" : undefined}>Compare</a>
-        <a href="/quiz" aria-current={path.startsWith("/quiz") ? "page" : undefined}>Quiz <span class="soon">beta</span></a>
-        <a href="/news" aria-current={path.startsWith("/news") ? "page" : undefined}>News</a>
-        <a href="/contact" class="nav-contact" aria-current={path.startsWith("/contact") ? "page" : undefined}>Contact</a>
+      <a href={localizedHref("/", lang)} class="brand" aria-label={ui.homeAria}><Logo size={26} /> <span>browserwall</span></a>
+      <nav aria-label={ui.navAria}>
+        <a href={localizedHref("/wall", lang)} aria-current={base.startsWith("/wall") ? "page" : undefined}>{ui.nav.wall}</a>
+        <a href={localizedHref("/tiers", lang)} aria-current={base.startsWith("/tiers") ? "page" : undefined}>{ui.nav.tiers}</a>
+        <a href="/compare" aria-current={path.startsWith("/compare") ? "page" : undefined}>{ui.nav.compare}</a>
+        <a href={localizedHref("/quiz", lang)} aria-current={base.startsWith("/quiz") ? "page" : undefined}>{ui.nav.quiz} <span class="soon">{ui.nav.beta}</span></a>
+        <a href="/news" aria-current={path.startsWith("/news") ? "page" : undefined}>{ui.nav.news}</a>
+        <a href="/contact" class="nav-contact" aria-current={path.startsWith("/contact") ? "page" : undefined}>{ui.nav.contact}</a>
+        {isLocalized && (
+          <select class="lang-switch" id="lang-switch" aria-label={ui.langLabel}>
+            {LOCALES.map((l) => <option value={localePath(base, l)} selected={l === lang}>{LOCALE_META[l].short}</option>)}
+          </select>
+        )}
       </nav>
     </header>
     <main id="main"><slot /></main>
-    {dialog && <BrowserDialog />}
+    {dialog && <BrowserDialog lang={lang} />}
     <footer class="foot">
-      <nav class="foot-links" aria-label="Guides">
+      <nav class="foot-links" aria-label={ui.footer.guidesAria}>
         <div>
-          <p class="fh">Find a browser</p>
-          <a href="/quiz">Browser quiz</a>
-          <a href="/best">All guides</a>
+          <p class="fh">{ui.footer.find}</p>
+          <a href={localizedHref("/quiz", lang)}>{ui.footer.quiz}</a>
+          <a href="/best">{ui.footer.allGuides}</a>
           {CATEGORIES.slice(0, 5).map((c) => <a href={`/best/${c.slug}`}>{c.short}</a>)}
         </div>
         <div>
-          <p class="fh">More guides</p>
+          <p class="fh">{ui.footer.moreGuides}</p>
           {CATEGORIES.slice(5, 12).map((c) => <a href={`/best/${c.slug}`}>{c.short}</a>)}
           {GUIDES.map((g) => <a href={`/guides/${g.slug}`}>{fillYear(g.short)}</a>)}
         </div>
         <div>
-          <p class="fh">Alternatives</p>
-          <a href="/alternatives">All alternatives</a>
-          {popularAlt.map((b) => <a href={`/alternatives/${b.id}`}>{b.name} alternatives</a>)}
+          <p class="fh">{ui.footer.alternatives}</p>
+          <a href="/alternatives">{ui.footer.allAlternatives}</a>
+          {popularAlt.map((b) => <a href={`/alternatives/${b.id}`}>{b.name} {ui.footer.altSuffix}</a>)}
         </div>
         <div>
           <p class="fh">browserwall</p>
-          <a href="/wall">Browser wall</a>
-          <a href="/compare">Compare browsers</a>
-          {COMPARISONS.slice(0, 3).map((c) => <a href={`/compare/${c.slug}`}>{c.a.name} vs {c.b.name}</a>)}
-          <a href="/tiers">Tier maker</a>
-          <a href="/news">News</a>
+          <a href={localizedHref("/wall", lang)}>{ui.footer.wall}</a>
+          <a href="/compare">{ui.footer.compare}</a>
+          {COMPARISONS.slice(0, 3).map((c) => <a href={`/compare/${c.slug}`}>{c.a.name} {ui.footer.vs} {c.b.name}</a>)}
+          <a href={localizedHref("/tiers", lang)}>{ui.footer.tiers}</a>
+          <a href="/news">{ui.footer.news}</a>
           {NEWS.slice(0, 2).map((n) => <a href={`/news/${n.slug}`}>{n.short}</a>)}
-          <a href="/contact">Contact</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/image-license">Image licence</a>
-          <a href="#" data-cookie-settings>Cookie settings</a>
+          <a href="/contact">{ui.footer.contact}</a>
+          <a href="/privacy">{ui.footer.privacy}</a>
+          <a href="/image-license">{ui.footer.imageLicense}</a>
+          <a href="#" data-cookie-settings>{ui.footer.cookies}</a>
         </div>
       </nav>
-      <p class="fine">Logos are trademarks of their respective owners. Data curated by hand – spotted a mistake? <a href="/contact">Get in touch</a>.</p>
+      {isLocalized && (
+        <nav class="foot-langs" aria-label={ui.footer.languages}>
+          {LOCALES.map((l) => <a href={localePath(base, l)} hreflang={l} aria-current={l === lang ? "page" : undefined}>{LOCALE_META[l].name}</a>)}
+        </nav>
+      )}
+      <p class="fine">{ui.footer.fineBefore} <a href="/contact">{ui.footer.fineLink}</a>.</p>
     </footer>
-    <Consent />
+    <Consent lang={lang} />
+    {isLocalized && (
+      <script is:inline>
+        document.getElementById("lang-switch")?.addEventListener("change", function (e) {
+          location.href = e.target.value + location.search + location.hash;
+        });
+      </script>
+    )}
   </body>
 </html>

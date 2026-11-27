@@ -1,12 +1,24 @@
 ---
 import Icon from "./Icon.astro";
 import { TAGS, ENGINES, OSES, type Browser } from "../data/browsers";
+import type { Locale } from "../i18n";
+import { UI } from "../i18n/ui";
+import { localizeDescription } from "../i18n/descriptions";
 
-interface Props { b: Browser }
-const { b } = Astro.props;
+interface Props { b: Browser; lang?: Locale }
+const { b, lang = "en" } = Astro.props;
+const ui = UI[lang];
+const c = ui.card;
+const desc = localizeDescription(b.id, b.description, lang);
+const engineLabel = ui.engines[b.engine] ?? ENGINES[b.engine];
+const tagLabel = (t: string) => ui.tags[t] ?? TAGS[t]?.label ?? t;
+const osLabel = (o: keyof typeof OSES) => ui.oses[o] ?? OSES[o];
 const initials = b.name.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-const statusLabel = { active: "Active", maintenance: "Maintenance", discontinued: "Discontinued" }[b.status];
-const search = [b.name, b.basedOn, b.description, ENGINES[b.engine], ...b.tags.map((t) => TAGS[t]?.label)].join(" ").toLowerCase();
+const statusLabel = c.status[b.status];
+const search = [
+  b.name, b.basedOn, desc, b.description, engineLabel, ENGINES[b.engine],
+  ...b.tags.map((t) => `${tagLabel(t)} ${TAGS[t]?.label ?? ""}`),
+].join(" ").toLowerCase();
 const visibleTags = b.tags.filter((t) => t !== "rip");
 ---
 <li
@@ -27,37 +39,37 @@ const visibleTags = b.tags.filter((t) => t !== "rip");
     <div class="title">
       <h2><button type="button" class="open" data-open={b.id} aria-haspopup="dialog">{b.name}</button></h2>
       <p class="meta">
-        <span title="Engine">{ENGINES[b.engine]}</span>
-        {b.basedOn && b.basedOn.toLowerCase() !== ENGINES[b.engine].toLowerCase() && <span class="based" title="Based on"> · {b.basedOn}</span>}
+        <span title={c.engineTitle}>{engineLabel}</span>
+        {b.basedOn && b.basedOn.toLowerCase() !== ENGINES[b.engine].toLowerCase() && <span class="based" title={c.basedOnTitle}> · {b.basedOn}</span>}
       </p>
     </div>
     {b.status !== "active" && (
       <span class={`status ${b.status}`} title={statusLabel}>
         {b.status === "discontinued" ? <Icon name="SkullIcon" size={13} /> : <Icon name="Clock01Icon" size={13} />}
-        {b.status === "discontinued" ? "RIP" : "Slow"}
+        {b.status === "discontinued" ? c.ripShort : c.slowShort}
       </span>
     )}
   </div>
 
-  <p class="desc">{b.description}</p>
+  <p class="desc">{desc}</p>
 
-  <ul class="tags" aria-label="Tags">
+  <ul class="tags" aria-label={c.tagsAria}>
     {visibleTags.map((t) => (
-      <li class={`tag${t === "meme" ? " tag-meme" : ""}`}><Icon name={TAGS[t].icon} size={12} />{TAGS[t].label}</li>
+      <li class={`tag${t === "meme" ? " tag-meme" : ""}`}><Icon name={TAGS[t].icon} size={12} />{tagLabel(t)}</li>
     ))}
   </ul>
 
   <div class="card-foot">
-    <span class="os" aria-label={`Runs on ${b.os.map((o) => OSES[o]).join(", ")}`}>
-      {b.os.map((o) => <span>{OSES[o]}</span>)}
+    <span class="os" aria-label={`${c.runsOnAria} ${b.os.map(osLabel).join(", ")}`}>
+      {b.os.map((o) => <span>{osLabel(o)}</span>)}
     </span>
     <span class="links">
-      {b.openSource && <span class="oss" title="Open source">OSS</span>}
-      {b.reddit && <a href={b.reddit} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} on Reddit`} title={b.reddit.replace("https://www.reddit.com/", "")}><Icon name="RedditIcon" size={15} /></a>}
-      {b.x && <a href={b.x} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} on X`} title={"@" + b.x.split("/").pop()}><Icon name="NewTwitterIcon" size={15} /></a>}
-      {b.repo && <a href={b.repo} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} source code`}><Icon name="GithubIcon" size={15} /></a>}
-      <a href={`/browsers/${b.id}`} aria-label={`${b.name} profile and alternatives`} title="Full profile"><Icon name="InformationCircleIcon" size={15} /></a>
-      {b.website && <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} website`}><Icon name="ArrowUpRight01Icon" size={15} /></a>}
+      {b.openSource && <span class="oss" title={c.ossTitle}>OSS</span>}
+      {b.reddit && <a href={b.reddit} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} ${c.onReddit}`} title={b.reddit.replace("https://www.reddit.com/", "")}><Icon name="RedditIcon" size={15} /></a>}
+      {b.x && <a href={b.x} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} ${c.onX}`} title={"@" + b.x.split("/").pop()}><Icon name="NewTwitterIcon" size={15} /></a>}
+      {b.repo && <a href={b.repo} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} ${c.sourceCode}`}><Icon name="GithubIcon" size={15} /></a>}
+      <a href={`/browsers/${b.id}`} aria-label={`${b.name} ${c.profileAria}`} title={c.profileTitle}><Icon name="InformationCircleIcon" size={15} /></a>
+      {b.website && <a href={b.website} target="_blank" rel="noopener noreferrer" aria-label={`${b.name} ${c.websiteAria}`}><Icon name="ArrowUpRight01Icon" size={15} /></a>}
     </span>
   </div>
 </li>
